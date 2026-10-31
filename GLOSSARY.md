@@ -23,7 +23,7 @@ _Avoid_: Quote, fragment, excerpt
 ## The poem
 
 **Poem**:
-An ordered set of 8 to 14 Lines, every one a real Snippet, chosen for an Occasion.
+An ordered set of 6 to 14 Lines, every one a real Snippet, chosen for an Occasion.
 _Avoid_: Quilt, cento, story
 
 **Line**:
