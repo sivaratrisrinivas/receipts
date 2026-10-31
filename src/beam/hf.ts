@@ -87,7 +87,12 @@ async function httpError(response: Response): Promise<BeamError> {
     // No readable body; the status alone will do.
   }
   const retryable = response.status === 408 || response.status === 429 || response.status >= 500;
-  return new BeamError('http', `Beam request failed (HTTP ${response.status})${detail ? `: ${detail}` : ''}`, retryable);
+  return new BeamError(
+    'http',
+    `Beam request failed (HTTP ${response.status})${detail ? `: ${detail}` : ''}`,
+    retryable,
+    response.status,
+  );
 }
 
 interface StreamEvent {

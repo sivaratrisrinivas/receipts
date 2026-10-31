@@ -9,9 +9,39 @@ Vocabulary is in [GLOSSARY.md](GLOSSARY.md); decisions are in [docs/adr/](docs/a
 npm install
 npm test            # Vitest: the Poem pipeline at its seam, plus the Beam adapter's edge
 npm run typecheck   # strict TypeScript for src/ + tests/, and for scripts/
-npm run dev         # Vite dev server (placeholder page until the UI lands)
-npm run build       # static site into dist/, including the Gallery texts
+npm run dev         # Vite dev server: the real app, signed in with your local HF token
+npm run build       # static site into dist/, including the Gallery texts and the Space README
+npm run deploy:space  # build, check, and upload dist/ to the Space (needs HF_WRITE_TOKEN)
 ```
+
+## The Space UI
+
+`src/main.ts` only mounts the app. The flow is plain TypeScript with no DOM in `src/app/` (`state.ts`, `app.ts`, plus the pure `failure.ts`, `progress.ts`, `reveal.ts`), and the screens are in `src/ui/`: one module per step in `src/ui/steps/`, wired by the registry in `src/ui/steps/index.ts`. No UI framework.
+
+Extension points for later features:
+
+- **A new step**: add its id to `StepId` and its state/actions in `src/app/state.ts`, a module in `src/ui/steps/`, and one entry in the registry (`src/ui/steps/index.ts`).
+- **Slots into existing screens** (`src/ui/extensions.ts`): `composeSections`, `composeNotices`, `lineActions`, `lineDetails`, `poemActions`. A feature is one module in `src/ui/features/` that pushes its slots and is listed in `src/ui/features/index.ts`.
+- **The Poem view** (`src/ui/components/poem-view.ts`) renders Lines with Receipts and the badge, takes its own `slots`, and has `setPoem()` and `reveal()`; reuse it wherever a Poem is shown.
+- **Failures**: `describeFailure()` in `src/app/failure.ts` turns any error into a message and a recovery; add a case there.
+
+## Running locally
+
+OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Face token to the page (`scripts/vite-dev-token.ts`, serve-only: it is not in the build, and `npm run deploy:space` refuses to upload a build that contains it). It reads `HF_TOKEN` or `~/.cache/huggingface/token`. A real run costs credits, so for screen work use the scripted Beam (dev only, `src/dev/beam.ts`):
+
+```
+?beam=fake         # a Poem in about 8 seconds
+?beam=unverified   # a Poem with a made-up pick: no badge
+?beam=credits      # out of credits (HTTP 402), then a retry works
+?beam=network      # dropped connection, then a retry works
+?beam=truncated    # Beam ran out of room, then a retry works
+?beam=expired      # sign-in refused (HTTP 401)
+?beam=slow         # never finishes: the "taking longer" state
+```
+
+## Deploying the Space
+
+`public/README.md` becomes the Space's README (its front-matter sets `sdk: static`, `hf_oauth: true` with the `inference-api` scope, and the Beam model tags), and the Vite `base` is `./` so the build runs from any Space path. `HF_WRITE_TOKEN=hf_... npm run deploy:space` builds, checks `dist/`, creates `Srini410/receipts` if needed and uploads the contents of `dist/` as one commit; `npm run deploy:space -- --dry` does everything but upload and needs no token. The token must be able to write repos in the `Srini410` namespace (the inference-only token cannot) and is never printed. After the first deploy, check sign-in on a phone, both inside the Space page and at the direct `https://srini410-receipts.static.hf.space` URL.
 
 ## The Poem pipeline
 
