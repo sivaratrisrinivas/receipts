@@ -2,9 +2,9 @@
 // dev page at /__dev/hf-token, because OAuth cannot complete on localhost.
 //
 // `apply: 'serve'` means the plugin does not exist during `vite build`, and nothing in
-// the app imports it; `npm run build` output is checked for the route string in CI-style
-// (see scripts/deploy-space.ts). The route answers only requests addressed to a loopback
-// host, so a rebinding page on another domain cannot read the token.
+// the app imports it; scripts/deploy-space.ts refuses to upload a build that contains the
+// route. The route answers only requests addressed to a loopback host, so a rebinding
+// page on another domain cannot read the token.
 
 import { readFileSync } from 'node:fs';
 import { homedir } from 'node:os';

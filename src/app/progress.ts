@@ -2,13 +2,16 @@
 // that something is happening. State in, view out; no clocks or DOM in here.
 
 /**
- * How many reasoning tokens Beam usually spends on the Gallery at `low` effort (the
- * prototype measured 33,311). Used only to scale the bar; it is an estimate, not a promise.
+ * About how far the reasoning count usually gets on the Gallery before Beam answers, in
+ * the units the Beam adapter reports: it counts streamed reasoning *chunks* (roughly 100 a
+ * second, a few tokens each), not tokens, until the final usage figure arrives. A live
+ * Gallery run counted about 108 chunks a second, so a typical 70 to 100 second run ends
+ * near 10,000. Only scales the bar; it is an estimate, not a promise.
  */
-export const EXPECTED_REASONING_TOKENS = 35_000;
+export const EXPECTED_REASONING_TOKENS = 10_000;
 
-/** The Gallery usually takes about 70 seconds; past this the Giver is told it is slow. */
-export const SLOW_AFTER_SECONDS = 120;
+/** Past this, the Giver is told it is slow. The Gallery usually takes 70 to 100 seconds. */
+export const SLOW_AFTER_SECONDS = 100;
 
 /** The bar stops short of the end until the Poem has really arrived. */
 const MAX_FRACTION = 0.95;

@@ -56,7 +56,7 @@ export function describeFailure(error: unknown): Failure {
     if (error.reason === 'truncated') {
       return {
         kind: 'truncated',
-        title: 'Beam ran out of room',
+        title: 'Beam did not finish',
         message:
           'Beam ran out of room before it finished choosing. This happens now and then with a long Conversation; trying again usually works.',
         recovery: RETRY,

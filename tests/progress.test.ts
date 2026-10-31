@@ -30,9 +30,9 @@ describe('progress while Beam reads', () => {
   });
 
   test('the bar never moves backwards if a smaller count arrives late', () => {
-    const progress = noteReasoning(noteReasoning(startProgress(0), 20_000), 12_000);
+    const progress = noteReasoning(noteReasoning(startProgress(0), EXPECTED_REASONING_TOKENS * 0.6), EXPECTED_REASONING_TOKENS * 0.3);
 
-    expect(progressView(progress, 40_000).fraction).toBeCloseTo(20_000 / EXPECTED_REASONING_TOKENS, 2);
+    expect(progressView(progress, 40_000).fraction).toBeCloseTo(0.6, 2);
   });
 
   test('well past the usual time, the Giver is told it is slow but still working, and to keep the tab open', () => {

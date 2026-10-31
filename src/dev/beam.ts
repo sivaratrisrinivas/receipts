@@ -34,7 +34,7 @@ export function scriptedBeamFromUrl(url: URL): BeamPort | null {
       if (mode === 'expired') throw new BeamError('http', 'Beam request failed (HTTP 401)', false, 401);
       for (let step = 1; step <= 8; step++) {
         await sleep(mode === 'slow' ? 1500 : 1000);
-        onProgress?.({ reasoningTokens: step * 4000 });
+        onProgress?.({ reasoningTokens: step * 1100 });
       }
       if (mode === 'slow') await new Promise(() => {});
       if (failures > 0) {
