@@ -38,19 +38,22 @@ interface Letter {
 export function readGallery(texts: readonly string[]): Conversation {
   const letters = texts.flatMap(readLetters);
 
-  // A letter without a parseable date takes the nearest earlier letter's date.
-  let lastDate: IsoDate | null = null;
+  // A letter without a parseable date (or one dated before its predecessor) takes the
+  // nearest earlier letter's date, and is flagged approximate. A leading letter with no
+  // date at all has nothing to borrow from and is skipped.
+  let lastDate = null as IsoDate | null;
   const messages: Message[] = [];
   for (const letter of letters) {
-    const stated = letter.date !== null && (lastDate === null || letter.date >= lastDate);
-    const date = stated ? letter.date : lastDate;
+    const stated: IsoDate | null =
+      letter.date !== null && (lastDate === null || letter.date >= lastDate) ? letter.date : null;
+    const date: IsoDate | null = stated ?? lastDate;
     if (date === null) continue;
     lastDate = date;
     messages.push({
       ordinal: messages.length,
       sender: letter.sender,
       date,
-      approximate: !stated,
+      approximate: stated === null,
       text: letter.body,
     });
   }
@@ -76,10 +79,38 @@ function readLetters(text: string): Letter[] {
       first++;
     }
 
-    const body = lines.slice(first).join('\n').replace(/\[[^\]]*\]/g, ' ');
-    letters.push({ sender, date: parseDate(header.join(' ')), body });
+    const body = withoutEndMatter(lines.slice(first).join('\n'));
+    letters.push({ sender, date: parseDate(header.join(' ')), body: cleanBody(body) });
   }
   return letters;
+}
+
+/**
+ * What follows the final letter of a volume (printer's line, index, publisher's ads)
+ * would otherwise be read as part of that letter. These headings start a line.
+ */
+const END_MATTER = /^(?:INDEX|CONTENTS|FOOTNOTES?:?|ADVERTISEMENTS?|END OF THE .*|_?Spottiswoode.*|SMITH, ELDER.*)$/m;
+
+function withoutEndMatter(body: string): string {
+  const cut = END_MATTER.exec(body);
+  return cut ? body.slice(0, cut.index) : body;
+}
+
+/**
+ * The letter's own prose: editorial `[notes]` removed, Gutenberg's `_italics_` markers
+ * stripped, and any paragraph with an indented line dropped (sign-offs, envelope
+ * addresses, block-quoted verse). Paragraphs are separated by a blank line, with line
+ * wrapping undone.
+ */
+function cleanBody(raw: string): string {
+  return raw
+    .replace(/\[[^\]]*\]/g, ' ')
+    .replace(/_/g, '')
+    .split(/\n[ \t]*\n/)
+    .filter((paragraph) => !/^[ \t]+\S/m.test(paragraph))
+    .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
+    .filter((paragraph) => paragraph !== '')
+    .join('\n\n');
 }
 
 function parseDate(header: string): IsoDate | null {

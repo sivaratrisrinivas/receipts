@@ -7,7 +7,7 @@ import type { Conversation, Occasion, Poem, Sender, Snippet } from './domain';
 import { buildPrompt } from './prompt';
 import { readConversation, type RawSource } from './sources';
 import { snippetsOf } from './snippets';
-import { verifyPicks } from './verification';
+import { verifyAnswer } from './verification';
 
 export interface PoemRequest {
   source: RawSource;
@@ -42,11 +42,7 @@ export async function makePoem(
     buildPrompt({ conversation, snippets, ...request }),
     options.onProgress,
   );
-  const answer = JSON.parse(requireContent(completion)) as {
-    lines: { id: string; note: string; callbacks: string[] }[];
-  };
-
-  const { lines, verified } = verifyPicks(answer.lines, snippets);
+  const { lines, verified } = verifyAnswer(requireContent(completion), snippets);
   return {
     poem: { occasion: request.occasion, giver: request.giver, recipient: request.recipient, lines, verified },
     conversation,

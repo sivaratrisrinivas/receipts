@@ -70,8 +70,25 @@ function render({ snippets }: PromptInput): string {
 function instructions({ conversation, occasion, giver, recipient, note }: PromptInput): string {
   const people = conversation.senders.map((sender) => `${sender} (${initial(sender)})`).join(' and ');
   return [
-    `You make a Poem for a Giver to give a Recipient, using ONLY real Snippets from their Conversation. You never write poem text yourself: you choose Snippet IDs.`,
+    `You make a Poem for a Giver to give a Recipient, using ONLY real Snippets from their Conversation. You never write Poem text yourself: you choose Snippet IDs.`,
     `The Conversation is between ${people}. The Giver is ${giver}; the Recipient is ${recipient}. Occasion: ${occasion}.${note ? ` Context from the Giver: ${note}` : ''}`,
-    `Choose 8 to 14 Snippets.`,
+    `Read the whole Conversation, start to end. Choose 8 to 14 Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.`,
+    `Spread your picks across the whole timeline: choose at least one Line from each quarter of it (skip any quarter with no Messages). The quarters, by date: ${timelineQuarters(conversation).join('; ')}.`,
+    `Include both Senders.`,
+    `Avoid private matters such as money, health details, addresses and passwords.`,
+    `Code will sort your picks by date, so choose Lines that read well in chronological order.`,
+    `While reasoning, refer to Snippets by ID only; never copy their text. Keep a short shortlist as you read, then finalise.`,
+    `For each pick give a one-line private Note to the Giver explaining why. A Note may only mention things actually in the Conversation. In "callbacks", cite the IDs of any callbacks to other moments the Note mentions (an empty list if none).`,
   ].join('\n');
+}
+
+/** Four equal spans of the timeline by date, e.g. `Q1 1845-01-10 to 1845-06-04`. */
+function timelineQuarters({ messages }: Conversation): string[] {
+  const first = messages[0]?.date;
+  const last = messages[messages.length - 1]?.date;
+  if (first === undefined || last === undefined) return [];
+  const start = Date.parse(`${first}T00:00:00Z`);
+  const span = Date.parse(`${last}T00:00:00Z`) - start;
+  const at = (quarter: number) => new Date(start + (span * quarter) / 4).toISOString().slice(0, 10);
+  return [1, 2, 3, 4].map((q) => `Q${q} ${at(q - 1)} to ${at(q)}`);
 }
