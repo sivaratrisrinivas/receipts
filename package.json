@@ -12,12 +12,16 @@
     "test:watch": "vitest",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "gallery:fetch": "tsx scripts/fetch-gallery.ts",
-    "smoke": "tsx scripts/smoke.ts"
+    "smoke": "tsx scripts/smoke.ts",
+    "eval": "tsx eval/run.ts",
+    "eval:report": "tsx eval/report.ts",
+    "eval:publish": "tsx eval/publish.ts"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "@huggingface/hub": "2.17.10",
     "@types/node": "^26.6.6",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
