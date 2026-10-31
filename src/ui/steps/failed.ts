@@ -15,8 +15,8 @@ export const failedStep: StepFactory = (app, state) => {
     h('p', { class: 'lede', role: 'alert' }, failure.message),
     failure.help && h('p', null, h('a', { href: failure.help.href, target: '_blank', rel: 'noopener' }, failure.help.label)),
     h('button', { class: 'button primary', type: 'button', onclick: () => void app.recover() }, failure.recovery.label),
-    // After a sign-in problem there are no choices to go back to.
-    failure.kind !== 'signed-out' && h('button', { class: 'button secondary', type: 'button', onclick: () => app.again() }, 'Change my choices'),
+    // After a sign-in problem there are no choices to go back to, and when going back is the main button it needs no twin.
+    failure.recovery.action === 'retry' && h('button', { class: 'button secondary', type: 'button', onclick: () => app.again() }, 'Change my choices'),
   );
   return { el };
 };
