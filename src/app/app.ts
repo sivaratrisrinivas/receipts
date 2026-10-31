@@ -69,7 +69,14 @@ export function createApp(deps: AppDeps): App {
       const { session, notice } = await deps.auth.restore();
       store.dispatch({ type: 'restored', session, notice: notice ?? null });
     },
-    signIn: () => deps.auth.signIn(),
+    async signIn() {
+      try {
+        await deps.auth.signIn();
+      } catch (error) {
+        const notice = error instanceof Error ? error.message : 'Sign-in could not start.';
+        store.dispatch({ type: 'sign-in-failed', notice });
+      }
+    },
     signOut() {
       deps.auth.signOut();
       store.dispatch({ type: 'signed-out' });

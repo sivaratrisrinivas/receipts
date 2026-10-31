@@ -39,6 +39,7 @@ export interface AppState {
 export type Action =
   | { type: 'restored'; session: Session | null; notice: string | null }
   | { type: 'signed-out' }
+  | { type: 'sign-in-failed'; notice: string }
   | { type: 'edited'; patch: Partial<ComposeInput> }
   | { type: 'started'; input: ComposeInput; now: number }
   | { type: 'reasoned'; reasoningTokens: number }
@@ -62,6 +63,8 @@ export function reduce(state: AppState, action: Action): AppState {
       return { ...state, session: action.session, notice: action.notice, step: action.session ? 'compose' : 'sign-in' };
     case 'signed-out':
       return { ...initialState, compose: state.compose };
+    case 'sign-in-failed':
+      return { ...state, step: 'sign-in', session: null, notice: action.notice };
     case 'edited':
       return { ...state, compose: { ...state.compose, ...action.patch } };
     case 'started':

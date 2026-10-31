@@ -27,11 +27,16 @@ function failingFirst(beam: BeamPort, ...errors: unknown[]): BeamPort {
   };
 }
 
-function setup(options: { restored?: Session | null; notice?: string; beam?: BeamPort; loadSource?: AppDeps['loadSource'] } = {}) {
+function setup(
+  options: { restored?: Session | null; notice?: string; beam?: BeamPort; loadSource?: AppDeps['loadSource']; signInError?: Error } = {},
+) {
   const calls = { signIn: 0, signOut: 0, forgot: 0 };
   const auth: AuthPort = {
     restore: async () => ({ session: options.restored === undefined ? session : options.restored, ...(options.notice ? { notice: options.notice } : {}) }),
-    signIn: async () => void calls.signIn++,
+    signIn: async () => {
+      calls.signIn++;
+      if (options.signInError) throw options.signInError;
+    },
     signOut: () => void calls.signOut++,
     forget: () => void calls.forgot++,
   };
@@ -62,6 +67,15 @@ describe('the Giver signs in', () => {
     await app.init();
 
     expect(app.getState()).toMatchObject({ step: 'sign-in', notice: 'access_denied: you declined' });
+  });
+
+  test('a sign-in that cannot start (say, storage is blocked) tells the Giver instead of failing silently', async () => {
+    const { app } = setup({ restored: null, signInError: new Error('Storage is blocked in this window.') });
+    await app.init();
+
+    await app.signIn();
+
+    expect(app.getState()).toMatchObject({ step: 'sign-in', notice: 'Storage is blocked in this window.' });
   });
 
   test('signing out forgets the session and goes back to sign-in', async () => {

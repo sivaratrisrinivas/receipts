@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "gallery:fetch": "tsx scripts/fetch-gallery.ts",
-    "smoke": "tsx scripts/smoke.ts"
+    "smoke": "tsx scripts/smoke.ts",
+    "deploy:space": "npm run build && tsx scripts/deploy-space.ts"
   },
   "engines": {
     "node": ">=20"
@@ -23,5 +24,8 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@huggingface/hub": "2.17.10"
   }
 }
