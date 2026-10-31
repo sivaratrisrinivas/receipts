@@ -5,7 +5,9 @@
 import { requireContent, type BeamPort, type BeamProgress } from './beam/port';
 import type { Conversation, Occasion, Poem, Sender, Snippet } from './domain';
 import { buildPrompt } from './prompt';
+import { redactConversation } from './redaction';
 import { readConversation, type RawSource } from './sources';
+import { between } from './sources/between';
 import { snippetsOf } from './snippets';
 import { verifyAnswer } from './verification';
 
@@ -35,7 +37,9 @@ export async function makePoem(
   beam: BeamPort,
   options: MakePoemOptions = {},
 ): Promise<PoemOutcome> {
-  const conversation = readConversation(request.source);
+  // Only the Giver's and the Recipient's Messages get as far as a Snippet, and only once
+  // phone numbers and email addresses are out of them.
+  const conversation = redactConversation(between(readConversation(request.source), request.giver, request.recipient));
   const snippets = snippetsOf(conversation);
 
   const completion = await beam.complete(
