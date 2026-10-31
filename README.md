@@ -51,6 +51,14 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 - Truncation, malformed answers, HTTP and network failures reject with a `BeamError` carrying `reason` and `retryable`.
 - Beam only ever returns Snippet IDs and Notes ([ADR-0002](docs/adr/0002-beam-picks-snippet-ids-code-owns-order-and-text.md)); the Poem's text, Receipts and order come from the Conversation.
 
+## Long and small Conversations
+
+`src/selection.ts` decides what Beam reads and how many Lines it is asked for, between the Snippets and the prompt:
+
+- **Budget**: the prompt is held to about 800k estimated input tokens (`INPUT_TOKEN_BUDGET`). A longer Conversation is read every 2nd (or 3rd, ...) *day*, whole days only, with the smallest stride that fits and the leftover at both ends split evenly, so the early years count as much as the late ones. `PoemOutcome.readFraction` carries the stride, the days read and the stretch covered; `readFractionMessage()` (`src/app/read-fraction.ts`) turns it into "Beam read every 2nd day across the 9 years." under the Poem (`src/ui/features/budget-messages.ts`).
+- **Token estimate**: ASCII at 3 characters per token, anything else at one token per UTF-16 code unit. The Gallery's 1,245,565-character prompt was billed at 352,297 tokens (3.54 characters per token), so the estimate over-counts it by about 19% on purpose: a wrong guess should cost a few days, not a failed call.
+- **Size table**: 40 or more usable Snippets ask Beam for 8 to 14 Lines, 15 to 39 for 6 to 8, and below 15 `tryMakePoem()` returns `{ refused: 'not-enough' }` without calling Beam. The app shows it as "Not enough here yet for a Poem" (`describeNotEnough()` in `src/app/failure.ts`). `makePoem()` is the same pipeline for callers that know the Conversation is big enough: it throws `NotEnoughError` instead.
+
 ## The Gallery texts
 
 The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](https://www.gutenberg.org/ebooks/16182) and [73891](https://www.gutenberg.org/ebooks/73891) (public domain). Both are **committed** as-is in `public/gallery/` (about 2.3 MB, under 1 MB compressed), so the static build serves them at `gallery/pg16182.txt` and `gallery/pg73891.txt` (`GALLERY_TEXT_PATHS`) and nothing has to be fetched at build time. `npm run gallery:fetch` re-downloads them if you ever need to refresh them. `public/gallery/*.txt` is marked `-text` in `.gitattributes` so git leaves their CRLF line endings alone.
