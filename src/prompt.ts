@@ -50,11 +50,16 @@ export function buildPrompt(input: PromptInput): BeamRequest {
   };
 }
 
-function initial(sender: Sender): string {
+export function initial(sender: Sender): string {
   return sender.charAt(0).toUpperCase();
 }
 
 function render({ snippets }: PromptInput): string {
+  return renderSnippets(snippets);
+}
+
+/** Snippets in the compact prompt layout: a `## <initial> <date>` header per Message, then `<id> <text>` rows. */
+export function renderSnippets(snippets: readonly Snippet[]): string {
   const rows: string[] = [];
   let currentMessage = -1;
   for (const snippet of snippets) {
