@@ -11,10 +11,10 @@ export const USD_PER_MILLION_OUTPUT_TOKENS = 1.2;
 export const DEFAULT_SPEND_CAP_USD = 8;
 
 /**
- * Prompt characters per token, deliberately low so estimates run high. The prototype
- * measured 513k tokens for about 1.25M characters of Gallery prompt (2.4 per token).
+ * Prompt characters per token, deliberately low so estimates run high. The Gallery
+ * prompt measured 3.5 (1,245,565 characters, 352,297 tokens in the dry run).
  */
-const CHARS_PER_TOKEN = 2.2;
+const CHARS_PER_TOKEN = 3;
 
 /** Completion tokens already include the reasoning tokens. */
 export function costOfUsage(usage: Pick<BeamUsage, 'promptTokens' | 'completionTokens'>): number {

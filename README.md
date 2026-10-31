@@ -28,3 +28,20 @@ The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](ht
 ## Live smoke test
 
 `npm run smoke` makes one real Gallery Poem through Beam (about $0.17 to $0.25 of Hugging Face credits), reading the token from `~/.cache/huggingface/token`. The token only goes into the request's `Authorization` header and is never printed. `npm run smoke -- --dry` sizes the prompt without a token or any network. Real chats for manual testing go in the gitignored `.scratch/`.
+
+## The eval: does reading everything help?
+
+`eval/` measures it on the Gallery: 20 Poems each from Beam on the **full** Conversation, Beam on only the **last 10%** of Messages, and **random** Snippets (no Beam call), scored by verification rate, timeline coverage, Sender balance and Note callback count. Every Beam Poem goes through the same `makePoem` as the app (the last-10% group uses its `narrow` option). The metrics are defined in `eval/lib/metrics.ts`; the results, method and the finding that only `low` reasoning effort completes on 500k-token inputs are in the dataset card, `eval/dataset/README.md`.
+
+```
+npm run eval -- --per-group 1    # dry run: 1 Poem per group (about $0.30)
+npm run eval                     # all 60 Poems (about $6); finished Poems are skipped, so it resumes
+npm run eval:report              # rebuild eval/dataset from the traces (no Beam, no token)
+HF_WRITE_TOKEN=<token> npm run eval:publish   # upload eval/dataset as Srini410/receipts-eval
+```
+
+- Beam Poems cost real Hugging Face credits. Spend is counted from the usage Beam reports (router prices: $0.40/M in, $1.20/M out) and the run stops before any call that could pass a hard cap of $8 (`--cap` lowers it).
+- Retryable Beam errors are retried at most twice per Poem; a Poem that still fails is kept as a failed trace and counted against its group. `--redo-failed` makes those Poems again.
+- The inference token is read from `HF_TOKEN` or `~/.cache/huggingface/token`, goes only into the request's `Authorization` header, and is never printed or written; the run refuses to finish if it finds the token in `eval/dataset/`.
+- `eval:publish` needs a separate token with write access to the dataset repo (the inference token cannot write repos), passed as `HF_WRITE_TOKEN`.
+- Eval tests are in `eval/tests/` and use the fake Beam port, so `npm test` costs nothing.

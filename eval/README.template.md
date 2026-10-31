@@ -22,7 +22,7 @@ configs:
 
 # Receipts eval: does reading the whole Conversation help?
 
-[Receipts](https://github.com/sivaratrisrinivas/receipts) turns the real history between two people into a poem made only of things they actually said to each other, each line carrying proof of who said it and when. [Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B) reads the whole Conversation in one call (about 500k tokens for the Gallery) and chooses Snippet IDs; code looks up the verbatim text, verifies it and sorts it by date. Beam never writes any Poem text.
+[Receipts](https://github.com/sivaratrisrinivas/receipts) turns the real history between two people into a poem made only of things they actually said to each other, each line carrying proof of who said it and when. [Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B) reads the whole Conversation in one call (about 350k tokens for the Gallery) and chooses Snippet IDs; code looks up the verbatim text, verifies it and sorts it by date. Beam never writes any Poem text.
 
 This dataset is the eval behind the claim that **reading everything matters**. It compares three groups of 20 Poems over the same Conversation, the Gallery (Robert Browning and Elizabeth Barrett's 1845-1846 letters):
 
@@ -77,7 +77,7 @@ Beam always reasons, and its reasoning tokens are drawn from the same `max_compl
 | `high` | 32,000 | truncated the same way, no content |
 | `medium` (not streaming) | - | the gateway returned an HTML error page instead of a response |
 
-So only `low` completes on inputs of this size, and **long calls must stream**. That is why every Beam Poem in this dataset uses `reasoning_effort: "low"` with `stream: true`, and why the product does not offer higher efforts. Other builders report the same mechanics on smaller inputs: reasoning tokens consume the completion budget and a tight budget yields empty content with `finish_reason: "length"` (see [iarsalanshah/beam-effort-atlas](https://huggingface.co/datasets/iarsalanshah/beam-effort-atlas)), and `low` stays close to higher efforts on quality while using about half the tokens ([PengoSword123/beamdial-v0.1](https://huggingface.co/datasets/PengoSword123/beamdial-v0.1)). The `medium` and `high` rows come from the prototype and were not rerun for this eval, which spent its budget on the 60 Poems.
+The pipeline has since dropped fragments and end matter from the Snippets, so today's Gallery prompt is smaller (12,513 Snippets, about 352k tokens); the table was measured on the larger prototype prompt and was not rerun at 352k. So only `low` completes on inputs of this size, and **long calls must stream**. That is why every Beam Poem in this dataset uses `reasoning_effort: "low"` with `stream: true`, and why the product does not offer higher efforts. Other builders report the same mechanics on smaller inputs: reasoning tokens consume the completion budget and a tight budget yields empty content with `finish_reason: "length"` (see [iarsalanshah/beam-effort-atlas](https://huggingface.co/datasets/iarsalanshah/beam-effort-atlas)), and `low` stays close to higher efforts on quality while using about half the tokens ([PengoSword123/beamdial-v0.1](https://huggingface.co/datasets/PengoSword123/beamdial-v0.1)). The `medium` and `high` rows come from the prototype and were not rerun for this eval, which spent its budget on the 60 Poems.
 
 ## Files
 

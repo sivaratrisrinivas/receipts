@@ -1,0 +1,58 @@
+{
+  "groups": [
+    {
+      "condition": "full",
+      "attempted": 1,
+      "completed": 1,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.4,
+      "senderBalance": 0.9230769230769231,
+      "noteCallbacks": 0,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.4,
+        "senderBalance": 0.9230769230769231,
+        "noteCallbacks": 0
+      },
+      "meanLines": 13,
+      "costUsd": 0.14527000000000004
+    },
+    {
+      "condition": "last10",
+      "attempted": 1,
+      "completed": 1,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.1,
+      "senderBalance": 0.6666666666666666,
+      "noteCallbacks": 9,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.1,
+        "senderBalance": 0.6666666666666666,
+        "noteCallbacks": 9
+      },
+      "meanLines": 12,
+      "costUsd": 0.018945600000000003
+    },
+    {
+      "condition": "random",
+      "attempted": 1,
+      "completed": 1,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.6,
+      "senderBalance": 1,
+      "noteCallbacks": 0,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.6,
+        "senderBalance": 1,
+        "noteCallbacks": 0
+      },
+      "meanLines": 8,
+      "costUsd": 0
+    }
+  ]
+}
