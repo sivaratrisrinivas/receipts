@@ -85,6 +85,17 @@ describe('the Hugging Face Beam adapter', () => {
     for (const error of [outOfCredits, gateway]) expect((error as BeamError).message).not.toContain('hf_secret_value');
   });
 
+  test('an HTTP failure carries its status, so callers can tell out-of-credits from a sign-in that expired', async () => {
+    const failing = (status: number) =>
+      createHfBeam({ token: 'hf_test_token', fetch: (async () => new Response('nope', { status })) as typeof fetch });
+
+    const statuses = await Promise.all(
+      [401, 402, 429, 503].map((status) => failing(status).complete(request).catch((e: unknown) => (e as BeamError).status)),
+    );
+
+    expect(statuses).toEqual([401, 402, 429, 503]);
+  });
+
   test('a request that never reaches Beam is a retryable network error', async () => {
     const beam = createHfBeam({
       token: 'hf_test_token',
