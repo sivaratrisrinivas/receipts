@@ -284,6 +284,25 @@ describe('asking Beam', () => {
   });
 });
 
+describe('narrowing what Beam reads', () => {
+  test('Beam is shown only the Messages the narrowing step keeps, and the Poem comes from those alone', async () => {
+    const beam = createFakeBeam((request) => ({
+      picks: [{ id: idOf(request, 'Thank you a thousand times for the note'), note: 'The last letter.' }],
+    }));
+
+    const { poem, conversation } = await makePoem(galleryRequest, beam, {
+      narrow: (full) => ({ ...full, messages: full.messages.slice(-2) }),
+    });
+
+    const rows = beam.requests[0]!.user.split('\n');
+    expect(rows.filter((row) => row.startsWith('## '))).toEqual(['## E 1846-09-11', '## R 1846-09-14']);
+    expect(rows.join('\n')).not.toContain('wet afternoon');
+    expect(conversation.messages).toHaveLength(2);
+    // Receipts still point at the Message's place in the full Conversation.
+    expect(poem.lines[0]?.receipt.messageOrdinal).toBe(10);
+  });
+});
+
 describe('when Beam does not deliver', () => {
   test('truncation (finish_reason length, no content) surfaces as a retryable error', async () => {
     const beam = createFakeBeam(() => ({ truncated: true }));

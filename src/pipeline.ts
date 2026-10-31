@@ -28,6 +28,11 @@ export interface PoemOutcome {
 export interface MakePoemOptions {
   /** Called as Beam reasons, so the UI can show it has not hung. */
   onProgress?: (progress: BeamProgress) => void;
+  /**
+   * Chooses which part of the Conversation Beam gets to read, before Snippets are
+   * formed. The eval uses it to show Beam only the most recent Messages.
+   */
+  narrow?: (conversation: Conversation) => Conversation;
 }
 
 export async function makePoem(
@@ -35,7 +40,7 @@ export async function makePoem(
   beam: BeamPort,
   options: MakePoemOptions = {},
 ): Promise<PoemOutcome> {
-  const conversation = readConversation(request.source);
+  const conversation = (options.narrow ?? ((whole) => whole))(readConversation(request.source));
   const snippets = snippetsOf(conversation);
 
   const completion = await beam.complete(
