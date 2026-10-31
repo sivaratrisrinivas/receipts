@@ -61,7 +61,8 @@ export function readGallery(texts: readonly string[]): Conversation {
   return { kind: 'letters', senders: [...new Set(messages.map((m) => m.sender))], messages };
 }
 
-function readLetters(text: string): Letter[] {
+function readLetters(rawText: string): Letter[] {
+  const text = rawText.replace(/\r\n?/g, '\n');
   const start = text.indexOf('*** START OF');
   const end = text.indexOf('*** END OF');
   const book = text.slice(start < 0 ? 0 : start, end < 0 ? undefined : end);

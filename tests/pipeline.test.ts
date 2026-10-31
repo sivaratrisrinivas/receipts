@@ -109,6 +109,8 @@ describe('turning letters into Snippets', () => {
           { id: idOf(request, 'Mr. Kenyon says'), note: 'Mr. mid-sentence.' },
           { id: idOf(request, 'dear Mr. Kenyon, the roses'), note: 'Mr. after a comma.' },
           { id: idOf(request, 'Mrs. Procter lent'), note: 'Mrs. opening a sentence.' },
+          { id: idOf(request, 'Torquay--Dr. Chambers'), note: 'Dr. glued to a dash.' },
+          { id: idOf(request, 'consult (Mrs. Procter)'), note: 'Mrs. and Mr. behind a bracket and a quote.' },
           { id: idOf(request, 'Dr. Chambers says'), note: 'Dr. mid-sentence, wrapped across lines.' },
         ],
       };
@@ -116,11 +118,13 @@ describe('turning letters into Snippets', () => {
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(offered.filter((snippet) => /\b(Mr|Mrs|Dr)\.$/.test(snippet.text))).toEqual([]);
+    expect(offered.filter((snippet) => /\b(Mr|Mrs|Dr)\.['’)]*$/.test(snippet.text))).toEqual([]);
     expect(poem.lines.map((line) => line.text)).toEqual([
       'Mr. Kenyon says you read the Greek better than any man in London.',
       'Yes, but, dear Mr. Kenyon, the roses are out and so is the sun.',
       'Mrs. Procter lent me a book of yours and I have not slept since.',
+      'Papa sent me down to Torquay--Dr. Chambers came too and told me to rest.',
+      "He asked whether I might walk, and then said he would consult (Mrs. Procter) or 'Mr. Kenyon' before deciding.",
       'Dr. Chambers says I may walk to the end of the street if the wind is quiet.',
     ]);
   });
@@ -185,6 +189,22 @@ describe('turning letters into Snippets', () => {
     expect(poem.lines.map((line) => line.text)).toEqual([
       'Miss Thomson wants me to translate a scene from the Iliad for her book.',
     ]);
+  });
+
+  test('Gutenberg files with Windows line endings read exactly the same', async () => {
+    const pick = (request: BeamRequest) => ({
+      picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }, { id: idOf(request, 'Miss Thomson wants me'), note: 'Any.' }],
+    });
+    const unix = createFakeBeam(pick);
+    const windows = createFakeBeam(pick);
+
+    await makePoem(galleryRequest, unix);
+    await makePoem(
+      { ...galleryRequest, source: { kind: 'gallery', texts: [volumeOne, volumeTwo].map((t) => t.replace(/\n/g, '\r\n')) } },
+      windows,
+    );
+
+    expect(windows.requests[0]!.user).toBe(unix.requests[0]!.user);
   });
 
   test('Gutenberg italics markers are not part of a Snippet', async () => {

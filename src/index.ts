@@ -18,6 +18,8 @@ export type {
   BeamUsage,
   ResponseFormat,
 } from './beam/port';
+export { BEAM_MODEL, HF_ROUTER_URL, createHfBeam } from './beam/hf';
+export type { HfBeamOptions } from './beam/hf';
 export { createFakeBeam } from './beam/fake';
 export type { FakeBeam, FakeBeamOptions, FakePick, FakeReply } from './beam/fake';
 

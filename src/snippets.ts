@@ -82,8 +82,9 @@ function endsLikeASentence(text: string): boolean {
   const lastWord = text.slice(text.lastIndexOf(' ') + 1).replace(/["'’”)\]]+$/, '');
   if (!/[.!?…]$/.test(lastWord)) return false;
   if (!lastWord.endsWith('.')) return true;
-  const bare = lastWord.slice(0, -1);
-  return !(ABBREVIATIONS.has(bare.toLowerCase()) || INITIALS.test(bare));
+  // The abbreviation itself, even when glued to a quote, bracket or dash: `('Mr.`, `Torquay--Dr.`.
+  const abbreviation = /(?:\p{L}+\.)*\p{L}+$/u.exec(lastWord.slice(0, -1))?.[0] ?? '';
+  return !(ABBREVIATIONS.has(abbreviation.toLowerCase()) || INITIALS.test(abbreviation));
 }
 
 function wordCount(text: string): number {

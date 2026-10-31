@@ -84,6 +84,10 @@ great deal more than that.
 journey in a single morning. It was _that_ which made me laugh and then
 cry. Will you tell me whether you ever tire of being praised?
 
+Papa sent me down to Torquay--Dr. Chambers came too and told me to rest.
+He asked whether I might walk, and then said he would consult (Mrs. Procter)
+or 'Mr. Kenyon' before deciding.
+
 and then, because I am foolish, I read it over again.
 
 Write to me soon and tell me whether you are better--
