@@ -3,11 +3,12 @@
 
 import type { BeamPort } from '../beam/port';
 import type { Sender } from '../domain';
+import { EditError, removeLine, replaceLine } from '../editing';
 import { makePoem } from '../pipeline';
 import type { RawSource } from '../sources';
 import type { AuthPort, Session } from './auth';
 import { describeFailure } from './failure';
-import { initialState, reduce, type Action, type AppState, type ComposeInput } from './state';
+import { initialState, isReplacing, reduce, type Action, type AppState, type ComposeInput } from './state';
 import { createStore } from './store';
 
 export interface AppDeps {
@@ -37,6 +38,12 @@ export interface App {
   recover(): Promise<void>;
   /** Back to choosing an Occasion, keeping the choices made so far. */
   again(): void;
+  /** Remove a Line from the Poem. Does nothing while a replacement is under way. */
+  removeLine(snippetId: string): void;
+  /** Replace a Line with another Snippet from the same period (one Beam call). Failures show in `editing.replacement`. */
+  replaceLine(snippetId: string): Promise<void>;
+  /** Make a fresh Poem from the same choices, discarding this one and the edits to it. */
+  regenerate(): Promise<void>;
 }
 
 export function createApp(deps: AppDeps): App {
@@ -96,6 +103,43 @@ export function createApp(deps: AppDeps): App {
       else await app.retry();
     },
     again: () => store.dispatch({ type: 'composing-again' }),
+    removeLine(snippetId) {
+      const { outcome, editing } = store.getState();
+      if (!outcome || isReplacing(editing)) return;
+      try {
+        store.dispatch({ type: 'poem-edited', draft: removeLine({ poem: outcome.poem, removed: editing.removed }, snippetId) });
+      } catch (error) {
+        if (!(error instanceof EditError)) throw error;
+      }
+    },
+    async replaceLine(snippetId) {
+      const { outcome, session, editing } = store.getState();
+      if (!outcome || !session || isReplacing(editing)) return;
+      store.dispatch({ type: 'replacing', snippetId });
+      try {
+        const draft = await replaceLine({
+          draft: { poem: outcome.poem, removed: editing.removed },
+          snippetId,
+          snippets: outcome.snippets,
+          beam: deps.makeBeam(session),
+        });
+        if (store.getState().outcome === outcome) store.dispatch({ type: 'poem-edited', draft });
+      } catch (error) {
+        if (store.getState().outcome !== outcome) return;
+        if (error instanceof EditError) return void store.dispatch({ type: 'replace-failed', snippetId, problem: { message: error.message } });
+        const failure = describeFailure(error);
+        if (failure.kind === 'signed-out') {
+          deps.auth.forget();
+          store.dispatch({ type: 'failed', failure });
+        } else {
+          store.dispatch({ type: 'replace-failed', snippetId, problem: { message: failure.message, ...(failure.help ? { help: failure.help } : {}) } });
+        }
+      }
+    },
+    async regenerate() {
+      const { step, attempt, editing } = store.getState();
+      if (step === 'poem' && attempt && !isReplacing(editing)) await run(attempt.input);
+    },
   };
   return app;
 }
