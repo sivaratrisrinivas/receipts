@@ -112,12 +112,16 @@ mark { padding: 0 0.1em; border-radius: 2px; background: var(--highlight); color
   @page { margin: 12mm; }
   html, body { background: #fff; }
   body { padding: 0; font-size: 10.5pt; }
-  .card { max-width: 38rem; padding: 1.5rem 1rem 1rem; background: #fff; box-shadow: none; }
+  .card { max-width: none; padding: 1.1rem 2.5rem 0.8rem; background: #fff; box-shadow: none; }
   .card::before { inset: 4px; }
-  .lines { margin-top: 1rem; }
-  .line { padding: 0.8rem 0 0.7rem; break-inside: avoid; }
-  .line-text { font-size: 1.2rem; }
+  .title { margin-top: 0.3rem; font-size: 1.35rem; }
+  .lines { margin-top: 0.6rem; }
+  .line { padding: 0.55rem 0 0.5rem; break-inside: avoid; }
+  .line-text { font-size: 1.05rem; line-height: 1.35; }
+  .receipt { margin-top: 0.3rem; font-size: 0.75rem; }
   .context, .hint { display: none; }
-  .card-foot { margin-top: 0.5rem; padding-top: 1rem; break-inside: avoid; }
+  .card-foot { margin-top: 0.4rem; padding-top: 0.8rem; break-inside: avoid; }
+  .badge { padding: 0.4rem 0.8rem; }
+  .framing { margin-top: 0.7rem; font-size: 0.85rem; }
 }
 `;

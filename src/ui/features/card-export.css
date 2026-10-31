@@ -1,0 +1,49 @@
+/* Card export: the title field and the export buttons under the Poem. */
+
+.card-export {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.card-export h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card-export input[type='text'] {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.card-export input[type='text']:focus-visible {
+  border-color: var(--accent);
+  outline-offset: 0;
+}
+
+.card-export-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-export-status:empty {
+  display: none;
+}
+
+@media (min-width: 40rem) {
+  .card-export-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

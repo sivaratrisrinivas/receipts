@@ -6,5 +6,5 @@
 //   import './notes-and-edit';  // #6: Notes, Replace, Remove (lineDetails, lineActions)
 //   import './card-export';     // #7: Save as a Card (poemActions)
 //
-// Nothing is registered yet.
+import './card-export';
 export {};
