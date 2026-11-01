@@ -13,6 +13,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "gallery:fetch": "tsx scripts/fetch-gallery.ts",
     "smoke": "tsx scripts/smoke.ts",
+    "gallery:poems": "tsx scripts/make-gallery-poems.ts",
     "deploy:space": "npm run build && tsx scripts/deploy-space.ts",
     "eval": "tsx eval/run.ts",
     "eval:report": "tsx eval/report.ts",

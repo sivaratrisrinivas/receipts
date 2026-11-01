@@ -6,6 +6,7 @@
 
 import type { Conversation, Occasion, Sender, Snippet } from './domain';
 import type { BeamRequest, ResponseFormat } from './beam/port';
+import { quarterBoundaries } from './quarters';
 import { redactText } from './redaction';
 import { FULL_SIZE_LINES, type LineRange } from './selection';
 
@@ -106,12 +107,7 @@ function instructions({ conversation, occasion, giver, recipient, note, lineRang
 }
 
 /** Four equal spans of the timeline by date, e.g. `Q1 1845-01-10 to 1845-06-04`. */
-function timelineQuarters({ messages }: Conversation): string[] {
-  const first = messages[0]?.date;
-  const last = messages[messages.length - 1]?.date;
-  if (first === undefined || last === undefined) return [];
-  const start = Date.parse(`${first}T00:00:00Z`);
-  const span = Date.parse(`${last}T00:00:00Z`) - start;
-  const at = (quarter: number) => new Date(start + (span * quarter) / 4).toISOString().slice(0, 10);
-  return [1, 2, 3, 4].map((q) => `Q${q} ${at(q - 1)} to ${at(q)}`);
+function timelineQuarters(conversation: Conversation): string[] {
+  const bounds = quarterBoundaries(conversation);
+  return [1, 2, 3, 4].flatMap((q) => (bounds.length === 0 ? [] : [`Q${q} ${bounds[q - 1]} to ${bounds[q]}`]));
 }
