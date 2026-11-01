@@ -9,8 +9,13 @@
 //   ?beam=truncated     fails as truncated; a retry then succeeds
 //   ?beam=expired       fails with HTTP 401 (sign-in expired)
 //   ?beam=slow          never finishes (for the "taking longer than usual" state)
+//   ?beam=replace-fails the Poem works; the first Replace fails with a dropped connection
+//
+// Notes in the scripted Poem cite the pick before them, so callback links can be tried; a
+// Replace answers with the first Snippet it is offered (after about a second).
 
 import { BeamError, type BeamPort, type BeamRequest } from '../beam/port';
+import { REPLACEMENT_RESPONSE_FORMAT } from '../editing';
 
 const PICKS = 10;
 
@@ -19,7 +24,13 @@ function spreadPicks(request: BeamRequest, ghost: boolean): string {
   const ids = [...request.user.matchAll(/^(s\d+) /gm)].map((match) => match[1]!);
   const picks = Array.from({ length: PICKS }, (_, i) => ids[Math.floor(((i + 0.5) * ids.length) / PICKS)]!);
   if (ghost) picks.push('s99999999');
-  return JSON.stringify({ lines: picks.map((id) => ({ id, note: 'A scripted pick.', callbacks: [] })) });
+  return JSON.stringify({
+    lines: picks.map((id, i) => ({
+      id,
+      note: i === 0 ? 'A scripted pick.' : `A scripted pick that answers ${picks[i - 1]}.`,
+      callbacks: i === 0 ? [] : [picks[i - 1]],
+    })),
+  });
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -28,9 +39,15 @@ export function scriptedBeamFromUrl(url: URL): BeamPort | null {
   const mode = url.searchParams.get('beam');
   if (!mode) return null;
   let failures = mode === 'credits' || mode === 'network' || mode === 'truncated' ? 1 : 0;
+  let replaceFailures = mode === 'replace-fails' ? 1 : 0;
 
   return {
     async complete(request, onProgress) {
+      if (request.responseFormat.name === REPLACEMENT_RESPONSE_FORMAT.name) {
+        await sleep(1200);
+        if (replaceFailures-- > 0) throw new BeamError('network', 'The connection dropped.', true);
+        return { content: JSON.stringify({ id: /^(s\d+) /m.exec(request.user)![1] }), finishReason: 'stop' };
+      }
       if (mode === 'expired') throw new BeamError('http', 'Beam request failed (HTTP 401)', false, 401);
       for (let step = 1; step <= 8; step++) {
         await sleep(mode === 'slow' ? 1500 : 1000);

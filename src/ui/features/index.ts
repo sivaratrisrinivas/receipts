@@ -3,8 +3,7 @@
 //
 //   import './upload';          // #4: choose or upload a Conversation (composeSections)
 //   import './budget-messages'; // #5: credit and size messages (composeNotices)
-//   import './notes-and-edit';  // #6: Notes, Replace, Remove (lineDetails, lineActions)
+//   import './notes-and-edit';  // #6: Notes, context, Replace, Remove, Regenerate (lineDetails, lineActions, poemActions)
 //   import './card-export';     // #7: Save as a Card (poemActions)
 //
-// Nothing is registered yet.
-export {};
+import './notes-and-edit';
