@@ -1,0 +1,192 @@
+{
+  "condition": "last10",
+  "index": 17,
+  "occasion": "farewell",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:07:03.014Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.582,
+  "costUsd": 0.0191016,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.194,
+      "costUsd": 0.0191016,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 2835,
+        "reasoningTokens": 2314
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s43\", \"note\": \"Flush’s ecstatic welcome shows how much Elizabeth’s dog matters to their plans.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert admits shortening visits just to take her hand, an early private tenderness.\", \"callbacks\": []},\n    {\"id\": \"s278\", \"note\": \"Elizabeth’s fear that her father will never love her again frames the cost of leaving.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"Flush’s loss becomes a shared crisis and the start of their dog-stealer saga.\", \"callbacks\": []},\n    {\"id\": \"s790\", \"note\": \"Their Flush-and-banditti comparison captures the playful logic running through the letters.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s806\", \"note\": \"Separation teaches Elizabeth the necessity of Robert’s presence.\", \"callbacks\": []},\n    {\"id\": \"s845\", \"note\": \"Flush returns and lies on the sofa, turning the dog-stealer saga into domestic relief.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s986\", \"note\": \"Robert calls their two-year courtship a glorious dream without a single blank interval.\", \"callbacks\": []},\n    {\"id\": \"s1014\", \"note\": \"Elizabeth yields her will to Robert’s as the elopement plan closes.\", \"callbacks\": []},\n    {\"id\": \"s1036\", \"note\": \"Robert says words can never tell how perfectly dear she is to him.\", \"callbacks\": []},\n    {\"id\": \"s1074\", \"note\": \"Church bells during the wedding day mark the moment they can no longer hide.\", \"callbacks\": [\"s1036\"]},\n    {\"id\": \"s1101\", \"note\": \"Elizabeth hates taking off the ring and asks Robert to put it on again.\", \"callbacks\": []},\n    {\"id\": \"s1243\", \"note\": \"Elizabeth’s jesting with eyes full of tears balances fear and love.\", \"callbacks\": []},\n    {\"id\": \"s1456\", \"note\": \"Elizabeth’s farewell line that by tomorrow she will have only Robert to love her.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush’s ecstatic welcome shows how much Elizabeth’s dog matters to their plans.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert admits shortening visits just to take her hand, an early private tenderness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s278",
+        "messageOrdinal": 523,
+        "sender": "Elizabeth",
+        "date": "1846-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1846",
+        "text": "May your father indeed be able to love me a little, for my father will never love me again.",
+        "note": "Elizabeth’s fear that her father will never love her again frames the cost of leaving.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Flush’s loss becomes a shared crisis and the start of their dog-stealer saga.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Their Flush-and-banditti comparison captures the playful logic running through the letters.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s806",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "To be parted from you so long, teaches me the necessity of your presence—I am your very, very own.",
+        "note": "Separation teaches Elizabeth the necessity of Robert’s presence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush returns and lies on the sofa, turning the dog-stealer saga into domestic relief.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s986",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "What a glorious dream; through nearly two years—without a single interval of blankness,—much less, bitter waking!",
+        "note": "Robert calls their two-year courtship a glorious dream without a single blank interval.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth yields her will to Robert’s as the elopement plan closes.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert says words can never tell how perfectly dear she is to him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1074",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "And all in the midst, the bells began to ring.",
+        "note": "Church bells during the wedding day mark the moment they can no longer hide.",
+        "callbacks": [
+          "s1036"
+        ]
+      },
+      {
+        "snippetId": "s1101",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I did hate so, to have to take off the ring!",
+        "note": "Elizabeth hates taking off the ring and asks Robert to put it on again.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1243",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "And forgive the inveterate jesting, which jests with eyes full of tears.",
+        "note": "Elizabeth’s jesting with eyes full of tears balances fear and love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth’s farewell line that by tomorrow she will have only Robert to love her.",
+        "callbacks": []
+      }
+    ]
+  }
+}

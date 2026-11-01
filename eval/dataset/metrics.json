@@ -1,0 +1,58 @@
+{
+  "groups": [
+    {
+      "condition": "full",
+      "attempted": 18,
+      "completed": 16,
+      "failed": 2,
+      "verificationRate": 0.8888888888888888,
+      "timelineCoverage": 0.55,
+      "senderBalance": 0.688949938949939,
+      "noteCallbacks": 1.7777777777777777,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.61875,
+        "senderBalance": 0.7750686813186813,
+        "noteCallbacks": 2
+      },
+      "meanLines": 13.5625,
+      "costUsd": 4.5044596
+    },
+    {
+      "condition": "last10",
+      "attempted": 20,
+      "completed": 20,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.10000000000000002,
+      "senderBalance": 0.6901831501831502,
+      "noteCallbacks": 3.15,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.10000000000000002,
+        "senderBalance": 0.6901831501831502,
+        "noteCallbacks": 3.15
+      },
+      "meanLines": 13.35,
+      "costUsd": 0.3809856
+    },
+    {
+      "condition": "random",
+      "attempted": 20,
+      "completed": 20,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.5599999999999999,
+      "senderBalance": 0.45564574314574313,
+      "noteCallbacks": 0,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.5599999999999999,
+        "senderBalance": 0.45564574314574313,
+        "noteCallbacks": 0
+      },
+      "meanLines": 11.05,
+      "costUsd": 0
+    }
+  ]
+}

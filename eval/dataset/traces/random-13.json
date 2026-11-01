@@ -1,0 +1,174 @@
+{
+  "condition": "random",
+  "index": 13,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:06:25.594Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.647,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1226",
+        "messageOrdinal": 80,
+        "sender": "Elizabeth",
+        "date": "1845-08-16",
+        "approximate": false,
+        "dateLabel": "16 August 1845",
+        "text": "When you come on Tuesday, do not forget the MS. if any is done--only don't let it be done so as to tire and hurt you--mind!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1391",
+        "messageOrdinal": 95,
+        "sender": "Elizabeth",
+        "date": "1845-09-04",
+        "approximate": false,
+        "dateLabel": "4 September 1845",
+        "text": "One's poetry has a real 'commercial value,' if you do but take it far away enough from the 'civilization of Europe.'",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2322",
+        "messageOrdinal": 153,
+        "sender": "Elizabeth",
+        "date": "1845-11-21",
+        "approximate": false,
+        "dateLabel": "21 November 1845",
+        "text": "Thank you! and will you, if your sister made the copy of Landor's verses for me as well as for you, thank her from me for another kindness, ... not the second nor the third?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2462",
+        "messageOrdinal": 157,
+        "sender": "Elizabeth",
+        "date": "1845-11-24",
+        "approximate": false,
+        "dateLabel": "24 November 1845",
+        "text": "Which does not mean ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2638",
+        "messageOrdinal": 165,
+        "sender": "Elizabeth",
+        "date": "1845-12-04",
+        "approximate": false,
+        "dateLabel": "4 December 1845",
+        "text": "And for the rest, it is a magnanimity which grows and grows, and which will, of a worldly necessity, fall by its own weight at last; nothing less being possible.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4280",
+        "messageOrdinal": 231,
+        "sender": "Elizabeth",
+        "date": "1846-02-16",
+        "approximate": false,
+        "dateLabel": "16 February 1846",
+        "text": "I do not speak of 'Luria.'",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4386",
+        "messageOrdinal": 238,
+        "sender": "Elizabeth",
+        "date": "1846-02-19",
+        "approximate": true,
+        "dateLabel": "c. 19 February 1846",
+        "text": "And why should you be 'alone' when your sister is in the house?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7199",
+        "messageOrdinal": 357,
+        "sender": "Robert",
+        "date": "1846-05-15",
+        "approximate": false,
+        "dateLabel": "15 May 1846",
+        "text": "‘When Charles Fox came into Parliament ... thankee, Sir’—‘Mr. Thompson’—‘When Charles Fox ... thankee!’ &c. &c.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8529",
+        "messageOrdinal": 418,
+        "sender": "Elizabeth",
+        "date": "1846-06-23",
+        "approximate": false,
+        "dateLabel": "23 June 1846",
+        "text": "These things I liked least, in the selection and arrangement.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8960",
+        "messageOrdinal": 437,
+        "sender": "Elizabeth",
+        "date": "1846-07-04",
+        "approximate": false,
+        "dateLabel": "4 July 1846",
+        "text": "Now I think I ought to try to be with her this time, therefore, on the hour she mentions, and I will try ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9494",
+        "messageOrdinal": 459,
+        "sender": "Robert",
+        "date": "1846-07-16",
+        "approximate": false,
+        "dateLabel": "16 July 1846",
+        "text": "As if I do not prefer the fresh sharp regret to the settling of ... what I trust in God and you I never shall feel!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11831",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Oh, I entirely agree with your principle.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11898",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "At last, Sette said that he would do it, promised to be as civil as I could wish, and got me to be ‘in a good humour and go up to my room again.’",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12186",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I will leave off—to resume to-morrow.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

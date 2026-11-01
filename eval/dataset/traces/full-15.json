@@ -1,0 +1,164 @@
+{
+  "condition": "full",
+  "index": 15,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:23:21.068Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 7.063,
+  "costUsd": 0.1431464,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.88,
+      "costUsd": 0.1431464,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 1765,
+        "reasoningTokens": 1425
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first direct avowal of love.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"Elizabeth's first heartfelt gratitude.\", \"callbacks\": []},\n    {\"id\": \"s62\", \"note\": \"Robert's early certainty of friendship.\", \"callbacks\": []},\n    {\"id\": \"s778\", \"note\": \"Elizabeth's blessing as she grows better.\", \"callbacks\": []},\n    {\"id\": \"s792\", \"note\": \"Robert's joy at a promised meeting.\", \"callbacks\": []},\n    {\"id\": \"s808\", \"note\": \"Robert's promise to be known better over time.\", \"callbacks\": []},\n    {\"id\": \"s2212\", \"note\": \"Elizabeth writes before seeing him again.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert's whole life wound around her.\", \"callbacks\": []},\n    {\"id\": \"s2272\", \"note\": \"Elizabeth overcome by his tenderness.\", \"callbacks\": []},\n    {\"id\": \"s6228\", \"note\": \"Elizabeth recalls the chestnut tree.\", \"callbacks\": []},\n    {\"id\": \"s6263\", \"note\": \"Robert's playful denial about her chair.\", \"callbacks\": []},\n    {\"id\": \"s6283\", \"note\": \"Elizabeth notes the missing Monday.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first direct avowal of love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's first heartfelt gratitude.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s62",
+        "messageOrdinal": 4,
+        "sender": "Robert",
+        "date": "1845-01-28",
+        "approximate": false,
+        "dateLabel": "28 January 1845",
+        "text": "See now, how, of that 'Friendship' you offer me (and here Juliet's word rises to my lips)--I feel sure once and for ever.",
+        "note": "Robert's early certainty of friendship.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s778",
+        "messageOrdinal": 40,
+        "sender": "Elizabeth",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "May God bless you, my dear friend.",
+        "note": "Elizabeth's blessing as she grows better.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s792",
+        "messageOrdinal": 41,
+        "sender": "Robert",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "Next Wednesday--if you know how happy you make me! may I not say that, my dear friend, when I feel it from my soul?",
+        "note": "Robert's joy at a promised meeting.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s808",
+        "messageOrdinal": 43,
+        "sender": "Robert",
+        "date": "1845-06-19",
+        "approximate": false,
+        "dateLabel": "19 June 1845",
+        "text": "This I will say, then--wait and know me better, as you will one long day at the end.",
+        "note": "Robert's promise to be known better over time.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2212",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I shall see you to-morrow and yet am writing what you will have to read perhaps.",
+        "note": "Elizabeth writes before seeing him again.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert's whole life wound around her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2272",
+        "messageOrdinal": 151,
+        "sender": "Elizabeth",
+        "date": "1845-11-18",
+        "approximate": false,
+        "dateLabel": "18 November 1845",
+        "text": "How you overcome me as always you do--and where is the answer to anything except too deep down in the heart for even the pearl-divers?",
+        "note": "Elizabeth overcome by his tenderness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6228",
+        "messageOrdinal": 316,
+        "sender": "Elizabeth",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
+        "note": "Elizabeth recalls the chestnut tree.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6263",
+        "messageOrdinal": 317,
+        "sender": "Robert",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "No, my own dearest, I did not see you sit in your chair, nor in mine, yesterday—did I write nothing about your walking with me by the garden wall, and on the hill, and looking down on London?",
+        "note": "Robert's playful denial about her chair.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6283",
+        "messageOrdinal": 318,
+        "sender": "Elizabeth",
+        "date": "1846-04-18",
+        "approximate": false,
+        "dateLabel": "18 April 1846",
+        "text": "But, dearest of all, you never said a word about Monday.",
+        "note": "Elizabeth notes the missing Monday.",
+        "callbacks": []
+      }
+    ]
+  }
+}

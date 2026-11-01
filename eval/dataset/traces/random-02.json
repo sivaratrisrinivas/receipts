@@ -1,0 +1,130 @@
+{
+  "condition": "random",
+  "index": 2,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:02.742Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.582,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s573",
+        "messageOrdinal": 21,
+        "sender": "Elizabeth",
+        "date": "1845-05-12",
+        "approximate": false,
+        "dateLabel": "12 May 1845",
+        "text": "May I ask how the head is? just under the bag?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s601",
+        "messageOrdinal": 24,
+        "sender": "Elizabeth",
+        "date": "1845-05-16",
+        "approximate": false,
+        "dateLabel": "16 May 1845",
+        "text": "Only not mistrustful.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1180",
+        "messageOrdinal": 78,
+        "sender": "Elizabeth",
+        "date": "1845-08-13",
+        "approximate": false,
+        "dateLabel": "13 August 1845",
+        "text": "Yes, I admit that it was stupid to read that word so wrong.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1301",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1845",
+        "text": "I asked no question from the moment when my last hope went: and since then, it has been impossible for me to speak what was in me.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3034",
+        "messageOrdinal": 181,
+        "sender": "Elizabeth",
+        "date": "1845-12-24",
+        "approximate": false,
+        "dateLabel": "24 December 1845",
+        "text": "Yet even when I grow too wise, I admit always that while you love me it is an answer to all.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3129",
+        "messageOrdinal": 184,
+        "sender": "Elizabeth",
+        "date": "1845-12-27",
+        "approximate": false,
+        "dateLabel": "27 December 1845",
+        "text": "The whole breaking round him of the cloud, and the manner in which he stands, facing it, ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6075",
+        "messageOrdinal": 310,
+        "sender": "Elizabeth",
+        "date": "1846-04-13",
+        "approximate": false,
+        "dateLabel": "13 April 1846",
+        "text": "And all this reminds me of what I have often and often mused about saying to you, and shrank back, and torn the paper now and then....",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6504",
+        "messageOrdinal": 327,
+        "sender": "Elizabeth",
+        "date": "1846-04-24",
+        "approximate": false,
+        "dateLabel": "24 April 1846",
+        "text": "I thank God for that, first of all.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6648",
+        "messageOrdinal": 333,
+        "sender": "Robert",
+        "date": "1846-04-28",
+        "approximate": false,
+        "dateLabel": "28 April 1846",
+        "text": "One letter more I get, do I not?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8142",
+        "messageOrdinal": 402,
+        "sender": "Elizabeth",
+        "date": "1846-06-13",
+        "approximate": false,
+        "dateLabel": "13 June 1846",
+        "text": "In the meanwhile, I should laugh to scorn all that sort of calumny ... even if I could believe it to be possible.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

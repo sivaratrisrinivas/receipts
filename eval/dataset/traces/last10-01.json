@@ -1,0 +1,179 @@
+{
+  "condition": "last10",
+  "index": 1,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:04:54.378Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 8.363,
+  "costUsd": 0.019016400000000003,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 7.947,
+      "costUsd": 0.019016400000000003,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 2764,
+        "reasoningTokens": 2338
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Early reassurance that she understood him from the start.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"Flush's ecstatic reunion shows her world and tenderness.\", \"callbacks\": []},\n    {\"id\": \"s59\", \"note\": \"His love declared as something that would begin now if it had not already.\", \"callbacks\": []},\n    {\"id\": \"s439\", \"note\": \"She faces the church crowd and manages her nerves.\", \"callbacks\": []},\n    {\"id\": \"s512\", \"note\": \"His apple parable about not delaying what matters.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"Flush is stolen, turning their private worry into action.\", \"callbacks\": []},\n    {\"id\": \"s790\", \"note\": \"She binds the Flush ordeal to their own bond: she is his Flush.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s845\", \"note\": \"Flush recovered and resting after the ransom ordeal.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s883\", \"note\": \"She smiles at his grave-man-and-woman business talk.\", \"callbacks\": []},\n    {\"id\": \"s993\", \"note\": \"He presses for immediate marriage as delay becomes dangerous.\", \"callbacks\": []},\n    {\"id\": \"s1101\", \"note\": \"She hates removing the ring and wants it restored.\", \"callbacks\": []},\n    {\"id\": \"s1155\", \"note\": \"He exults in the irrevocable gift of herself.\", \"callbacks\": []},\n    {\"id\": \"s1465\", \"note\": \"Final letter: she would tell him if she loved him less.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Early reassurance that she understood him from the start.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic reunion shows her world and tenderness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s59",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "If I did not love you, how I would begin now!",
+        "note": "His love declared as something that would begin now if it had not already.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s439",
+        "messageOrdinal": 529,
+        "sender": "Elizabeth",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I have just come from the vestry of Paddington chapel, and bore it very well, and saw nobody except one woman.",
+        "note": "She faces the church crowd and manages her nerves.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s512",
+        "messageOrdinal": 531,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "‘Comfort me with apples, for I am sick of love!’",
+        "note": "His apple parable about not delaying what matters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Flush is stolen, turning their private worry into action.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "She binds the Flush ordeal to their own bond: she is his Flush.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush recovered and resting after the ransom ordeal.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s883",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "And smiling to myself I was, both last night and this morning, at your phrase about the ‘business’ to be talked by the ‘grave man and woman’; understanding your precaution against all unlawful jesting!—jesters forbidden in the protocol!",
+        "note": "She smiles at his grave-man-and-woman business talk.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s993",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "We must be married directly and go to Italy.",
+        "note": "He presses for immediate marriage as delay becomes dangerous.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1101",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I did hate so, to have to take off the ring!",
+        "note": "She hates removing the ring and wants it restored.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "He exults in the irrevocable gift of herself.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1465",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Oh—if I loved you less ... a little, little less.",
+        "note": "Final letter: she would tell him if she loved him less.",
+        "callbacks": []
+      }
+    ]
+  }
+}

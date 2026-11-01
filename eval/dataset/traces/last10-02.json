@@ -1,0 +1,204 @@
+{
+  "condition": "last10",
+  "index": 2,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:04.324Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 7.463,
+  "costUsd": 0.017332,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 7.093,
+      "costUsd": 0.017332,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39250,
+        "completionTokens": 1360,
+        "reasoningTokens": 768
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s3\",\n      \"note\": \"Early tenderness: Elizabeth says Robert's goodness overwhelms her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s43\",\n      \"note\": \"Private shared life: Flush's ecstatic welcome shows Elizabeth's home world.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s60\",\n      \"note\": \"Robert's growing love frames the courtship's emotional turn.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"Crisis over Flush becomes a recurring callback between them.\",\n      \"callbacks\": [\n        \"s43\"\n      ]\n    },\n    {\n      \"id\": \"s691\",\n      \"note\": \"Robert's Flush advice reveals their contrasting temperaments.\",\n      \"callbacks\": [\n        \"s578\"\n      ]\n    },\n    {\n      \"id\": \"s758\",\n      \"note\": \"Robert refuses to rule Elizabeth by fear, a key promise.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s760\",\n      \"note\": \"Elizabeth answers his goodness with unmatched devotion.\",\n      \"callbacks\": [\n        \"s758\"\n      ]\n    },\n    {\n      \"id\": \"s993\",\n      \"note\": \"Urgency turns courtship into decisive action.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1014\",\n      \"note\": \"Elizabeth commits her will entirely to Robert.\",\n      \"callbacks\": [\n        \"s993\"\n      ]\n    },\n    {\n      \"id\": \"s1036\",\n      \"note\": \"Robert tries to express love beyond words before the wedding.\",\n      \"callbacks\": [\n        \"s1014\"\n      ]\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"Elizabeth reports the wedding day survived and safe.\",\n      \"callbacks\": [\n        \"s1036\"\n      ]\n    },\n    {\n      \"id\": \"s1103\",\n      \"note\": \"Robert's gratitude answers Elizabeth's wedding-day note.\",\n      \"callbacks\": [\n        \"s1045\"\n      ]\n    },\n    {\n      \"id\": \"s1149\",\n      \"note\": \"Robert's family accepts Elizabeth, deepening the bond.\",\n      \"callbacks\": [\n        \"s1103\"\n      ]\n    },\n    {\n      \"id\": \"s1464\",\n      \"note\": \"Final letter marks the end of their secret correspondence.\",\n      \"callbacks\": [\n        \"s1045\"\n      ]\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "You overcome me with goodness—there’s the real truth, and the whole of it.",
+        "note": "Early tenderness: Elizabeth says Robert's goodness overwhelms her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Private shared life: Flush's ecstatic welcome shows Elizabeth's home world.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s60",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Every day shows me more to love in you, dearest, and I open my arms as wide as I can ...",
+        "note": "Robert's growing love frames the courtship's emotional turn.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Crisis over Flush becomes a recurring callback between them.",
+        "callbacks": [
+          "s43"
+        ]
+      },
+      {
+        "snippetId": "s691",
+        "messageOrdinal": 537,
+        "sender": "Robert",
+        "date": "1846-09-03",
+        "approximate": false,
+        "dateLabel": "3 September 1846",
+        "text": "And now that you probably have him by your side, I will tell you what I should have done in such a case, because it explains our two ways of seeing and meeting oppression lesser or greater.",
+        "note": "Robert's Flush advice reveals their contrasting temperaments.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s758",
+        "messageOrdinal": 540,
+        "sender": "Robert",
+        "date": "1846-09-04",
+        "approximate": false,
+        "dateLabel": "4 September 1846",
+        "text": "My own Ba, if I thought you could fear me, I think I should have the courage to give you up to-morrow!",
+        "note": "Robert refuses to rule Elizabeth by fear, a key promise.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s760",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Was ever any in the world, in any possible world, so perfectly good and dear to another as you are to me!",
+        "note": "Elizabeth answers his goodness with unmatched devotion.",
+        "callbacks": [
+          "s758"
+        ]
+      },
+      {
+        "snippetId": "s993",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "We must be married directly and go to Italy.",
+        "note": "Urgency turns courtship into decisive action.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth commits her will entirely to Robert.",
+        "callbacks": [
+          "s993"
+        ]
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert tries to express love beyond words before the wedding.",
+        "callbacks": [
+          "s1014"
+        ]
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Elizabeth reports the wedding day survived and safe.",
+        "callbacks": [
+          "s1036"
+        ]
+      },
+      {
+        "snippetId": "s1103",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Robert's gratitude answers Elizabeth's wedding-day note.",
+        "callbacks": [
+          "s1045"
+        ]
+      },
+      {
+        "snippetId": "s1149",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Bless you, my very own, only Ba—my pride, and joy, and utter comfort.",
+        "note": "Robert's family accepts Elizabeth, deepening the bond.",
+        "callbacks": [
+          "s1103"
+        ]
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Final letter marks the end of their secret correspondence.",
+        "callbacks": [
+          "s1045"
+        ]
+      }
+    ]
+  }
+}

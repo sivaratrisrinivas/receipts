@@ -1,0 +1,186 @@
+{
+  "condition": "full",
+  "index": 13,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:22:45.827Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 5.083,
+  "costUsd": 0.1422524,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 3.771,
+      "costUsd": 0.1422524,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 1020,
+        "reasoningTokens": 580
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Robert's very first letter: love for her verses and for her.\", \"callbacks\": []},\n    {\"id\": \"s1\", \"note\": \"The first avowal of love, setting everything in motion.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's early promise to see her come spring.\", \"callbacks\": []},\n    {\"id\": \"s943\", \"note\": \"Elizabeth's praise of the Duchess, early shared work.\", \"callbacks\": []},\n    {\"id\": \"s1314\", \"note\": \"Robert grateful for her admission to her inner feelings.\", \"callbacks\": []},\n    {\"id\": \"s2212\", \"note\": \"Elizabeth writing even though they meet tomorrow.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert's whole life wound round her.\", \"callbacks\": []},\n    {\"id\": \"s2548\", \"note\": \"Elizabeth counting the post's arrival, daily devotion.\", \"callbacks\": []},\n    {\"id\": \"s7300\", \"note\": \"Elizabeth overwhelmed that he has done everything for her.\", \"callbacks\": []},\n    {\"id\": \"s8260\", \"note\": \"Robert loving the affectionateness and generosity in her.\", \"callbacks\": []},\n    {\"id\": \"s9949\", \"note\": \"Robert hurt that she spoke as she did the day before.\", \"callbacks\": []},\n    {\"id\": \"s10009\", \"note\": \"Elizabeth's retraction and forgiveness offered.\", \"callbacks\": []},\n    {\"id\": \"s12070\", \"note\": \"Robert wishing the past could be done over for her.\", \"callbacks\": []},\n    {\"id\": \"s12502\", \"note\": \"Elizabeth's last letter before they marry and leave.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I love your verses with all my heart, dear Miss Barrett,--and this is no off-hand complimentary letter that I shall write,--whatever else, no prompt matter-of-course recognition of your genius, and there a graceful and natural end of the thing.",
+        "note": "Robert's very first letter: love for her verses and for her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "The first avowal of love, setting everything in motion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's early promise to see her come spring.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s943",
+        "messageOrdinal": 58,
+        "sender": "Robert",
+        "date": "1845-07-09",
+        "approximate": false,
+        "dateLabel": "9 July 1845",
+        "text": "And you do like the 'Duchess,' as much as you have got of it? that delights me, too--for every reason.",
+        "note": "Elizabeth's praise of the Duchess, early shared work.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1314",
+        "messageOrdinal": 87,
+        "sender": "Robert",
+        "date": "1845-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1845",
+        "text": "On the subject of your letter--quite irrespective of the injunction in it--I would not have dared speak; now, at least.",
+        "note": "Robert grateful for her admission to her inner feelings.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2212",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I shall see you to-morrow and yet am writing what you will have to read perhaps.",
+        "note": "Elizabeth writing even though they meet tomorrow.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert's whole life wound round her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2548",
+        "messageOrdinal": 161,
+        "sender": "Elizabeth",
+        "date": "1845-12-01",
+        "approximate": false,
+        "dateLabel": "1 December 1845",
+        "text": "It comes at eight o'clock--the post says eight ...",
+        "note": "Elizabeth counting the post's arrival, daily devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7300",
+        "messageOrdinal": 364,
+        "sender": "Elizabeth",
+        "date": "1846-05-20",
+        "approximate": false,
+        "dateLabel": "20 May 1846",
+        "text": "Can I speak?",
+        "note": "Elizabeth overwhelmed that he has done everything for her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8260",
+        "messageOrdinal": 407,
+        "sender": "Robert",
+        "date": "1846-06-16",
+        "approximate": false,
+        "dateLabel": "16 June 1846",
+        "text": "It was so,—could not but be so—and I always loved you, as I shall always.",
+        "note": "Robert loving the affectionateness and generosity in her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9949",
+        "messageOrdinal": 477,
+        "sender": "Robert",
+        "date": "1846-07-29",
+        "approximate": false,
+        "dateLabel": "29 July 1846",
+        "text": "Oh, how can you, blessing me so, speak as you spoke yesterday—for the first time!",
+        "note": "Robert hurt that she spoke as she did the day before.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10009",
+        "messageOrdinal": 479,
+        "sender": "Robert",
+        "date": "1846-07-30",
+        "approximate": false,
+        "dateLabel": "30 July 1846",
+        "text": "I should not have said those words, certainly I should not—but you forgive them and me, do you not?",
+        "note": "Elizabeth's retraction and forgiveness offered.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12070",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You asked me yesterday ‘if I should repent?’",
+        "note": "Robert wishing the past could be done over for her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12502",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Elizabeth's last letter before they marry and leave.",
+        "callbacks": []
+      }
+    ]
+  }
+}

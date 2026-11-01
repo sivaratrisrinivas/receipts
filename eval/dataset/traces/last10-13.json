@@ -1,0 +1,194 @@
+{
+  "condition": "last10",
+  "index": 13,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:06:27.243Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 13.212,
+  "costUsd": 0.035119199999999996,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 3.54,
+      "costUsd": 0.017523599999999997,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 1520,
+        "reasoningTokens": 957
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 16 Lines; a Poem needs 8 to 14. Try again."
+      }
+    },
+    {
+      "seconds": 4.102,
+      "costUsd": 0.0175956,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 1580,
+        "reasoningTokens": 1092
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s43\",\n      \"note\": \"Flush’s ecstatic welcome after Elizabeth returns from church.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s60\",\n      \"note\": \"Robert’s growing love and open-armed devotion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s148\",\n      \"note\": \"Robert’s childhood Ossian memory shows his private, bookish side.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"Elizabeth’s longing to give two hearts and two lives.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"The shock of Flush being stolen in the street.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s790\",\n      \"note\": \"Elizabeth compares Flush’s peril to her own among the banditti.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s815\",\n      \"note\": \"Robert marks the first full week without seeing her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s882\",\n      \"note\": \"Elizabeth’s sudden turn from expected joy to grave news about Robert.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s994\",\n      \"note\": \"Robert proposes the licence and Saturday marriage.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1014\",\n      \"note\": \"Elizabeth gives her will to his and promises not to fail him.\",\n      \"callbacks\": [\"s994\"]\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"Elizabeth’s breathless account of the wedding day.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1069\",\n      \"note\": \"Elizabeth credits Robert with lifting her into life and sunshine.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1461\",\n      \"note\": \"Elizabeth insists on carrying Robert’s letters despite the ounces.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush’s ecstatic welcome after Elizabeth returns from church.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s60",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Every day shows me more to love in you, dearest, and I open my arms as wide as I can ...",
+        "note": "Robert’s growing love and open-armed devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s148",
+        "messageOrdinal": 519,
+        "sender": "Robert",
+        "date": "1846-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1846",
+        "text": "You asked me about Ossian—now here is truth—the first book I ever bought in my life was Ossian ... it is now in the next room.",
+        "note": "Robert’s childhood Ossian memory shows his private, bookish side.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "How I wish for two hearts to love you with, and two lives to give to you, and two souls to bear the weight worthily of all you have given to me.",
+        "note": "Elizabeth’s longing to give two hearts and two lives.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The shock of Flush being stolen in the street.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth compares Flush’s peril to her own among the banditti.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s815",
+        "messageOrdinal": 542,
+        "sender": "Robert",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "This is the first time since we met at the beginning, that a whole week, from a Sunday to a Saturday, has gone by without a day for us.",
+        "note": "Robert marks the first full week without seeing her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s882",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "The sight of your letter, even, did not provoke the cloud—that was only the lesser joy, I thought, preceding the greater!",
+        "note": "Elizabeth’s sudden turn from expected joy to grave news about Robert.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s994",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "I will go for a licence to-day and we can be married on Saturday.",
+        "note": "Robert proposes the licence and Saturday marriage.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth gives her will to his and promises not to fail him.",
+        "callbacks": [
+          "s994"
+        ]
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Elizabeth’s breathless account of the wedding day.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Elizabeth credits Robert with lifting her into life and sunshine.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1461",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "Elizabeth insists on carrying Robert’s letters despite the ounces.",
+        "callbacks": []
+      }
+    ]
+  }
+}

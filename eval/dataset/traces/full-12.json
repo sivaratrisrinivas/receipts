@@ -1,0 +1,194 @@
+{
+  "condition": "full",
+  "index": 12,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:22:41.894Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 3.932,
+  "costUsd": 0.14208079999999998,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 2.563,
+      "costUsd": 0.14208079999999998,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 877,
+        "reasoningTokens": 442
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first declaration of love to Elizabeth.\", \"callbacks\": []},\n    {\"id\": \"s16\", \"note\": \"Elizabeth's gracious reply accepting the lost opportunity.\", \"callbacks\": [\"s1\"]},\n    {\"id\": \"s337\", \"note\": \"Elizabeth's blessing on Robert's joy.\", \"callbacks\": []},\n    {\"id\": \"s424\", \"note\": \"Robert's brief promise of more to come.\", \"callbacks\": []},\n    {\"id\": \"s647\", \"note\": \"Elizabeth's gentle consent to see him.\", \"callbacks\": [\"s222\"]},\n    {\"id\": \"s849\", \"note\": \"Robert's metaphor of hearts and pomegranates.\", \"callbacks\": []},\n    {\"id\": \"s1294\", \"note\": \"Elizabeth's painful memory of her brother.\", \"callbacks\": []},\n    {\"id\": \"s1490\", \"note\": \"Robert's avowal of love's onward prospect.\", \"callbacks\": [\"s1489\"]},\n    {\"id\": \"s1928\", \"note\": \"Elizabeth's joy at receiving his letters.\", \"callbacks\": []},\n    {\"id\": \"s2102\", \"note\": \"Robert's vow to live and die with her gifts.\", \"callbacks\": [\"s2607\"]},\n    {\"id\": \"s2249\", \"note\": \"Robert's whole life wound around her.\", \"callbacks\": []},\n    {\"id\": \"s2399\", \"note\": \"Robert's note of Landor's praise.\", \"callbacks\": []},\n    {\"id\": \"s2850\", \"note\": \"Elizabeth's tender word for their bond.\", \"callbacks\": []},\n    {\"id\": \"s3100\", \"note\": \"Robert's Christmas gift of a letter.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first declaration of love to Elizabeth.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s16",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "Is it indeed true that I was so near to the pleasure and honour of making your acquaintance? and can it be true that you look back upon the lost opportunity with any regret?",
+        "note": "Elizabeth's gracious reply accepting the lost opportunity.",
+        "callbacks": [
+          "s1"
+        ]
+      },
+      {
+        "snippetId": "s337",
+        "messageOrdinal": 11,
+        "sender": "Elizabeth",
+        "date": "1845-03-05",
+        "approximate": false,
+        "dateLabel": "5 March 1845",
+        "text": "Some things you say are very touching, and some, surprising; and although I am aware that you unconsciously exaggerate what I can be to you, yet it is delightful to be broad awake and think of you as my friend.",
+        "note": "Elizabeth's blessing on Robert's joy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s424",
+        "messageOrdinal": 14,
+        "sender": "Robert",
+        "date": "1845-03-31",
+        "approximate": false,
+        "dateLabel": "31 March 1845",
+        "text": "I have all to say yet--next letter.",
+        "note": "Robert's brief promise of more to come.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s647",
+        "messageOrdinal": 26,
+        "sender": "Elizabeth",
+        "date": "1845-05-17",
+        "approximate": false,
+        "dateLabel": "17 May 1845",
+        "text": "Before you come, try to forgive me for my 'infinite kindness' in the manner of consenting to see you.",
+        "note": "Elizabeth's gentle consent to see him.",
+        "callbacks": [
+          "s222"
+        ]
+      },
+      {
+        "snippetId": "s849",
+        "messageOrdinal": 49,
+        "sender": "Robert",
+        "date": "1845-06-25",
+        "approximate": false,
+        "dateLabel": "25 June 1845",
+        "text": "Pomegranates you may cut deep down the middle and see into, but not hearts,--so why should I try and speak?",
+        "note": "Robert's metaphor of hearts and pomegranates.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1294",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1845",
+        "text": "And once he held my hand, ... how I remember! and said that he 'loved me better than them all and that he would not leave me ... till I was well,' he said! how I remember that!",
+        "note": "Elizabeth's painful memory of her brother.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1490",
+        "messageOrdinal": 101,
+        "sender": "Robert",
+        "date": "1845-09-13",
+        "approximate": false,
+        "dateLabel": "13 September 1845",
+        "text": "'Tell me what I have a claim to hear': I can hear it, and be as grateful as I was before and am now--your friendship is my pride and happiness.",
+        "note": "Robert's avowal of love's onward prospect.",
+        "callbacks": [
+          "s1489"
+        ]
+      },
+      {
+        "snippetId": "s1928",
+        "messageOrdinal": 130,
+        "sender": "Elizabeth",
+        "date": "1845-10-16",
+        "approximate": false,
+        "dateLabel": "16 October 1845",
+        "text": "And just so late last night, five letters were found in the letter-box, and mine ... yours ... among them--which accounts for my beginning to answer it only now.",
+        "note": "Elizabeth's joy at receiving his letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2102",
+        "messageOrdinal": 141,
+        "sender": "Robert",
+        "date": "1845-10-30",
+        "approximate": false,
+        "dateLabel": "30 October 1845",
+        "text": "And ungrateful, too; with the real sufficing happiness here of being, and knowing that you know me to be, and suffer me to tell you I am yours, ever your own.",
+        "note": "Robert's vow to live and die with her gifts.",
+        "callbacks": [
+          "s2607"
+        ]
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert's whole life wound around her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2399",
+        "messageOrdinal": 154,
+        "sender": "Robert",
+        "date": "1845-11-22",
+        "approximate": false,
+        "dateLabel": "22 November 1845",
+        "text": "See what is here, since you will not let me have only you to look at--this is Landor's first opinion--expressed to Forster--see the date! and last of all, see me and know me, beloved!",
+        "note": "Robert's note of Landor's praise.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2850",
+        "messageOrdinal": 174,
+        "sender": "Elizabeth",
+        "date": "1845-12-16",
+        "approximate": false,
+        "dateLabel": "16 December 1845",
+        "text": "Yes--'yours' it must be, but you, it had better be!",
+        "note": "Elizabeth's tender word for their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3100",
+        "messageOrdinal": 182,
+        "sender": "Robert",
+        "date": "1845-12-24",
+        "approximate": true,
+        "dateLabel": "c. 24 December 1845",
+        "text": "My dear Christmas gift of a letter!",
+        "note": "Robert's Christmas gift of a letter.",
+        "callbacks": []
+      }
+    ]
+  }
+}

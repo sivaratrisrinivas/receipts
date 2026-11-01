@@ -1,0 +1,183 @@
+{
+  "condition": "last10",
+  "index": 3,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:13.960Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 5.973,
+  "costUsd": 0.0181488,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.613,
+      "costUsd": 0.0181488,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 2041,
+        "reasoningTokens": 1522
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s0\",\n      \"note\": \"Opens with her insistence that she already understood your words, setting the early intimacy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s43\",\n      \"note\": \"Flush's ecstatic reunion shows how fiercely she feared losing him before Italy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s71\",\n      \"note\": \"Your joke reframes their elopement as adventure rather than scandal.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s512\",\n      \"note\": \"The apple counsel playfully warns against waiting too long.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"Flush's sudden loss becomes a shared crisis and test of her resolve.\",\n      \"callbacks\": [\"s43\"]\n    },\n    {\n      \"id\": \"s619\",\n      \"note\": \"You warn against letting their happiness be caught up like Flush.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s845\",\n      \"note\": \"Flush is found and lying on the sofa after the ransom drama.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s872\",\n      \"note\": \"You are kept from seeing her by illness just when permission seemed granted.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s946\",\n      \"note\": \"Your question about wishes falling to ground answers her anxious letters.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"After the wedding, she reports all is safe so far.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1103\",\n      \"note\": \"Your gratitude acknowledges the proof of love she risked.\",\n      \"callbacks\": [\"s1045\"]\n    },\n    {\n      \"id\": \"s1202\",\n      \"note\": \"She thanks God for your recovery amid the work ahead.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1456\",\n      \"note\": \"Her final letter looks toward having only each other by the next day.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Opens with her insistence that she already understood your words, setting the early intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic reunion shows how fiercely she feared losing him before Italy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s71",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Let them call it ‘felony’ or ‘burglary’—so long as they don’t go to church with us, and propose my health after breakfast!",
+        "note": "Your joke reframes their elopement as adventure rather than scandal.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s512",
+        "messageOrdinal": 531,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "‘Comfort me with apples, for I am sick of love!’",
+        "note": "The apple counsel playfully warns against waiting too long.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Flush's sudden loss becomes a shared crisis and test of her resolve.",
+        "callbacks": [
+          "s43"
+        ]
+      },
+      {
+        "snippetId": "s619",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Do not let our happiness be caught up from us, after poor Flush’s fashion—there may be no redemption from that peril.",
+        "note": "You warn against letting their happiness be caught up like Flush.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush is found and lying on the sofa after the ransom drama.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s872",
+        "messageOrdinal": 545,
+        "sender": "Robert",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "No, dearest, I am not to see you to-morrow for all the happiness of the permission!",
+        "note": "You are kept from seeing her by illness just when permission seemed granted.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s946",
+        "messageOrdinal": 549,
+        "sender": "Robert",
+        "date": "1846-09-08",
+        "approximate": false,
+        "dateLabel": "8 September 1846",
+        "text": "Do you think your wishes, much less your blessings, fall to the ground, my own Ba?",
+        "note": "Your question about wishes falling to ground answers her anxious letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "After the wedding, she reports all is safe so far.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1103",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Your gratitude acknowledges the proof of love she risked.",
+        "callbacks": [
+          "s1045"
+        ]
+      },
+      {
+        "snippetId": "s1202",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "First, God is to be thanked for this great joy of hearing that you are better, my ever dearest—it is a joy that floats over all the other emotions.",
+        "note": "She thanks God for your recovery amid the work ahead.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Her final letter looks toward having only each other by the next day.",
+        "callbacks": []
+      }
+    ]
+  }
+}

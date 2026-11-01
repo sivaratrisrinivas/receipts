@@ -1,0 +1,174 @@
+{
+  "condition": "random",
+  "index": 19,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:07:15.889Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.568,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1344",
+        "messageOrdinal": 91,
+        "sender": "Robert",
+        "date": "1845-08-30",
+        "approximate": false,
+        "dateLabel": "30 August 1845",
+        "text": "Can you understand me so, dearest friend, after all?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1801",
+        "messageOrdinal": 123,
+        "sender": "Elizabeth",
+        "date": "1845-10-08",
+        "approximate": false,
+        "dateLabel": "8 October 1845",
+        "text": "And now I feel as if I should not stay in England.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3818",
+        "messageOrdinal": 210,
+        "sender": "Robert",
+        "date": "1846-01-23",
+        "approximate": false,
+        "dateLabel": "23 January 1846",
+        "text": "Does she feel how I kissed that comment back on her dear self as fit punishment?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4927",
+        "messageOrdinal": 259,
+        "sender": "Elizabeth",
+        "date": "1846-03-07",
+        "approximate": false,
+        "dateLabel": "7 March 1846",
+        "text": "And as to him, I don't blame you--he never will consent to the marriage of son or daughter.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s5650",
+        "messageOrdinal": 292,
+        "sender": "Elizabeth",
+        "date": "1846-03-31",
+        "approximate": false,
+        "dateLabel": "31 March 1846",
+        "text": "Is it in that sense that you kill the dogs and mules?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6909",
+        "messageOrdinal": 345,
+        "sender": "Elizabeth",
+        "date": "1846-05-07",
+        "approximate": false,
+        "dateLabel": "7 May 1846",
+        "text": "People are not always the better, you see, for being near one another.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6918",
+        "messageOrdinal": 345,
+        "sender": "Elizabeth",
+        "date": "1846-05-07",
+        "approximate": false,
+        "dateLabel": "7 May 1846",
+        "text": "‘Mrs. A.?’ said I with an enquiring innocence.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8255",
+        "messageOrdinal": 407,
+        "sender": "Robert",
+        "date": "1846-06-16",
+        "approximate": false,
+        "dateLabel": "16 June 1846",
+        "text": "See the pure nonsense, my own Ba, and laugh at it, but not at what lies at bottom of it, because that is true as truth, true as Ba’s self in its way.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9295",
+        "messageOrdinal": 450,
+        "sender": "Elizabeth",
+        "date": "1846-07-10",
+        "approximate": false,
+        "dateLabel": "10 July 1846",
+        "text": "Was he scrupulously to ask himself whether this or that cry of his might not give C a headache?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9624",
+        "messageOrdinal": 464,
+        "sender": "Elizabeth",
+        "date": "1846-07-20",
+        "approximate": false,
+        "dateLabel": "20 July 1846",
+        "text": "Do say how you are, dear, dearest!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10295",
+        "messageOrdinal": 488,
+        "sender": "Elizabeth",
+        "date": "1846-08-06",
+        "approximate": false,
+        "dateLabel": "6 August 1846",
+        "text": "You wonder how I can spend, perhaps, the quarterly forty pounds and upward that come to me?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10945",
+        "messageOrdinal": 512,
+        "sender": "Elizabeth",
+        "date": "1846-08-22",
+        "approximate": false,
+        "dateLabel": "22 August 1846",
+        "text": "Can’t you leave me off without risking your life,—nor go on with me without running the hazards of all poison.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11213",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "Tell me, dearest, if you think it wise, at least, to make such an unhappy arrangement, ... considering, you know, Mr. Kenyon and my brothers.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12199",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Will not Mr. Kenyon understand at least?",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "condition": "full",
+  "index": 0,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:07:35.644Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 13.311,
+  "costUsd": 0.14249119999999998,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 11.446,
+      "costUsd": 0.14249119999999998,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 1219,
+        "reasoningTokens": 803
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first letter declares love for Elizabeth's poetry and for her herself.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"Elizabeth's reply thanking him with deep gratitude for his sympathy.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's promise that spring will bring them together.\", \"callbacks\": []},\n    {\"id\": \"s943\", \"note\": \"Elizabeth's delight in Robert's 'Flight of the Duchess,' showing her growing admiration.\", \"callbacks\": []},\n    {\"id\": \"s1058\", \"note\": \"Robert's expression of gratitude and happiness in Elizabeth's friendship.\", \"callbacks\": []},\n    {\"id\": \"s1665\", \"note\": \"Elizabeth's emotional response to Robert's declaration of love.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert's declaration that his whole life is wound around Elizabeth.\", \"callbacks\": []},\n    {\"id\": \"s2607\", \"note\": \"Robert's promise to live and die with Elizabeth's ring and hair.\", \"callbacks\": []},\n    {\"id\": \"s2825\", \"note\": \"Robert's wish that they live and die together in love.\", \"callbacks\": []},\n    {\"id\": \"s6228\", \"note\": \"Elizabeth's callback to Robert's chestnut tree from his first letter.\", \"callbacks\": [\"s512\"]},\n    {\"id\": \"s7679\", \"note\": \"Robert's resolve to live and die with Elizabeth as his dream realized.\", \"callbacks\": []},\n    {\"id\": \"s12494\", \"note\": \"Elizabeth's final letter before their elopement, declaring Robert her only love.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first letter declares love for Elizabeth's poetry and for her herself.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's reply thanking him with deep gratitude for his sympathy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's promise that spring will bring them together.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s943",
+        "messageOrdinal": 58,
+        "sender": "Robert",
+        "date": "1845-07-09",
+        "approximate": false,
+        "dateLabel": "9 July 1845",
+        "text": "And you do like the 'Duchess,' as much as you have got of it? that delights me, too--for every reason.",
+        "note": "Elizabeth's delight in Robert's 'Flight of the Duchess,' showing her growing admiration.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1058",
+        "messageOrdinal": 68,
+        "sender": "Robert",
+        "date": "1845-07-28",
+        "approximate": false,
+        "dateLabel": "28 July 1845",
+        "text": "How must I feel, and what can, or could I say even if you let me say all?",
+        "note": "Robert's expression of gratitude and happiness in Elizabeth's friendship.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1665",
+        "messageOrdinal": 114,
+        "sender": "Elizabeth",
+        "date": "1845-09-27",
+        "approximate": false,
+        "dateLabel": "27 September 1845",
+        "text": "When I had read that letter last night I did think so.",
+        "note": "Elizabeth's emotional response to Robert's declaration of love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert's declaration that his whole life is wound around Elizabeth.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2607",
+        "messageOrdinal": 163,
+        "sender": "Robert",
+        "date": "1845-12-02",
+        "approximate": false,
+        "dateLabel": "2 December 1845",
+        "text": "My love--no words could serve here, but there is life before us, and to the end of it the vibration now struck will extend--I will live and die with your beautiful ring, your beloved hair--comforting me, blessing me.",
+        "note": "Robert's promise to live and die with Elizabeth's ring and hair.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2825",
+        "messageOrdinal": 173,
+        "sender": "Robert",
+        "date": "1845-12-15",
+        "approximate": false,
+        "dateLabel": "15 December 1845",
+        "text": "Every word you write goes to my heart and lives there: let us live so, and die so, if God will.",
+        "note": "Robert's wish that they live and die together in love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6228",
+        "messageOrdinal": 316,
+        "sender": "Elizabeth",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
+        "note": "Elizabeth's callback to Robert's chestnut tree from his first letter.",
+        "callbacks": [
+          "s512"
+        ]
+      },
+      {
+        "snippetId": "s7679",
+        "messageOrdinal": 382,
+        "sender": "Robert",
+        "date": "1846-05-30",
+        "approximate": false,
+        "dateLabel": "30 May 1846",
+        "text": "But I will believe in the end now and henceforth—I will believe you are my very own Ba,—my best dream’s realization, my life’s fulfilment and consummation—and having discovered you, I shall live and die with you.",
+        "note": "Robert's resolve to live and die with Elizabeth as his dream realized.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12494",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth's final letter before their elopement, declaring Robert her only love.",
+        "callbacks": []
+      }
+    ]
+  }
+}

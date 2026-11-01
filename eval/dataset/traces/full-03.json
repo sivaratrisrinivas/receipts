@@ -1,0 +1,164 @@
+{
+  "condition": "full",
+  "index": 3,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:12:10.925Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 8.408,
+  "costUsd": 0.1437776,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.443,
+      "costUsd": 0.1437776,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 2291,
+        "reasoningTokens": 1795
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s1\",\n      \"note\": \"Robert's first open declaration of love, the seed of everything that follows.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3\",\n      \"note\": \"Elizabeth's first grateful answer, showing her warmth and wit from the start.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"He looks ahead to meeting her in spring, a promise that runs through their letters.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1053\",\n      \"note\": \"She recalls their private revelations after hearing of her brother's loss.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1099\",\n      \"note\": \"He turns his thought to duty and what she means to his work.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1294\",\n      \"note\": \"She remembers her brother's promise, a deeply private grief she shared with Robert.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2249\",\n      \"note\": \"He writes of being entirely wrapped around her, a turning point in their intimacy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2289\",\n      \"note\": \"She says she cannot guess what he is to her, showing the depth of her feeling.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2321\",\n      \"note\": \"He gives heart and life, not merely poetry, defining their bond.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3647\",\n      \"note\": \"He declares himself wedded to her, moving from friendship to commitment.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3704\",\n      \"note\": \"She walks down-stairs for the first time in months, a small victory shared with him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3811\",\n      \"note\": \"He returns to the old dear ending, anchoring their love.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first open declaration of love, the seed of everything that follows.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's first grateful answer, showing her warmth and wit from the start.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "He looks ahead to meeting her in spring, a promise that runs through their letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1053",
+        "messageOrdinal": 67,
+        "sender": "Elizabeth",
+        "date": "1845-07-28",
+        "approximate": false,
+        "dateLabel": "28 July 1845",
+        "text": "I never shall forget these things, my dearest friend; nor remember them more coldly.",
+        "note": "She recalls their private revelations after hearing of her brother's loss.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1099",
+        "messageOrdinal": 71,
+        "sender": "Robert",
+        "date": "1845-08-04",
+        "approximate": false,
+        "dateLabel": "4 August 1845",
+        "text": "For, observe, you have not done ... yes, the 'Prometheus,' no doubt ... but with that exception have you written much lately, as much as last year when 'you wrote all your best things' you said, I think?",
+        "note": "He turns his thought to duty and what she means to his work.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1294",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1845",
+        "text": "And once he held my hand, ... how I remember! and said that he 'loved me better than them all and that he would not leave me ... till I was well,' he said! how I remember that!",
+        "note": "She remembers her brother's promise, a deeply private grief she shared with Robert.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "He writes of being entirely wrapped around her, a turning point in their intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2289",
+        "messageOrdinal": 151,
+        "sender": "Elizabeth",
+        "date": "1845-11-18",
+        "approximate": false,
+        "dateLabel": "18 November 1845",
+        "text": "You cannot guess what you are to me--you cannot--it is not possible:--and though I have said that before, I must say it again ... for it comes again to be said.",
+        "note": "She says she cannot guess what he is to her, showing the depth of her feeling.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2321",
+        "messageOrdinal": 152,
+        "sender": "Robert",
+        "date": "1845-11-18",
+        "approximate": true,
+        "dateLabel": "c. 18 November 1845",
+        "text": "That you glorify and change and, in returning then, give me!",
+        "note": "He gives heart and life, not merely poetry, defining their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3647",
+        "messageOrdinal": 203,
+        "sender": "Robert",
+        "date": "1846-01-17",
+        "approximate": false,
+        "dateLabel": "17 January 1846",
+        "text": "I will care for it no more, dearest--I am wedded to you now.",
+        "note": "He declares himself wedded to her, moving from friendship to commitment.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3704",
+        "messageOrdinal": 205,
+        "sender": "Elizabeth",
+        "date": "1846-01-19",
+        "approximate": false,
+        "dateLabel": "19 January 1846",
+        "text": "It was so warm, so warm, the thermometer at 68 in this room, that I took it into my head to call it April instead of January, and put on a cloak and walked down-stairs into the drawing-room--walked, mind!",
+        "note": "She walks down-stairs for the first time in months, a small victory shared with him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3811",
+        "messageOrdinal": 210,
+        "sender": "Robert",
+        "date": "1846-01-23",
+        "approximate": false,
+        "dateLabel": "23 January 1846",
+        "text": "All but--(that is, all was wrong but)--to be just ... the old, dear, so dear ending which makes my heart beat now as at first ... and so, pays for all!",
+        "note": "He returns to the old dear ending, anchoring their love.",
+        "callbacks": []
+      }
+    ]
+  }
+}

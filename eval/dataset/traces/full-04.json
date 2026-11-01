@@ -1,0 +1,186 @@
+{
+  "condition": "full",
+  "index": 4,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:12:19.334Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 4.413,
+  "costUsd": 0.14182680000000003,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 3.231,
+      "costUsd": 0.14182680000000003,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352572,
+        "completionTokens": 665,
+        "reasoningTokens": 154
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert’s first declaration of love, setting the whole correspondence in motion.\", \"callbacks\": []},\n    {\"id\": \"s8\", \"note\": \"Elizabeth’s graceful thanks for his letter and her wish for poet-to-poet sympathy.\", \"callbacks\": []},\n    {\"id\": \"s16\", \"note\": \"Her wondering whether he truly regretted not meeting her, and her gentle self-deprecation.\", \"callbacks\": []},\n    {\"id\": \"s22\", \"note\": \"She says something is in her heart to say, an early hint of the depth to come.\", \"callbacks\": []},\n    {\"id\": \"s44\", \"note\": \"She denies his suggestion that he gives her too little, insisting on his worth.\", \"callbacks\": []},\n    {\"id\": \"s798\", \"note\": \"Their shared talk of inspiration and revelation, showing their intellectual bond.\", \"callbacks\": []},\n    {\"id\": \"s1004\", \"note\": \"Her protest that she never struck him, with playful, intimate reassurance.\", \"callbacks\": []},\n    {\"id\": \"s1289\", \"note\": \"She begins the painful story of her brother’s death, a turning point of trust.\", \"callbacks\": []},\n    {\"id\": \"s1511\", \"note\": \"She says they may be friends always, and that his happiness increases hers.\", \"callbacks\": []},\n    {\"id\": \"s1700\", \"note\": \"She tells him their time together need not end yet, holding the bond open.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert’s great avowal that his whole life is wound round and over her.\", \"callbacks\": []},\n    {\"id\": \"s2305\", \"note\": \"Mr. Kenyon moved to tears by Robert’s poems, a moment of public recognition.\", \"callbacks\": []},\n    {\"id\": \"s2825\", \"note\": \"Robert’s wish that they live and die in love, under God’s will.\", \"callbacks\": []},\n    {\"id\": \"s3051\", \"note\": \"Elizabeth’s confession that her exactingness is wholly for his sake.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert’s first declaration of love, setting the whole correspondence in motion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "Will you take back my gratitude for it?--agreeing, too, that of all the commerce done in the world, from Tyre to Carthage, the exchange of sympathy for gratitude is the most princely thing!",
+        "note": "Elizabeth’s graceful thanks for his letter and her wish for poet-to-poet sympathy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s16",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "Is it indeed true that I was so near to the pleasure and honour of making your acquaintance? and can it be true that you look back upon the lost opportunity with any regret?",
+        "note": "Her wondering whether he truly regretted not meeting her, and her gentle self-deprecation.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s22",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I am writing too much,--and notwithstanding that I am writing too much, I will write of one thing more.",
+        "note": "She says something is in her heart to say, an early hint of the depth to come.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s44",
+        "messageOrdinal": 3,
+        "sender": "Elizabeth",
+        "date": "1845-01-15",
+        "approximate": false,
+        "dateLabel": "15 January 1845",
+        "text": "In one thing, however, you are wrong.",
+        "note": "She denies his suggestion that he gives her too little, insisting on his worth.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s798",
+        "messageOrdinal": 42,
+        "sender": "Elizabeth",
+        "date": "1845-06-17",
+        "approximate": false,
+        "dateLabel": "17 June 1845",
+        "text": "At least it does not prevent my going on to agree with the saying of Spiridion, ... do you remember?...",
+        "note": "Their shared talk of inspiration and revelation, showing their intellectual bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1004",
+        "messageOrdinal": 63,
+        "sender": "Elizabeth",
+        "date": "1845-07-21",
+        "approximate": false,
+        "dateLabel": "21 July 1845",
+        "text": "But I never did strike you or touch you--and you are not in earnest in the complaint you make--and this is really all I am going to say to-day.",
+        "note": "Her protest that she never struck him, with playful, intimate reassurance.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1289",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1845",
+        "text": "They sent me down you know to Torquay--Dr. Chambers saying that I could not live a winter in London.",
+        "note": "She begins the painful story of her brother’s death, a turning point of trust.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1511",
+        "messageOrdinal": 102,
+        "sender": "Elizabeth",
+        "date": "1845-09-16",
+        "approximate": false,
+        "dateLabel": "16 September 1845",
+        "text": "But we may be friends always ... and cannot be so separated, that your happiness, in the knowledge of it, will not increase mine.",
+        "note": "She says they may be friends always, and that his happiness increases hers.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1700",
+        "messageOrdinal": 116,
+        "sender": "Elizabeth",
+        "date": "1845-09-29",
+        "approximate": false,
+        "dateLabel": "29 September 1845",
+        "text": "But now you have done with me until Tuesday.",
+        "note": "She tells him their time together need not end yet, holding the bond open.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert’s great avowal that his whole life is wound round and over her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2305",
+        "messageOrdinal": 151,
+        "sender": "Elizabeth",
+        "date": "1845-11-18",
+        "approximate": false,
+        "dateLabel": "18 November 1845",
+        "text": "Mr. Kenyon was here on Sunday and talking of the poems with real living tears in his eyes and on his cheeks.",
+        "note": "Mr. Kenyon moved to tears by Robert’s poems, a moment of public recognition.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2825",
+        "messageOrdinal": 173,
+        "sender": "Robert",
+        "date": "1845-12-15",
+        "approximate": false,
+        "dateLabel": "15 December 1845",
+        "text": "Every word you write goes to my heart and lives there: let us live so, and die so, if God will.",
+        "note": "Robert’s wish that they live and die in love, under God’s will.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3051",
+        "messageOrdinal": 181,
+        "sender": "Elizabeth",
+        "date": "1845-12-24",
+        "approximate": false,
+        "dateLabel": "24 December 1845",
+        "text": "Because if I am exacting it is for you and not for me--it is altogether for you--you understand that, dearest of all ... it is for you wholly.",
+        "note": "Elizabeth’s confession that her exactingness is wholly for his sake.",
+        "callbacks": []
+      }
+    ]
+  }
+}
