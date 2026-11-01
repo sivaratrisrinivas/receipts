@@ -1,6 +1,6 @@
 // Live smoke test: one real Gallery Poem, end to end, through the real Beam adapter.
 //
-//   npm run smoke                  # costs about $0.20 (up to $0.25) of Hugging Face credits
+//   npm run smoke                  # costs about $0.15 (up to about $0.25) of Hugging Face credits
 //   npm run smoke -- --occasion birthday
 //   npm run smoke -- --dry         # no network, no token: just size the prompt
 //

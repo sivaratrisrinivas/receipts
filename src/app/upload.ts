@@ -154,13 +154,13 @@ export function composeCopy({ source, chat }: Pick<AppState, 'source' | 'chat'>)
       heading: `Make a Poem for ${chat.recipient}`,
       lede: `Made only from things you and ${chat.recipient} really said to each other. Every line is a real Message, with who sent it and when.`,
       make: `Make the Poem for ${chat.recipient}`,
-      cost: 'Beam reads your whole chat in one go, which takes about a minute and uses your Hugging Face credits.',
+      cost: 'Beam reads your whole chat in one go, which usually takes under a minute and uses your Hugging Face credits.',
     };
   }
   return {
     heading: 'Make a Gallery Poem',
     lede: 'The Gallery is the 1845–1846 letters between Robert Browning and Elizabeth Barrett. You are Robert; the Poem is for Elizabeth.',
     make: 'Make my Gallery Poem',
-    cost: 'Beam reads every letter in one go, which takes about a minute and costs about $0.20 (up to $0.25) of your Hugging Face credits.',
+    cost: 'Beam reads every letter in one go, which usually takes under a minute and costs about $0.15 (up to about $0.25) of your Hugging Face credits.',
   };
 }

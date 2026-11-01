@@ -30,7 +30,7 @@ Built for Build with Beam, on [Beam 1.0](https://huggingface.co/reflection/Beam-
 1. Open the Space and **sign in with Hugging Face**. There is no API key to paste. (Before you sign in, you can already see Poems made from the Gallery.)
 2. Choose what the Poem is made from: the **Gallery** (the 1845-1846 love letters of Robert Browning and Elizabeth Barrett), or **your own WhatsApp chat**, see below.
 3. Pick an **occasion** (birthday, anniversary, thank you, sorry, missing you, farewell) and, if you like, add a short note for Beam.
-4. Beam reads the whole Conversation, which takes about a minute. You watch its progress.
+4. Beam reads the whole Conversation, which usually takes under a minute (a call finishes in roughly 3 to 55 seconds). You watch its progress.
 5. The poem is revealed **line by line**, each with its sender and date. If every line checks out against the Conversation, it carries the **"every line is real"** badge.
 
 If something goes wrong (out of credits, Beam unavailable, a dropped connection, Beam running out of room) you get a plain message that says which, and a retry.
@@ -50,7 +50,7 @@ Beam does the one thing a short-context model cannot: it reads the **entire** Co
 
 - **One call, whole Conversation.** The Gallery is 573 letters, cut into about 12,500 verbatim snippets and sent as a compact grouped list of several hundred thousand tokens (about 513,000 when measured in the prototype). There is no retrieval and no chunking; Beam sees everything, so it can pick callbacks, private jokes and turns that only make sense across the whole history.
 - **Beam returns only snippet IDs.** Its answer is a strict JSON schema of snippet IDs plus a one-line private note for each. It never writes the poem's words. Code looks up each snippet's verbatim text, rejects any ID that does not exist, and always **sorts the lines by date**, so real lines can never be reordered into something nobody said. The "every line is real" badge appears only when every pick resolved to a real snippet.
-- **Low reasoning effort, streamed.** Beam reasons before it answers. At this input size only `reasoning_effort: "low"` finishes within budget (about 70 seconds, roughly 33,000 reasoning tokens); `medium` and `high` spent the whole completion budget thinking and returned nothing. The response is streamed, which is how the progress bar works and avoids gateway timeouts on a long non-streaming call.
+- **Low reasoning effort, streamed.** Beam reasons before it answers. At this input size only `reasoning_effort: "low"` finishes within budget (a successful call finishes in roughly 3 to 55 seconds; a truncated one runs about two minutes before failing); `medium` and `high` spent the whole completion budget thinking and returned nothing. The response is streamed, which is how the progress bar works and avoids gateway timeouts on a long non-streaming call.
 - **Called through the Hugging Face router** (provider: Baseten) at `router.huggingface.co`, with the Giver's own OAuth token.
 
 The architecture and the reasoning behind these choices are in the project's decision records: the browser calls Beam directly (Reflection's own API sends no CORS headers, and a server of ours would see private chats), and Beam picks IDs while code owns the text and the order.
@@ -63,7 +63,7 @@ For your own chat that means: the file is read in your browser; only the Message
 
 ## Credits
 
-Each poem costs the Giver's own Hugging Face Inference credits: about **$0.20, up to $0.25**, for a Gallery poem (input is billed at $0.40 per million tokens and output at $1.20 per million). A chat costs about the same when it is as long as the Gallery, and less when it is shorter. A try that fails part-way (Beam running out of room, see below) is billed too, so a poem can cost more than that when it takes several tries. Free Hugging Face accounts have no included Inference credits, so add credits at [Billing](https://huggingface.co/settings/billing); PRO accounts get $2 a month, enough for around eight Gallery poems. For this hackathon, Hugging Face is offering new claimants Hub credits through [this coupon](https://huggingface.co/coupons/claim/HuggingFacexReflection-MiniHack).
+Each poem costs the Giver's own Hugging Face Inference credits: about **$0.15, up to about $0.25 when Beam runs out of room**, for a Gallery poem (input is billed at $0.40 per million tokens and output at $1.20 per million). A chat costs about the same when it is as long as the Gallery, and less when it is shorter. A try that fails part-way (Beam running out of room, see below) is billed too, so a poem can cost more than that when it takes several tries. Free Hugging Face accounts have no included Inference credits, so add credits at [Billing](https://huggingface.co/settings/billing); PRO accounts get $2 a month, enough for roughly eight to thirteen Gallery poems. For this hackathon, Hugging Face is offering new claimants Hub credits through [this coupon](https://huggingface.co/coupons/claim/HuggingFacexReflection-MiniHack).
 
 ## Very long conversations
 

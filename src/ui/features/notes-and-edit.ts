@@ -202,7 +202,7 @@ function poemActions({ app }: PoemSlotContext): Node | null {
   const confirm = h(
     'div',
     { class: 'confirm-box', role: 'group', 'aria-label': 'Regenerate the Poem?', hidden: true },
-    h('p', null, 'Beam will read the whole Conversation again, which takes about a minute and uses credits again. This Poem and any changes you made to it will be discarded.'),
+    h('p', null, 'Beam will read the whole Conversation again, which usually takes under a minute and uses credits again. This Poem and any changes you made to it will be discarded.'),
     yes,
     no,
   );

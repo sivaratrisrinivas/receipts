@@ -92,7 +92,7 @@ The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](ht
 
 ## Live smoke test
 
-`npm run smoke` makes one real Gallery Poem through Beam (about $0.20, up to $0.25, of Hugging Face credits), reading the token from `~/.cache/huggingface/token`. The token only goes into the request's `Authorization` header and is never printed. `npm run smoke -- --dry` sizes the prompt without a token or any network. Real chats for manual testing go in the gitignored `.scratch/`.
+`npm run smoke` makes one real Gallery Poem through Beam (about $0.15, up to about $0.25, of Hugging Face credits), reading the token from `~/.cache/huggingface/token`. The token only goes into the request's `Authorization` header and is never printed. `npm run smoke -- --dry` sizes the prompt without a token or any network. Real chats for manual testing go in the gitignored `.scratch/`.
 
 ## The eval: does reading everything help?
 

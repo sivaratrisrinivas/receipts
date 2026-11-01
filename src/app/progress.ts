@@ -10,7 +10,7 @@
  */
 export const EXPECTED_REASONING_TOKENS = 10_000;
 
-/** Past this, the Giver is told it is slow. The Gallery usually takes 70 to 100 seconds. */
+/** Past this, the Giver is told it is slow. A call usually finishes in under a minute; a truncated one runs about two minutes. */
 export const SLOW_AFTER_SECONDS = 100;
 
 /** The bar stops short of the end until the Poem has really arrived. */
@@ -61,7 +61,7 @@ export function progressView(state: ProgressState, now: number): ProgressView {
       fraction: 0,
       elapsedSeconds,
       label: 'Beam is taking in every message',
-      detail: 'It reads the whole Conversation in one go. This takes about a minute.',
+      detail: 'It reads the whole Conversation in one go. This usually takes under a minute.',
     };
   }
   return {
