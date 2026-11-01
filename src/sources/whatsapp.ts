@@ -46,7 +46,7 @@ export class AmbiguousDatesError extends ExportError {
   }
 }
 
-interface Entry {
+interface ExportedMessage {
   sender: Sender;
   text: string;
   year: number;
@@ -59,11 +59,12 @@ interface Entry {
 
 /** The Messages of an export, with their dates as written (the day/month order is not applied yet). */
 export interface WhatsAppExport {
-  readonly entries: readonly Entry[];
+  readonly messages: readonly ExportedMessage[];
 }
 
 const DATE = String.raw`(\d{1,4})([/.\-])(\d{1,2})\2(\d{1,4})`;
-const TIME = String.raw`\d{1,2}[:.]\d{2}(?::\d{2})?(?:\s*[ap]\.?m\.?)?`;
+// 12-hour times: `9:41 PM`, `9.41 p.m.`, and `9:41 p. m.` (Spanish, Portuguese), in any kind of space.
+const TIME = String.raw`\d{1,2}[:.]\d{2}(?::\d{2})?(?:\s*[ap]\.?\s?m\.?)?`;
 const ANDROID_LINE = new RegExp(String.raw`^${DATE},?\s+${TIME}\s+-\s+([\s\S]*)$`, 'i');
 const IOS_LINE = new RegExp(String.raw`^\[${DATE},?\s+${TIME}\]\s*([\s\S]*)$`, 'i');
 
@@ -90,13 +91,13 @@ const NOT_SPEECH = [
 
 /** Read the Messages out of an export's text. Throws {@link ExportError} when there are none. */
 export function parseWhatsApp(text: string): WhatsAppExport {
-  const entries: Entry[] = [];
-  let open: { entry: Omit<Entry, 'text'>; lines: string[] } | null = null;
+  const messages: ExportedMessage[] = [];
+  let open: { details: Omit<ExportedMessage, 'text'>; lines: string[] } | null = null;
 
   const close = () => {
     if (!open) return;
     const spoken = spokenText(open.lines.join('\n'));
-    if (spoken !== null) entries.push({ ...open.entry, text: spoken });
+    if (spoken !== null) messages.push({ ...open.details, text: spoken });
     open = null;
   };
 
@@ -108,19 +109,19 @@ export function parseWhatsApp(text: string): WhatsAppExport {
     }
     close();
     // System text and attachments carry no sender, or start with U+200E after the colon.
-    open = header.message ? { entry: header.message.entry, lines: [header.message.firstLine] } : null;
+    open = header.message ? { details: header.message.details, lines: [header.message.firstLine] } : null;
   }
   close();
 
-  if (entries.length === 0) {
+  if (messages.length === 0) {
     throw new ExportError('No WhatsApp Messages were found in this file. Is it a chat exported from WhatsApp?');
   }
-  return { entries };
+  return { messages };
 }
 
 interface Header {
   /** Null for a line that starts a system message: it is a header, but not a Message. */
-  message: { entry: Omit<Entry, 'text'>; firstLine: string } | null;
+  message: { details: Omit<ExportedMessage, 'text'>; firstLine: string } | null;
 }
 
 function readHeader(line: string): Header | null {
@@ -137,11 +138,11 @@ function readHeader(line: string): Header | null {
 
   const sender = parts[1]!.replace(ALL_MARKS, '').replace(/^~\s*/, '').replace(/\s+/g, ' ').trim();
   if (sender === '') return { message: null };
-  return { message: { entry: { sender, ...date }, firstLine: body } };
+  return { message: { details: { sender, ...date }, firstLine: body } };
 }
 
 /** The date's parts, or null when it could not be a date in either order. */
-function readDate(a: string, b: string, c: string): Pick<Entry, 'year' | 'first' | 'second' | 'yearFirst'> | null {
+function readDate(a: string, b: string, c: string): Pick<ExportedMessage, 'year' | 'first' | 'second' | 'yearFirst'> | null {
   if (a.length === 4) {
     // 2024-03-06: year, month, day.
     return c.length <= 2 && validDay(Number(b), Number(c))
@@ -168,7 +169,7 @@ function spokenText(raw: string): string | null {
 /** Who sent how many Messages, most first. */
 export function senderCounts(exported: WhatsAppExport): SenderCount[] {
   const counts = new Map<Sender, number>();
-  for (const entry of exported.entries) counts.set(entry.sender, (counts.get(entry.sender) ?? 0) + 1);
+  for (const message of exported.messages) counts.set(message.sender, (counts.get(message.sender) ?? 0) + 1);
   return [...counts].map(([name, messages]) => ({ name, messages })).sort((a, b) => b.messages - a.messages);
 }
 
@@ -182,11 +183,11 @@ export function inferDateOrder(exported: WhatsAppExport): DateOrder | null {
   let dayFirst = 0;
   let monthFirst = 0;
   let matters = false;
-  for (const entry of exported.entries) {
-    if (entry.yearFirst) continue;
-    if (entry.first > 12) dayFirst++;
-    if (entry.second > 12) monthFirst++;
-    if (entry.first !== entry.second) matters = true;
+  for (const message of exported.messages) {
+    if (message.yearFirst) continue;
+    if (message.first > 12) dayFirst++;
+    if (message.second > 12) monthFirst++;
+    if (message.first !== message.second) matters = true;
   }
   if (dayFirst + monthFirst > 0) return monthFirst > dayFirst ? 'month-first' : 'day-first';
   return matters ? null : 'day-first';
@@ -195,8 +196,8 @@ export function inferDateOrder(exported: WhatsAppExport): DateOrder | null {
 /** One Message from these people to ask the Giver about, or null when the order does not matter. */
 export function dateQuestion(exported: WhatsAppExport, people: readonly Sender[]): DateQuestion | null {
   if (inferDateOrder(exported) !== null) return null;
-  const candidates = exported.entries.filter((entry) => !entry.yearFirst && entry.first !== entry.second && people.includes(entry.sender));
-  const sample = candidates.find((entry) => entry.text.length <= 140) ?? candidates[0];
+  const candidates = exported.messages.filter((message) => !message.yearFirst && message.first !== message.second && people.includes(message.sender));
+  const sample = candidates.find((message) => message.text.length <= 140) ?? candidates[0];
   if (!sample) return null;
   return {
     sender: sample.sender,
@@ -208,21 +209,21 @@ export function dateQuestion(exported: WhatsAppExport, people: readonly Sender[]
 
 /** Apply a day/month order to the export's dates and return its Conversation. */
 export function toConversation(exported: WhatsAppExport, order: DateOrder): Conversation {
-  const dated = exported.entries.map((entry, position) => ({ entry, position, date: dateOf(entry, order) }));
+  const dated = exported.messages.map((message, position) => ({ message, position, date: dateOf(message, order) }));
   // A chat export is already in time order; sorting (stably) only guards against odd files.
   dated.sort((a, b) => (a.date === b.date ? a.position - b.position : a.date < b.date ? -1 : 1));
 
   const messages = dated.map(
-    ({ entry, date }, ordinal): Message => ({ ordinal, sender: entry.sender, date, approximate: false, text: entry.text }),
+    ({ message, date }, ordinal): Message => ({ ordinal, sender: message.sender, date, approximate: false, text: message.text }),
   );
   return { kind: 'chat', senders: [...new Set(messages.map((message) => message.sender))], messages };
 }
 
-function dateOf(entry: Entry, order: DateOrder): IsoDate {
-  if (entry.yearFirst) return isoDate(entry.year, entry.first, entry.second);
-  const [month, day] = order === 'day-first' ? [entry.second, entry.first] : [entry.first, entry.second];
+function dateOf(message: ExportedMessage, order: DateOrder): IsoDate {
+  if (message.yearFirst) return isoDate(message.year, message.first, message.second);
+  const [month, day] = order === 'day-first' ? [message.second, message.first] : [message.first, message.second];
   // A date impossible in the chosen order (31/04 read month first) can only have meant the other.
-  return validDay(month, day) ? isoDate(entry.year, month, day) : isoDate(entry.year, day, month);
+  return validDay(month, day) ? isoDate(message.year, month, day) : isoDate(message.year, day, month);
 }
 
 function isoDate(year: number, month: number, day: number): IsoDate {

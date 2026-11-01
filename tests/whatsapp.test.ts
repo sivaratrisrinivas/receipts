@@ -209,6 +209,28 @@ describe('other shapes of the same export', () => {
     ]);
   });
 
+  test('"p. m." and "a. m." with a space inside, in any kind of space, are 12-hour times too (Spanish and Portuguese exports)', async () => {
+    const chat = [
+      '31/12/23, 9:41 p. m. - Mom: Happy new year, my love, see you at the lake.',
+      '1/1/24, 9:41\u202Fa.\u00A0m. - Sam: Happy new year to you too, Mom, I miss the lake already.',
+      '[2/1/24, 10:05:30\u202FP. M.] Mom: Remember the lemon cake from the lake house, with the burnt edges?',
+      '3/1/24, 6:02 a.m. - Sam: I still dream about that cake, honestly.',
+      ...filler(12, (i, who, text) => `${15 + i}/4/24, 12:00 p. m. - ${who}: ${text}`),
+    ].join('\n');
+
+    const { poem } = await makePoem(
+      request(chat),
+      pickingBeam('Happy new year, my love', 'Happy new year to you', 'lemon cake', 'still dream'),
+    );
+
+    expect(poem.lines.map((line) => [line.receipt.sender, line.receipt.dateLabel])).toEqual([
+      ['Mom', '31 December 2023'],
+      ['Sam', '1 January 2024'],
+      ['Mom', '2 January 2024'],
+      ['Sam', '3 January 2024'],
+    ]);
+  });
+
   test('a line that merely starts with a number is a continuation, not a new Message', async () => {
     const chat = [
       '12/03/2024, 09:16 - Mom: Three things I want for my birthday:',
