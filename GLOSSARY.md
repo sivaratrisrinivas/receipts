@@ -43,7 +43,7 @@ Beam's private one-line explanation of why it chose a Line, shown only to the Gi
 _Avoid_: Rationale, comment, caption
 
 **Card**:
-The finished, shareable rendering of a Poem with its Receipts.
+The finished, shareable rendering of a Poem with its Receipts. The Giver may give it a title of their own; Beam never writes anything on it.
 _Avoid_: Quilt, output, artifact
 
 ## People
