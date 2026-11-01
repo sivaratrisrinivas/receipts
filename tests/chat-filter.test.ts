@@ -7,6 +7,7 @@ import { describe, expect, test } from 'vitest';
 import { createFakeBeam, makePoem, tryMakePoem, type PoemRequest } from '../src';
 import { lettersOnDays, shortBody, spreadDays, volumeOfLetters } from './fixtures/letters';
 import { padPicks } from './support/prompt';
+import { BILINGUAL_GIVER, BILINGUAL_RECIPIENT, bilingualChat } from './fixtures/bilingual-chat';
 
 /** An Android export in which Sam and Mom take turns saying `texts`, one Message a day from 1 January 2024. */
 function chatOf(texts: readonly string[]): string {
@@ -95,6 +96,22 @@ describe('a chat Message with nothing to say is not sent', () => {
     await makePoem({ source: { kind: 'gallery', texts: [volumeOfLetters(letters)] }, occasion: 'birthday', giver: 'Robert', recipient: 'Elizabeth' }, beam);
 
     expect(beam.requests[0]!.user).toContain('Yes, yes, yes.');
+  });
+});
+
+describe('a year of an invented bilingual friendship', () => {
+  test('its noise is not sent, and its Telugu (in script and in English letters) and English warmth is', async () => {
+    const beam = createFakeBeam((sent) => ({ picks: padPicks(sent, [], 8) }));
+
+    const { snippets } = await makePoem({ source: { kind: 'whatsapp', file: bilingualChat }, occasion: 'birthday', giver: BILINGUAL_GIVER, recipient: BILINGUAL_RECIPIENT }, beam);
+    const texts = snippets.map((snippet) => snippet.text);
+
+    expect(texts.filter((text) => /https?:\/\//.test(text))).toEqual([]);
+    expect(texts.filter((text) => !/\p{L}/u.test(text))).toEqual([]);
+    expect(texts).not.toContain('gm');
+    expect(texts).toContain('నాకు కన్నీళ్ళు ఆగడం లేదు రా. చాలా సంతోషంగా ఉంది. నువ్వు ఎంతో మంచి వ్యక్తివి, నిన్ను ఎంచుకున్న ఆమె అదృష్టవంతురాలు');
+    expect(texts).toContain('nenu kooda ninnu miss avutunna. ee city lo nuvvu leka ee chai kuda taste ga ledu');
+    expect(texts).toContain('Anu, thank you for this year. it was the hardest and the best, because of you');
   });
 });
 
