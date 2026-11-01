@@ -120,6 +120,72 @@ describe('what in an export is a Message', () => {
   });
 });
 
+describe('long chat Messages are split into Snippets however they are written', () => {
+  /** A chat of filler plus the one Message under test, from Sam; returns the Snippets Beam was shown from it. */
+  async function snippetsFrom(message: string): Promise<string[]> {
+    const chat = [
+      ...filler(15, (i, who, text) => `${String(i + 1).padStart(2, '0')}/04/2024, 12:00 - ${who}: ${text}`),
+      `28/05/2024, 08:00 - Sam: ${message}`,
+    ].join('\n');
+    const beam = pickingBeam('Everyday note number 1:');
+    await makePoem(request(chat), beam);
+    return promptSnippets(beam.requests[0]!)
+      .map((snippet) => snippet.text)
+      .filter((text) => !text.startsWith('Everyday note'));
+  }
+
+  test('sentences that begin in lower case are still sentences: letters need capitals, chats do not', async () => {
+    const message =
+      'i was thinking about the lake house today. remember the burnt cake and the blue jug. ' +
+      'we laughed so hard that the neighbours knocked on the wall. i miss that kind of silly evening more than i can say. ' +
+      'anyway call me when you land. love you lots, see you soon, safe travels.';
+
+    expect(await snippetsFrom(message)).toEqual([
+      'i was thinking about the lake house today.',
+      'remember the burnt cake and the blue jug.',
+      'we laughed so hard that the neighbours knocked on the wall.',
+      'i miss that kind of silly evening more than i can say.',
+      'anyway call me when you land.',
+      'love you lots, see you soon, safe travels.',
+    ]);
+  });
+
+  test('a long Message written one thought a line, with no punctuation, becomes one Snippet per line', async () => {
+    const message = [
+      'got the keys from the neighbour this morning',
+      'the porch light is on and the kettle is warm',
+      'the blue jug is on the table for you',
+      'dinner is whenever you get here, no rush at all',
+      'drive safe and text me when you turn off the main road',
+    ].join('\n');
+
+    expect(await snippetsFrom(message)).toEqual([
+      'got the keys from the neighbour this morning',
+      'the porch light is on and the kettle is warm',
+      'the blue jug is on the table for you',
+      'dinner is whenever you get here, no rush at all',
+      'drive safe and text me when you turn off the main road',
+    ]);
+  });
+
+  test('abbreviations and ellipses do not end a lower-case sentence early', async () => {
+    const message =
+      'dr. okafor said the results are fine and e.g. the cough is nothing to worry about, which made me happier than i expected. ' +
+      'wait... what did you mean by that last thing about the lake house and the burnt cake from years ago, i honestly lost the thread.';
+
+    expect(await snippetsFrom(message)).toEqual([
+      'dr. okafor said the results are fine and e.g. the cough is nothing to worry about, which made me happier than i expected.',
+      'wait... what did you mean by that last thing about the lake house and the burnt cake from years ago, i honestly lost the thread.',
+    ]);
+  });
+
+  test('a stretch with no break and no punctuation that is still over 40 words gives nothing, rather than a cut sentence', async () => {
+    const message = Array(45).fill('and').join(' ') + ' then we left';
+
+    expect(await snippetsFrom(message)).toEqual([]);
+  });
+});
+
 describe('other shapes of the same export', () => {
   test('dotted dates with "p.m.", single-digit days, and year-first dates are all understood', async () => {
     const chat = [

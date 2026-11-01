@@ -3,8 +3,10 @@
 //
 // A Message of 40 words or fewer is one Snippet. Longer Messages are split into
 // sentences (abbreviation-aware, never across paragraphs). Snippets under 3 words or
-// over 40 are dropped. For letters, a Snippet must also start with a capital letter or
-// a quote and end with terminal punctuation.
+// over 40 are dropped. For letters only, a Snippet must also start with a capital letter
+// or a quote and end with terminal punctuation: people write chats in lower case, with
+// no full stops, one thought to a line, so there a line break ends a thought and a
+// full stop ends a sentence whatever comes next.
 
 import type { Conversation, Message, Snippet } from './domain';
 
@@ -42,35 +44,44 @@ export function snippetsOf(conversation: Conversation): Snippet[] {
 }
 
 function snippetTexts(message: Message, kind: Conversation['kind']): string[] {
+  const letters = kind === 'letters';
+  // A letter is paragraphs; a chat Message is lines, and each line is a thought of its own.
   const paragraphs = message.text
-    .split(/\n[ \t]*\n/)
+    .split(letters ? /\n[ \t]*\n/ : /\n/)
     .map((paragraph) => paragraph.replace(/\s+/g, ' ').trim())
     .filter((paragraph) => paragraph !== '');
 
   const whole = paragraphs.join(' ');
-  const candidates = wordCount(whole) <= MAX_WORDS ? [whole] : paragraphs.flatMap(splitSentences);
+  const candidates = wordCount(whole) <= MAX_WORDS ? [whole] : paragraphs.flatMap((paragraph) => splitSentences(paragraph, letters));
 
   return candidates.filter((candidate) => {
     const words = wordCount(candidate);
     if (words < MIN_WORDS || words > MAX_WORDS) return false;
-    return kind !== 'letters' || (startsLikeASentence(candidate) && endsLikeASentence(candidate));
+    return !letters || (startsLikeASentence(candidate) && endsLikeASentence(candidate));
   });
 }
 
-function splitSentences(paragraph: string): string[] {
+/** Sentences of one paragraph. A letter's sentence ends before a capital; a chat's ends wherever a full stop does. */
+function splitSentences(paragraph: string, capitalsMatter: boolean): string[] {
   const tokens = paragraph.split(' ');
   const sentences: string[] = [];
   let current: string[] = [];
   tokens.forEach((token, i) => {
     current.push(token);
     const next = tokens[i + 1];
-    if (endsLikeASentence(token) && (next === undefined || startsLikeASentence(next))) {
+    if (endsLikeASentence(token) && (next === undefined || startsNextSentence(token, next, capitalsMatter))) {
       sentences.push(current.join(' '));
       current = [];
     }
   });
   if (current.length > 0) sentences.push(current.join(' '));
   return sentences;
+}
+
+function startsNextSentence(token: string, next: string, capitalsMatter: boolean): boolean {
+  if (capitalsMatter) return startsLikeASentence(next);
+  // "wait... what do you mean" is one thought; an ellipsis only ends one before a capital.
+  return !(/(?:\.\.\.|…)["'’”)\]]*$/.test(token) && /^\p{Ll}/u.test(next));
 }
 
 function startsLikeASentence(text: string): boolean {
