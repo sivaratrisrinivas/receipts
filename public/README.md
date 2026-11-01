@@ -55,6 +55,10 @@ Beam does the one thing a short-context model cannot: it reads the **entire** Co
 
 The architecture and the reasoning behind these choices are in the project's decision records: the browser calls Beam directly (Reflection's own API sends no CORS headers, and a server of ours would see private chats), and Beam picks IDs while code owns the text and the order.
 
+## Languages and small chats
+
+Beam was built mainly for English (its model card says so and does not mention Telugu or other Indian languages). A first test on a small chat that mixed Telugu and English gave a weak Poem. Chats in other languages, mixed languages, or one language typed in another's letters are likely to give weaker picks and private notes, and a small chat gives a small pool to choose from. The Gallery (English letters) is the best way to see Receipts at its strongest.
+
 ## Privacy
 
 Receipts is a static site with **no backend**. A Conversation goes from **your browser to the Hugging Face router to Beam**, billed to and authenticated as **you**; it never touches a server we run. We store nothing and have no analytics. Your access token lives in this browser tab's session storage and is sent only to Hugging Face. The sign-in is a public OAuth client with PKCE, asking for the `inference-api` permission so Beam can run under your account, and nothing else.

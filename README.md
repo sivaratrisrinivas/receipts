@@ -61,7 +61,8 @@ Anyone can upload their own export. Making a poem needs a Hugging Face account w
 - **Sometimes it needs a second try.** On the long demo letters, between 1 in 3 and 1 in 2 attempts failed in our tests, and a retry usually fixed it. Beam can run out of thinking room, or hand back the wrong number of lines. Shorter chats should fail less often. You'll see a clear message and a retry button.
 - **Very long chats are sampled.** If your chat is too big to read in one go, Beam reads evenly spread days across the whole timeline, and the app tells you how many it skipped.
 - **Very short chats are refused.** With fewer than 15 usable lines you'll see "Not enough here yet for a Poem" instead of something padded.
-- **Tested mostly on made-up chats.** The upload feature was built and tested with invented examples. Real exports vary, so if yours fails, that's a bug worth reporting.
+- **Works best in English.** Beam was built mainly for English; its model card says so and doesn't mention Telugu or other Indian languages. In a first test on a small chat that mixed Telugu and English, the poem came out weak. Chats in other languages, mixed languages, or one language typed in another's letters are likely to give weaker picks and private notes. Small chats also give a small pool to choose from.
+- **Tested mostly on made-up chats.** The upload feature was built and tested with invented examples, plus one small real chat. Real exports vary, so if yours fails, that's a bug worth reporting.
 
 ## Does reading everything actually help?
 
