@@ -1,7 +1,86 @@
-# receipts
-A poem for someone you love, made only from things the two of you actually texted each other. Every line comes with its date, so they get the receipts.
+# Receipts
 
-Vocabulary is in [GLOSSARY.md](GLOSSARY.md); decisions are in [docs/adr/](docs/adr/).
+**A poem for someone you love, made only from things the two of you actually said to each other. Every line comes with its date, so they get the receipts.**
+
+Built for the [Build with Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B/discussions/5) hackathon.
+
+- **Try it:** [huggingface.co/spaces/Srini410/receipts](https://huggingface.co/spaces/Srini410/receipts)
+- **The experiment behind it:** [huggingface.co/datasets/Srini410/receipts-eval](https://huggingface.co/datasets/Srini410/receipts-eval)
+
+## What it is
+
+You give Receipts a chat between you and one other person. It picks 6 to 14 of your real messages and puts them in date order as a short poem. Under every line it shows who said it and when, like a receipt. The result is a card you can save as an image, print, or send as a web page.
+
+Not a single word is written by the AI. Every line is copied exactly from a message one of you really sent.
+
+## Why
+
+It's 11pm, the card is still blank, and the usual options are quote sites and chatbots. They produce words that sound like a greeting card, and the person receiving it can tell nobody lived them.
+
+What proves you remember a shared life is the life itself. Your own messages are better than any new words, and the dates show they're real.
+
+## How it works
+
+1. **Pick a conversation.** Upload a WhatsApp chat export (Android or iPhone, `.txt` or `.zip`), or use the built-in demo: the 1845–1846 love letters between Robert Browning and Elizabeth Barrett.
+2. **Say who is who.** Choose which person is you, who the poem is for, and the occasion: birthday, anniversary, thank you, sorry, missing you or farewell.
+3. **Private details are removed on your device.** Phone numbers and email addresses are blanked out. In a group chat, only the two people you chose are used. Nobody else's messages are ever sent anywhere.
+4. **Beam reads everything at once.** [Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B) is an AI model that can read a very long text in one go, so it sees your whole history rather than a small slice. It chooses the most telling moments across the years. It doesn't write anything. It only says which numbered lines it picked, and leaves a private note on each saying why.
+5. **The app checks its work.** Each picked line is looked up in your original chat. Lines that don't exist are thrown out, the rest are sorted by date, and only a poem where every line checks out gets the "every line is real" badge.
+6. **You stay in charge.** Read Beam's private notes, tap a line to see the real conversation around it, remove a line, swap it for another from the same period, or start over. You can't reword a line or reorder them, which is what keeps the badge honest.
+7. **Make the card.** Add your own title if you like, then save it as an image, print it, or download a web page where tapping a line shows the original message with two messages either side. The rest of your chat is never included.
+
+## The big picture
+
+```mermaid
+flowchart LR
+    subgraph device["Your phone or laptop (everything here runs in your browser)"]
+        A["Your chat export<br/>(or the demo letters)"] --> B["Blank out phone numbers<br/>and emails; keep only<br/>you and one other person"]
+        B --> C["Cut into short<br/>lines (snippets)<br/>with an ID each"]
+        C --> D["Write one big<br/>request for Beam"]
+        G["Check every pick exists,<br/>look up its exact words,<br/>sort by date"] --> H["The poem<br/>+ dates + badge"]
+        H --> I["Your edits:<br/>remove or swap lines"]
+        I --> J["The card:<br/>image, print,<br/>or web page"]
+    end
+    D -- "sent under your own<br/>Hugging Face account" --> E["Hugging Face<br/>router"]
+    E --> F["Beam reads it all and<br/>replies with line IDs<br/>and private notes only"]
+    F --> G
+```
+
+There is no Receipts server. Your chat goes from your browser to Beam through Hugging Face, using your own Hugging Face login, and nowhere else. We never see it or store it.
+
+## Try it
+
+- **Just look:** open the [Space](https://huggingface.co/spaces/Srini410/receipts). Without signing in you can already see six finished poems made from the demo letters, one per occasion.
+- **Make your own:** sign in with Hugging Face, pick an occasion and tap **Make my Gallery Poem**, or upload your own WhatsApp export first. The app tells you how many messages it will read before it sends anything.
+
+Anyone can upload their own export. Making a poem needs a Hugging Face account with a little credit on it, because the AI work is billed to your account, not ours. A poem costs about $0.15, and up to about $0.25 for a very long chat. A new free account may have no credit until you add some.
+
+## What to expect
+
+- **A minute or less.** A progress bar shows while Beam reads. A successful run usually finishes in under a minute.
+- **Sometimes it needs a second try.** On the long demo letters, between 1 in 3 and 1 in 2 attempts failed in our tests, and a retry usually fixed it. Beam can run out of thinking room, or hand back the wrong number of lines. Shorter chats should fail less often. You'll see a clear message and a retry button.
+- **Very long chats are sampled.** If your chat is too big to read in one go, Beam reads evenly spread days across the whole timeline, and the app tells you how many it skipped.
+- **Very short chats are refused.** With fewer than 15 usable lines you'll see "Not enough here yet for a Poem" instead of something padded.
+- **Tested mostly on made-up chats.** The upload feature was built and tested with invented examples. Real exports vary, so if yours fails, that's a bug worth reporting.
+
+## Does reading everything actually help?
+
+We ran a small experiment: 60 poems from the demo letters, either from Beam reading everything, Beam reading only the last 10%, or random lines with no AI. The full results are in the [dataset](https://huggingface.co/datasets/Srini410/receipts-eval). The honest summary:
+
+- Every line Beam picked was real in the poems that finished. Reading only the last 10% covers just that last slice of the timeline, as you'd expect.
+- Reading everything did **not** clearly spread the poem across the timeline better than random lines did (about 54–64% against 56%).
+- Reading everything did pick a fairer mix of the two writers (a balance score of about 0.7 against 0.46 for random lines).
+- Only the lowest "thinking" setting finishes on an input this large. Higher settings use up their room thinking and never answer (this comes from an earlier prototype, not rerun in this experiment).
+
+## Credits
+
+The demo letters are public-domain texts from Project Gutenberg ([16182](https://www.gutenberg.org/ebooks/16182) and [73891](https://www.gutenberg.org/ebooks/73891)). The words of every poem belong to the people who wrote them.
+
+---
+
+## For developers
+
+Everything below is for people working on the code. Vocabulary is in [GLOSSARY.md](GLOSSARY.md); decisions are in [docs/adr/](docs/adr/).
 
 ## Develop
 
