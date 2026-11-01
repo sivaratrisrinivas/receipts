@@ -52,7 +52,8 @@ export interface Trace {
   recipient: string;
   startedAt: string;
   seconds: number;
-  status: 'ok' | 'failed';
+  /** `pending`: attempts were paid for but the Poem was not finished (the run stopped); a resume continues it. */
+  status: 'ok' | 'failed' | 'pending';
   /** How much of the Conversation Beam was shown. */
   messagesRead: number;
   snippetsRead: number;

@@ -2,7 +2,8 @@
 // pipeline (`makePoem`) and written to disk as a trace the moment it is finished.
 //
 // A run can be stopped and resumed: finished Poems (including ones that failed) are
-// read back from their traces and not made again. Retryable Beam errors are retried
+// read back from their traces and not made again, and a Poem interrupted between
+// attempts keeps what its failed attempts cost. Retryable Beam errors are retried
 // up to twice per Poem; a Poem that still fails is recorded as failed, not hidden.
 // Spending is counted from the tokens Beam reports and capped.
 
@@ -84,7 +85,8 @@ export async function runEval(config: EvalConfig): Promise<RunReport> {
   for (let index = 0; index < config.perGroup; index++) {
     for (const condition of conditions) {
       const finished = readTrace(config.traceDir, condition, index);
-      if (finished && !(config.redoFailed && finished.status === 'failed')) {
+      const unfinished = finished?.status === 'pending' || (config.redoFailed && finished?.status === 'failed');
+      if (finished && !unfinished) {
         traces.push(finished);
         continue;
       }
@@ -155,6 +157,8 @@ async function makeTrace(
       if (!(error instanceof BeamError)) throw error;
       const failure = { reason: error.reason, message: error.message };
       attempts.push({ ...call.attempt(), error: failure });
+      // Written at once, so a run that stops here (spend cap, rate limit, crash) loses no paid-for attempt.
+      writeTrace(config.traceDir, finish({ status: 'pending', attempts: [...attempts], answer: call.answer(), error: failure }));
       // Nothing a retry can fix (bad token, no credits): stop the run instead of failing every Poem.
       if (!error.retryable) throw error;
       if (failures >= maxRetries) return finish({ status: 'failed', attempts, answer: call.answer(), error: failure });

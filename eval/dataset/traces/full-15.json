@@ -1,0 +1,40 @@
+{
+  "condition": "full",
+  "index": 15,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:30:10.659Z",
+  "seconds": 0,
+  "status": "pending",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "attempts": [
+    {
+      "seconds": 0,
+      "costUsd": 0.23807480000000003,
+      "costKind": "estimate",
+      "finishReason": null,
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work. (Recovered from the console log after the first run stopped at its spend cap: this attempt was paid for but not written down at the time, so its duration is not recorded and its cost is the upper-bound estimate.)"
+      }
+    },
+    {
+      "seconds": 0,
+      "costUsd": 0.23807480000000003,
+      "costKind": "estimate",
+      "finishReason": null,
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work. (Recovered from the console log after the first run stopped at its spend cap: this attempt was paid for but not written down at the time, so its duration is not recorded and its cost is the upper-bound estimate.)"
+      }
+    }
+  ],
+  "costUsd": 0.47614960000000006,
+  "answer": null,
+  "error": {
+    "reason": "truncated",
+    "message": "Beam ran out of room before finishing its answer. Trying again may work. (Recovered from the console log after the first run stopped at its spend cap: this attempt was paid for but not written down at the time, so its duration is not recorded and its cost is the upper-bound estimate.)"
+  }
+}

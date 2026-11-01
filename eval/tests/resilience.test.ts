@@ -81,14 +81,14 @@ describe('retrying', () => {
     expect(traces[0]?.attempts.map((attempt) => attempt.error?.reason)).toEqual(['invalid-response', undefined]);
   });
 
-  test('a failure that cannot succeed on retry (bad token, no credits) stops the whole run and writes no trace for it', async () => {
+  test('a failure that cannot succeed on retry (bad token, no credits) stops the whole run, leaving that Poem pending rather than failed', async () => {
     const traceDir = tempDir();
     const beam = scripted([new BeamError('http', 'Beam request failed (HTTP 402)', false)]);
 
     await expect(run(beam, { traceDir })).rejects.toMatchObject({ reason: 'http', retryable: false });
 
     expect(beam.calls).toBe(1);
-    expect(readAllTraces(traceDir)).toEqual([]);
+    expect(readAllTraces(traceDir).map((trace) => trace.status)).toEqual(['pending']);
   });
 
   test('a call that threw before reporting tokens is priced from the prompt size, as an upper bound', async () => {
@@ -135,6 +135,27 @@ describe('resuming', () => {
     // The failed attempts were paid for, so redoing keeps them on the books.
     expect(redone.traces[0]?.attempts).toHaveLength(4);
     expect(redone.traces[0]?.costUsd).toBeCloseTo(4 * COST_OF_USAGE, 6);
+    expect(readAllTraces(traceDir)).toHaveLength(1);
+  });
+});
+
+describe('stopping in the middle of a Poem', () => {
+  test('keeps the attempts already paid for, and a resume finishes the Poem and charges them once', async () => {
+    const traceDir = tempDir();
+    // Two truncated attempts cost $0.472; a third could cost up to $0.075 more, which is over $0.5.
+    await expect(run(scripted(['truncated']), { traceDir, spendCapUsd: 0.5 })).rejects.toBeInstanceOf(SpendCapExceeded);
+
+    const [pending] = readAllTraces(traceDir);
+    expect(pending).toMatchObject({ condition: 'full', index: 0, status: 'pending' });
+    expect(pending?.attempts).toHaveLength(2);
+    expect(pending?.costUsd).toBeCloseTo(2 * COST_OF_USAGE, 6);
+
+    const resumed = await run(scripted(['ok']), { traceDir });
+
+    expect(resumed.traces[0]).toMatchObject({ status: 'ok' });
+    expect(resumed.traces[0]?.attempts.map((attempt) => attempt.error?.reason)).toEqual(['truncated', 'truncated', undefined]);
+    expect(resumed.traces[0]?.costUsd).toBeCloseTo(3 * COST_OF_USAGE, 6);
+    expect(resumed.spentUsd).toBeCloseTo(3 * COST_OF_USAGE, 6);
     expect(readAllTraces(traceDir)).toHaveLength(1);
   });
 });
