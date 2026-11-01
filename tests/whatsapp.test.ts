@@ -4,6 +4,7 @@
 
 import { strToU8, zipSync } from 'fflate';
 import { describe, expect, test } from 'vitest';
+import { renderCardHtml } from '../src/card';
 import {
   AmbiguousDatesError,
   createFakeBeam,
@@ -257,6 +258,19 @@ describe('a group chat', () => {
 
     expect(result).toMatchObject({ refused: 'not-enough' });
     expect(beam.requests).toHaveLength(0);
+  });
+});
+
+describe('the Card of a chat Poem', () => {
+  test('says "For <Recipient>", and carries nothing from anyone else or any phone number', async () => {
+    const chat = `${familyGroup}\n12/03/2024, 09:30 - Mom: Ring me on +91 98765 11111 when you land, I will wait.`;
+
+    const { poem, conversation } = await makePoem(request(chat), pickingBeam('lemon cake', 'Ring me on'));
+    const card = renderCardHtml(poem, conversation);
+
+    expect(card).toContain('<p class="for">For Mom</p>');
+    for (const leak of ['Dad', 'Aunt Priya', 'garage key', 'landlord', '98765', '11111']) expect(card, leak).not.toContain(leak);
+    expect(card).toContain('Ring me on [phone number] when you land');
   });
 });
 
