@@ -7,6 +7,9 @@ import type { BeamRequest, BeamUsage } from '../../src';
 export const USD_PER_MILLION_INPUT_TOKENS = 0.4;
 export const USD_PER_MILLION_OUTPUT_TOKENS = 1.2;
 
+/** The completion budget sent with every Beam call (the adapter's setting); a truncated call spends all of it. */
+export const MAX_COMPLETION_TOKENS = 60_000;
+
 /** The run aborts rather than start a call that could take estimated spending past this. */
 export const DEFAULT_SPEND_CAP_USD = 8;
 
@@ -27,7 +30,7 @@ export function estimateCost(request: BeamRequest, outputTokens: number): number
   return costOf(promptTokens, outputTokens);
 }
 
-function costOf(inputTokens: number, outputTokens: number): number {
+export function costOf(inputTokens: number, outputTokens: number): number {
   return (inputTokens * USD_PER_MILLION_INPUT_TOKENS + outputTokens * USD_PER_MILLION_OUTPUT_TOKENS) / 1_000_000;
 }
 

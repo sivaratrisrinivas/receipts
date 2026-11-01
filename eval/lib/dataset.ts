@@ -11,6 +11,7 @@ import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import type { Conversation } from '../../src';
 import { poemMetrics, summarize, type GroupMetrics, type MetricMeans } from './metrics';
+import { MAX_COMPLETION_TOKENS, costOf } from './spend';
 import { readAllTraces, type Condition, type Trace } from './trace';
 
 const GROUP_LABELS: Record<Condition, string> = {
@@ -153,19 +154,56 @@ function runSummary(groups: GroupMetrics[], traces: Trace[]): string {
     `- Beam calls: ${attempts.length}, of which ${attempts.filter((attempt) => attempt.error).length} failed (each Poem is retried at most twice).`,
     `- Estimated spend: $${total.toFixed(2)} (reported tokens x the router's prices of $0.40/M input and $1.20/M output${estimated > 0 ? `; $${estimated.toFixed(2)} of it is an upper-bound estimate for failed calls whose token counts never came back` : ''}).`,
   ];
+  const billed = bestEstimateOfSpend(traces);
+  if (billed !== null) {
+    lines.push(
+      `- About $${billed.toFixed(2)} was billed by our best estimate: calls that reported no tokens are priced at the prompt size Beam reported for the same group, ` +
+        `with the whole ${MAX_COMPLETION_TOKENS.toLocaleString('en-US')}-token completion budget spent if the answer was truncated (a dropped connection is priced at its input only).`,
+    );
+  }
   for (const condition of ['full', 'last10'] as const) {
     const done = traces.filter((trace) => trace.condition === condition && trace.status === 'ok');
     if (done.length === 0) continue;
     const mean = (value: (trace: Trace) => number) => done.reduce((sum, trace) => sum + value(trace), 0) / done.length;
     const final = (trace: Trace) => trace.attempts[trace.attempts.length - 1];
+    const calls = traces.filter((trace) => trace.condition === condition).flatMap((trace) => trace.attempts);
     lines.push(
-      `- ${GROUP_LABELS[condition]}: about ${Math.round(mean((trace) => final(trace)?.usage?.promptTokens ?? 0) / 1000)}k prompt tokens and ` +
+      `- ${GROUP_LABELS[condition]}: ${calls.length} calls, ${calls.filter((call) => call.error?.reason === 'truncated').length} of them truncated (out of completion budget). ` +
+        `A Poem that completed used about ${Math.round(mean((trace) => final(trace)?.usage?.promptTokens ?? 0) / 1000)}k prompt tokens and ` +
         `${Math.round(mean((trace) => final(trace)?.usage?.completionTokens ?? 0) / 1000)}k completion tokens ` +
-        `(${Math.round(mean((trace) => final(trace)?.usage?.reasoningTokens ?? 0) / 1000)}k of them reasoning) per Poem, ` +
-        `${Math.round(mean((trace) => final(trace)?.seconds ?? 0))} s per call.`,
+        `(${Math.round(mean((trace) => final(trace)?.usage?.reasoningTokens ?? 0) / 1000)}k of them reasoning) on average, in ` +
+        `${Math.round(mean((trace) => final(trace)?.seconds ?? 0))} s for the final call.`,
     );
   }
   return lines.join('\n');
+}
+
+/**
+ * What the run likely cost: usage-priced calls as recorded, and each call that reported
+ * no tokens priced at the prompt size Beam reported for its group. Null when every call
+ * reported tokens, or a group has no call to take the prompt size from.
+ */
+function bestEstimateOfSpend(traces: Trace[]): number | null {
+  const promptTokens = new Map<Condition, number>();
+  for (const condition of ['full', 'last10'] as const) {
+    const reported = traces.filter((trace) => trace.condition === condition).flatMap((trace) => trace.attempts.flatMap((attempt) => (attempt.usage ? [attempt.usage.promptTokens] : [])));
+    if (reported.length > 0) promptTokens.set(condition, reported.reduce((sum, tokens) => sum + tokens, 0) / reported.length);
+  }
+
+  let total = 0;
+  let repriced = 0;
+  for (const trace of traces) {
+    for (const attempt of trace.attempts) {
+      const reference = promptTokens.get(trace.condition);
+      if (attempt.costKind === 'usage' || reference === undefined) {
+        total += attempt.costUsd;
+        continue;
+      }
+      repriced++;
+      total += costOf(reference, attempt.error?.reason === 'truncated' ? MAX_COMPLETION_TOKENS : 0);
+    }
+  }
+  return repriced === 0 ? null : total;
 }
 
 /**

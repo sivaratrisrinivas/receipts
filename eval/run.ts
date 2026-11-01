@@ -15,10 +15,8 @@ import { createHfBeam, readConversation } from '../src';
 import { assertNoSecret, buildDataset } from './lib/dataset';
 import { DATASET_DIR, loadGalleryTexts } from './lib/paths';
 import { runEval } from './lib/runner';
-import { DEFAULT_SPEND_CAP_USD, SpendCapExceeded } from './lib/spend';
+import { DEFAULT_SPEND_CAP_USD, MAX_COMPLETION_TOKENS, SpendCapExceeded } from './lib/spend';
 import { readHfToken } from './lib/token';
-
-const MAX_COMPLETION_TOKENS = 60_000;
 
 function option(name: string): string | undefined {
   const at = process.argv.indexOf(`--${name}`);

@@ -43,8 +43,9 @@ All metrics are computed in code from the traces. No model judges anything and n
 - Poems: 60 attempted, 56 completed, 4 failed after all retries.
 - Beam calls: 57, of which 21 failed (each Poem is retried at most twice).
 - Estimated spend: $7.79 (reported tokens x the router's prices of $0.40/M input and $1.20/M output; $4.93 of it is an upper-bound estimate for failed calls whose token counts never came back).
-- Beam on the full Conversation: about 352k prompt tokens and 12k completion tokens (11k of them reasoning) per Poem, 24 s per call.
-- Beam on the last 10%: about 39k prompt tokens and 3k completion tokens (2k of them reasoning) per Poem, 7 s per call.
+- About $7.26 was billed by our best estimate: calls that reported no tokens are priced at the prompt size Beam reported for the same group, with the whole 60,000-token completion budget spent if the answer was truncated (a dropped connection is priced at its input only).
+- Beam on the full Conversation: 37 calls, 20 of them truncated (out of completion budget). A Poem that completed used about 352k prompt tokens and 12k completion tokens (11k of them reasoning) on average, in 24 s for the final call.
+- Beam on the last 10%: 20 calls, 0 of them truncated (out of completion budget). A Poem that completed used about 39k prompt tokens and 3k completion tokens (2k of them reasoning) on average, in 7 s for the final call.
 
 The same table over only the Poems that completed (a failed Poem scores 0 above, so it cannot be hidden):
 
@@ -56,7 +57,16 @@ The same table over only the Poems that completed (a failed Poem scores 0 above,
 
 ### Reading the results
 
-See the table.
+These readings are from the run published here: 20 Poems per group, one Beam sample each, so treat differences of a few points as noise.
+
+- **Reading less costs coverage, by construction.** Beam on the last 10% sees under a month of a twenty-month correspondence, so every one of its Poems sits in the final timeline bucket (10% coverage).
+- **Reading everything did not beat chance at spreading Lines across time.** The 16 full-Conversation Poems that completed cover 58% of the timeline buckets, against 56% for random Snippets, although the prompt asks Beam for a Line from each quarter. With the 4 failed Poems counted as 0, the group's coverage is 47%.
+- **Beam balances the two voices; chance does not.** Elizabeth's letters yield more Snippets (68% of the Gallery's 12,513), so random Poems lean to her (balance 0.46). Completed full-Conversation Poems balance at 0.82, last-10% Poems at 0.62.
+- **Verification held.** No Beam answer that completed named a Snippet that does not exist: every completed Poem carries the badge. The full group's 80% is the 4 Poems that never arrived.
+- **Reading more did not produce more callbacks.** Completed full-Conversation Poems cite 4.4 callbacks on average, last-10% Poems 5.1, random Poems none by definition. The count says nothing about how far back a callback reaches or whether it is apt.
+- **The price of reading everything is reliability and money.** Even at `low`, 20 of the 37 full-Conversation calls ran through the 60,000-token completion budget and ended truncated (the Poems that completed used 2k to 30k completion tokens), and 4 of 20 full Poems failed after three tries. Counting retries and failures, a full-Conversation Poem cost about $0.37 on the recorded prices, against about $0.02 for a last-10% Poem. The completed-only numbers for the full group describe the Poems that finished, which may be the easier ones.
+
+In short: the full read is what lets Beam draw from the whole timeline, and it picks a balanced, verified set of Lines. By this eval's structural metrics it does not spread Lines more evenly than random Snippets do, and it fails often enough at this budget that retry handling is part of the product.
 
 ## Metrics
 
@@ -75,7 +85,7 @@ Each Poem is scored by `eval/lib/metrics.ts` in the code repository; a group's n
 - **Random.** Seeded (`random-0` to `random-19`), so a rerun draws the same Poems. They go through the same verification and ordering as Beam's picks.
 - **Poems.** 20 per group. The six Occasions (birthday, anniversary, thank you, sorry, missing you, farewell) cycle in the same order in every group, so Poem *i* has the same Occasion in all three. The Giver is Robert and the Recipient Elizabeth for every Poem.
 - **Failures.** A retryable Beam error (truncation, a malformed answer, a gateway or network error) is retried at most twice per Poem. A Poem that still fails is kept as a failed trace and counted against its group; nothing is dropped or replaced. An error that cannot be retried (bad token, no credits) stops the run.
-- **Spend.** Counted from the usage Beam reports, at the router's prices of $0.40 per million input and $1.20 per million output tokens. The run aborts rather than start a call that could take the estimate past a hard cap of $8.
+- **Spend.** Counted from the usage Beam reports, at the router's prices of $0.40 per million input and $1.20 per million output tokens. The run aborts rather than start a call that could take the estimate past a hard cap of $8. A call whose token counts never came back (an adapter error before the final usage chunk) is priced from the prompt size, so the recorded total is an estimate; the results section gives a tighter one. The run was made in two sittings: the first stopped at a working cap of $6 in the middle of the full-Conversation Poem 15, after two truncated attempts that had been paid for but not yet written down; they are recorded in that Poem's trace from the console log (their duration was not recorded), and the run was resumed under the $8 cap.
 - **Reproduce.** `npm ci && npm run eval` in the code repository, with a Hugging Face token that has inference access (about $6 of credits). Finished traces are skipped, so an interrupted run resumes where it stopped.
 
 ## Finding: only `low` reasoning effort completes on 500k-token inputs
@@ -91,6 +101,8 @@ Beam always reasons, and its reasoning tokens are drawn from the same `max_compl
 
 The pipeline has since dropped fragments and end matter from the Snippets, so today's Gallery prompt is smaller (12,513 Snippets, about 352k tokens); the table was measured on the larger prototype prompt and was not rerun at 352k. So only `low` completes on inputs of this size, and **long calls must stream**. That is why every Beam Poem in this dataset uses `reasoning_effort: "low"` with `stream: true`, and why the product does not offer higher efforts. Other builders report the same mechanics on smaller inputs: reasoning tokens consume the completion budget and a tight budget yields empty content with `finish_reason: "length"` (see [iarsalanshah/beam-effort-atlas](https://huggingface.co/datasets/iarsalanshah/beam-effort-atlas)), and `low` stays close to higher efforts on quality while using about half the tokens ([PengoSword123/beamdial-v0.1](https://huggingface.co/datasets/PengoSword123/beamdial-v0.1)). The `medium` and `high` rows come from the prototype and were not rerun for this eval, which spent its budget on the 60 Poems.
 
+`low` is not a guarantee, though. On the current 352k-token prompt with a 60,000-token budget, this eval saw 20 of the 37 full-Conversation calls end with `finish_reason: length` after reasoning through the whole budget, while the calls that completed used between 2k and 30k completion tokens. Every failure was a truncation (plus one dropped connection), so a retry usually works and a larger completion budget is the first thing to try; the eval kept the product's setting.
+
 ## Files
 
 - `poems.jsonl` (config `poems`): one row per Poem: group (`condition`: `full`, `last10`, `random`), Occasion, status, whether it verified, its per-Poem metrics, Beam calls, tokens, cost, time, and its `lines` (Snippet ID, sender, date, verbatim text, Beam's Note and callbacks).
@@ -100,7 +112,7 @@ The pipeline has since dropped fragments and end matter from the Snippets, so to
 
 ## Limits
 
-One Conversation, 20 Poems per group, and Beam samples: another run will not give identical numbers. The metrics measure structure (real Lines, spread across time, both voices, callbacks), not whether a Poem is moving; there are no human preference ratings. The last-10% group is a deliberately blunt way to show what a model that reads less would see, not a model of any real product. The Gallery is letters, not chats.
+One Conversation, 20 Poems per group, and Beam samples: another run will not give identical numbers. The metrics measure structure (real Lines, spread across time, both voices, callbacks), not whether a Poem is moving; there are no human preference ratings. The last-10% group is a deliberately blunt way to show what a model that reads less would see, not a model of any real product. No metric checks that a Note fits its Line; a spot check of a few traces found Notes that describe something other than the Line they sit under, as the prototype also saw. The Gallery is letters, not chats.
 
 ## Credits
 

@@ -21,7 +21,7 @@ import {
   type PoemRequest,
 } from '../../src';
 import { createRandomPicker } from './random-beam';
-import { DEFAULT_SPEND_CAP_USD, SpendLedger, costOfUsage, estimateCost } from './spend';
+import { DEFAULT_SPEND_CAP_USD, MAX_COMPLETION_TOKENS, SpendLedger, costOfUsage, estimateCost } from './spend';
 import {
   CONDITIONS,
   readAllTraces,
@@ -148,7 +148,7 @@ async function makeTrace(
   const options = condition === 'last10' ? { narrow: keepLastShare } : {};
 
   for (let failures = 0; ; failures++) {
-    const call = meter(config.beam, ledger, config.maxCompletionTokens ?? 60_000);
+    const call = meter(config.beam, ledger, config.maxCompletionTokens ?? MAX_COMPLETION_TOKENS);
     try {
       const outcome = await makePoem(request, call.beam, options);
       attempts.push(call.attempt());

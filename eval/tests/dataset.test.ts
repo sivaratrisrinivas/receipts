@@ -4,7 +4,7 @@
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { createFakeBeam, readConversation } from '../../src';
+import { BeamError, createFakeBeam, readConversation, type BeamPort } from '../../src';
 import { assertNoSecret, buildDataset } from '../lib/dataset';
 import { runEval } from '../lib/runner';
 import { fragment, idOf, texts, useTempDir, withUsage } from './support';
@@ -103,6 +103,32 @@ describe('building the dataset folder', () => {
 
     // 4 Beam Poems (2 full, 2 last-10%) at 500k in and 30k out: 4 x $0.236.
     expect(readFileSync(join(dir, 'README.md'), 'utf8')).toContain('$0.94');
+  });
+});
+
+describe('the cost of failed calls', () => {
+  test('the README prices a call that reported no tokens at the group\'s reported prompt size, as a best estimate', async () => {
+    const dir = tempDir();
+    const good = withUsage(
+      createFakeBeam((request) => ({ picks: [{ id: idOf(request, fragment(0, 1)), note: 'The first letter.' }] })),
+      { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens: 29_000 },
+    );
+    let calls = 0;
+    const truncatedOnce: BeamPort = {
+      complete: async (...args) => {
+        if (++calls === 1) throw new BeamError('truncated', 'Beam ran out of room', true);
+        return good.complete(...args);
+      },
+    };
+    await runEval({ texts, traceDir: join(dir, 'traces'), perGroup: 1, conditions: ['full'], beam: truncatedOnce, sleep: async () => {} });
+
+    buildDataset({ dir, conversation });
+
+    // The truncated call spent its whole 60,000-token budget on a 500k-token prompt:
+    // $0.20 in + $0.072 out = $0.272, plus the good call's $0.236.
+    const readme = readFileSync(join(dir, 'README.md'), 'utf8');
+    expect(readme).toContain('About $0.51 was billed');
+    expect(readme).toContain('2 calls, 1 of them truncated');
   });
 });
 
