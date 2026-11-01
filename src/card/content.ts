@@ -4,18 +4,13 @@
 
 import { formatDateLabel } from '../dates';
 import type { Conversation, IsoDate, Poem, Sender } from '../domain';
+import { locateLine, type Mark } from '../locate';
 
 /** How many Messages of context sit either side of a Line's own Message. */
 export const CONTEXT_EITHER_SIDE = 2;
 
 /** The longest title a Giver can put on a Card. */
 export const CARD_TITLE_MAX = 100;
-
-/** Where a Line sits within its Message's text, as character offsets (end exclusive). */
-export interface Mark {
-  start: number;
-  end: number;
-}
 
 /** One Message in the context under a Line. */
 export interface ContextMessage {
@@ -92,25 +87,9 @@ function contextOf(conversation: Conversation, ordinal: number, lineText: string
         dateLabel: formatDateLabel(message.date, message.approximate),
         text: message.text,
         isSource,
-        mark: isSource ? locate(message.text, lineText) : null,
+        mark: isSource ? locateLine(message.text, lineText) : null,
       };
     });
-}
-
-/**
- * Find a Line in its Message. Snippets are whitespace-normalised, so words are compared
- * and the paragraph or line breaks between them are ignored.
- */
-function locate(message: string, line: string): Mark | null {
-  const wanted = line.split(/\s+/).filter(Boolean);
-  if (wanted.length === 0) return null;
-  const words = [...message.matchAll(/\S+/g)].map((match) => ({ text: match[0], start: match.index, end: match.index + match[0].length }));
-  for (let first = 0; first + wanted.length <= words.length; first++) {
-    if (wanted.every((word, offset) => words[first + offset]!.text === word)) {
-      return { start: words[first]!.start, end: words[first + wanted.length - 1]!.end };
-    }
-  }
-  return null;
 }
 
 function framingOf(poem: Poem): string {

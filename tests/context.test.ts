@@ -65,6 +65,21 @@ describe('tapping a Line shows the original Message', () => {
     expect(contextOf(conversation, line)).toMatchObject({ before: 'Dear friend,\n\n', snippet: 'Come on Tuesday.\n\nBring the book.', after: '' });
   });
 
+  test('a Line is found as whole words, not inside a longer word that happens to end the same way', () => {
+    const conversation: Conversation = {
+      kind: 'chat',
+      senders: ['Sam'],
+      messages: [{ ordinal: 0, sender: 'Sam', date: '2024-03-02', approximate: false, text: 'Oh, also I did. so I did.' }],
+    };
+    const line = lineOf(
+      { id: 's0', index: 0, messageOrdinal: 0, sender: 'Sam', date: '2024-03-02', approximate: false, text: 'so I did.' },
+      null,
+      [],
+    );
+
+    expect(contextOf(conversation, line)).toMatchObject({ before: 'Oh, also I did. ', snippet: 'so I did.', after: '' });
+  });
+
   test('if the Line cannot be found inside its Message, the whole Message is shown unmarked', async () => {
     const { poem, conversation } = await galleryPoem(['Thank you a thousand times for the flowers']);
 

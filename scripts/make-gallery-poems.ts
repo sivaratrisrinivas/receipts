@@ -33,8 +33,6 @@
 // only into the Authorization header of the requests; this script never prints it.
 
 import { readFileSync, writeFileSync } from 'node:fs';
-import { homedir } from 'node:os';
-import { join } from 'node:path';
 import {
   GALLERY_TEXT_PATHS,
   OCCASIONS,
@@ -45,6 +43,7 @@ import {
   type BeamPort,
   type Occasion,
 } from '../src';
+import { readHfToken } from '../eval/lib/token';
 import { quarterBoundaries, quarterOf } from '../src/quarters';
 import { DEFAULT_BUDGET, MAX_ATTEMPTS_PER_OCCASION, generateGalleryPicks, type Budget } from '../src/gallery-poems/generate';
 import { fingerprintOf, type GalleryPicks } from '../src/gallery-poems/picks';
@@ -124,7 +123,8 @@ if (missing.length === 0) {
 function realBeam(): BeamPort {
   let token: string;
   try {
-    token = readFileSync(join(homedir(), '.cache', 'huggingface', 'token'), 'utf8').trim();
+    // Only the file `hf auth login` writes, never HF_TOKEN: these scripts spend real credits.
+    token = readHfToken({ env: {} });
   } catch {
     console.error('No Hugging Face token found at ~/.cache/huggingface/token.');
     process.exit(2);

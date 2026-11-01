@@ -6,19 +6,10 @@
 // route. The route answers only requests addressed to a loopback host, so a rebinding
 // page on another domain cannot read the token.
 
-import { readFileSync } from 'node:fs';
-import { homedir } from 'node:os';
-import { join } from 'node:path';
 import type { Plugin } from 'vite';
+import { readHfToken } from '../eval/lib/token';
 
 export const DEV_TOKEN_ROUTE = '/__dev/hf-token';
-
-function readToken(): string {
-  const fromEnv = process.env.HF_TOKEN?.trim();
-  if (fromEnv) return fromEnv;
-  const home = process.env.HF_HOME ?? join(process.env.XDG_CACHE_HOME ?? join(homedir(), '.cache'), 'huggingface');
-  return readFileSync(join(home, 'token'), 'utf8').trim();
-}
 
 export function devHfToken(): Plugin {
   return {
@@ -35,7 +26,7 @@ export function devHfToken(): Plugin {
         try {
           response.setHeader('content-type', 'text/plain');
           response.setHeader('cache-control', 'no-store');
-          response.end(readToken());
+          response.end(readHfToken());
         } catch {
           response.statusCode = 404;
           response.end('no token');

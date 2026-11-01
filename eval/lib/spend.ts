@@ -1,11 +1,7 @@
-// Spend: what a Beam call costs, at the Hugging Face router's published prices for
-// reflection/Beam-1.0-501B-A23B (provider Baseten, GET router.huggingface.co/v1/models),
-// and the hard cap that stops a run before it can overspend.
+// Spend: what a Beam call costs (prices in src/beam/pricing.ts), and the hard cap that
+// stops a run before it can overspend.
 
-import type { BeamRequest, BeamUsage } from '../../src';
-
-export const USD_PER_MILLION_INPUT_TOKENS = 0.4;
-export const USD_PER_MILLION_OUTPUT_TOKENS = 1.2;
+import { tokensCostUsd, type BeamRequest, type BeamUsage } from '../../src';
 
 /** The completion budget sent with every Beam call (the adapter's setting); a truncated call spends all of it. */
 export const MAX_COMPLETION_TOKENS = 60_000;
@@ -30,9 +26,7 @@ export function estimateCost(request: BeamRequest, outputTokens: number): number
   return costOf(promptTokens, outputTokens);
 }
 
-export function costOf(inputTokens: number, outputTokens: number): number {
-  return (inputTokens * USD_PER_MILLION_INPUT_TOKENS + outputTokens * USD_PER_MILLION_OUTPUT_TOKENS) / 1_000_000;
-}
+export const costOf = tokensCostUsd;
 
 export class SpendCapExceeded extends Error {
   constructor(spentUsd: number, nextCallUsd: number, capUsd: number) {

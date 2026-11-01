@@ -8,8 +8,6 @@
 // only into the Authorization header of the request; this script never prints it.
 
 import { readFileSync } from 'node:fs';
-import { homedir } from 'node:os';
-import { join } from 'node:path';
 import {
   BeamError,
   GALLERY_TEXT_PATHS,
@@ -17,10 +15,12 @@ import {
   createFakeBeam,
   createHfBeam,
   makePoem,
+  tokensCostUsd,
   type BeamPort,
   type BeamUsage,
   type Occasion,
 } from '../src';
+import { readHfToken } from '../eval/lib/token';
 
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
@@ -47,7 +47,8 @@ function measured(beam: BeamPort): BeamPort {
 function realBeam(): BeamPort {
   let token: string;
   try {
-    token = readFileSync(join(homedir(), '.cache', 'huggingface', 'token'), 'utf8').trim();
+    // Only the file `hf auth login` writes, never HF_TOKEN: these scripts spend real credits.
+    token = readHfToken({ env: {} });
   } catch {
     console.error('No Hugging Face token found at ~/.cache/huggingface/token.');
     process.exit(2);
@@ -77,7 +78,7 @@ try {
   const seconds = ((Date.now() - started) / 1000).toFixed(0);
   console.log(`${conversation.messages.length} Messages, ${snippets.length} Snippets, ${seconds}s`);
   if (usage) {
-    const cost = usage.promptTokens * 0.4e-6 + usage.completionTokens * 1.2e-6;
+    const cost = tokensCostUsd(usage.promptTokens, usage.completionTokens);
     console.log(`tokens: ${usage.promptTokens} in, ${usage.completionTokens} out (${usage.reasoningTokens} reasoning), about $${cost.toFixed(3)}`);
   }
   console.log(`\nPoem for ${poem.recipient} from ${poem.giver}: ${poem.occasion}`);

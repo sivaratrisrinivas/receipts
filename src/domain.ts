@@ -16,6 +16,11 @@ export const OCCASIONS = [
 ] as const;
 export type Occasion = (typeof OCCASIONS)[number];
 
+/** An Occasion as the Giver reads it on a button or a heading: `thank you` -> `Thank you`. */
+export function occasionLabel(occasion: Occasion): string {
+  return occasion.charAt(0).toUpperCase() + occasion.slice(1);
+}
+
 /** One thing one person sent the other: a chat message or a letter. */
 export interface Message {
   /** Position in the Conversation, 0-based. Breaks ties between Messages on the same date. */

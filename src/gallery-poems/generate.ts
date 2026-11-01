@@ -4,11 +4,13 @@
 // test can run it for nothing.
 
 import { BeamError, type BeamPort, type BeamUsage } from '../beam/port';
+import { tokensCostUsd } from '../beam/pricing';
 import type { Occasion } from '../domain';
 import { makePoem } from '../pipeline';
 import { readConversation, type RawSource } from '../sources';
+import { GALLERY_PEOPLE } from '../sources/gallery';
 import { snippetsOf } from '../snippets';
-import { GALLERY_PEOPLE, fingerprintOf, type GalleryFingerprint, type GalleryPick, type GalleryPicks } from './picks';
+import { fingerprintOf, type GalleryFingerprint, type GalleryPick, type GalleryPicks } from './picks';
 import { checkGalleryPoem } from './rules';
 
 /** At most this many calls to Beam for any one Occasion. */
@@ -24,9 +26,9 @@ export interface Budget {
 /** The authorised budget: $3, at about $0.20 a Gallery call. */
 export const DEFAULT_BUDGET: Budget = { limitUsd: 3, perCallUsd: 0.2 };
 
-/** Beam through the Hugging Face router: $0.40 per million input tokens, $1.20 per million output tokens. */
+/** What a call cost, from the tokens Beam reported. */
 export function costOf(usage: BeamUsage): number {
-  return usage.promptTokens * 0.4e-6 + usage.completionTokens * 1.2e-6;
+  return tokensCostUsd(usage.promptTokens, usage.completionTokens);
 }
 
 export interface Attempt {

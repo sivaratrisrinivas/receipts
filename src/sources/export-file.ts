@@ -5,8 +5,8 @@
 import { unzipSync } from 'fflate';
 import { ExportError } from './whatsapp';
 
-/** A chat longer than this, once unzipped, is not a chat; it also keeps a hostile zip from filling memory. */
-const MAX_CHAT_BYTES = 200 * 1024 * 1024;
+/** A chat file bigger than this is an export with its photos and videos, not a chat; unzipped, it also keeps a hostile zip from filling memory. */
+export const MAX_CHAT_BYTES = 200 * 1024 * 1024;
 
 /** The chat text of an export file given as text or as bytes (a `.txt`, or a `.zip` with a `.txt` inside). */
 export function exportText(file: string | Uint8Array): string {

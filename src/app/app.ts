@@ -7,7 +7,8 @@ import type { Sender } from '../domain';
 import { EditError, removeLine, replaceLine } from '../editing';
 import { tryMakePoem } from '../pipeline';
 import type { RawSource } from '../sources';
-import { exportText } from '../sources/export-file';
+import { MAX_CHAT_BYTES, exportText } from '../sources/export-file';
+import { GALLERY_PEOPLE } from '../sources/gallery';
 import {
   dateQuestion,
   ExportError,
@@ -37,12 +38,6 @@ export interface ChatFile {
   size: number;
   read(): Promise<Uint8Array>;
 }
-
-/** Bigger than this is a chat exported with its photos and videos, not a chat. */
-export const MAX_CHAT_FILE_BYTES = 200 * 1024 * 1024;
-
-/** In the Gallery the Giver is Robert and the Recipient is Elizabeth. */
-const GALLERY_PEOPLE: { giver: Sender; recipient: Sender } = { giver: 'Robert', recipient: 'Elizabeth' };
 
 export interface App {
   getState(): AppState;
@@ -211,7 +206,7 @@ export function createApp(deps: AppDeps): App {
       if (store.getState().step !== 'upload') return;
       store.dispatch({ type: 'upload-reading' });
       try {
-        if (file.size > MAX_CHAT_FILE_BYTES) {
+        if (file.size > MAX_CHAT_BYTES) {
           throw new ExportError('That file is very large. Export the chat again from WhatsApp, choosing "Without media", and upload that.');
         }
         const text = exportText(await file.read());
