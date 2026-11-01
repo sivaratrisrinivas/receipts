@@ -4,30 +4,24 @@
 //   npm run gallery:poems -- --occasions sorry,farewell  # just these (redoing them if they have a Poem)
 //   npm run gallery:poems -- --all                       # redo every Occasion
 //   npm run gallery:poems -- --dry                       # no network, no token: size up the run only
-//   npm run gallery:poems -- --max-attempts 2 --already-spent 0.80
-//       # for a run that carries on from an earlier one: fewer attempts, and less of the budget left
-//   npm run gallery:poems -- --quarters-by-id     # name the prompt's quarters by Snippet ID, not date (see below)
-//   npm run gallery:poems -- --without-quarters   # swap the prompt's quarters for a plain "spread them out" (see below)
+//   npm run gallery:poems -- --budget 1.50 --max-attempts 2
+//       # spend at most $1.50 on this run (the default is the $3 of src/gallery-poems/generate.ts),
+//       # and try each Occasion at most twice
 //
-// Each call costs $0.14 to $0.29 of Hugging Face credits. A Poem is kept only if every pick
+// The prompt is the app's own (src/prompt.ts), and the call is the app's own: the same Beam
+// adapter at its defaults (reasoning effort low, 60,000 completion tokens, strict JSON schema),
+// so a Poem saved here is a Poem the app can make. Nothing is changed to help a call finish.
+//
+// Each call costs $0.14 to $0.22 of Hugging Face credits. A Poem is kept only if every pick
 // verifies against the Gallery and it has Lines from every quarter of the timeline and
 // from both Senders; Beam is tried at most 3 times per Occasion, and the run stops for
-// good once the estimated spend could pass $3. Poems are saved as they are accepted, so
-// an interrupted run loses nothing already paid for. The saved file records how each Poem
+// good once the estimated spend could pass the budget. Poems are saved as they are accepted,
+// so an interrupted run loses nothing already paid for. The saved file records how each Poem
 // was made.
 //
-// What the first live runs found (issue #8): with the app's prompt, which
-// spells the four quarters out by date, Beam reasoned until it ran out of completion budget
-// without ever answering, every time: 3 of 3 at the app's 60,000 tokens, then 3 of 3 at
-// 120,000 (the limit used here, double the app's; a call that hits it costs about $0.285, so
-// a call that failed without reporting its tokens is charged $0.29). The two flags change
-// only the prompt's one sentence about the quarters, and the quarter rule above still decides
-// what is kept, so it is not loosened:
-//   --quarters-by-id    "Q1 s0 to s767; Q2 ..." in place of dates. Beam answered in 17 seconds
-//                       and 2,000 tokens ($0.14), once; the one other try ran to the limit.
-//   --without-quarters  "some from the first months, some from the middle, some from the last".
-//                       Quick and cheap ($0.15), but 3 of 4 tries missed the last quarter or more,
-//                       and the other ran to the limit.
+// Why the prompt marks the quarters in the Conversation itself (issue #1): with the quarters
+// given only as date ranges in the instructions, Beam ran out of its 60,000 completion tokens
+// on most Gallery calls (see src/prompt.ts for what changed and the evidence).
 //
 // The token is read from the Hugging Face cache (~/.cache/huggingface/token). It goes
 // only into the Authorization header of the requests; this script never prints it.
@@ -40,11 +34,12 @@ import {
   createHfBeam,
   readConversation,
   snippetsOf,
+  tokensCostUsd,
   type BeamPort,
   type Occasion,
 } from '../src';
 import { readHfToken } from '../eval/lib/token';
-import { quarterBoundaries, quarterOf } from '../src/quarters';
+import { QUARTER_MARKER_PREFIX } from '../src/prompt';
 import { DEFAULT_BUDGET, MAX_ATTEMPTS_PER_OCCASION, generateGalleryPicks, type Budget } from '../src/gallery-poems/generate';
 import { fingerprintOf, type GalleryPicks } from '../src/gallery-poems/picks';
 
@@ -52,9 +47,10 @@ const PICKS_FILE = new URL('../src/gallery-poems/picks.json', import.meta.url);
 /** A call that has not finished in this long is abandoned (and counts as a failed attempt). */
 const CALL_TIMEOUT_MS = 8 * 60_000;
 
-const MAX_COMPLETION_TOKENS = 120_000;
-/** What a call is charged when it fails without reporting its tokens: about 356k tokens in, 120k out. */
-const FAILED_CALL_USD = 0.29;
+/** What the app asks of Beam (src/beam/hf.ts); the script does not set these, it checks the request that goes out carries them. */
+const APP_MAX_COMPLETION_TOKENS = 60_000;
+/** What a call is charged when it fails without reporting its tokens: the Gallery prompt (352k tokens) and a whole completion budget. */
+const FAILED_CALL_USD = Number(tokensCostUsd(352_300, APP_MAX_COMPLETION_TOKENS).toFixed(3));
 
 const args = process.argv.slice(2);
 const dry = args.includes('--dry');
@@ -69,20 +65,14 @@ if (unknown && unknown.length > 0) {
   console.error(`Unknown occasion "${unknown[0]}". Choose from: ${OCCASIONS.join(', ')}.`);
   process.exit(2);
 }
-const withoutQuarters = args.includes('--without-quarters');
-const quartersById = args.includes('--quarters-by-id');
-if (withoutQuarters && quartersById) {
-  console.error('Choose --without-quarters or --quarters-by-id, not both.');
-  process.exit(2);
-}
 const maxAttempts = Number(valueOf('--max-attempts') ?? MAX_ATTEMPTS_PER_OCCASION);
-const alreadySpentUsd = Number(valueOf('--already-spent') ?? 0);
-if (!(maxAttempts >= 1 && maxAttempts <= MAX_ATTEMPTS_PER_OCCASION) || !(alreadySpentUsd >= 0)) {
-  console.error(`--max-attempts must be 1 to ${MAX_ATTEMPTS_PER_OCCASION}, and --already-spent a dollar amount.`);
+const budgetUsd = Number(valueOf('--budget') ?? DEFAULT_BUDGET.limitUsd);
+if (!(maxAttempts >= 1 && maxAttempts <= MAX_ATTEMPTS_PER_OCCASION) || !(budgetUsd > 0)) {
+  console.error(`--max-attempts must be 1 to ${MAX_ATTEMPTS_PER_OCCASION}, and --budget a dollar amount.`);
   process.exit(2);
 }
-const madeWith = `reflection/Beam-1.0-501B-A23B, reasoning low, up to ${MAX_COMPLETION_TOKENS} completion tokens, ${withoutQuarters ? 'the live prompt with its quarter-by-date sentence replaced by a plain "first, middle and last months" one' : quartersById ? 'the live prompt with its quarters given as Snippet ID ranges instead of dates' : 'the live prompt'}`;
-const budget: Budget = { limitUsd: DEFAULT_BUDGET.limitUsd - alreadySpentUsd, perCallUsd: FAILED_CALL_USD };
+const madeWith = `reflection/Beam-1.0-501B-A23B, reasoning low, up to ${APP_MAX_COMPLETION_TOKENS} completion tokens, the app's prompt (src/prompt.ts)`;
+const budget: Budget = { limitUsd: budgetUsd, perCallUsd: FAILED_CALL_USD };
 
 const texts = GALLERY_TEXT_PATHS.map((path) => readFileSync(new URL(`../public/${path}`, import.meta.url), 'utf8'));
 const conversation = readConversation({ kind: 'gallery', texts });
@@ -131,14 +121,22 @@ function realBeam(): BeamPort {
   }
   return createHfBeam({
     token,
-    maxCompletionTokens: MAX_COMPLETION_TOKENS,
     fetch: async (input, init) => {
+      assertAppSettings(init?.body);
       const began = Date.now();
       const response = await fetch(input, { ...init, signal: AbortSignal.timeout(CALL_TIMEOUT_MS) });
       void traceStream(response.clone(), began);
       return response;
     },
   });
+}
+
+/** The request about to go out must carry the app's settings, so a Poem saved here proves the app's call works. */
+function assertAppSettings(body: RequestInit['body']): void {
+  const sent = JSON.parse(String(body)) as { reasoning_effort?: string; max_completion_tokens?: number; response_format?: { json_schema?: { strict?: boolean } } };
+  if (sent.reasoning_effort !== 'low' || sent.max_completion_tokens !== APP_MAX_COMPLETION_TOKENS || sent.response_format?.json_schema?.strict !== true) {
+    throw new Error('The Beam request does not carry the app settings (reasoning low, 60,000 completion tokens, strict schema).');
+  }
 }
 
 /**
@@ -185,49 +183,15 @@ async function traceStream(response: Response, began: number): Promise<void> {
   }
 }
 
-/** The prompt's sentence that spells out the quarters, and what stands in for it with `--without-quarters`. */
-const QUARTER_SENTENCE = /^Spread your picks across the whole timeline:.*$/m;
-const SPREAD_SENTENCE =
-  'Spread your picks across the whole timeline: take some from the first months, some from the middle and some from the last months.';
-function withoutQuarterDates(beam: BeamPort): BeamPort {
-  return {
-    complete(request, onProgress) {
-      if (!QUARTER_SENTENCE.test(request.system)) throw new Error('The prompt no longer has the quarter sentence this script replaces.');
-      const system = request.system.replace(QUARTER_SENTENCE, SPREAD_SENTENCE);
-      return beam.complete({ ...request, system }, onProgress);
-    },
-  };
-}
-
 const base: BeamPort = dry
   ? createFakeBeam((request) => {
-      const quarters = /^Spread your picks.*$/m.exec(request.system)?.[0] ?? '(no spread sentence)';
       console.log(`[dry run] ${request.system.length + request.user.length} characters of prompt (about ${Math.round((request.system.length + request.user.length) / 3.5)} tokens)`);
-      console.log(`[dry run] the spread sentence reads: ${quarters.slice(0, 160)}`);
+      console.log(`[dry run] ${request.user.split('\n').filter((row) => row.startsWith(QUARTER_MARKER_PREFIX)).length} quarter markers in the Conversation`);
       return { picks: [{ id: /^(s\d+) /m.exec(request.user)?.[1] ?? 's0', note: 'dry run' }] };
     })
   : realBeam();
 
-/**
- * The same four quarters, but named by the Snippet IDs that fall in them (Snippets run in
- * date order, so each quarter is a stretch of IDs), so that Beam need not look dates up.
- */
-function quartersByIds(beam: BeamPort): BeamPort {
-  const bounds = quarterBoundaries(conversation);
-  const ranges = [0, 1, 2, 3].map((quarter) => {
-    const inQuarter = snippets.filter((snippet) => quarterOf(bounds, snippet.date) === quarter);
-    return `Q${quarter + 1} ${inQuarter[0]!.id} to ${inQuarter[inQuarter.length - 1]!.id}`;
-  });
-  const sentence = `Spread your picks across the whole timeline: choose at least one Line from each quarter of it. By Snippet ID the quarters are: ${ranges.join('; ')}.`;
-  return {
-    complete(request, onProgress) {
-      if (!QUARTER_SENTENCE.test(request.system)) throw new Error('The prompt no longer has the quarter sentence this script replaces.');
-      return beam.complete({ ...request, system: request.system.replace(QUARTER_SENTENCE, sentence) }, onProgress);
-    },
-  };
-}
-
-const beam: BeamPort = withoutQuarters ? withoutQuarterDates(base) : quartersById ? quartersByIds(base) : base;
+const beam: BeamPort = base;
 
 console.log(
   `${gallery.snippets} Snippets. Making: ${wanted.join(', ')}. At most ${dry ? 1 : maxAttempts} attempts each; $${budget.limitUsd.toFixed(2)} of the $${DEFAULT_BUDGET.limitUsd.toFixed(2)} budget left (a failed call counts as $${budget.perCallUsd.toFixed(2)}).${dry ? ' (dry run)' : ''}`,

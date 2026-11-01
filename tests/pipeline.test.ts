@@ -260,12 +260,13 @@ describe('asking Beam', () => {
 
     await makePoem({ ...galleryRequest, note: 'It is their first anniversary.' }, beam);
 
-    const { system } = beam.requests[0]!;
+    const { system, user } = beam.requests[0]!;
     expect(system).toMatch(/read the whole conversation/i);
     expect(system).toMatch(/spread .*across the whole timeline/i);
     expect(system).toMatch(/at least one Line from each quarter/i);
-    expect(system).toMatch(/Q1 1845-01-10 to /);
-    expect(system).toMatch(/ to 1846-09-14\b/);
+    // The quarters' dates are on the marker lines in the Conversation itself (tests/prompt.test.ts).
+    expect(user).toMatch(/^=== QUARTER 1 of 4: 1845-01-10 to /m);
+    expect(user).toMatch(/^=== QUARTER 4 of 4: .* to 1846-09-14 ===$/m);
     expect(system).toMatch(/both Senders/i);
     expect(system).toMatch(/avoid private matters/i);
     expect(system).toMatch(/refer to Snippets by ID only/i);
