@@ -2,21 +2,21 @@
   "groups": [
     {
       "condition": "full",
-      "attempted": 18,
-      "completed": 16,
-      "failed": 2,
-      "verificationRate": 0.8888888888888888,
-      "timelineCoverage": 0.55,
-      "senderBalance": 0.688949938949939,
-      "noteCallbacks": 1.7777777777777777,
+      "attempted": 20,
+      "completed": 17,
+      "failed": 3,
+      "verificationRate": 0.85,
+      "timelineCoverage": 0.54,
+      "senderBalance": 0.6557692307692308,
+      "noteCallbacks": 1.6,
       "completedOnly": {
         "verificationRate": 1,
-        "timelineCoverage": 0.61875,
-        "senderBalance": 0.7750686813186813,
-        "noteCallbacks": 2
+        "timelineCoverage": 0.6352941176470589,
+        "senderBalance": 0.7714932126696832,
+        "noteCallbacks": 1.8823529411764706
       },
-      "meanLines": 13.5625,
-      "costUsd": 4.5044596
+      "meanLines": 13.588235294117647,
+      "costUsd": 5.411743599999999
     },
     {
       "condition": "last10",

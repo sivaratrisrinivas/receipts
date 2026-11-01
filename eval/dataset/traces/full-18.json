@@ -1,0 +1,195 @@
+{
+  "condition": "full",
+  "index": 18,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:33:08.086Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 91.573,
+  "costUsd": 0.38296680000000005,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 76.958,
+      "costUsd": 0.2382052,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 7.165,
+      "costUsd": 0.14476160000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 3111,
+        "reasoningTokens": 2594
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first open declaration of love to Elizabeth, setting the whole correspondence in motion.\", \"callbacks\": []},\n    {\"id\": \"s339\", \"note\": \"Robert's reading of Prometheus shows the shared literary ground and seriousness with which he meets her.\", \"callbacks\": []},\n    {\"id\": \"s796\", \"note\": \"Robert's promise of verse and of being seen, early in the friendship.\", \"callbacks\": []},\n    {\"id\": \"s1103\", \"note\": \"Robert asking to be held by the hand, the tenderness that defines their bond.\", \"callbacks\": []},\n    {\"id\": \"s1538\", \"note\": \"Elizabeth's announcement that Pisa is lost, a turning point in their story.\", \"callbacks\": []},\n    {\"id\": \"s2129\", \"note\": \"Robert's first unguarded 'love me' after the declared attachment.\", \"callbacks\": []},\n    {\"id\": \"s2219\", \"note\": \"Elizabeth's bullet metaphor on reading his Luria, a vivid private image.\", \"callbacks\": []},\n    {\"id\": \"s2607\", \"note\": \"Robert's gratitude for the ring and hair, tokens of their private covenant.\", \"callbacks\": []},\n    {\"id\": \"s3100\", \"note\": \"Robert's Christmas letter, the love declared as his truest song.\", \"callbacks\": []},\n    {\"id\": \"s4208\", \"note\": \"Elizabeth's sortes oracle, 'I shall love thee to eternity.'\", \"callbacks\": []},\n    {\"id\": \"s6263\", \"note\": \"Robert's gentle correction that he did not see her sitting, early after the marriage resolve.\", \"callbacks\": []},\n    {\"id\": \"s6549\", \"note\": \"Robert's 'peculiarity' kept alongside the greater love, a signature tenderness.\", \"callbacks\": []},\n    {\"id\": \"s8918\", \"note\": \"Elizabeth finally speaking his name, 'Robert,' a long-awaited intimacy.\", \"callbacks\": []},\n    {\"id\": \"s12492\", \"note\": \"Elizabeth's last letter, sending off the boxes and counting the hours to departure.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first open declaration of love to Elizabeth, setting the whole correspondence in motion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s339",
+        "messageOrdinal": 12,
+        "sender": "Robert",
+        "date": "1845-03-12",
+        "approximate": false,
+        "dateLabel": "12 March 1845",
+        "text": "I do not find it take away from my feeling of the magnanimity of Prometheus that he should, in truth, complain (as he does from beginning to end) of what he finds himself suffering.",
+        "note": "Robert's reading of Prometheus shows the shared literary ground and seriousness with which he meets her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s796",
+        "messageOrdinal": 41,
+        "sender": "Robert",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "God bless you.",
+        "note": "Robert's promise of verse and of being seen, early in the friendship.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1103",
+        "messageOrdinal": 71,
+        "sender": "Robert",
+        "date": "1845-08-04",
+        "approximate": false,
+        "dateLabel": "4 August 1845",
+        "text": "May God bless you, and let you hold me by the hand till the end--Yes, dearest friend!",
+        "note": "Robert asking to be held by the hand, the tenderness that defines their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1538",
+        "messageOrdinal": 104,
+        "sender": "Elizabeth",
+        "date": "1845-09-17",
+        "approximate": false,
+        "dateLabel": "17 September 1845",
+        "text": "I write one word just to say that it is all over with Pisa; which was a probable evil when I wrote last, and which I foresaw from the beginning--being a prophetess, you know.",
+        "note": "Elizabeth's announcement that Pisa is lost, a turning point in their story.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2129",
+        "messageOrdinal": 143,
+        "sender": "Robert",
+        "date": "1845-11-04",
+        "approximate": false,
+        "dateLabel": "4 November 1845",
+        "text": "Love me, my own love; not as I love you--not for--but I cannot write that.",
+        "note": "Robert's first unguarded 'love me' after the declared attachment.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2219",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I read Luria's first act twice through before I slept last night, and feel just as a bullet might feel, not because of the lead of it but because shot into the air and suddenly arrested and suspended.",
+        "note": "Elizabeth's bullet metaphor on reading his Luria, a vivid private image.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2607",
+        "messageOrdinal": 163,
+        "sender": "Robert",
+        "date": "1845-12-02",
+        "approximate": false,
+        "dateLabel": "2 December 1845",
+        "text": "My love--no words could serve here, but there is life before us, and to the end of it the vibration now struck will extend--I will live and die with your beautiful ring, your beloved hair--comforting me, blessing me.",
+        "note": "Robert's gratitude for the ring and hair, tokens of their private covenant.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3100",
+        "messageOrdinal": 182,
+        "sender": "Robert",
+        "date": "1845-12-24",
+        "approximate": true,
+        "dateLabel": "c. 24 December 1845",
+        "text": "My dear Christmas gift of a letter!",
+        "note": "Robert's Christmas letter, the love declared as his truest song.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4208",
+        "messageOrdinal": 229,
+        "sender": "Elizabeth",
+        "date": "1846-02-12",
+        "approximate": false,
+        "dateLabel": "12 February 1846",
+        "text": "'I shall love thee to eternity'--I shall.",
+        "note": "Elizabeth's sortes oracle, 'I shall love thee to eternity.'",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6263",
+        "messageOrdinal": 317,
+        "sender": "Robert",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "No, my own dearest, I did not see you sit in your chair, nor in mine, yesterday—did I write nothing about your walking with me by the garden wall, and on the hill, and looking down on London?",
+        "note": "Robert's gentle correction that he did not see her sitting, early after the marriage resolve.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6549",
+        "messageOrdinal": 328,
+        "sender": "Robert",
+        "date": "1846-04-24",
+        "approximate": false,
+        "dateLabel": "24 April 1846",
+        "text": "Still—remember my ‘peculiarity’—with the greater I keep the less, you let me say and praise me for saying—so, with all the dear hope of to-morrow,—now, my Ba—and now, I kiss you.",
+        "note": "Robert's 'peculiarity' kept alongside the greater love, a signature tenderness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8918",
+        "messageOrdinal": 434,
+        "sender": "Elizabeth",
+        "date": "1846-07-03",
+        "approximate": false,
+        "dateLabel": "3 July 1846",
+        "text": "Robert! because, my Robert, if gravely I distrusted your affection, I could not use such light-sounding words on the whole—now could I?",
+        "note": "Elizabeth finally speaking his name, 'Robert,' a long-awaited intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12492",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "At from half-past three to four, then—four will not, I suppose, be too late.",
+        "note": "Elizabeth's last letter, sending off the boxes and counting the hours to departure.",
+        "callbacks": []
+      }
+    ]
+  }
+}
