@@ -96,11 +96,12 @@ The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](ht
 
 ## The eval: does reading everything help?
 
-`eval/` measures it on the Gallery: 20 Poems each from Beam on the **full** Conversation, Beam on only the **last 10%** of Messages, and **random** Snippets (no Beam call), scored by verification rate, timeline coverage, Sender balance and Note callback count. Every Beam Poem goes through the same `makePoem` as the app (the last-10% group uses its `narrow` option). The metrics are defined in `eval/lib/metrics.ts`; the results, method and the finding that only `low` reasoning effort completes on 500k-token inputs are in the dataset card, `eval/dataset/README.md`.
+`eval/` measures it on the Gallery with three groups of Poems, 20 planned in each: Beam on the **full** Conversation, Beam on only the **last 10%** of Messages, and **random** Snippets (no Beam call), scored by verification rate, timeline coverage, Sender balance and Note callback count. Every Beam Poem goes through the same `makePoem` as the app (the last-10% group uses its `narrow` option). The metrics are defined in `eval/lib/metrics.ts`; the results, method and the finding that only `low` reasoning effort completes on 500k-token inputs are in the dataset card, `eval/dataset/README.md`. The committed dataset is the second run (after the prompt fix and the Poem-length rule); its full-Conversation group has 18 of 20 Poems because a $5 cap stopped it, and the card says so.
 
 ```
 npm run eval -- --per-group 1    # dry run: 1 Poem per group (about $0.30)
-npm run eval                     # all 60 Poems (about $6); finished Poems are skipped, so it resumes
+npm run eval                     # all 60 Poems (about $5.4 at the second run's rates); finished Poems are skipped, so it resumes
+npm run eval -- --groups random,last10 --cap 5   # only some groups, in this order, under a stricter cap
 npm run eval:report              # rebuild eval/dataset from the traces (no Beam, no token)
 HF_WRITE_TOKEN=<token> npm run eval:publish   # upload eval/dataset as Srini410/receipts-eval
 ```

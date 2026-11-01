@@ -136,7 +136,40 @@ describe('the cost of failed calls', () => {
     // $0.20 in + $0.072 out = $0.272, plus the good call's $0.236.
     const readme = readFileSync(join(dir, 'README.md'), 'utf8');
     expect(readme).toContain('About $0.51 was billed');
-    expect(readme).toContain('2 calls, 1 of them truncated');
+    expect(readme).toContain('2 calls; 1 came back as a usable Poem (50%), 1 truncated (out of completion budget)');
+  });
+});
+
+describe('a group that stopped short of 20 Poems', () => {
+  test('the README says how many Poems were attempted out of the 20 planned, and does not count the rest', async () => {
+    const dir = tempDir();
+    await finishedRun(dir);
+
+    buildDataset({ dir, conversation });
+
+    expect(readFileSync(join(dir, 'README.md'), 'utf8')).toContain(
+      'Beam on the full Conversation 2 of 20 attempted; Beam on the last 10% 2 of 20 attempted; Random Snippets 2 of 20 attempted',
+    );
+  });
+});
+
+describe('failed calls, counted by kind', () => {
+  test('the README counts a call that returned too many Lines as a wrong-size call, and says how many Lines it returned', async () => {
+    const dir = tempDir();
+    let calls = 0;
+    const overThenRight = withUsage(
+      createFakeBeam((request) => ({
+        picks: Array.from({ length: ++calls === 1 ? 17 : 9 }, (_, letter) => ({ id: idOf(request, fragment(letter, 1)), note: 'A letter.' })),
+      })),
+      { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens: 29_000 },
+    );
+    await runEval({ texts, traceDir: join(dir, 'traces'), perGroup: 1, conditions: ['full'], beam: overThenRight, sleep: async () => {} });
+
+    buildDataset({ dir, conversation });
+
+    expect(readFileSync(join(dir, 'README.md'), 'utf8')).toContain(
+      '2 calls; 1 came back as a usable Poem (50%), 1 returned the wrong number of Lines (1 too many: 17 Lines, 0 too few)',
+    );
   });
 });
 
