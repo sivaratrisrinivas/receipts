@@ -3,19 +3,22 @@
 // not involved, only the state it renders.
 
 import { describe, expect, test, vi } from 'vitest';
-import { BeamError, createFakeBeam, type BeamPort } from '../src';
+import { BeamError, createFakeBeam, type BeamPort, type BeamRequest, type FakeReply } from '../src';
 import { createApp, type AppDeps } from '../src/app/app';
 import type { AuthPort, Session } from '../src/app/auth';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
+import { promptSnippets } from './support/prompt';
 
 const session: Session = { accessToken: 'hf_test', expiresAt: Date.now() + 3_600_000, username: 'giver' };
 
-/** A fake Beam that always picks the first Snippet it is shown. */
+/** The first `count` Snippets Beam is shown, as picks. */
+function firstSnippets(request: BeamRequest, count: number): FakeReply {
+  return { picks: promptSnippets(request).slice(0, count).map(({ id }) => ({ id, note: 'The very first thing.' })) };
+}
+
+/** A fake Beam that always picks the first six Snippets it is shown (the Gallery is a 6 to 8 Line Conversation). */
 function pickingBeam() {
-  return createFakeBeam(
-    (request) => ({ picks: [{ id: /^(s\d+) /m.exec(request.user)![1]!, note: 'The very first thing.' }] }),
-    { reasoningProgress: [200, 400] },
-  );
+  return createFakeBeam((request) => firstSnippets(request, 6), { reasoningProgress: [200, 400] });
 }
 
 /** Wraps a Beam port so that its first calls fail with the given errors. */
@@ -241,6 +244,27 @@ describe('when making the Poem fails', () => {
     await app.retry();
 
     expect(app.getState()).toMatchObject({ step: 'poem', failure: null });
+  });
+
+  test('a Poem of the wrong size is not shown: the Giver is told the numbers, and a retry that comes back right shows the Poem', async () => {
+    const answers = [3, 7];
+    const beam = createFakeBeam((request) => firstSnippets(request, answers.shift()!));
+    const { app } = setup({ beam });
+    await app.init();
+
+    await app.start();
+
+    expect(app.getState()).toMatchObject({
+      step: 'failed',
+      outcome: null,
+      failure: { kind: 'wrong-size', message: 'Beam returned 3 Lines; a Poem needs 6 to 8. Try again.', recovery: { action: 'retry' } },
+    });
+
+    await app.retry();
+
+    expect(app.getState()).toMatchObject({ step: 'poem', failure: null });
+    expect(app.getState().outcome?.poem.lines).toHaveLength(7);
+    expect(beam.requests).toHaveLength(2);
   });
 
   test('failing to load the Conversation is a network failure that can be retried', async () => {

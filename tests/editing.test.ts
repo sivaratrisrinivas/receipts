@@ -5,7 +5,7 @@
 import { describe, expect, test } from 'vitest';
 import { BeamError, createFakeBeam, estimateTokens, INPUT_TOKEN_BUDGET, makePoem, type PoemOutcome } from '../src';
 import { renderCardHtml } from '../src/card';
-import { EditError, draftOf, removeLine, replaceLine } from '../src/editing';
+import { EditError, draftOf, removalBlockedReason, removeLine, replaceLine } from '../src/editing';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
 import { heavyBody, lettersOnDays, spreadDays, volumeOfLetters } from './fixtures/letters';
 import { idOf, promptSnippets } from './support/prompt';
@@ -32,13 +32,17 @@ async function galleryPoem(fragments: string[] = PICKED): Promise<PoemOutcome> {
 
 const startsOf = (lines: { text: string }[]) => lines.map((line) => line.text.slice(0, 18));
 
+/** Seven Lines: PICKED and one between its third and fourth, so one can go and the Poem is still a Poem. */
+const SEVEN = [...PICKED, 'Dr. Chambers says I may walk'];
+
 describe('removing a Line', () => {
   test('drops that Line and keeps the rest in date order', async () => {
-    const { poem } = await galleryPoem();
+    const { poem } = await galleryPoem(SEVEN);
     expect(startsOf(poem.lines)).toEqual([
       'I wrote this on a ',
       'Come and see the s',
       'I did not sleep, a',
+      'Dr. Chambers says ',
       'I have read your l',
       'I am unhappy enoug',
       'My own dearest, if',
@@ -49,6 +53,7 @@ describe('removing a Line', () => {
     expect(startsOf(afterwards.poem.lines)).toEqual([
       'I wrote this on a ',
       'Come and see the s',
+      'Dr. Chambers says ',
       'I have read your l',
       'I am unhappy enoug',
       'My own dearest, if',
@@ -56,10 +61,46 @@ describe('removing a Line', () => {
     expect(afterwards.poem.lines.map((line) => line.receipt.date)).toEqual([
       '1845-01-10',
       '1845-01-13',
+      '1845-05-20',
       '1845-05-22',
       '1845-09-12',
       '1846-03-24',
     ]);
+  });
+
+  test('a Poem of 7 Lines can lose one, but one of 6 Lines cannot lose any: a Poem is 6 to 14 Lines', async () => {
+    const { poem } = await galleryPoem(SEVEN);
+    const six = removeLine(draftOf(poem), poem.lines[0]!.snippetId);
+
+    expect(six.poem.lines).toHaveLength(6);
+    expect(() => removeLine(six, six.poem.lines[0]!.snippetId)).toThrowError(EditError);
+    expect(() => removeLine(six, six.poem.lines[0]!.snippetId)).toThrowError(
+      expect.objectContaining({ reason: 'minimum-lines', message: 'A Poem needs at least 6 Lines.' }),
+    );
+    // ... and the refusal leaves the Poem as it was.
+    expect(six.poem.lines).toHaveLength(6);
+    expect(six.removed).toHaveLength(1);
+  });
+
+  test('a Poem made with 6 Lines cannot lose any to begin with', async () => {
+    const { poem } = await galleryPoem();
+
+    expect(poem.lines).toHaveLength(6);
+    expect(() => removeLine(draftOf(poem), poem.lines[3]!.snippetId)).toThrowError(expect.objectContaining({ reason: 'minimum-lines' }));
+  });
+
+  test('the Giver is told in a few words why Remove is off at 6 Lines, and not when it is on', async () => {
+    const six = (await galleryPoem()).poem;
+    const seven = (await galleryPoem(SEVEN)).poem;
+
+    expect(removalBlockedReason(six)).toBe('A Poem needs at least 6 Lines.');
+    expect(removalBlockedReason(seven)).toBeNull();
+  });
+
+  test('which Line is asked for comes before the size: a Line the Poem does not have is reported as such', async () => {
+    const { poem } = await galleryPoem(SEVEN);
+
+    expect(() => removeLine(draftOf(poem), 's99999')).toThrowError(expect.objectContaining({ reason: 'unknown-line' }));
   });
 });
 
@@ -84,6 +125,22 @@ describe('replacing a Line', () => {
       ['Elizabeth', '12 September 1845', 'I am unhappy enoug'],
       ['Robert', '24 March 1846', 'My own dearest, if'],
     ]);
+  });
+
+  test('a replacement keeps the number of Lines, so a Poem of 6 Lines (which cannot lose one) can still be improved', async () => {
+    const { poem, snippets } = await galleryPoem();
+    expect(poem.lines).toHaveLength(6);
+    expect(removalBlockedReason(poem)).not.toBeNull();
+
+    const { poem: edited } = await replaceLine({
+      draft: draftOf(poem),
+      snippetId: poem.lines[2]!.snippetId,
+      snippets,
+      beam: replacingWith('Thank you a thousand times for the flowers'),
+    });
+
+    expect(edited.lines).toHaveLength(6);
+    expect(removalBlockedReason(edited)).not.toBeNull();
   });
 
   test('Beam is shown only the Snippets between the neighbouring Lines, minus the Line being replaced', async () => {
@@ -115,9 +172,9 @@ describe('replacing a Line', () => {
 });
 
 describe('replacing a Line in a very long stretch of the Conversation', () => {
-  /** A Poem of one Line (the first Snippet) made from `days` days of heavy letters, `perDay` a day. */
+  /** A Poem of the first 8 Snippets Beam is shown (the least a Conversation this big takes), made from `days` days of heavy letters, `perDay` a day. */
   async function longPoem(days: number, perDay: number, years: number): Promise<PoemOutcome> {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: promptSnippets(request)[0]!.id, note: 'Any.' }] }));
+    const beam = createFakeBeam((request) => ({ picks: promptSnippets(request).slice(0, 8).map(({ id }) => ({ id, note: 'Any.' })) }));
     return makePoem(
       {
         source: { kind: 'gallery', texts: [volumeOfLetters(lettersOnDays(spreadDays(days, years), perDay, heavyBody))] },
@@ -131,26 +188,26 @@ describe('replacing a Line in a very long stretch of the Conversation', () => {
 
   test('the Snippets Beam is shown fit the input budget, as whole days dropped evenly', async () => {
     const outcome = await longPoem(1800, 4, 9);
-    // Replacing the only Line offers everything after it: far more than one call can hold.
+    // Replacing the last Line offers everything after its neighbour: far more than one call can hold.
     expect(estimateTokens(outcome.snippets.map((snippet) => snippet.text).join('\n'))).toBeGreaterThan(INPUT_TOKEN_BUDGET);
     const beam = createFakeBeam((request) => ({ raw: JSON.stringify({ id: promptSnippets(request)[0]!.id }) }));
 
-    const { poem } = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[0]!.snippetId, snippets: outcome.snippets, beam });
+    const { poem } = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[7]!.snippetId, snippets: outcome.snippets, beam });
 
     const [request] = beam.requests;
     expect(estimateTokens(request!.system + request!.user)).toBeLessThanOrEqual(INPUT_TOKEN_BUDGET);
     const offered = promptSnippets(request!);
     expect(offered.length).toBeGreaterThan(1000);
-    // 4 Snippets a day, so no day is cut in half; only the Line being replaced is missing from its day.
+    // 4 Snippets a day, so no day is cut in half: every day offered has all four.
     const perDay = new Map<string, number>();
     for (const header of request!.user.split('\n').filter((row) => row.startsWith('## '))) {
       const date = header.slice(5);
       perDay.set(date, (perDay.get(date) ?? 0) + 1);
     }
-    expect([...perDay.values()].filter((count) => count !== 4)).toEqual([3]);
+    expect([...perDay.values()].filter((count) => count !== 4)).toEqual([]);
     expect(perDay.size).toBeLessThan(1800);
-    expect(poem.lines).toHaveLength(1);
-    expect(poem.lines[0]!.snippetId).not.toBe(outcome.poem.lines[0]!.snippetId);
+    expect(poem.lines).toHaveLength(8);
+    expect(poem.lines[7]!.snippetId).not.toBe(outcome.poem.lines[7]!.snippetId);
   });
 
   test('a stretch short enough to fit is sent whole', async () => {
@@ -167,7 +224,7 @@ describe('replacing a Line in a very long stretch of the Conversation', () => {
     const oneDay = outcome.snippets.map((snippet) => ({ ...snippet, date: outcome.snippets[0]!.date }));
     const beam = createFakeBeam(() => ({ raw: JSON.stringify({ id: 's1' }) }));
 
-    const failure = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[0]!.snippetId, snippets: oneDay, beam }).catch((e: unknown) => e);
+    const failure = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[7]!.snippetId, snippets: oneDay, beam }).catch((e: unknown) => e);
 
     expect(failure).toBeInstanceOf(EditError);
     expect(failure).toMatchObject({ reason: 'no-alternatives', message: expect.stringMatching(/too long/i) });
@@ -296,8 +353,15 @@ describe('what replacing leaves behind', () => {
   });
 
   test('with nothing else left in the period it says so without calling Beam', async () => {
-    // Three Snippets side by side in one letter: nothing lies between the first and the last.
-    const outcome = await galleryPoem(['I wrote this on a wet afternoon', 'Mr. Kenyon says', 'I laughed aloud in the omnibus']);
+    // Three Snippets side by side in one letter: nothing lies between the first and the third.
+    const outcome = await galleryPoem([
+      'I wrote this on a wet afternoon',
+      'Mr. Kenyon says',
+      'I laughed aloud in the omnibus',
+      'I have read your letter again',
+      'I am unhappy enough',
+      'I never write more gladly',
+    ]);
     const beam = replacingWith('Mr. Kenyon says');
 
     const failure = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[1]!.snippetId, snippets: outcome.snippets, beam }).catch((e: unknown) => e);
@@ -324,7 +388,8 @@ describe('only the Giver and the Recipient are heard', () => {
 
 describe('what the Giver can never do', () => {
   test('whatever they remove or replace, every Line stays its Snippet\'s own text, in date order', async () => {
-    const outcome = await galleryPoem();
+    const outcome = await galleryPoem([...PICKED, 'Dr. Chambers says I may walk', 'Miss Thomson wants me']);
+    expect(outcome.poem.lines).toHaveLength(8);
     let draft = draftOf(outcome.poem);
     draft = removeLine(draft, draft.poem.lines[4]!.snippetId);
     draft = await replaceLine({ draft, snippetId: draft.poem.lines[2]!.snippetId, snippets: outcome.snippets, beam: replacingWith('You were kind to come') });
@@ -335,21 +400,13 @@ describe('what the Giver can never do', () => {
     expect(draft.poem.lines.every((line) => line.text === snippetTexts.get(line.snippetId))).toBe(true);
     const dates = draft.poem.lines.map((line) => line.receipt.date);
     expect(dates).toEqual([...dates].sort());
-    expect(draft.poem.lines).toHaveLength(4);
-  });
-
-  test('a Poem keeps at least one Line, and only a Line it has can be removed', async () => {
-    const { poem } = await galleryPoem(['I wrote this on a wet afternoon', 'Come and see the sea']);
-    const one = removeLine(draftOf(poem), poem.lines[0]!.snippetId);
-
-    expect(() => removeLine(one, one.poem.lines[0]!.snippetId)).toThrowError(expect.objectContaining({ reason: 'last-line' }));
-    expect(() => removeLine(one, poem.lines[0]!.snippetId)).toThrowError(expect.objectContaining({ reason: 'unknown-line' }));
+    expect(draft.poem.lines).toHaveLength(6);
   });
 });
 
 describe('an edited Poem still leaves its Notes behind', () => {
   test('after removing and replacing, the Card made from the Poem holds no Note and no callback', async () => {
-    const outcome = await galleryPoem();
+    const outcome = await galleryPoem(SEVEN);
     let draft = removeLine(draftOf(outcome.poem), outcome.poem.lines[4]!.snippetId);
     draft = await replaceLine({ draft, snippetId: draft.poem.lines[2]!.snippetId, snippets: outcome.snippets, beam: replacingWith('You were kind to come') });
     // A Note from Beam, with a callback, on a Line that survived the edits.

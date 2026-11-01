@@ -59,8 +59,9 @@ function realBeam(): BeamPort {
 const beam = dry
   ? createFakeBeam((request) => {
       console.log(`[dry run] prompt: ${request.system.length + request.user.length} characters (about ${Math.round((request.system.length + request.user.length) / 4)} tokens)`);
-      const first = /^(s\d+) /m.exec(request.user)?.[1] ?? 's0';
-      return { picks: [{ id: first, note: 'dry run' }] };
+      // Eight is a whole Poem in either size tier (6 to 8 Lines, 8 to 14).
+      const first = [...request.user.matchAll(/^(s\d+) /gm)].slice(0, 8).map((match) => match[1]!);
+      return { picks: first.map((id) => ({ id, note: 'dry run' })) };
     })
   : measured(realBeam());
 

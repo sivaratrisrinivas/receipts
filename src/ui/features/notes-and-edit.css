@@ -147,6 +147,11 @@
   cursor: progress;
 }
 
+/* Remove, switched off because the Poem is at its 6 Lines: not busy, just not allowed. */
+.action.is-blocked[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
 .confirm {
   display: flex;
   flex-wrap: wrap;

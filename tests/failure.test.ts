@@ -82,6 +82,18 @@ describe('describing a failure to the Giver', () => {
     expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
   });
 
+  test('a Poem of the wrong size says how many Lines Beam returned and how many a Poem needs, and offers a retry', () => {
+    const failure = describeFailure(
+      new BeamError('wrong-size', 'Beam returned 5 Lines; a Poem needs 8 to 14. Try again.', true),
+    );
+
+    expect(failure.kind).toBe('wrong-size');
+    expect(failure.title).toBe('Beam gave the wrong number of Lines');
+    expect(failure.message).toBe('Beam returned 5 Lines; a Poem needs 8 to 14. Try again.');
+    expect(failure.help).toBeUndefined();
+    expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
+  });
+
   test.each([401, 403])('an expired or refused sign-in (HTTP %i) asks the Giver to sign in again instead of retrying', (status) => {
     const failure = describeFailure(new BeamError('http', `Beam request failed (HTTP ${status})`, false, status));
 

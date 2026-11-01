@@ -1,6 +1,7 @@
 // Poem editing: what the Giver may do with a Poem after Beam has made it (ADR-0002).
 //
-// They may remove a Line, or replace one with a different Snippet from the same period.
+// They may remove a Line (never below the Glossary's 6), or replace one with a different
+// Snippet from the same period (which keeps the count).
 // There is deliberately nothing here that edits a Line's text or moves a Line: a Line is
 // only ever looked up from a Snippet, and a replacement takes the place of the Line it
 // replaces, between the same two neighbours.
@@ -9,7 +10,7 @@ import { BeamError, requireContent, type BeamPort, type BeamProgress, type BeamR
 import type { Line, Poem, Snippet } from './domain';
 import { renderSnippets, senderLabels } from './prompt';
 import { redactText } from './redaction';
-import { fitToBudget } from './selection';
+import { MIN_POEM_LINES, fitToBudget } from './selection';
 import { lineOf } from './verification';
 
 /** A Poem being worked on, with the Snippets the Giver has taken out of it. */
@@ -26,8 +27,8 @@ export function draftOf(poem: Poem): Draft {
 export type EditErrorReason =
   /** The Poem has no such Line. */
   | 'unknown-line'
-  /** A Poem keeps at least one Line; to start over, make another. */
-  | 'last-line'
+  /** A Poem is at least 6 Lines (the Glossary); to start over, make another. */
+  | 'minimum-lines'
   /** Nothing else is left in that period to replace the Line with. */
   | 'no-alternatives';
 
@@ -41,10 +42,16 @@ export class EditError extends Error {
   }
 }
 
+/** Why no Line can be removed from this Poem right now, in a few words for the Giver; null when one can. */
+export function removalBlockedReason(poem: Poem): string | null {
+  return poem.lines.length <= MIN_POEM_LINES ? `A Poem needs at least ${MIN_POEM_LINES} Lines.` : null;
+}
+
 export function removeLine(draft: Draft, snippetId: string): Draft {
   const { lines } = draft.poem;
   if (!lines.some((line) => line.snippetId === snippetId)) throw new EditError('unknown-line', 'That Line is not in the Poem.');
-  if (lines.length === 1) throw new EditError('last-line', 'A Poem needs at least one Line.');
+  const blocked = removalBlockedReason(draft.poem);
+  if (blocked !== null) throw new EditError('minimum-lines', blocked);
   return {
     poem: { ...draft.poem, lines: lines.filter((line) => line.snippetId !== snippetId) },
     removed: [...draft.removed, snippetId],

@@ -4,6 +4,7 @@
 //                the Line's original Message, shown by tapping the Line or "In context".
 //   lineActions  Replace and Remove. There is no way to edit a Line's text or move a Line
 //                (ADR-0002): a Line is only ever a Snippet, and a replacement keeps its place.
+//                Remove is switched off, with its reason, once the Poem is down to 6 Lines.
 //   poemActions  Regenerate the whole Poem.
 //
 // Everything here is for the Giver only. It carries the `giver-only` class so printing the
@@ -14,6 +15,7 @@ import { isReplacing, type AppState } from '../../app/state';
 import { contextOf, noteParts, unlinkedCallbacks } from '../../context';
 import { formatDateLabel } from '../../dates';
 import type { Snippet } from '../../domain';
+import { removalBlockedReason } from '../../editing';
 import { h } from '../dom';
 import { extensions, type LineSlotContext, type PoemSlotContext } from '../extensions';
 import './notes-and-edit.css';
@@ -129,8 +131,11 @@ function lineDetails({ app, line }: LineSlotContext): Node | null {
 // ---- Under each Line: Replace and Remove ------------------------------------------------
 
 function lineActions({ app, poem, line, index }: LineSlotContext): Node | null {
+  // A Poem is at least 6 Lines: at 6, Remove is switched off (still focusable, so the reason is
+  // announced and a tap explains it), and Replace carries on, since it keeps the count.
+  const blocked = removalBlockedReason(poem);
   const replace = h('button', { class: 'action giver-only', type: 'button' }, 'Replace');
-  const remove = h('button', { class: 'action giver-only danger', type: 'button' }, 'Remove');
+  const remove = h('button', { class: `action giver-only danger${blocked === null ? '' : ' is-blocked'}`, type: 'button', title: blocked }, 'Remove');
   const sure = h('button', { class: 'action giver-only danger solid', type: 'button' }, 'Yes, remove');
   const keep = h('button', { class: 'action giver-only', type: 'button' }, 'Keep it');
   const confirm = h('span', { class: 'confirm giver-only', role: 'group', 'aria-label': 'Remove this Line?', hidden: true }, h('span', null, 'Remove this Line?'), sure, keep);
@@ -145,6 +150,12 @@ function lineActions({ app, poem, line, index }: LineSlotContext): Node | null {
   });
   remove.addEventListener('click', () => {
     if (waiting) return;
+    if (blocked !== null) {
+      status.classList.remove('is-problem');
+      status.textContent = blocked;
+      status.hidden = false;
+      return;
+    }
     remove.hidden = true;
     confirm.hidden = false;
     sure.focus();
@@ -163,10 +174,9 @@ function lineActions({ app, poem, line, index }: LineSlotContext): Node | null {
   keepFresh(app, replace, (state) => {
     const mine = state.editing.replacement?.snippetId === line.snippetId ? state.editing.replacement : null;
     waiting = isReplacing(state.editing);
-    for (const button of [replace, remove, sure, keep]) setBusy(button, waiting);
+    for (const button of [replace, sure, keep]) setBusy(button, waiting);
+    setBusy(remove, waiting || blocked !== null);
     replace.textContent = waiting && mine ? 'Finding another…' : 'Replace';
-    // A Poem keeps at least one Line.
-    if (poem.lines.length <= 1) remove.hidden = true;
 
     status.hidden = mine === null;
     status.classList.toggle('is-problem', mine?.problem != null);

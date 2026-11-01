@@ -10,7 +10,7 @@ import { readConversation, type RawSource } from './sources';
 import { selectSnippets, type ReadFraction } from './selection';
 import { between } from './sources/between';
 import { snippetsOf } from './snippets';
-import { verifyAnswer } from './verification';
+import { requireLineCount, verifyAnswer } from './verification';
 
 export interface PoemRequest {
   source: RawSource;
@@ -77,6 +77,7 @@ export async function tryMakePoem(
     options.onProgress,
   );
   const { lines, verified } = verifyAnswer(requireContent(completion), selection.snippets);
+  requireLineCount(lines, selection.lineRange);
   return {
     poem: { occasion: request.occasion, giver: request.giver, recipient: request.recipient, lines, verified },
     readFraction: selection.readFraction,

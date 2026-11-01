@@ -307,10 +307,15 @@ describe('a Card made from a Poem the pipeline produced', () => {
     request.user.split('\n').flatMap((row) => (row.includes(fragment) ? [/^(s\d+) /.exec(row)![1]!] : []))[0]!;
 
   test('letters keep their "c." dates, their context, and the Line picked out in its letter', async () => {
+    // Six Lines make a Poem; the first two are the ones under test, the rest come after them.
     const beam = createFakeBeam((request) => ({
       picks: [
         { id: idOf(request, 'I wrote this on a wet afternoon'), note: 'PRIVATE-NOTE: the first letter.' },
         { id: idOf(request, 'The post comes at nine'), note: 'PRIVATE-NOTE: undated, so c.' },
+        ...['You were kind to come', 'I have read your letter again', 'I am unhappy enough', 'My own dearest'].map((fragment) => ({
+          id: idOf(request, fragment),
+          note: 'PRIVATE-NOTE: later on.',
+        })),
       ],
     }));
     const { poem, conversation } = await makePoem(
@@ -331,7 +336,7 @@ describe('a Card made from a Poem the pipeline produced', () => {
       'I have read your lette',
     ]);
     expect(second!.context.map((message) => message.when)).toContain('c. 13 January 1845');
-    expect([...html.matchAll(/<mark>([\s\S]*?)<\/mark>/g)].map((match) => readable(match[1]!))).toEqual([
+    expect([...html.matchAll(/<mark>([\s\S]*?)<\/mark>/g)].map((match) => readable(match[1]!)).slice(0, 2)).toEqual([
       'I wrote this on a wet afternoon and I mean every word of it, dear Miss Barrett.',
       'I did not sleep, and I do not care. The post comes at nine and I am at the gate by eight. Tell me that the cough is better.',
     ]);

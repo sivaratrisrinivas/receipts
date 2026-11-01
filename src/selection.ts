@@ -51,15 +51,19 @@ function rowWeight(snippet: Snippet): number {
 
 // --- Size table --------------------------------------------------------------------------
 
-/** How many Lines a Poem is asked to have. */
+/** How many Lines a Poem has. */
 export interface LineRange {
   min: number;
   max: number;
 }
 
+/** The Glossary: a Poem is 6 to 14 Lines. No Conversation, however large or small, changes that. */
+export const MIN_POEM_LINES = 6;
+export const MAX_POEM_LINES = 14;
+
 /**
  * The size table: the fewest usable Snippets that earn each Line range, largest first.
- * Below the last row there is no Poem.
+ * Below the last row there is no Poem. Every range sits inside the Glossary's 6 to 14.
  */
 const SIZE_TABLE: readonly { minSnippets: number; lines: LineRange }[] = [
   { minSnippets: 40, lines: { min: 8, max: 14 } },

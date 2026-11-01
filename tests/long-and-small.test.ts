@@ -7,12 +7,14 @@ import { createFakeBeam } from '../src';
 import { createApp } from '../src/app/app';
 import type { AuthPort, Session } from '../src/app/auth';
 import { readFractionMessage } from '../src/app/read-fraction';
+import { promptSnippets } from './support/prompt';
 import { heavyBody, lettersOnDays, shortBody, spreadDays, volumeOfLetters } from './fixtures/letters';
 
 const session: Session = { accessToken: 'hf_test', expiresAt: Date.now() + 3_600_000, username: 'giver' };
 
 function setup(volume: string) {
-  const beam = createFakeBeam((request) => ({ picks: [{ id: /^(s\d+) /m.exec(request.user)![1]!, note: 'Any.' }] }));
+  // The first 8 Snippets: a whole Poem in either size tier (6 to 8 Lines, 8 to 14).
+  const beam = createFakeBeam((request) => ({ picks: promptSnippets(request).slice(0, 8).map(({ id }) => ({ id, note: 'Any.' })) }));
   const auth: AuthPort = {
     restore: async () => ({ session }),
     signIn: async () => {},
