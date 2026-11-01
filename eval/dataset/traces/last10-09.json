@@ -1,0 +1,219 @@
+{
+  "condition": "last10",
+  "index": 9,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:18:14.636Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 7.891,
+  "costUsd": 0.018454800000000004,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.692,
+      "costUsd": 0.018454800000000004,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38976,
+        "completionTokens": 2387,
+        "reasoningTokens": 1781
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Robert's note: Elizabeth opens with the private understanding that defines their bond.\", \"callbacks\": []},\n    {\"id\": \"s21\", \"note\": \"Robert's note: Elizabeth's playful Ossian question is a private literary tease.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert's note: my early kiss sign-off shows how quickly our intimacy became ritual.\", \"callbacks\": []},\n    {\"id\": \"s103\", \"note\": \"Robert's note: my first apology frames the anxious tenderness of these letters.\", \"callbacks\": []},\n    {\"id\": \"s148\", \"note\": \"Robert's note: my childhood Ossian confession answers Elizabeth's earlier question.\", \"callbacks\": [\"s21\"]},\n    {\"id\": \"s304\", \"note\": \"Robert's note: Elizabeth asks forgiveness for a thought she regrets.\", \"callbacks\": []},\n    {\"id\": \"s489\", \"note\": \"Robert's note: my apology asks her to forgive whatever needs forgiving.\", \"callbacks\": [\"s304\"]},\n    {\"id\": \"s577\", \"note\": \"Robert's note: Flush's disappearance becomes a shared crisis between us.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Robert's note: my sympathy for Flush shows I entered Elizabeth's private world.\", \"callbacks\": [\"s577\"]},\n    {\"id\": \"s845\", \"note\": \"Robert's note: Flush's sofa return resolves the dog-stealer episode.\", \"callbacks\": [\"s577\", \"s616\"]},\n    {\"id\": \"s906\", \"note\": \"Robert's note: I am glad Flush is with Elizabeth, even when I cannot be.\", \"callbacks\": [\"s845\"]},\n    {\"id\": \"s1014\", \"note\": \"Robert's note: Elizabeth's single-willed assent carries our marriage forward.\", \"callbacks\": []},\n    {\"id\": \"s1030\", \"note\": \"Robert's note: my few words on the eve of marriage hold back fuller feeling.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"Robert's note: Elizabeth's wedding-day letter keeps me close through danger.\", \"callbacks\": []},\n    {\"id\": \"s1155\", \"note\": \"Robert's note: my exultation at the irrevocability of our marriage.\", \"callbacks\": []},\n    {\"id\": \"s1464\", \"note\": \"Robert's note: Elizabeth's last letter before our departure closes the story.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Robert's note: Elizabeth opens with the private understanding that defines their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s21",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "By the way, do you believe in Ossian?",
+        "note": "Robert's note: Elizabeth's playful Ossian question is a private literary tease.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert's note: my early kiss sign-off shows how quickly our intimacy became ritual.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s103",
+        "messageOrdinal": 517,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "I shall give this letter to be put in the post—I have all to say, but the very essential is said—understand me, my best, only love, and forgive my undue alarm, for the sake of the love that prompts it.",
+        "note": "Robert's note: my first apology frames the anxious tenderness of these letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s148",
+        "messageOrdinal": 519,
+        "sender": "Robert",
+        "date": "1846-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1846",
+        "text": "You asked me about Ossian—now here is truth—the first book I ever bought in my life was Ossian ... it is now in the next room.",
+        "note": "Robert's note: my childhood Ossian confession answers Elizabeth's earlier question.",
+        "callbacks": [
+          "s21"
+        ]
+      },
+      {
+        "snippetId": "s304",
+        "messageOrdinal": 524,
+        "sender": "Elizabeth",
+        "date": "1846-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1846",
+        "text": "And something I said in my letter, which was wrong to say and I am sorry to think of—forgive me that, ever beloved—but you have forgiven, I know.",
+        "note": "Robert's note: Elizabeth asks forgiveness for a thought she regrets.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s489",
+        "messageOrdinal": 530,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I will say no more, praying you to forgive whatever you shall judge to need forgiveness here,—dearest Ba!",
+        "note": "Robert's note: my apology asks her to forgive whatever needs forgiving.",
+        "callbacks": [
+          "s304"
+        ]
+      },
+      {
+        "snippetId": "s577",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Here is a distress for me, dearest!",
+        "note": "Robert's note: Flush's disappearance becomes a shared crisis between us.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert's note: my sympathy for Flush shows I entered Elizabeth's private world.",
+        "callbacks": [
+          "s577"
+        ]
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Robert's note: Flush's sofa return resolves the dog-stealer episode.",
+        "callbacks": [
+          "s577",
+          "s616"
+        ]
+      },
+      {
+        "snippetId": "s906",
+        "messageOrdinal": 547,
+        "sender": "Robert",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "I am delighted to know Flush is with you, if I am not.",
+        "note": "Robert's note: I am glad Flush is with Elizabeth, even when I cannot be.",
+        "callbacks": [
+          "s845"
+        ]
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Robert's note: Elizabeth's single-willed assent carries our marriage forward.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1030",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You will only expect a few words—what will those be?",
+        "note": "Robert's note: my few words on the eve of marriage hold back fuller feeling.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Robert's note: Elizabeth's wedding-day letter keeps me close through danger.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "Robert's note: my exultation at the irrevocability of our marriage.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Robert's note: Elizabeth's last letter before our departure closes the story.",
+        "callbacks": []
+      }
+    ]
+  }
+}

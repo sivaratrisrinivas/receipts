@@ -1,0 +1,164 @@
+{
+  "condition": "last10",
+  "index": 8,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:11:23.208Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 7.974,
+  "costUsd": 0.018978400000000003,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 7.109,
+      "costUsd": 0.018978400000000003,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38977,
+        "completionTokens": 2823,
+        "reasoningTokens": 2340
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Opens with her saying she already understood you, setting the secret tenderness of the first letters.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"Her vivid account of Flush throwing himself on her after the frightening church escape.\", \"callbacks\": []},\n    {\"id\": \"s223\", \"note\": \"Her promise that one heart and one life are yours, a central early vow.\", \"callbacks\": []},\n    {\"id\": \"s790\", \"note\": \"Her private joke that she is your Flush and he is hers, turning the dog-stealer debate into shared language.\", \"callbacks\": []},\n    {\"id\": \"s835\", \"note\": \"Her admission that she is only afraid of losing your affection, showing the depth of her trust.\", \"callbacks\": []},\n    {\"id\": \"s883\", \"note\": \"Her smile at your phrase about the grave man and woman talking business, a private joke about the marriage plans.\", \"callbacks\": []},\n    {\"id\": \"s1037\", \"note\": \"Your declaration that you would not change one word or look of hers, a sweeping backward look of love.\", \"callbacks\": []},\n    {\"id\": \"s1069\", \"note\": \"Her gratitude that all she is, she owes to you, a strong thank-you from the wedding aftermath.\", \"callbacks\": []},\n    {\"id\": \"s1093\", \"note\": \"Her joy at being able to love you openly after the secret wedding.\", \"callbacks\": []},\n    {\"id\": \"s1119\", \"note\": \"Your promise that now you possess her, you renew the offer to possess you, sealing the new relation.\", \"callbacks\": []},\n    {\"id\": \"s1260\", \"note\": \"Her comfort in the hands held out to her by your family, a grateful acceptance of your world.\", \"callbacks\": []},\n    {\"id\": \"s1461\", \"note\": \"Her refusal to leave your letters behind, however heavy the ounces, a final keepsake of the courtship.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Opens with her saying she already understood you, setting the secret tenderness of the first letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Her vivid account of Flush throwing himself on her after the frightening church escape.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s223",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "But if one heart and one life will do, ... they are yours ...",
+        "note": "Her promise that one heart and one life are yours, a central early vow.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Her private joke that she is your Flush and he is hers, turning the dog-stealer debate into shared language.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s835",
+        "messageOrdinal": 543,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Now it is changed ... the feeling is—and I am not afraid even so—except sometimes of losing your affection by some fault of my own—I am not afraid that it would be a fault of yours, remember.",
+        "note": "Her admission that she is only afraid of losing your affection, showing the depth of her trust.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s883",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "And smiling to myself I was, both last night and this morning, at your phrase about the ‘business’ to be talked by the ‘grave man and woman’; understanding your precaution against all unlawful jesting!—jesters forbidden in the protocol!",
+        "note": "Her smile at your phrase about the grave man and woman talking business, a private joke about the marriage plans.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1037",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "I look back, and in every one point, every word and gesture, every letter, every silence—you have been entirely perfect to me—I would not change one word, one look.",
+        "note": "Your declaration that you would not change one word or look of hers, a sweeping backward look of love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Her gratitude that all she is, she owes to you, a strong thank-you from the wedding aftermath.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1093",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I have a right now openly to love you, and to hear other people call it a duty, when I do, ... knowing that if it were a sin, it would be done equally.",
+        "note": "Her joy at being able to love you openly after the secret wedding.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1119",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You know what I would have done to possess you:—now that I do possess you, I renew the offer to you ... judge with what earnest purpose of keeping my word!",
+        "note": "Your promise that now you possess her, you renew the offer to possess you, sealing the new relation.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1260",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "And then ... imagine the comfort I take to the deepest of my heart from these hands held out to me!",
+        "note": "Her comfort in the hands held out to her by your family, a grateful acceptance of your world.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1461",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "Her refusal to leave your letters behind, however heavy the ounces, a final keepsake of the courtship.",
+        "callbacks": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "condition": "random",
+  "index": 8,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:11:31.184Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.613,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s665",
+        "messageOrdinal": 28,
+        "sender": "Elizabeth",
+        "date": "1845-05-22",
+        "approximate": false,
+        "dateLabel": "22 May 1845",
+        "text": "Ah--how you misjudge!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s861",
+        "messageOrdinal": 52,
+        "sender": "Elizabeth",
+        "date": "1845-06-28",
+        "approximate": false,
+        "dateLabel": "28 June 1845",
+        "text": "You are very kind and always--but really that does not seem a good reason against your coming to-morrow--so come, if it should not rain.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1607",
+        "messageOrdinal": 110,
+        "sender": "Elizabeth",
+        "date": "1845-09-24",
+        "approximate": false,
+        "dateLabel": "24 September 1845",
+        "text": "May God bless you, dearest friend!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1822",
+        "messageOrdinal": 124,
+        "sender": "Elizabeth",
+        "date": "1845-10-11",
+        "approximate": false,
+        "dateLabel": "11 October 1845",
+        "text": "I last for a long while:--not to say that I have the pretension of being as good and inexhaustible a listener to your own speaking as you could find in the world.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1933",
+        "messageOrdinal": 130,
+        "sender": "Elizabeth",
+        "date": "1845-10-16",
+        "approximate": false,
+        "dateLabel": "16 October 1845",
+        "text": "And in the meantime you will not talk of extravagances; and then nobody need hold up the hand--because, as I said and say, I am yours, your own--only not to hurt you.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3979",
+        "messageOrdinal": 218,
+        "sender": "Elizabeth",
+        "date": "1846-02-02",
+        "approximate": false,
+        "dateLabel": "2 February 1846",
+        "text": "'making the most of them' too! and the 'black pits,' which gaped ... where did they gape? who could tell?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4388",
+        "messageOrdinal": 238,
+        "sender": "Elizabeth",
+        "date": "1846-02-19",
+        "approximate": true,
+        "dateLabel": "c. 19 February 1846",
+        "text": "'Such a respectable family,' said George, 'the grandfather in court looking venerable, and everyone indignant upon being so disgraced by her!'",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6121",
+        "messageOrdinal": 312,
+        "sender": "Elizabeth",
+        "date": "1846-04-14",
+        "approximate": false,
+        "dateLabel": "14 April 1846",
+        "text": "At last I made up my mind that you had persisted in not explaining, or that the printer had dropped the manuscript.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8913",
+        "messageOrdinal": 434,
+        "sender": "Elizabeth",
+        "date": "1846-07-03",
+        "approximate": false,
+        "dateLabel": "3 July 1846",
+        "text": "‘Where’s Ba?’—‘Oh, she’s somewhere in the world, I suppose.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9217",
+        "messageOrdinal": 447,
+        "sender": "Robert",
+        "date": "1846-07-08",
+        "approximate": true,
+        "dateLabel": "c. 8 July 1846",
+        "text": "Talfourd’s reply amounted to this,—(in the fewest words possible).",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11163",
+        "messageOrdinal": 518,
+        "sender": "Elizabeth",
+        "date": "1846-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1846",
+        "text": "What affects me in those churches and chapels is something different, quite different, from railroad noises and the like.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11815",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Still they may sing on the other side of the wall, not to be too far from the cherries and the hope of them.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

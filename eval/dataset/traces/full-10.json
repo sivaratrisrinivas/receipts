@@ -1,0 +1,169 @@
+{
+  "condition": "full",
+  "index": 10,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:18:26.054Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 135.536,
+  "costUsd": 0.3847188,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 115.723,
+      "costUsd": 0.2380756,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 11.158,
+      "costUsd": 0.1466432,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352298,
+        "completionTokens": 4770,
+        "reasoningTokens": 4329
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s2\",\n      \"note\": \"Your first letter's nearly-seen-you memory opens the whole longing.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"Spring promise to see her, echoing that first near-miss.\",\n      \"callbacks\": [\"s2\"]\n    },\n    {\n      \"id\": \"s246\",\n      \"note\": \"Her playful answer about spring in her own style, answering your promise.\",\n      \"callbacks\": [\"s222\"]\n    },\n    {\n      \"id\": \"s1064\",\n      \"note\": \"Later letter where hearing from her is second only to seeing her.\",\n      \"callbacks\": [\"s246\"]\n    },\n    {\n      \"id\": \"s1117\",\n      \"note\": \"Her reply that you could write from the end of the world, answering your delight in hearing from her.\",\n      \"callbacks\": [\"s1064\"]\n    },\n    {\n      \"id\": \"s3938\",\n      \"note\": \"Late declaration that your only good is to spend life with her.\",\n      \"callbacks\": [\"s1117\"]\n    },\n    {\n      \"id\": \"s3943\",\n      \"note\": \"Her acceptance of your will as duty and desire.\",\n      \"callbacks\": [\"s3938\"]\n    },\n    {\n      \"id\": \"s6330\",\n      \"note\": \"Her watch-and-wait line for Monday morning.\",\n      \"callbacks\": [\"s3943\"]\n    },\n    {\n      \"id\": \"s6332\",\n      \"note\": \"Your promise to tell her the proof you cannot write down.\",\n      \"callbacks\": [\"s6330\"]\n    },\n    {\n      \"id\": \"s6354\",\n      \"note\": \"Your offer to give back her golden words.\",\n      \"callbacks\": [\"s6332\"]\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s2",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "Do you know I was once not very far from seeing--really seeing you?",
+        "note": "Your first letter's nearly-seen-you memory opens the whole longing.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Spring promise to see her, echoing that first near-miss.",
+        "callbacks": [
+          "s2"
+        ]
+      },
+      {
+        "snippetId": "s246",
+        "messageOrdinal": 9,
+        "sender": "Elizabeth",
+        "date": "1845-02-27",
+        "approximate": false,
+        "dateLabel": "27 February 1845",
+        "text": "Yes, but, dear Mr. Browning, I want the spring according to the new 'style' (mine), and not the old one of you and the rest of the poets.",
+        "note": "Her playful answer about spring in her own style, answering your promise.",
+        "callbacks": [
+          "s222"
+        ]
+      },
+      {
+        "snippetId": "s1064",
+        "messageOrdinal": 69,
+        "sender": "Robert",
+        "date": "1845-07-31",
+        "approximate": false,
+        "dateLabel": "31 July 1845",
+        "text": "I have but one greater delight in the world than in hearing from you.",
+        "note": "Later letter where hearing from her is second only to seeing her.",
+        "callbacks": [
+          "s246"
+        ]
+      },
+      {
+        "snippetId": "s1117",
+        "messageOrdinal": 72,
+        "sender": "Elizabeth",
+        "date": "1845-08-08",
+        "approximate": false,
+        "dateLabel": "8 August 1845",
+        "text": "I mean such truths as may be painful to me though truths....",
+        "note": "Her reply that you could write from the end of the world, answering your delight in hearing from her.",
+        "callbacks": [
+          "s1064"
+        ]
+      },
+      {
+        "snippetId": "s3938",
+        "messageOrdinal": 215,
+        "sender": "Robert",
+        "date": "1846-01-28",
+        "approximate": false,
+        "dateLabel": "28 January 1846",
+        "text": "My only good in this world--that against which all the world goes for nothing--is to spend my life with you, and be yours.",
+        "note": "Late declaration that your only good is to spend life with her.",
+        "callbacks": [
+          "s1117"
+        ]
+      },
+      {
+        "snippetId": "s3943",
+        "messageOrdinal": 216,
+        "sender": "Elizabeth",
+        "date": "1846-01-31",
+        "approximate": false,
+        "dateLabel": "31 January 1846",
+        "text": "Let it be this way, ever dearest.",
+        "note": "Her acceptance of your will as duty and desire.",
+        "callbacks": [
+          "s3938"
+        ]
+      },
+      {
+        "snippetId": "s6330",
+        "messageOrdinal": 318,
+        "sender": "Elizabeth",
+        "date": "1846-04-18",
+        "approximate": false,
+        "dateLabel": "18 April 1846",
+        "text": "Yet I shall see you on Monday, and shall watch and wait as those who wait for the morning ... that is, the Monday-morning!",
+        "note": "Her watch-and-wait line for Monday morning.",
+        "callbacks": [
+          "s3943"
+        ]
+      },
+      {
+        "snippetId": "s6332",
+        "messageOrdinal": 319,
+        "sender": "Robert",
+        "date": "1846-04-18",
+        "approximate": false,
+        "dateLabel": "18 April 1846",
+        "text": "Now, dearest, somehow I can’t write the great proof down—I will tell you on Monday—as to my good sense.",
+        "note": "Your promise to tell her the proof you cannot write down.",
+        "callbacks": [
+          "s6330"
+        ]
+      },
+      {
+        "snippetId": "s6354",
+        "messageOrdinal": 320,
+        "sender": "Robert",
+        "date": "1846-04-20",
+        "approximate": false,
+        "dateLabel": "20 April 1846",
+        "text": "Well,—and this is what I meant to say from the beginning of the letter, I love your inability to feel it in spite of right and justice and rationality.",
+        "note": "Your offer to give back her golden words.",
+        "callbacks": [
+          "s6332"
+        ]
+      }
+    ]
+  }
+}

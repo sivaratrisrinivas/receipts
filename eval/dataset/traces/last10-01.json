@@ -1,0 +1,171 @@
+{
+  "condition": "last10",
+  "index": 1,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T22:57:50.849Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 5.742,
+  "costUsd": 0.0178392,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.368,
+      "costUsd": 0.0178392,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38976,
+        "completionTokens": 1874,
+        "reasoningTokens": 1311
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Opening recognition between them, setting the private understanding of their early exchange. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert’s affectionate, intimate turn of phrase, a vivid early moment of closeness. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s439\", \"note\": \"Elizabeth reports a small, practical victory over her fear of crowds, showing her growing steadiness. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s498\", \"note\": \"Robert responds to her love with grateful wonder, marking a deepening emotional exchange. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"The sudden loss of Flush brings a concrete crisis and shows Elizabeth’s tender attachment to their companion. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s760\", \"note\": \"Elizabeth’s sweeping praise of Robert’s goodness captures the height of their mid-period devotion. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s845\", \"note\": \"Flush’s return after the dog-stealing ordeal gives a concrete, joyful resolution to that shared worry. Callbacks: [\\\"s578\\\"]\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s979\", \"note\": \"Robert’s letter shifts the correspondence toward the decisive step of marriage. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s1030\", \"note\": \"Robert reflects on the fullness of feeling just before their marriage, closing the pre-marriage period. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s1103\", \"note\": \"Robert’s gratitude after the wedding shows the emotional weight of what has just occurred. Callbacks: [\\\"s1030\\\"]\", \"callbacks\": [\"s1030\"]},\n    {\"id\": \"s1202\", \"note\": \"Elizabeth gives thanks for Robert’s recovery and looks toward their life beyond England. Callbacks: []\", \"callbacks\": []},\n    {\"id\": \"s1456\", \"note\": \"Elizabeth’s final letter before departure turns their love toward the future they are about to share. Callbacks: [\\\"s1030\\\", \\\"s1103\\\"]\", \"callbacks\": [\"s1030\", \"s1103\"]}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Opening recognition between them, setting the private understanding of their early exchange. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert’s affectionate, intimate turn of phrase, a vivid early moment of closeness. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s439",
+        "messageOrdinal": 529,
+        "sender": "Elizabeth",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I have just come from the vestry of Paddington chapel, and bore it very well, and saw nobody except one woman.",
+        "note": "Elizabeth reports a small, practical victory over her fear of crowds, showing her growing steadiness. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s498",
+        "messageOrdinal": 531,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "Here is dearest Ba’s dearest letter, because the latest, and it is one of her very kisses incorporated and made manifest—so perfectly kind!",
+        "note": "Robert responds to her love with grateful wonder, marking a deepening emotional exchange. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The sudden loss of Flush brings a concrete crisis and shows Elizabeth’s tender attachment to their companion. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s760",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Was ever any in the world, in any possible world, so perfectly good and dear to another as you are to me!",
+        "note": "Elizabeth’s sweeping praise of Robert’s goodness captures the height of their mid-period devotion. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush’s return after the dog-stealing ordeal gives a concrete, joyful resolution to that shared worry. Callbacks: [\"s578\"]",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s979",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "What do you expect this letter will be about, my own dearest?",
+        "note": "Robert’s letter shifts the correspondence toward the decisive step of marriage. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1030",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You will only expect a few words—what will those be?",
+        "note": "Robert reflects on the fullness of feeling just before their marriage, closing the pre-marriage period. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1103",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Robert’s gratitude after the wedding shows the emotional weight of what has just occurred. Callbacks: [\"s1030\"]",
+        "callbacks": [
+          "s1030"
+        ]
+      },
+      {
+        "snippetId": "s1202",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "First, God is to be thanked for this great joy of hearing that you are better, my ever dearest—it is a joy that floats over all the other emotions.",
+        "note": "Elizabeth gives thanks for Robert’s recovery and looks toward their life beyond England. Callbacks: []",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth’s final letter before departure turns their love toward the future they are about to share. Callbacks: [\"s1030\", \"s1103\"]",
+        "callbacks": [
+          "s1030",
+          "s1103"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "condition": "random",
+  "index": 4,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:02:30.536Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 2.002,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1143",
+        "messageOrdinal": 75,
+        "sender": "Robert",
+        "date": "1845-08-11",
+        "approximate": false,
+        "dateLabel": "11 August 1845",
+        "text": "And Albert wearies too--it seems all false, all writing--not the first part, though.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3253",
+        "messageOrdinal": 189,
+        "sender": "Elizabeth",
+        "date": "1846-01-06",
+        "approximate": false,
+        "dateLabel": "6 January 1846",
+        "text": "'People say,' I used to think, 'that women always know, and certainly I do not know, and therefore ... therefore.'--The logic crushed on like Juggernaut's car.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3772",
+        "messageOrdinal": 207,
+        "sender": "Elizabeth",
+        "date": "1846-01-22",
+        "approximate": false,
+        "dateLabel": "22 January 1846",
+        "text": "I could not help smiling when I heard of it.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s5753",
+        "messageOrdinal": 297,
+        "sender": "Robert",
+        "date": "1846-04-04",
+        "approximate": false,
+        "dateLabel": "4 April 1846",
+        "text": "Oh, my two letters—and to turn from such letters to you, to my own Ba!—I very well know I am not grateful enough, if there is any grace in that, any power to avert punishment, as one hopes!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6573",
+        "messageOrdinal": 329,
+        "sender": "Elizabeth",
+        "date": "1846-04-27",
+        "approximate": false,
+        "dateLabel": "27 April 1846",
+        "text": "Pure nonsense I write to you, it seems to me.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6926",
+        "messageOrdinal": 345,
+        "sender": "Elizabeth",
+        "date": "1846-05-07",
+        "approximate": false,
+        "dateLabel": "7 May 1846",
+        "text": "A most glorious confusion I was in ... when suddenly my visitor thought of spelling the name ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7622",
+        "messageOrdinal": 379,
+        "sender": "Elizabeth",
+        "date": "1846-05-29",
+        "approximate": false,
+        "dateLabel": "29 May 1846",
+        "text": "Why do you not see what God sees?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7699",
+        "messageOrdinal": 383,
+        "sender": "Elizabeth",
+        "date": "1846-05-30",
+        "approximate": false,
+        "dateLabel": "30 May 1846",
+        "text": "I am fond of them, but would rather, rather, not see them just now, and not be seen by them—for eyes have they, and can see.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8387",
+        "messageOrdinal": 412,
+        "sender": "Robert",
+        "date": "1846-06-18",
+        "approximate": false,
+        "dateLabel": "18 June 1846",
+        "text": "Do pain me so again and again,—if you will so cure me every time!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10603",
+        "messageOrdinal": 498,
+        "sender": "Elizabeth",
+        "date": "1846-08-13",
+        "approximate": false,
+        "dateLabel": "13 August 1846",
+        "text": "A fulness of sympathy, a sharing of life, one with another, ... is scarcely ever looked for except in a narrow conventional sense.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11828",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12500",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "I tried to leave them, and I could not.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

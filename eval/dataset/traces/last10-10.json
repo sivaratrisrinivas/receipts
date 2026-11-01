@@ -1,0 +1,169 @@
+{
+  "condition": "last10",
+  "index": 10,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:20:41.592Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 8.285,
+  "costUsd": 0.020183200000000002,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 7.871,
+      "costUsd": 0.020183200000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38977,
+        "completionTokens": 3827,
+        "reasoningTokens": 3265
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s170\",\n      \"note\": \"Elizabeth says directly, 'How I miss you, and long for Friday,' naming the ache that occasioned this poem.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"Her wish for 'two hearts to love you with' shows the depth of separation and longing.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s358\",\n      \"note\": \"She answers absence with trust: even unseen, he loves her, so she is entirely his.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s100\",\n      \"note\": \"Robert's playful challenge about Flush keeps their private dog-stealer joke alive.\"\n    , \"callbacks\": [\"s47\"]\n    },\n    {\n      \"id\": \"s460\",\n      \"note\": \"Elizabeth calls him 'the angel of my life,' turning past despair into gratitude for his coming.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s499\",\n      \"note\": \"Robert says she 'laps' him 'over with love upon love,' a vivid image of being overwhelmed by her.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s790\",\n      \"note\": \"Their Flush joke becomes a declaration: she is his Flush, and he is hers.\"\n    , \"callbacks\": [\"s100\", \"s578\"]\n    },\n    {\n      \"id\": \"s808\",\n      \"note\": \"Robert feels her 'perfect goodness' at his heart and can say nothing more.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s825\",\n      \"note\": \"She writes only to be known for thinking of him tomorrow, a quiet act of missing him.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s1030\",\n      \"note\": \"Robert opens their wedding-day letter by asking what words can follow a full heart.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s1449\",\n      \"note\": \"Before their departure, he blesses her strength and says he cannot trust himself to speak of his feelings.\"\n    , \"callbacks\": []\n    },\n    {\n      \"id\": \"s1464\",\n      \"note\": \"Elizabeth asks if this is her last letter to him, making the farewell unbearably intimate.\"\n    , \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s100",
+        "messageOrdinal": 517,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Ah, even here, I must smile ... will you affirm that ever an approximation to a doubt crossed your mind about Flush?",
+        "note": "Robert's playful challenge about Flush keeps their private dog-stealer joke alive.",
+        "callbacks": [
+          "s47"
+        ]
+      },
+      {
+        "snippetId": "s170",
+        "messageOrdinal": 520,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "How I miss you, and long for Friday.",
+        "note": "Elizabeth says directly, 'How I miss you, and long for Friday,' naming the ache that occasioned this poem.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "How I wish for two hearts to love you with, and two lives to give to you, and two souls to bear the weight worthily of all you have given to me.",
+        "note": "Her wish for 'two hearts to love you with' shows the depth of separation and longing.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s358",
+        "messageOrdinal": 526,
+        "sender": "Elizabeth",
+        "date": "1846-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1846",
+        "text": "But you ... without seeing me at all, you love me ... which does as well, I think—so I am your very own.",
+        "note": "She answers absence with trust: even unseen, he loves her, so she is entirely his.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s460",
+        "messageOrdinal": 529,
+        "sender": "Elizabeth",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I think only that you love me, that you are the angel of my life,—and for the despair and desolation behind me, they serve to mark the hour of your coming,—and they are behind, as Italy is before.",
+        "note": "Elizabeth calls him 'the angel of my life,' turning past despair into gratitude for his coming.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s499",
+        "messageOrdinal": 531,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "My own Ba, you lap me over with love upon love ... there is my first and proper love, independent of any return, and there is this return for what would reward itself.",
+        "note": "Robert says she 'laps' him 'over with love upon love,' a vivid image of being overwhelmed by her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Their Flush joke becomes a declaration: she is his Flush, and he is hers.",
+        "callbacks": [
+          "s100",
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s808",
+        "messageOrdinal": 542,
+        "sender": "Robert",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Dearest Ba, I feel your perfect goodness at my heart—I can say nothing.",
+        "note": "Robert feels her 'perfect goodness' at his heart and can say nothing more.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s825",
+        "messageOrdinal": 543,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Dearest, I write just a few lines that you may know me for thinking of you to-morrow.",
+        "note": "She writes only to be known for thinking of him tomorrow, a quiet act of missing him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1030",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You will only expect a few words—what will those be?",
+        "note": "Robert opens their wedding-day letter by asking what words can follow a full heart.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1449",
+        "messageOrdinal": 571,
+        "sender": "Robert",
+        "date": "1846-09-18",
+        "approximate": false,
+        "dateLabel": "18 September 1846",
+        "text": "God bless and strengthen you, my ever dearest dearest—I will not trust myself to speak of my feelings for you—worship well belongs to such fortitude.",
+        "note": "Before their departure, he blesses her strength and says he cannot trust himself to speak of his feelings.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Elizabeth asks if this is her last letter to him, making the farewell unbearably intimate.",
+        "callbacks": []
+      }
+    ]
+  }
+}
