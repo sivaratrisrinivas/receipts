@@ -1,0 +1,507 @@
+/* Receipts: a paper receipt on a warm desk. Phone first; one column. */
+
+:root {
+  --desk: #efe8d9;
+  --paper: #fffdf7;
+  --ink: #1f1b16;
+  --muted: #6a6153;
+  --rule: #d8ccb6;
+  --accent: #a8341f;
+  --on-accent: #fffdf7;
+  --accent-wash: #f6e3dc;
+  --focus: #1b4fd8;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  --gutter: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --desk: #12100c;
+    --paper: #1d1a14;
+    --ink: #f2ebdc;
+    --muted: #aaa08c;
+    --rule: #3b3527;
+    --accent: #e8745c;
+    --on-accent: #1a0f0b;
+    --accent-wash: #3a211a;
+    --focus: #8fb0ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Page chrome */
+
+.shell {
+  width: min(100%, 36rem);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 2.5rem;
+}
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0 1rem;
+}
+
+.brand {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.account {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.who {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  padding: 0.5rem 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.colophon {
+  margin-top: 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+/* A step is a sheet of receipt paper with a torn bottom edge */
+
+.stage {
+  display: block;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.75rem 1.25rem 2.25rem;
+  background: var(--paper);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 1px 0 var(--rule), 0 10px 24px -14px rgb(0 0 0 / 0.35);
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 10px;
+  background:
+    linear-gradient(135deg, var(--paper) 50%, transparent 50%) 0 0 / 14px 10px,
+    linear-gradient(225deg, var(--paper) 50%, transparent 50%) 0 0 / 14px 10px;
+  background-repeat: repeat-x;
+}
+
+.step h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 600;
+  outline: none;
+}
+
+.lede {
+  font-size: 1.125rem;
+}
+
+.aside {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.optional {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.notice {
+  padding: 0.75rem 0.9rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+  font-size: 0.9375rem;
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font: 600 1rem/1.2 var(--serif);
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button.quiet {
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Compose */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.field legend,
+.field > label {
+  padding: 0;
+  font-weight: 600;
+}
+
+.occasions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.occasions legend {
+  grid-column: 1 / -1;
+  margin-bottom: 0.1rem;
+}
+
+.chip {
+  position: relative;
+  display: block;
+}
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  text-align: center;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.chip input:checked + span {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  font-weight: 600;
+}
+
+.chip input:focus-visible + span {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 5rem;
+  padding: 0.7rem 0.8rem;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  resize: vertical;
+}
+
+textarea:focus-visible {
+  border-color: var(--accent);
+  outline-offset: 0;
+}
+
+/* Reading */
+
+.bar {
+  height: 0.75rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--rule);
+}
+
+.bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 600ms ease;
+}
+
+.step-reading[data-phase='sending'] .bar-fill {
+  width: 18% !important;
+  animation: sweep 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(350%);
+  }
+}
+
+.progress-label {
+  font-size: 1.125rem;
+}
+
+.elapsed {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* The Poem */
+
+.poem-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.byline {
+  color: var(--muted);
+}
+
+.lines {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line {
+  padding: 1.1rem 0 1rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.line.is-new {
+  animation: print-in 500ms ease-out both;
+}
+
+@keyframes print-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.line-text {
+  font-size: 1.3125rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.receipt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.5rem;
+  margin-top: 0.55rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.line-details,
+.line-actions {
+  margin-top: 0.6rem;
+}
+
+.line-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.seal {
+  display: flex;
+  justify-content: center;
+}
+
+.seal:not(:empty) {
+  padding: 0.5rem 0 0.25rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.9rem;
+  padding: 0.7rem 1rem;
+  border: 3px double var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-align: center;
+  transform: rotate(-1.5deg);
+  animation: stamp 420ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+.badge strong {
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.badge span {
+  font-size: 0.8125rem;
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-1.5deg) scale(1.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-1.5deg) scale(1);
+  }
+}
+
+.unverified {
+  margin-top: 0.9rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.poem-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.step-poem > .button {
+  margin-top: 0;
+}
+
+/* Wider screens just get a little more room */
+
+@media (min-width: 40rem) {
+  .step {
+    padding: 2.25rem 2.25rem 2.75rem;
+  }
+  .button {
+    width: auto;
+    align-self: flex-start;
+  }
+  .occasions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

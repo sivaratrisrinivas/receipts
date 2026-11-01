@@ -1,5 +1,12 @@
-// Browser entry point. Placeholder: the UI ticket replaces this with the real app,
-// which imports the Poem pipeline from './index'.
+// Browser entry point. Everything lives in src/app (flow, no DOM) and src/ui (screens).
 
-const app = document.querySelector<HTMLDivElement>('#app');
-if (app) app.textContent = 'Receipts';
+import './ui/styles.css';
+import { mountApp } from './ui/mount';
+
+const root = document.querySelector<HTMLElement>('#app');
+if (root) {
+  mountApp(root).catch((error: unknown) => {
+    console.error(error);
+    root.textContent = 'Receipts could not start. Reload the page to try again.';
+  });
+}

@@ -7,7 +7,7 @@ import { describe, expect, test } from 'vitest';
 import { createFakeBeam, readConversation } from '../../src';
 import { assertNoSecret, buildDataset } from '../lib/dataset';
 import { runEval } from '../lib/runner';
-import { idOf, texts, useTempDir, withUsage } from './support';
+import { fragment, idOf, texts, useTempDir, withUsage } from './support';
 
 const tempDir = useTempDir();
 const conversation = readConversation({ kind: 'gallery', texts });
@@ -17,9 +17,9 @@ async function finishedRun(dir: string) {
   const beam = withUsage(
     createFakeBeam((request) => {
       // Beam on the last 10% is not shown the first letters, so it picks from the end.
-      const [first, reply] = request.user.includes('wet afternoon')
-        ? ['I wrote this on a wet afternoon', 'I thank you, dear Mr. Browning']
-        : ['At from half-past three', 'Thank you a thousand times for the note'];
+      const [first, reply] = request.user.includes(fragment(0, 1))
+        ? [fragment(0, 1), fragment(1, 1)]
+        : [fragment(53, 1), fragment(54, 1)];
       return {
         picks: [
           { id: idOf(request, first), note: 'The first letter.' },
@@ -63,7 +63,7 @@ describe('building the dataset folder', () => {
       timeline_coverage: 0.1,
       sender_balance: 1,
     });
-    expect(rows[0].lines[0]).toMatchObject({ sender: 'Robert', date: '1845-01-10', note: 'The first letter.' });
+    expect(rows[0].lines[0]).toMatchObject({ sender: 'Robert', date: '1845-01-01', note: 'The first letter.' });
 
     const [header, ...table] = readFileSync(join(dir, 'metrics.csv'), 'utf8').trim().split('\n').map((row) => row.split(','));
     expect(header?.slice(0, 6)).toEqual(['group', 'poems', 'completed', 'verification_rate', 'timeline_coverage', 'sender_balance']);

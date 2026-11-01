@@ -67,22 +67,22 @@ describe('Beam on the full Conversation', () => {
 
     const [trace] = traces;
     expect(beam.requests).toHaveLength(1);
-    expect(trace).toMatchObject({ condition: 'full', status: 'ok', messagesRead: 11, occasion: 'birthday' });
+    expect(trace).toMatchObject({ condition: 'full', status: 'ok', messagesRead: 55, occasion: 'birthday' });
     expect(trace?.attempts).toEqual([
       expect.objectContaining({ usage, costKind: 'usage', finishReason: 'stop', costUsd: expect.closeTo(COST_OF_USAGE, 6) }),
     ]);
     expect(trace?.costUsd).toBeCloseTo(COST_OF_USAGE, 6);
     expect(JSON.parse(trace?.answer ?? 'null').lines).toHaveLength(2);
     expect(trace?.poem?.lines.map((line) => [line.sender, line.dateLabel])).toEqual([
-      ['Robert', '10 January 1845'],
-      ['Robert', '14 September 1846'],
+      ['Robert', '1 January 1845'],
+      ['Robert', '25 June 1846'],
     ]);
     expect(trace?.poem?.lines[1]?.callbacks).toEqual([trace?.poem?.lines[0]?.snippetId]);
   });
 });
 
 describe('Beam on only the last 10%', () => {
-  test('is shown just the last tenth of the Messages (rounded up), and its Poem comes from those', async () => {
+  test('is shown just the last tenth of the Messages (55 / 10 = 5.5, rounded up to 6), and its Poem comes from those', async () => {
     const beam = endsPicker();
 
     const { traces } = await runEval({
@@ -94,9 +94,9 @@ describe('Beam on only the last 10%', () => {
     });
 
     const headers = beam.requests[0]!.user.split('\n').filter((row) => row.startsWith('## '));
-    expect(headers).toEqual(['## E 1846-09-11', '## R 1846-09-14']);
-    expect(traces[0]).toMatchObject({ condition: 'last10', status: 'ok', messagesRead: 2 });
-    expect(traces[0]?.poem?.lines.map((line) => line.dateLabel)).toEqual(['11 September 1846', '14 September 1846']);
+    expect(headers).toEqual(['## E 1846-05-06', '## R 1846-05-16', '## E 1846-05-26', '## R 1846-06-05', '## E 1846-06-15', '## R 1846-06-25']);
+    expect(traces[0]).toMatchObject({ condition: 'last10', status: 'ok', messagesRead: 6 });
+    expect(traces[0]?.poem?.lines.map((line) => line.dateLabel)).toEqual(['6 May 1846', '25 June 1846']);
   });
 });
 

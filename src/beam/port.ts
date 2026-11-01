@@ -55,12 +55,15 @@ export class BeamError extends Error {
   readonly reason: BeamErrorReason;
   /** Whether trying the same request again might succeed. */
   readonly retryable: boolean;
+  /** The HTTP status, for `http` failures; lets callers tell out-of-credits (402) from an expired sign-in (401). */
+  readonly status: number | undefined;
 
-  constructor(reason: BeamErrorReason, message: string, retryable: boolean) {
+  constructor(reason: BeamErrorReason, message: string, retryable: boolean, status?: number) {
     super(message);
     this.name = 'BeamError';
     this.reason = reason;
     this.retryable = retryable;
+    this.status = status;
   }
 }
 

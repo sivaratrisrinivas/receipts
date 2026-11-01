@@ -1,30 +1,24 @@
 // Seam 4: the four metrics. Traces made by a run over the synthetic Gallery with
 // scripted Beams go in; per-group numbers come out. Expected values are worked by hand
-// from the fixture: 11 Messages from 10 Jan 1845 to 14 Sep 1846 (612 days), so ten
-// equal timeline buckets are 61.2 days wide:
-//   10-13 Jan 1845 -> bucket 0, 20-22 May 1845 -> 2, 24 Mar 1846 -> 7, 11-14 Sep 1846 -> 9.
+// from the corpus in support.ts: letter i is dated 10 x i days after 1 Jan 1845, so the
+// timeline is 540 days and its ten equal buckets are 54 days wide. Letter i is in bucket
+// floor(i / 5.4), capped at 9:
+//   letters 0, 1, 2 -> bucket 0;  21 -> 3;  40 -> 7;  49 to 54 -> 9.
+// Robert wrote the even letters, Elizabeth the odd ones.
 
 import { describe, expect, test } from 'vitest';
 import { createFakeBeam, readConversation, type BeamPort, type FakePick } from '../../src';
 import { summarize } from '../lib/metrics';
 import { runEval } from '../lib/runner';
-import { idOf, noSleep, texts, useTempDir, withUsage } from './support';
+import { fragment, idOf, noSleep, texts, useTempDir, withUsage } from './support';
 
 const tempDir = useTempDir();
 const conversation = readConversation({ kind: 'gallery', texts });
 
-const FIRST_LETTER = 'I wrote this on a wet afternoon'; // Robert, 10 Jan 1845
-const SECOND_LETTER = 'I thank you, dear Mr. Browning'; // Elizabeth, 11 Jan 1845
-const SEA = 'Come and see the sea'; // Robert, 13 Jan 1845
-const VISITOR = 'You were kind to come'; // Elizabeth, 20 May 1845
-const MARCH = 'My own dearest'; // Robert, 24 Mar 1846
-const EVENING = 'At from half-past three'; // Elizabeth, 11 Sep 1846
-const NOTE = 'Thank you a thousand times for the note'; // Robert, 14 Sep 1846
-
-/** A pick named by a fragment of the Snippet's text; `callbacks` are fragments too. */
+/** A pick of sentence 1 of a letter; `callbacks` are letters too. */
 interface Pick {
-  fragment: string;
-  callbacks?: string[];
+  letter: number;
+  callbacks?: number[];
   /** Callback IDs used as written, e.g. one that does not exist. */
   rawCallbacks?: string[];
 }
@@ -38,11 +32,11 @@ function poemsOf(...poems: (Pick | { rawId: string })[][]): BeamPort {
     createFakeBeam((request) => {
       const picks = (poems[call++] ?? []).map((pick): FakePick => {
         if ('rawId' in pick) return { id: pick.rawId, note: 'Beam made this ID up.' };
-        const { fragment, callbacks = [], rawCallbacks = [] } = pick;
+        const { letter, callbacks = [], rawCallbacks = [] } = pick;
         return {
-          id: idOf(request, fragment),
+          id: idOf(request, fragment(letter, 1)),
           note: 'Because.',
-          callbacks: [...callbacks.map((cited) => idOf(request, cited)), ...rawCallbacks],
+          callbacks: [...callbacks.map((cited) => idOf(request, fragment(cited, 1))), ...rawCallbacks],
         };
       });
       return { picks };
@@ -51,7 +45,7 @@ function poemsOf(...poems: (Pick | { rawId: string })[][]): BeamPort {
   );
 }
 
-const pick = (fragment: string): Pick => ({ fragment });
+const pick = (letter: number): Pick => ({ letter });
 
 async function groupOf(beam: BeamPort, perGroup: number, extra: Partial<Parameters<typeof runEval>[0]> = {}) {
   const { traces } = await runEval({
@@ -69,15 +63,15 @@ async function groupOf(beam: BeamPort, perGroup: number, extra: Partial<Paramete
 
 describe('timeline coverage', () => {
   test("is the share of the full Conversation's ten timeline buckets that hold at least one Line", async () => {
-    const two = await groupOf(poemsOf([pick(FIRST_LETTER), pick(SECOND_LETTER)]), 1);
-    const four = await groupOf(poemsOf([pick(FIRST_LETTER), pick(VISITOR), pick(MARCH), pick(EVENING)]), 1);
+    const one = await groupOf(poemsOf([pick(0), pick(1)]), 1);
+    const four = await groupOf(poemsOf([pick(0), pick(21), pick(40), pick(53)]), 1);
 
-    expect(two.timelineCoverage).toBeCloseTo(0.1); // both Lines in bucket 0
-    expect(four.timelineCoverage).toBeCloseTo(0.4); // buckets 0, 2, 7 and 9
+    expect(one.timelineCoverage).toBeCloseTo(0.1); // both Lines in bucket 0
+    expect(four.timelineCoverage).toBeCloseTo(0.4); // buckets 0, 3, 7 and 9
   });
 
   test('is measured against the whole Conversation, so Beam on the last 10% cannot cover it', async () => {
-    const group = await groupOf(poemsOf([pick(EVENING), pick(NOTE)]), 1, { conditions: ['last10'] });
+    const group = await groupOf(poemsOf([pick(53), pick(54)]), 1, { conditions: ['last10'] });
 
     expect(group.timelineCoverage).toBeCloseTo(0.1); // bucket 9 only
   });
@@ -85,9 +79,9 @@ describe('timeline coverage', () => {
 
 describe('Sender balance', () => {
   test('is 1 for an even split, 0 when one Sender has every Line, and in between otherwise', async () => {
-    const even = await groupOf(poemsOf([pick(FIRST_LETTER), pick(SECOND_LETTER)]), 1);
-    const oneSided = await groupOf(poemsOf([pick(FIRST_LETTER), pick(SEA), pick(MARCH)]), 1);
-    const threeToOne = await groupOf(poemsOf([pick(FIRST_LETTER), pick(SEA), pick(MARCH), pick(EVENING)]), 1);
+    const even = await groupOf(poemsOf([pick(0), pick(1)]), 1);
+    const oneSided = await groupOf(poemsOf([pick(0), pick(2), pick(40)]), 1);
+    const threeToOne = await groupOf(poemsOf([pick(0), pick(2), pick(40), pick(53)]), 1);
 
     expect(even.senderBalance).toBe(1);
     expect(oneSided.senderBalance).toBe(0);
@@ -99,12 +93,8 @@ describe('Note callback count', () => {
   test('is the number of callbacks the Notes cite, averaged per Poem', async () => {
     const group = await groupOf(
       poemsOf(
-        [
-          pick(FIRST_LETTER),
-          { fragment: SECOND_LETTER, callbacks: [FIRST_LETTER] },
-          { fragment: MARCH, callbacks: [FIRST_LETTER, SECOND_LETTER] },
-        ],
-        [pick(FIRST_LETTER), pick(EVENING)],
+        [pick(0), { letter: 1, callbacks: [0] }, { letter: 40, callbacks: [0, 1] }],
+        [pick(0), pick(53)],
       ),
       2,
     );
@@ -115,8 +105,8 @@ describe('Note callback count', () => {
   test('does not count callbacks from a Note that cited a Snippet that does not exist', async () => {
     const group = await groupOf(
       poemsOf([
-        { fragment: FIRST_LETTER, rawCallbacks: ['s99999'] },
-        { fragment: SECOND_LETTER, callbacks: [FIRST_LETTER] },
+        { letter: 0, rawCallbacks: ['s99999'] },
+        { letter: 1, callbacks: [0] },
       ]),
       1,
     );
@@ -133,10 +123,7 @@ describe('Note callback count', () => {
 
 describe('verification rate', () => {
   test('is the share of Poems that carry the "every line is real" badge', async () => {
-    const group = await groupOf(
-      poemsOf([pick(FIRST_LETTER)], [pick(SECOND_LETTER), { rawId: 's99999' }], [pick(SEA)]),
-      3,
-    );
+    const group = await groupOf(poemsOf([pick(0)], [pick(1), { rawId: 's99999' }], [pick(2)]), 3);
 
     expect(group.verificationRate).toBeCloseTo(2 / 3);
   });
@@ -150,7 +137,7 @@ describe('verification rate', () => {
 
 describe('failures', () => {
   test('count against the group: not verified, and scored 0 on the other metrics', async () => {
-    const good = poemsOf([pick(FIRST_LETTER), pick(SECOND_LETTER)]);
+    const good = poemsOf([pick(0), pick(1)]);
     let call = 0;
     // The first Poem succeeds; the second never gets an answer.
     const flaky: BeamPort = {
@@ -175,7 +162,7 @@ describe('summarize', () => {
       texts,
       traceDir: tempDir(),
       perGroup: 1,
-      beam: poemsOf([pick(FIRST_LETTER), pick(SECOND_LETTER)], [pick(EVENING)]),
+      beam: poemsOf([pick(0), pick(1)], [pick(53)]),
     });
 
     const groups = summarize(traces, conversation);
