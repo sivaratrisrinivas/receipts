@@ -22,7 +22,7 @@ configs:
 
 # Receipts eval: does reading the whole Conversation help?
 
-[Receipts](https://github.com/sivaratrisrinivas/receipts) turns the real history between two people into a poem made only of things they actually said to each other, each line carrying proof of who said it and when. [Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B) reads the whole Conversation in one call (about 500k tokens for the Gallery) and chooses Snippet IDs; code looks up the verbatim text, verifies it and sorts it by date. Beam never writes any Poem text.
+[Receipts](https://github.com/sivaratrisrinivas/receipts) turns the real history between two people into a poem made only of things they actually said to each other, each line carrying proof of who said it and when. [Beam](https://huggingface.co/reflection/Beam-1.0-501B-A23B) reads the whole Conversation in one call (about 350k tokens for the Gallery) and chooses Snippet IDs; code looks up the verbatim text, verifies it and sorts it by date. Beam never writes any Poem text.
 
 This dataset is the eval behind the claim that **reading everything matters**. It compares three groups of 20 Poems over the same Conversation, the Gallery (Robert Browning and Elizabeth Barrett's 1845-1846 letters):
 
@@ -36,23 +36,23 @@ All metrics are computed in code from the traces. No model judges anything and n
 
 | Group | Poems completed | Verification rate | Timeline coverage | Sender balance | Note callbacks per Poem |
 |---|---:|---:|---:|---:|---:|
-| Beam on the full Conversation | 1 of 1 | 100% | 40% | 0.92 | 0.0 |
-| Beam on the last 10% | 1 of 1 | 100% | 10% | 0.67 | 9.0 |
-| Random Snippets | 1 of 1 | 100% | 60% | 1.00 | 0.0 |
+| Beam on the full Conversation | 16 of 20 | 80% | 47% | 0.65 | 3.5 |
+| Beam on the last 10% | 20 of 20 | 100% | 10% | 0.62 | 5.1 |
+| Random Snippets | 20 of 20 | 100% | 56% | 0.46 | 0.0 |
 
-- Poems: 3 attempted, 3 completed, 0 failed after all retries.
-- Beam calls: 2, of which 0 failed (each Poem is retried at most twice).
-- Estimated spend: $0.16 (reported tokens x the router's prices of $0.40/M input and $1.20/M output).
-- Beam on the full Conversation: about 352k prompt tokens and 4k completion tokens (3k of them reasoning) per Poem, 17 s per call.
-- Beam on the last 10%: about 39k prompt tokens and 3k completion tokens (2k of them reasoning) per Poem, 6 s per call.
+- Poems: 60 attempted, 56 completed, 4 failed after all retries.
+- Beam calls: 57, of which 21 failed (each Poem is retried at most twice).
+- Estimated spend: $7.79 (reported tokens x the router's prices of $0.40/M input and $1.20/M output; $4.93 of it is an upper-bound estimate for failed calls whose token counts never came back).
+- Beam on the full Conversation: about 352k prompt tokens and 12k completion tokens (11k of them reasoning) per Poem, 24 s per call.
+- Beam on the last 10%: about 39k prompt tokens and 3k completion tokens (2k of them reasoning) per Poem, 7 s per call.
 
 The same table over only the Poems that completed (a failed Poem scores 0 above, so it cannot be hidden):
 
 | Group | Poems | Verification rate | Timeline coverage | Sender balance | Note callbacks per Poem |
 |---|---:|---:|---:|---:|---:|
-| Beam on the full Conversation | 1 | 100% | 40% | 0.92 | 0.0 |
-| Beam on the last 10% | 1 | 100% | 10% | 0.67 | 9.0 |
-| Random Snippets | 1 | 100% | 60% | 1.00 | 0.0 |
+| Beam on the full Conversation | 16 | 100% | 58% | 0.82 | 4.4 |
+| Beam on the last 10% | 20 | 100% | 10% | 0.62 | 5.1 |
+| Random Snippets | 20 | 100% | 56% | 0.46 | 0.0 |
 
 ### Reading the results
 
@@ -89,7 +89,7 @@ Beam always reasons, and its reasoning tokens are drawn from the same `max_compl
 | `high` | 32,000 | truncated the same way, no content |
 | `medium` (not streaming) | - | the gateway returned an HTML error page instead of a response |
 
-So only `low` completes on inputs of this size, and **long calls must stream**. That is why every Beam Poem in this dataset uses `reasoning_effort: "low"` with `stream: true`, and why the product does not offer higher efforts. Other builders report the same mechanics on smaller inputs: reasoning tokens consume the completion budget and a tight budget yields empty content with `finish_reason: "length"` (see [iarsalanshah/beam-effort-atlas](https://huggingface.co/datasets/iarsalanshah/beam-effort-atlas)), and `low` stays close to higher efforts on quality while using about half the tokens ([PengoSword123/beamdial-v0.1](https://huggingface.co/datasets/PengoSword123/beamdial-v0.1)). The `medium` and `high` rows come from the prototype and were not rerun for this eval, which spent its budget on the 60 Poems.
+The pipeline has since dropped fragments and end matter from the Snippets, so today's Gallery prompt is smaller (12,513 Snippets, about 352k tokens); the table was measured on the larger prototype prompt and was not rerun at 352k. So only `low` completes on inputs of this size, and **long calls must stream**. That is why every Beam Poem in this dataset uses `reasoning_effort: "low"` with `stream: true`, and why the product does not offer higher efforts. Other builders report the same mechanics on smaller inputs: reasoning tokens consume the completion budget and a tight budget yields empty content with `finish_reason: "length"` (see [iarsalanshah/beam-effort-atlas](https://huggingface.co/datasets/iarsalanshah/beam-effort-atlas)), and `low` stays close to higher efforts on quality while using about half the tokens ([PengoSword123/beamdial-v0.1](https://huggingface.co/datasets/PengoSword123/beamdial-v0.1)). The `medium` and `high` rows come from the prototype and were not rerun for this eval, which spent its budget on the 60 Poems.
 
 ## Files
 

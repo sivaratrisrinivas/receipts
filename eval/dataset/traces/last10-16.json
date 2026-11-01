@@ -1,0 +1,191 @@
+{
+  "condition": "last10",
+  "index": 16,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:32:28.606Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.413,
+  "costUsd": 0.0181132,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.604,
+      "costUsd": 0.0181132,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38977,
+        "completionTokens": 2102,
+        "reasoningTokens": 1614
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s43\", \"note\": \"Flush’s ecstatic welcome after Elizabeth returns home.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert confesses he sometimes shortened visits just to take her hand sooner.\", \"callbacks\": []},\n    {\"id\": \"s35\", \"note\": \"An early shared dream of Italy, before Flush and Pisa become part of the plan.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"The shock of Flush being stolen from the street.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Robert’s tender reply to Elizabeth’s lost-Flush distress.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s790\", \"note\": \"Elizabeth turns the Flush dilemma into a mirror of their own bond.\", \"callbacks\": [\"s578\", \"s616\"]},\n    {\"id\": \"s806\", \"note\": \"Elizabeth learns how much she needs Robert’s presence during separation.\", \"callbacks\": []},\n    {\"id\": \"s993\", \"note\": \"Robert turns the threatened family removal into urgency to marry and go to Italy.\", \"callbacks\": [\"s35\"]},\n    {\"id\": \"s1014\", \"note\": \"Elizabeth answers with one will that is entirely his.\", \"callbacks\": [\"s993\"]},\n    {\"id\": \"s1036\", \"note\": \"Robert looks back and finds her entirely perfect in every word and gesture.\", \"callbacks\": []},\n    {\"id\": \"s1069\", \"note\": \"Elizabeth’s gratitude after the marriage, saying all she is she owes him.\", \"callbacks\": [\"s1014\"]},\n    {\"id\": \"s1155\", \"note\": \"Robert exults in the irrevocability of her gift of herself.\", \"callbacks\": [\"s993\", \"s1014\"]},\n    {\"id\": \"s1456\", \"note\": \"Elizabeth’s last letter before she has him only to love her.\", \"callbacks\": [\"s1155\"]}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s35",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When we are in Italy, particularly...!",
+        "note": "An early shared dream of Italy, before Flush and Pisa become part of the plan.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush’s ecstatic welcome after Elizabeth returns home.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert confesses he sometimes shortened visits just to take her hand sooner.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The shock of Flush being stolen from the street.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert’s tender reply to Elizabeth’s lost-Flush distress.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth turns the Flush dilemma into a mirror of their own bond.",
+        "callbacks": [
+          "s578",
+          "s616"
+        ]
+      },
+      {
+        "snippetId": "s806",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "To be parted from you so long, teaches me the necessity of your presence—I am your very, very own.",
+        "note": "Elizabeth learns how much she needs Robert’s presence during separation.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s993",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "We must be married directly and go to Italy.",
+        "note": "Robert turns the threatened family removal into urgency to marry and go to Italy.",
+        "callbacks": [
+          "s35"
+        ]
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth answers with one will that is entirely his.",
+        "callbacks": [
+          "s993"
+        ]
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert looks back and finds her entirely perfect in every word and gesture.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Elizabeth’s gratitude after the marriage, saying all she is she owes him.",
+        "callbacks": [
+          "s1014"
+        ]
+      },
+      {
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "Robert exults in the irrevocability of her gift of herself.",
+        "callbacks": [
+          "s993",
+          "s1014"
+        ]
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth’s last letter before she has him only to love her.",
+        "callbacks": [
+          "s1155"
+        ]
+      }
+    ]
+  }
+}

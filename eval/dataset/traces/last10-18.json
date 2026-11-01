@@ -1,0 +1,197 @@
+{
+  "condition": "last10",
+  "index": 18,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:40:15.664Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 7.956,
+  "costUsd": 0.018422400000000002,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.335,
+      "costUsd": 0.018422400000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38976,
+        "completionTokens": 2360,
+        "reasoningTokens": 1933
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\"lines\":[\n{\"id\":\"s0\",\"note\":\"Opens the correspondence's intimate shorthand of mutual understanding.\",\"callbacks\":[]},\n{\"id\":\"s43\",\"note\":\"Flush's frantic welcome shows how deeply Elizabeth's attachment to him runs before Italy.\",\"callbacks\":[]},\n{\"id\":\"s76\",\"note\":\"Robert's Pisa memory gives the planned journey a concrete, shared destination.\",\"callbacks\":[]},\n{\"id\":\"s578\",\"note\":\"Flush's sudden theft jolts the letters into crisis and comedy.\",\"callbacks\":[\"s43\"]},\n{\"id\":\"s616\",\"note\":\"Robert answers Elizabeth's alarm with sympathy for Flush.\",\"callbacks\":[\"s578\"]},\n{\"id\":\"s790\",\"note\":\"Elizabeth's 'I am your Flush, and he is mine' turns the dog dispute into their private joke.\",\"callbacks\":[\"s578\",\"s616\"]},\n{\"id\":\"s991\",\"note\":\"Robert's urgency about marriage shows the elopement's stakes.\",\"callbacks\":[]},\n{\"id\":\"s1014\",\"note\":\"Elizabeth's surrender of will marks the decisive turning point.\",\"callbacks\":[]},\n{\"id\":\"s1036\",\"note\":\"Robert's retrospective praise crowns their early correspondence.\",\"callbacks\":[]},\n{\"id\":\"s1045\",\"note\":\"Elizabeth's first post-wedding letter carries relief and dreamlike disorientation.\",\"callbacks\":[\"s991\"]},\n{\"id\":\"s1103\",\"note\":\"Robert's gratitude answers her wedding-day proof of love.\",\"callbacks\":[\"s1045\"]},\n{\"id\":\"s1097\",\"note\":\"Elizabeth's garden-wall image captures her post-marriage wonder.\",\"callbacks\":[]},\n{\"id\":\"s1456\",\"note\":\"The final eve before departure distills everything to 'you only'.\",\"callbacks\":[]},\n{\"id\":\"s1461\",\"note\":\"She cannot leave his letters behind, sealing the archive of their courtship.\",\"callbacks\":[]}\n]}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Opens the correspondence's intimate shorthand of mutual understanding.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's frantic welcome shows how deeply Elizabeth's attachment to him runs before Italy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s76",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "By the way, Byron speaks of plucking oranges in his garden at Pisa ...",
+        "note": "Robert's Pisa memory gives the planned journey a concrete, shared destination.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Flush's sudden theft jolts the letters into crisis and comedy.",
+        "callbacks": [
+          "s43"
+        ]
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert answers Elizabeth's alarm with sympathy for Flush.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth's 'I am your Flush, and he is mine' turns the dog dispute into their private joke.",
+        "callbacks": [
+          "s578",
+          "s616"
+        ]
+      },
+      {
+        "snippetId": "s991",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "If you do go on Monday, our marriage will be impossible for another year—the misery!",
+        "note": "Robert's urgency about marriage shows the elopement's stakes.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth's surrender of will marks the decisive turning point.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert's retrospective praise crowns their early correspondence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Elizabeth's first post-wedding letter carries relief and dreamlike disorientation.",
+        "callbacks": [
+          "s991"
+        ]
+      },
+      {
+        "snippetId": "s1097",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I feel so as if I had slipped down over the wall into somebody’s garden—I feel ashamed.",
+        "note": "Elizabeth's garden-wall image captures her post-marriage wonder.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1103",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Robert's gratitude answers her wedding-day proof of love.",
+        "callbacks": [
+          "s1045"
+        ]
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "The final eve before departure distills everything to 'you only'.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1461",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "She cannot leave his letters behind, sealing the archive of their courtship.",
+        "callbacks": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "condition": "random",
+  "index": 15,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:30:58.757Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 27.159,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1561",
+        "messageOrdinal": 105,
+        "sender": "Elizabeth",
+        "date": "1845-09-18",
+        "approximate": false,
+        "dateLabel": "18 September 1845",
+        "text": "Perhaps just that I may pray for you--which were a sufficient end.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2211",
+        "messageOrdinal": 148,
+        "sender": "Elizabeth",
+        "date": "1845-11-11",
+        "approximate": false,
+        "dateLabel": "11 November 1845",
+        "text": "And this for no serpent's reason.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2312",
+        "messageOrdinal": 152,
+        "sender": "Robert",
+        "date": "1845-11-18",
+        "approximate": true,
+        "dateLabel": "c. 18 November 1845",
+        "text": "I am not ungrateful to you--but you must wait to know that:--I can speak less than nothing with my living lips.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4791",
+        "messageOrdinal": 253,
+        "sender": "Elizabeth",
+        "date": "1846-03-03",
+        "approximate": false,
+        "dateLabel": "3 March 1846",
+        "text": "I did not go down-stairs to-day because the wind blew and the thermometer fell.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4918",
+        "messageOrdinal": 259,
+        "sender": "Elizabeth",
+        "date": "1846-03-07",
+        "approximate": false,
+        "dateLabel": "7 March 1846",
+        "text": "Always you, is it, who torments me? always you?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6885",
+        "messageOrdinal": 343,
+        "sender": "Elizabeth",
+        "date": "1846-05-06",
+        "approximate": false,
+        "dateLabel": "6 May 1846",
+        "text": "Why are you melancholy, dear, dearest?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7086",
+        "messageOrdinal": 352,
+        "sender": "Elizabeth",
+        "date": "1846-05-12",
+        "approximate": false,
+        "dateLabel": "12 May 1846",
+        "text": "And all those strange people moving about like phantoms of life.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8686",
+        "messageOrdinal": 425,
+        "sender": "Robert",
+        "date": "1846-06-27",
+        "approximate": false,
+        "dateLabel": "27 June 1846",
+        "text": "How could I presume, for one thing, to hope for last evening’s letter ... a pure piece of kindness in you, Ba!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8938",
+        "messageOrdinal": 435,
+        "sender": "Elizabeth",
+        "date": "1846-07-03",
+        "approximate": false,
+        "dateLabel": "3 July 1846",
+        "text": "It was only just enough to prevent my going.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9008",
+        "messageOrdinal": 439,
+        "sender": "Elizabeth",
+        "date": "1846-07-04",
+        "approximate": false,
+        "dateLabel": "4 July 1846",
+        "text": "And for Monday ...",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}
