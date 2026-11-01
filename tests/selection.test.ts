@@ -4,28 +4,12 @@
 
 import { describe, expect, test } from 'vitest';
 import { createFakeBeam, estimateTokens, INPUT_TOKEN_BUDGET, tryMakePoem, type BeamRequest, type PoemRequest } from '../src';
-import { heavyBody, lettersOnDays, shortBody, spreadDays, tooShortBody, volumeOfLetters } from './fixtures/letters';
+import { promptSnippets } from './support/prompt';
+import { conversationWith, heavyBody, lettersOnDays, requestFor, shortBody, spreadDays, volumeOfLetters } from './fixtures/letters';
 
-function requestFor(volume: string): PoemRequest {
-  return {
-    source: { kind: 'gallery', texts: [volume] },
-    occasion: 'anniversary',
-    giver: 'Robert',
-    recipient: 'Elizabeth',
-  };
-}
-
-/** A Conversation with exactly `usable` Snippets, plus `unusable` letters too short to count. */
-function conversationWith(usable: number, unusable = 0): PoemRequest {
-  const days = spreadDays(usable + unusable, 1);
-  const usableLetters = lettersOnDays(days.slice(0, usable), 1, shortBody);
-  const unusableLetters = lettersOnDays(days.slice(usable), 1, tooShortBody);
-  return requestFor(volumeOfLetters([...usableLetters, ...unusableLetters]));
-}
-
-/** A fake Beam that picks the first Snippet it is shown. */
+/** A fake Beam that picks the first 8 Snippets it is shown: a whole Poem in either size tier (6 to 8, 8 to 14). */
 function pickingFirst() {
-  return createFakeBeam((request) => ({ picks: [{ id: /^(s\d+) /m.exec(request.user)![1]!, note: 'Any.' }] }));
+  return createFakeBeam((request) => ({ picks: promptSnippets(request).slice(0, 8).map(({ id }) => ({ id, note: 'Any.' })) }));
 }
 
 /** The Line range the prompt asks Beam for ("Choose 6 to 8 Snippets"). */
@@ -163,16 +147,18 @@ describe('a Conversation too long for the input budget', () => {
 
   test('Beam can only pick from what it was shown: a Snippet from a dropped day is rejected and withholds the badge', async () => {
     const { request } = longConversation(4);
-    const beam = createFakeBeam((asked) => {
-      const shownId = /^(s\d+) /m.exec(asked.user)![1]!;
-      // The first Snippet of the dropped 2nd day (4 Snippets a day, ids in Conversation order).
-      return { picks: [{ id: shownId, note: 'Shown.' }, { id: 's4', note: 'Dropped.' }] };
-    });
+    const beam = createFakeBeam((asked) => ({
+      picks: [
+        ...promptSnippets(asked).slice(0, 8).map(({ id }) => ({ id, note: 'Shown.' })),
+        // The first Snippet of the dropped 2nd day (4 Snippets a day, ids in Conversation order).
+        { id: 's4', note: 'Dropped.' },
+      ],
+    }));
 
     const result = await tryMakePoem(request, beam);
 
     expect(result).toMatchObject({ poem: { verified: false } });
-    expect('poem' in result && result.poem.lines).toHaveLength(1);
+    expect('poem' in result && result.poem.lines).toHaveLength(8);
   });
 
   test('a Conversation that fits is read whole: nothing dropped, every day shown', async () => {

@@ -2,8 +2,9 @@
 // a Poem comes out. Nothing here reaches inside the pipeline.
 
 import { describe, expect, test } from 'vitest';
-import { BeamError, createFakeBeam, makePoem, tryMakePoem, type BeamRequest, type PoemRequest } from '../src';
+import { BeamError, createFakeBeam, makePoem, tryMakePoem, type BeamRequest, type FakePick, type PoemRequest } from '../src';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
+import { idOf, linesWith, padPicks, promptSnippets } from './support/prompt';
 
 const galleryRequest: PoemRequest = {
   source: { kind: 'gallery', texts: [volumeOne, volumeTwo] },
@@ -12,47 +13,47 @@ const galleryRequest: PoemRequest = {
   recipient: 'Elizabeth',
 };
 
-/** The prompt's Snippet rows (`<id> <text>`), as Beam sees them. */
-function promptSnippets(request: BeamRequest): { id: string; text: string }[] {
-  return request.user.split('\n').flatMap((row) => {
-    const match = /^(s\d+) (.+)$/.exec(row);
-    return match ? [{ id: match[1]!, text: match[2]! }] : [];
-  });
-}
-
-/** The ID Beam would see for the Snippet containing `fragment`. */
-function idOf(request: BeamRequest, fragment: string): string {
-  const found = promptSnippets(request).find((snippet) => snippet.text.includes(fragment));
-  if (!found) throw new Error(`no Snippet containing "${fragment}" in the prompt`);
-  return found.id;
-}
+/**
+ * A Poem is never fewer than 6 Lines (this Conversation is the 6 to 8 tier), so a test about
+ * particular Lines names them and lets {@link padPicks} top the answer up to 6.
+ */
+const answer = (request: BeamRequest, picks: FakePick[]) => ({ picks: padPicks(request, picks) });
 
 describe('making a Poem from the Gallery', () => {
   test('every Line is a verbatim Snippet with a Receipt of who said it and when', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         { id: idOf(request, 'I wrote this on a wet afternoon'), note: 'The first letter.' },
+        { id: idOf(request, 'Thank you a thousand times for the flowers'), note: 'The flowers.' },
+        { id: idOf(request, 'You were kind to come'), note: 'A visit.' },
+        { id: idOf(request, 'I have read your letter again'), note: 'Read again.' },
         { id: idOf(request, 'I am unhappy enough'), note: 'A confession.' },
-      ],
-    }));
+        { id: idOf(request, 'Thank you a thousand times for the note'), note: 'The last letter.' },
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => [line.text, line.receipt.sender, line.receipt.dateLabel])).toEqual([
-      ['I wrote this on a wet afternoon and I mean every word of it, dear Miss Barrett.', 'Robert', '10 January 1845'],
-      ['I am unhappy enough even where I am happy, but ungrateful nowhere.', 'Elizabeth', '12 September 1845'],
+    expect(poem.lines.map((line) => [line.text.slice(0, 20), line.receipt.sender, line.receipt.dateLabel])).toEqual([
+      ['I wrote this on a we', 'Robert', '10 January 1845'],
+      ['Thank you a thousand', 'Elizabeth', '13 January 1845'],
+      ['You were kind to com', 'Elizabeth', '20 May 1845'],
+      ['I have read your let', 'Robert', '22 May 1845'],
+      ['I am unhappy enough ', 'Elizabeth', '12 September 1845'],
+      ['Thank you a thousand', 'Robert', '14 September 1846'],
     ]);
+    // ... and a Line is the whole Snippet, word for word.
+    expect(poem.lines[0]!.text).toBe('I wrote this on a wet afternoon and I mean every word of it, dear Miss Barrett.');
+    expect(poem.lines[4]!.text).toBe('I am unhappy enough even where I am happy, but ungrateful nowhere.');
   });
 
   test('Lines are sorted by date, with ties broken by Message order, whatever order Beam picked', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         { id: idOf(request, 'I am unhappy enough'), note: 'Latest.' },
         { id: idOf(request, 'Thank you a thousand times for the flowers'), note: 'Same day, second letter.' },
         { id: idOf(request, 'Come and see the sea'), note: 'Same day, first letter.' },
         { id: idOf(request, 'I wrote this on a wet afternoon'), note: 'Earliest.' },
-      ],
-    }));
+        { id: idOf(request, 'Thank you a thousand times for the note'), note: 'Last of all.' },
+        { id: idOf(request, 'You were kind to come'), note: 'In the middle.' },
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
@@ -60,41 +61,40 @@ describe('making a Poem from the Gallery', () => {
       ['10 January 1845', 'I wrote this on a we'],
       ['13 January 1845', 'Come and see the sea'],
       ['13 January 1845', 'Thank you a thousand'],
+      ['20 May 1845', 'You were kind to com'],
       ['12 September 1845', 'I am unhappy enough '],
+      ['14 September 1846', 'Thank you a thousand'],
     ]);
   });
 
   test('Line text always comes from the Conversation, never from Beam', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         {
           id: idOf(request, 'I wrote this on a wet afternoon'),
           note: 'Beam tries to smuggle in words of its own.',
           text: 'I have secretly always loved you.',
         },
-      ],
-    }));
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    expect(linesWith(poem, 'I wrote this on a wet', 'secretly').map((line) => line.text)).toEqual([
       'I wrote this on a wet afternoon and I mean every word of it, dear Miss Barrett.',
     ]);
+    expect(poem.lines.some((line) => line.text.includes('secretly'))).toBe(false);
   });
 });
 
 describe('turning letters into Snippets', () => {
   test('a letter without a date takes the nearest earlier date and shows "c." in its Receipt', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         { id: idOf(request, 'Thank you a thousand times for the flowers'), note: 'Dated.' },
         { id: idOf(request, 'The post comes at nine'), note: 'The next letter carries no date.' },
-      ],
-    }));
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => line.receipt)).toMatchObject([
+    expect(linesWith(poem, 'Thank you a thousand times for the flowers', 'The post comes at nine').map((line) => line.receipt)).toMatchObject([
       { sender: 'Elizabeth', date: '1845-01-13', approximate: false, dateLabel: '13 January 1845' },
       { sender: 'Robert', date: '1845-01-13', approximate: true, dateLabel: 'c. 13 January 1845' },
     ]);
@@ -133,7 +133,7 @@ describe('turning letters into Snippets', () => {
     let offered: string[] = [];
     const beam = createFakeBeam((request) => {
       offered = promptSnippets(request).map((snippet) => snippet.text);
-      return { picks: [{ id: idOf(request, 'I wrote this on a wet afternoon'), note: 'Any real pick.' }] };
+      return answer(request, [{ id: idOf(request, 'I wrote this on a wet afternoon'), note: 'Any real pick.' }]);
     });
 
     await makePoem(galleryRequest, beam);
@@ -160,7 +160,7 @@ describe('turning letters into Snippets', () => {
     let prompt = '';
     const beam = createFakeBeam((request) => {
       prompt = request.user;
-      return { picks: [{ id: idOf(request, 'Miss Thomson wants me'), note: 'The last real sentence of volume one.' }] };
+      return answer(request, [{ id: idOf(request, 'Miss Thomson wants me'), note: 'The last real sentence of volume one.' }]);
     });
 
     const { poem } = await makePoem(galleryRequest, beam);
@@ -186,15 +186,14 @@ describe('turning letters into Snippets', () => {
       expect(prompt, `the prompt leaks "${leak}"`).not.toContain(leak);
     }
     // The cuts take only what comes after the last letter: its real sentences survive.
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    expect(linesWith(poem, 'Miss Thomson wants me').map((line) => line.text)).toEqual([
       'Miss Thomson wants me to translate a scene from the Iliad for her book.',
     ]);
   });
 
   test('Gutenberg files with Windows line endings read exactly the same', async () => {
-    const pick = (request: BeamRequest) => ({
-      picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }, { id: idOf(request, 'Miss Thomson wants me'), note: 'Any.' }],
-    });
+    const pick = (request: BeamRequest) =>
+      answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }, { id: idOf(request, 'Miss Thomson wants me'), note: 'Any.' }]);
     const unix = createFakeBeam(pick);
     const windows = createFakeBeam(pick);
 
@@ -208,23 +207,19 @@ describe('turning letters into Snippets', () => {
   });
 
   test('Gutenberg italics markers are not part of a Snippet', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [{ id: idOf(request, 'which made me laugh'), note: 'Emphasis in the original.' }],
-    }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'which made me laugh'), note: 'Emphasis in the original.' }]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => line.text)).toEqual(['It was that which made me laugh and then cry.']);
+    expect(linesWith(poem, 'which made me laugh').map((line) => line.text)).toEqual(['It was that which made me laugh and then cry.']);
   });
 
   test('a letter of 40 words or fewer is one whole Snippet', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [{ id: idOf(request, 'The post comes at nine'), note: 'A whole short letter.' }],
-    }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'The post comes at nine'), note: 'A whole short letter.' }]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    expect(linesWith(poem, 'The post comes at nine').map((line) => line.text)).toEqual([
       'I did not sleep, and I do not care. The post comes at nine and I am at the gate by eight. Tell me that the cough is better.',
     ]);
   });
@@ -232,7 +227,7 @@ describe('turning letters into Snippets', () => {
 
 describe('asking Beam', () => {
   test('the prompt groups Snippets under one "## <sender initial> <date>" header per Message', async () => {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }]));
 
     await makePoem(galleryRequest, beam);
 
@@ -256,7 +251,7 @@ describe('asking Beam', () => {
   });
 
   test('the instructions cover timeline spread, both Senders, privacy, ID-only reasoning and cited callbacks', async () => {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }]));
 
     await makePoem({ ...galleryRequest, note: 'It is their first anniversary.' }, beam);
 
@@ -274,7 +269,7 @@ describe('asking Beam', () => {
   });
 
   test('the instructions name the Giver, the Recipient, the Occasion and the Giver\'s note', async () => {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }]));
 
     await makePoem({ ...galleryRequest, note: 'It is their first anniversary.' }, beam);
 
@@ -285,7 +280,7 @@ describe('asking Beam', () => {
   });
 
   test('a phone number or email address in the Giver\'s note never reaches Beam', async () => {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }]));
 
     await makePoem({ ...galleryRequest, note: 'She just retired. Call her on +44 7700 900123 or mail anne@example.com.' }, beam);
 
@@ -302,9 +297,7 @@ describe('asking Beam', () => {
 
 describe('narrowing what Beam reads', () => {
   test('Beam is shown only the Messages the narrowing step keeps, and the Poem comes from those alone', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [{ id: idOf(request, 'Thank you a thousand times for the note'), note: 'The last letter.' }],
-    }));
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'Thank you a thousand times for the note'), note: 'The last letter.' }]));
 
     const { poem, conversation } = await makePoem(galleryRequest, beam, {
       narrow: (full) => ({ ...full, messages: full.messages.slice(1) }),
@@ -326,7 +319,8 @@ describe('narrowing what Beam reads', () => {
     expect(rows.join('\n')).not.toContain('wet afternoon');
     expect(conversation.messages).toHaveLength(10);
     // Receipts still point at the Message's place in the full Conversation.
-    expect(poem.lines[0]?.receipt.messageOrdinal).toBe(10);
+    expect(linesWith(poem, 'Thank you a thousand times for the note')[0]?.receipt.messageOrdinal).toBe(10);
+    expect(Math.min(...poem.lines.map((line) => line.receipt.messageOrdinal))).toBeGreaterThanOrEqual(1);
   });
 
   test('a Conversation narrowed below the size of a Poem is refused like any other small one', async () => {
@@ -367,7 +361,7 @@ describe('when Beam does not deliver', () => {
   });
 
   test('reasoning progress is reported while Beam reads', async () => {
-    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }), {
+    const beam = createFakeBeam((request) => answer(request, [{ id: idOf(request, 'I wrote this'), note: 'Any.' }]), {
       reasoningProgress: [1_000, 20_000, 33_000],
     });
     const seen: number[] = [];
@@ -380,12 +374,10 @@ describe('when Beam does not deliver', () => {
 
 describe('verifying what Beam picked', () => {
   test('the badge is set when every pick is a real Snippet', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         { id: idOf(request, 'I wrote this on a wet afternoon'), note: 'First.' },
         { id: idOf(request, 'I am unhappy enough'), note: 'Last.' },
-      ],
-    }));
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
@@ -393,22 +385,19 @@ describe('verifying what Beam picked', () => {
   });
 
   test('unknown IDs are rejected and the badge is withheld', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         { id: idOf(request, 'I wrote this on a wet afternoon'), note: 'Real.' },
         { id: 's99999', note: 'Beam made this ID up.' },
         { id: 'not-an-id', note: 'So did this.' },
         { id: idOf(request, 'I am unhappy enough'), note: 'Real.' },
-      ],
-    }));
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => line.snippetId)).toEqual([
-      expect.stringMatching(/^s\d+$/),
-      expect.stringMatching(/^s\d+$/),
-    ]);
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    // Six real picks, two made-up IDs: the two are rejected, and the six Lines are all real.
+    expect(poem.lines).toHaveLength(6);
+    expect(poem.lines.map((line) => line.snippetId)).toEqual(Array(6).fill(expect.stringMatching(/^s\d+$/)));
+    expect(linesWith(poem, 'I wrote this on a wet', 'I am unhappy enough').map((line) => line.text)).toEqual([
       'I wrote this on a wet afternoon and I mean every word of it, dear Miss Barrett.',
       'I am unhappy enough even where I am happy, but ungrateful nowhere.',
     ]);
@@ -418,52 +407,47 @@ describe('verifying what Beam picked', () => {
   test('a Snippet Beam picks twice becomes one Line, and that does not withhold the badge', async () => {
     const beam = createFakeBeam((request) => {
       const id = idOf(request, 'I wrote this on a wet afternoon');
-      return {
-        picks: [
-          { id, note: 'First mention.' },
-          { id, note: 'Second mention.' },
-        ],
-      };
+      return answer(request, [
+        { id, note: 'First mention.' },
+        { id, note: 'Second mention.' },
+      ]);
     });
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines.map((line) => [line.text.slice(0, 20), line.note])).toEqual([['I wrote this on a we', 'First mention.']]);
+    expect(linesWith(poem, 'I wrote this on a wet').map((line) => [line.text.slice(0, 20), line.note])).toEqual([['I wrote this on a we', 'First mention.']]);
+    expect(poem.lines).toHaveLength(6);
     expect(poem.verified).toBe(true);
   });
 
   test('a Note keeps the callbacks that point at real Snippets', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         {
           id: idOf(request, 'I am unhappy enough'),
           note: 'Answers the first letter.',
           callbacks: [idOf(request, 'I wrote this on a wet afternoon')],
         },
-      ],
-    }));
+      ]));
 
     const { poem, snippets } = await makePoem(galleryRequest, beam);
 
     const first = snippets.find((snippet) => snippet.text.startsWith('I wrote this on a wet afternoon'));
-    expect(poem.lines[0]).toMatchObject({ note: 'Answers the first letter.', callbacks: [first?.id] });
+    expect(linesWith(poem, 'I am unhappy enough')[0]).toMatchObject({ note: 'Answers the first letter.', callbacks: [first?.id] });
   });
 
   test('a Note citing an unknown callback ID is dropped, but its Line stays and still verifies', async () => {
-    const beam = createFakeBeam((request) => ({
-      picks: [
+    const beam = createFakeBeam((request) => answer(request, [
         {
           id: idOf(request, 'I am unhappy enough'),
           note: 'Echoes something that was never said.',
           callbacks: [idOf(request, 'I wrote this on a wet afternoon'), 's99999'],
         },
-      ],
-    }));
+      ]));
 
     const { poem } = await makePoem(galleryRequest, beam);
 
-    expect(poem.lines).toHaveLength(1);
-    expect(poem.lines[0]).toMatchObject({ note: null, callbacks: [] });
+    expect(poem.lines).toHaveLength(6);
+    expect(linesWith(poem, 'I am unhappy enough')[0]).toMatchObject({ note: null, callbacks: [] });
     expect(poem.verified).toBe(true);
   });
 });

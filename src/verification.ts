@@ -4,6 +4,7 @@
 import { BeamError } from './beam/port';
 import { formatDateLabel } from './dates';
 import type { Line, Snippet } from './domain';
+import { MAX_POEM_LINES, MIN_POEM_LINES, type LineRange } from './selection';
 
 interface Pick {
   id: string;
@@ -41,6 +42,25 @@ export function verifyAnswer(content: string, snippets: Snippet[]): { lines: Lin
     return lineOf(snippet, noteIsSound ? pick.note : null, noteIsSound ? pick.callbacks : []);
   });
   return { lines, verified: rejected === 0 };
+}
+
+/**
+ * Hold verified Lines to the size of Poem this Conversation can carry: the size table's range
+ * for it, and never outside the Glossary's 6 to 14. Lines Beam named that verification dropped
+ * (unknown IDs, a Snippet named twice) are already out of `lines`, so they count against the
+ * total: 14 picks with 3 unknown IDs are 11 Lines, and are judged as 11.
+ *
+ * Anything else is a retryable {@link BeamError}, and no Poem is made.
+ */
+export function requireLineCount(lines: readonly Line[], range: LineRange): void {
+  const min = Math.max(range.min, MIN_POEM_LINES);
+  const max = Math.min(range.max, MAX_POEM_LINES);
+  if (lines.length >= min && lines.length <= max) return;
+  throw new BeamError(
+    'wrong-size',
+    `Beam returned ${lines.length} ${lines.length === 1 ? 'Line' : 'Lines'}; a Poem needs ${min} to ${max}. Try again.`,
+    true,
+  );
 }
 
 /** A Line is always a Snippet's own text and Receipt, looked up from the Conversation. */

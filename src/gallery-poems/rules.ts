@@ -3,10 +3,7 @@
 
 import type { Conversation, Poem } from '../domain';
 import { quarterBoundaries, quarterOf } from '../quarters';
-
-/** The Glossary: a Poem is 6 to 14 Lines. */
-export const MIN_POEM_LINES = 6;
-export const MAX_POEM_LINES = 14;
+import { MAX_POEM_LINES, MIN_POEM_LINES } from '../selection';
 
 /**
  * What is wrong with this Poem as a Gallery Poem, one sentence per problem; empty when

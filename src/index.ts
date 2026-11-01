@@ -17,7 +17,16 @@ export {
 } from './sources/whatsapp';
 export type { DateOrder, DateQuestion, SenderCount, WhatsAppExport } from './sources/whatsapp';
 export { snippetsOf } from './snippets';
-export { FULL_SIZE_LINES, INPUT_TOKEN_BUDGET, MIN_USABLE_SNIPPETS, estimateTokens, lineRangeFor, selectSnippets } from './selection';
+export {
+  FULL_SIZE_LINES,
+  INPUT_TOKEN_BUDGET,
+  MAX_POEM_LINES,
+  MIN_POEM_LINES,
+  MIN_USABLE_SNIPPETS,
+  estimateTokens,
+  lineRangeFor,
+  selectSnippets,
+} from './selection';
 export type { LineRange, ReadFraction, Selection } from './selection';
 
 export { BeamError } from './beam/port';

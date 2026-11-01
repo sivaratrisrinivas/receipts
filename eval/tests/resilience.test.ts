@@ -13,14 +13,14 @@ const tempDir = useTempDir();
 const usage = { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens: 29_000 };
 const COST_OF_USAGE = 0.236;
 
-/** Picks the first Snippet it is shown. */
-const firstSnippet = (request: Parameters<Parameters<typeof createFakeBeam>[0]>[0]) => ({
-  picks: [{ id: snippetsIn(request)[0]!.id, note: 'The first thing they said.' }],
+/** Picks the first 8 Snippets it is shown: a whole Poem for the full Conversation (8 to 14 Lines). */
+const firstSnippets = (request: Parameters<Parameters<typeof createFakeBeam>[0]>[0], count = 8) => ({
+  picks: snippetsIn(request).slice(0, count).map(({ id }) => ({ id, note: 'The first things they said.' })),
 });
 
 /** A Beam that follows a script of outcomes, one per call; the last one repeats. */
 function scripted(outcomes: ('ok' | 'truncated' | BeamError)[]): BeamPort & { calls: number } {
-  const inner = createFakeBeam(firstSnippet);
+  const inner = createFakeBeam(firstSnippets);
   const port = {
     calls: 0,
     async complete(request, onProgress) {
@@ -73,12 +73,41 @@ describe('retrying', () => {
 
   test('a Beam answer in the wrong shape counts as a failed attempt and is retried too', async () => {
     let calls = 0;
-    const beam = createFakeBeam((request) => (++calls === 1 ? { raw: 'Sorry, no.' } : firstSnippet(request)));
+    const beam = createFakeBeam((request) => (++calls === 1 ? { raw: 'Sorry, no.' } : firstSnippets(request)));
 
     const { traces } = await run(withUsage(beam, usage));
 
     expect(calls).toBe(2);
     expect(traces[0]?.attempts.map((attempt) => attempt.error?.reason)).toEqual(['invalid-response', undefined]);
+  });
+
+  test('a Poem of the wrong size counts as a failed attempt and is retried too', async () => {
+    let calls = 0;
+    const beam = createFakeBeam((request) => firstSnippets(request, ++calls === 1 ? 5 : 8));
+
+    const { traces } = await run(withUsage(beam, usage));
+
+    expect(calls).toBe(2);
+    expect(traces[0]).toMatchObject({ status: 'ok' });
+    expect(traces[0]?.poem?.lines).toHaveLength(8);
+    expect(traces[0]?.attempts.map((attempt) => attempt.error)).toEqual([
+      { reason: 'wrong-size', message: 'Beam returned 5 Lines; a Poem needs 8 to 14. Try again.' },
+      undefined,
+    ]);
+    // Both calls were paid for: the first answered, just not with a Poem.
+    expect(traces[0]?.costUsd).toBeCloseTo(2 * COST_OF_USAGE, 6);
+  });
+
+  test('a Poem that never comes back the right size is recorded as a failed Poem, with the reason, and the run carries on', async () => {
+    const beam = createFakeBeam((request) => firstSnippets(request, 15));
+
+    const { traces } = await run(withUsage(beam, usage), { perGroup: 2 });
+
+    expect(beam.requests).toHaveLength(6);
+    expect(traces.map((trace) => trace.status)).toEqual(['failed', 'failed']);
+    expect(traces[0]).toMatchObject({ error: { reason: 'wrong-size', message: 'Beam returned 15 Lines; a Poem needs 8 to 14. Try again.' } });
+    expect(traces[0]?.attempts).toHaveLength(3);
+    expect(traces[0]?.poem).toBeUndefined();
   });
 
   test('a failure that cannot succeed on retry (bad token, no credits) stops the whole run, leaving that Poem pending rather than failed', async () => {

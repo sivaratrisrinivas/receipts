@@ -10,6 +10,7 @@ export type FailureKind =
   | 'unavailable'
   | 'truncated'
   | 'bad-answer'
+  | 'wrong-size'
   | 'signed-out'
   | 'rate-limit'
   | 'not-enough'
@@ -73,6 +74,10 @@ export function describeFailure(error: unknown): Failure {
         message: 'Beam answered, but we could not use the answer. Trying again usually works.',
         recovery: RETRY,
       };
+    }
+    if (error.reason === 'wrong-size') {
+      // The error's own message is the plain reason, with the numbers.
+      return { kind: 'wrong-size', title: 'Beam gave the wrong number of Lines', message: error.message, recovery: RETRY };
     }
     if (error.reason === 'stopped') {
       return {

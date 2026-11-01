@@ -19,6 +19,7 @@ import {
   type BeamRequest,
   type PoemRequest,
 } from '../src';
+import { idOf, linesWith, padPicks, promptSnippets } from './support/prompt';
 import {
   ambiguousDates,
   android12h,
@@ -36,22 +37,17 @@ function request(file: string | Uint8Array, overrides: Partial<PoemRequest> = {}
   return { source: { kind: 'whatsapp', file }, occasion: 'birthday', giver: 'Sam', recipient: 'Mom', ...overrides };
 }
 
-/** The prompt's Snippet rows (`<id> <text>`), as Beam sees them. */
-function promptSnippets(beamRequest: BeamRequest): { id: string; text: string }[] {
-  return beamRequest.user.split('\n').flatMap((row) => {
-    const match = /^(s\d+) (.+)$/.exec(row);
-    return match ? [{ id: match[1]!, text: match[2]! }] : [];
-  });
-}
-
-/** A Beam that picks every Snippet containing one of the fragments, and records what it was sent. */
+/**
+ * A Beam that picks every Snippet containing one of the fragments, and records what it was
+ * sent. A Poem is never fewer than 6 Lines, so the answer is topped up with the earliest other
+ * Snippets (see {@link padPicks}); a test about particular Lines looks at them with {@link linesWith}.
+ */
 function pickingBeam(...fragments: string[]) {
   return createFakeBeam((beamRequest) => ({
-    picks: fragments.map((fragment) => {
-      const found = promptSnippets(beamRequest).find((snippet) => snippet.text.includes(fragment));
-      if (!found) throw new Error(`no Snippet containing "${fragment}" in the prompt`);
-      return { id: found.id, note: `Because of "${fragment}".` };
-    }),
+    picks: padPicks(
+      beamRequest,
+      fragments.map((fragment) => ({ id: idOf(beamRequest, fragment), note: `Because of "${fragment}".` })),
+    ),
   }));
 }
 
@@ -66,7 +62,9 @@ describe('an Android export', () => {
     const { poem } = await makePoem(request(android24h), beam);
 
     expect(poem.verified).toBe(true);
-    expect(poem.lines.map((line) => [line.text, line.receipt.sender, line.receipt.dateLabel])).toEqual([
+    expect(poem.lines).toHaveLength(6);
+    const chosen = linesWith(poem, 'Happy birthday, Mom', 'lemon cake from the lake house', 'porch light', 'whatever the hour');
+    expect(chosen.map((line) => [line.text, line.receipt.sender, line.receipt.dateLabel])).toEqual([
       ['Remember the lemon cake from the lake house, with the burnt edges?', 'Mom', '12 March 2024'],
       ['Call me when you land, I will keep the porch light on.', 'Mom', '13 March 2024'],
       ['Happy birthday, Mom, thank you for every single Sunday dinner.', 'Sam', '28 May 2024'],
@@ -81,7 +79,7 @@ describe('what in an export is a Message', () => {
 
     const { poem } = await makePoem(request(android24h), beam);
 
-    expect(poem.lines.map((line) => line.text)).toEqual(['Come for dinner on Sunday? Bring the good plates. And the blue jug, please.']);
+    expect(linesWith(poem, 'Come for dinner on Sunday').map((line) => line.text)).toEqual(['Come for dinner on Sunday? Bring the good plates. And the blue jug, please.']);
   });
 
   test.each([
@@ -116,7 +114,7 @@ describe('what in an export is a Message', () => {
 
     const { poem } = await makePoem(request(android24h), beam);
 
-    expect(poem.lines.map((line) => line.text)).toEqual(['Call me when you land, I will keep the porch light on.']);
+    expect(linesWith(poem, 'porch light').map((line) => line.text)).toEqual(['Call me when you land, I will keep the porch light on.']);
   });
 });
 
@@ -201,7 +199,7 @@ describe('other shapes of the same export', () => {
       pickingBeam('Happy new year, my love', 'Happy new year to you', 'lemon cake', 'still dream'),
     );
 
-    expect(poem.lines.map((line) => [line.receipt.sender, line.receipt.dateLabel])).toEqual([
+    expect(linesWith(poem, 'Happy new year', 'lemon cake', 'still dream').map((line) => [line.receipt.sender, line.receipt.dateLabel])).toEqual([
       ['Mom', '31 December 2023'],
       ['Sam', '2 January 2024'],
       ['Mom', '12 March 2024'],
@@ -223,7 +221,7 @@ describe('other shapes of the same export', () => {
       pickingBeam('Happy new year, my love', 'Happy new year to you', 'lemon cake', 'still dream'),
     );
 
-    expect(poem.lines.map((line) => [line.receipt.sender, line.receipt.dateLabel])).toEqual([
+    expect(linesWith(poem, 'Happy new year', 'lemon cake', 'still dream').map((line) => [line.receipt.sender, line.receipt.dateLabel])).toEqual([
       ['Mom', '31 December 2023'],
       ['Sam', '1 January 2024'],
       ['Mom', '2 January 2024'],
@@ -242,14 +240,13 @@ describe('other shapes of the same export', () => {
 
     const { poem } = await makePoem(request(chat), pickingBeam('Three things'));
 
-    expect(poem.lines.map((line) => line.text)).toEqual(['Three things I want for my birthday: 1. a long walk by the lake 2. your lemon cake']);
+    expect(linesWith(poem, 'Three things').map((line) => line.text)).toEqual(['Three things I want for my birthday: 1. a long walk by the lake 2. your lemon cake']);
   });
 });
 
 describe('an export file', () => {
   const lemonCake = 'Remember the lemon cake from the lake house, with the burnt edges?';
-  const asLine = (poem: { lines: { text: string; receipt: { dateLabel: string } }[] }) =>
-    poem.lines.map((line) => [line.text, line.receipt.dateLabel]);
+  const asLine = (lines: { text: string; receipt: { dateLabel: string } }[]) => lines.map((line) => [line.text, line.receipt.dateLabel]);
 
   test('an iOS .zip is opened and its _chat.txt read, media beside it left alone', async () => {
     const zip = zipSync({
@@ -259,7 +256,7 @@ describe('an export file', () => {
 
     const { poem } = await makePoem(request(zip), pickingBeam(lemonCake));
 
-    expect(asLine(poem)).toEqual([[lemonCake, '12 March 2024']]);
+    expect(asLine(linesWith(poem, lemonCake))).toEqual([[lemonCake, '12 March 2024']]);
   });
 
   test('an Android .zip with a differently named .txt is read too', async () => {
@@ -267,7 +264,7 @@ describe('an export file', () => {
 
     const { poem } = await makePoem(request(zip), pickingBeam(lemonCake));
 
-    expect(asLine(poem)).toEqual([[lemonCake, '12 March 2024']]);
+    expect(asLine(linesWith(poem, lemonCake))).toEqual([[lemonCake, '12 March 2024']]);
   });
 
   test('a .txt handed over as bytes is read as UTF-8, byte-order mark and all', async () => {
@@ -275,7 +272,7 @@ describe('an export file', () => {
 
     const { poem } = await makePoem(request(bytes), pickingBeam('Café au lait'));
 
-    expect(asLine(poem)).toEqual([['Café au lait on the balcony, my love.', '1 June 2024']]);
+    expect(asLine(linesWith(poem, 'Café au lait'))).toEqual([['Café au lait on the balcony, my love.', '1 June 2024']]);
   });
 
   test('a zip with no chat in it, a damaged zip, and a file that is not a chat are each refused in plain words', () => {
@@ -325,7 +322,7 @@ describe('a group chat', () => {
     const sent = everythingSent(beam);
     expect(sent).not.toContain('lemon cake');
     expect(sent).not.toContain('whatever the hour');
-    expect(poem.lines.map((line) => line.receipt.sender)).toEqual(['Dad']);
+    expect(linesWith(poem, 'forty pounds').map((line) => line.receipt.sender)).toEqual(['Dad']);
     expect(poem.recipient).toBe('Dad');
   });
 
@@ -372,7 +369,8 @@ describe('phone numbers and email addresses', () => {
     for (const secret of ['98765', '43210', '7946', '0958', '07700', '900123', 'lemoncake@', 'example.com', '5551234567', '555-123-4567', 'first.last', 'mail.example', '@']) {
       expect(sent, secret).not.toContain(secret);
     }
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    const chosen = linesWith(poem, 'if the train is late', 'My landline', 'whenever you like', 'florist', 'wrong number');
+    expect(chosen.map((line) => line.text)).toEqual([
       'Ring me on [phone number] if the train is late, I will wait at the gate.',
       'My landline is [phone number] and my mobile is [phone number], so ring either one.',
       'Write to [email address] whenever you like, I read it every morning.',
@@ -384,7 +382,7 @@ describe('phone numbers and email addresses', () => {
   test('numbers that are not phone numbers (a flat, a date, a span of years) are left alone', async () => {
     const { poem } = await makePoem(request(withContactDetails), pickingBeam('Our flat number'));
 
-    expect(poem.lines.map((line) => line.text)).toEqual([
+    expect(linesWith(poem, 'Our flat number').map((line) => line.text)).toEqual([
       'Our flat number is 4812 and we moved there on 2024-03-05 after waiting from 1999-2024.',
     ]);
   });
@@ -447,7 +445,7 @@ describe('day and month order', () => {
     const file = ambiguousDates;
     const { poem } = await makePoem({ ...request(file), source: { kind: 'whatsapp', file, dateOrder } }, pickingBeam(birthday));
 
-    expect(poem.lines.map((line) => line.receipt.dateLabel)).toEqual([label]);
+    expect(linesWith(poem, birthday).map((line) => line.receipt.dateLabel)).toEqual([label]);
   });
 });
 
@@ -463,7 +461,7 @@ describe('the formats of an export', () => {
   ])('%s is understood', async (_name, file) => {
     const { poem } = await makePoem(request(file), pickingBeam(birthday, lemonCake));
 
-    expect(poem.lines.map((line) => [line.text, line.receipt.sender, line.receipt.dateLabel])).toEqual([
+    expect(linesWith(poem, birthday, lemonCake).map((line) => [line.text, line.receipt.sender, line.receipt.dateLabel])).toEqual([
       [lemonCake, 'Mom', '12 March 2024'],
       [birthday, 'Sam', '28 May 2024'],
     ]);

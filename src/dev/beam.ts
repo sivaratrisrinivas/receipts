@@ -17,9 +17,10 @@
 import { BeamError, type BeamPort, type BeamRequest } from '../beam/port';
 import { REPLACEMENT_RESPONSE_FORMAT } from '../editing';
 
-const PICKS = 10;
+/** Eight is a whole Poem in either size tier (6 to 8 Lines for a small Conversation, 8 to 14 for a large one). */
+const PICKS = 8;
 
-/** Ten Snippet IDs spread evenly through the Conversation as the prompt lays it out. */
+/** Eight Snippet IDs spread evenly through the Conversation as the prompt lays it out. */
 function spreadPicks(request: BeamRequest, ghost: boolean): string {
   const ids = [...request.user.matchAll(/^(s\d+) /gm)].map((match) => match[1]!);
   const picks = Array.from({ length: PICKS }, (_, i) => ids[Math.floor(((i + 0.5) * ids.length) / PICKS)]!);

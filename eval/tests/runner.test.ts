@@ -12,15 +12,23 @@ const usage = { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens
 /** 500k tokens in at $0.40/M plus 30k out at $1.20/M, worked by hand. */
 const COST_OF_USAGE = 0.236;
 
-/** A Beam that picks the first and last Snippet it is shown, like a reader of whatever Conversation it was given. */
+/**
+ * A Beam that picks 8 Snippets spread evenly from the first to the last it is shown, like a
+ * reader of whatever Conversation it was given. Eight is a whole Poem for the full Conversation
+ * (8 to 14 Lines) and for the last 10% (6 to 8).
+ */
 function endsPicker() {
   return createFakeBeam((request) => {
     const shown = snippetsIn(request);
+    const spread = Array.from({ length: 8 }, (_, i) => shown[Math.round((i * (shown.length - 1)) / 7)]!);
     return {
-      picks: [
-        { id: shown[0]!.id, note: 'Where it starts.' },
-        { id: shown[shown.length - 1]!.id, note: 'Where it ends.', callbacks: [shown[0]!.id] },
-      ],
+      picks: spread.map(({ id }, i) =>
+        i === 0
+          ? { id, note: 'Where it starts.' }
+          : i === 7
+            ? { id, note: 'Where it ends.', callbacks: [spread[0]!.id] }
+            : { id, note: 'On the way.' },
+      ),
     };
   });
 }
@@ -72,12 +80,14 @@ describe('Beam on the full Conversation', () => {
       expect.objectContaining({ usage, costKind: 'usage', finishReason: 'stop', costUsd: expect.closeTo(COST_OF_USAGE, 6) }),
     ]);
     expect(trace?.costUsd).toBeCloseTo(COST_OF_USAGE, 6);
-    expect(JSON.parse(trace?.answer ?? 'null').lines).toHaveLength(2);
-    expect(trace?.poem?.lines.map((line) => [line.sender, line.dateLabel])).toEqual([
+    expect(JSON.parse(trace?.answer ?? 'null').lines).toHaveLength(8);
+    const lines = trace?.poem?.lines ?? [];
+    expect(lines).toHaveLength(8);
+    expect([lines[0], lines[7]].map((line) => [line?.sender, line?.dateLabel])).toEqual([
       ['Robert', '1 January 1845'],
       ['Robert', '25 June 1846'],
     ]);
-    expect(trace?.poem?.lines[1]?.callbacks).toEqual([trace?.poem?.lines[0]?.snippetId]);
+    expect(lines[7]?.callbacks).toEqual([lines[0]?.snippetId]);
   });
 });
 
@@ -96,7 +106,9 @@ describe('Beam on only the last 10%', () => {
     const headers = beam.requests[0]!.user.split('\n').filter((row) => row.startsWith('## '));
     expect(headers).toEqual(['## E 1846-05-06', '## R 1846-05-16', '## E 1846-05-26', '## R 1846-06-05', '## E 1846-06-15', '## R 1846-06-25']);
     expect(traces[0]).toMatchObject({ condition: 'last10', status: 'ok', messagesRead: 6 });
-    expect(traces[0]?.poem?.lines.map((line) => line.dateLabel)).toEqual(['6 May 1846', '25 June 1846']);
+    const lines = traces[0]?.poem?.lines ?? [];
+    expect(lines).toHaveLength(8);
+    expect([lines[0], lines[7]].map((line) => line?.dateLabel)).toEqual(['6 May 1846', '25 June 1846']);
   });
 });
 

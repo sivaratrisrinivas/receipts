@@ -7,10 +7,13 @@ import { createFakeBeam, makePoem, type Conversation, type PoemOutcome } from '.
 import { contextOf, noteParts, unlinkedCallbacks } from '../src/context';
 import { lineOf } from '../src/verification';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
-import { idOf } from './support/prompt';
+import { idOf, linesWith, padPicks } from './support/prompt';
 
+/** A Poem of the Lines containing these fragments, topped up to the 6 Lines a Poem needs (see {@link linesWith} for finding them). */
 async function galleryPoem(fragments: string[]): Promise<PoemOutcome> {
-  const beam = createFakeBeam((request) => ({ picks: fragments.map((fragment) => ({ id: idOf(request, fragment), note: 'A pick.' })) }));
+  const beam = createFakeBeam((request) => ({
+    picks: padPicks(request, fragments.map((fragment) => ({ id: idOf(request, fragment), note: 'A pick.' }))),
+  }));
   return makePoem(
     { source: { kind: 'gallery', texts: [volumeOne, volumeTwo] }, occasion: 'birthday', giver: 'Robert', recipient: 'Elizabeth' },
     beam,
@@ -21,7 +24,7 @@ describe('tapping a Line shows the original Message', () => {
   test('a Line that is one sentence of a long letter shows the whole letter, with the sentence marked', async () => {
     const { poem, conversation } = await galleryPoem(['Dr. Chambers says I may walk']);
 
-    const context = contextOf(conversation, poem.lines[0]!);
+    const context = contextOf(conversation, linesWith(poem, 'Dr. Chambers says I may walk')[0]!);
 
     expect(context).toEqual({
       sender: 'Elizabeth',
@@ -35,7 +38,7 @@ describe('tapping a Line shows the original Message', () => {
   test('a Line that is a whole Message shows just that Message', async () => {
     const { poem, conversation } = await galleryPoem(['Thank you a thousand times for the flowers']);
 
-    expect(contextOf(conversation, poem.lines[0]!)).toMatchObject({
+    expect(contextOf(conversation, linesWith(poem, 'Thank you a thousand times for the flowers')[0]!)).toMatchObject({
       sender: 'Elizabeth',
       dateLabel: '13 January 1845',
       before: '',
@@ -47,7 +50,7 @@ describe('tapping a Line shows the original Message', () => {
   test('a letter without a date of its own shows the approximate date its Receipt carries', async () => {
     const { poem, conversation } = await galleryPoem(['The post comes at nine']);
 
-    expect(contextOf(conversation, poem.lines[0]!)?.dateLabel).toBe('c. 13 January 1845');
+    expect(contextOf(conversation, linesWith(poem, 'The post comes at nine')[0]!)?.dateLabel).toBe('c. 13 January 1845');
   });
 
   test('a short letter written in several paragraphs is shown whole, with its Line marked across the break', () => {
@@ -83,7 +86,8 @@ describe('tapping a Line shows the original Message', () => {
   test('if the Line cannot be found inside its Message, the whole Message is shown unmarked', async () => {
     const { poem, conversation } = await galleryPoem(['Thank you a thousand times for the flowers']);
 
-    const context = contextOf(conversation, { ...poem.lines[0]!, text: 'Words that are nowhere in that letter.' });
+    const flowers = linesWith(poem, 'Thank you a thousand times for the flowers')[0]!;
+    const context = contextOf(conversation, { ...flowers, text: 'Words that are nowhere in that letter.' });
 
     expect(context).toMatchObject({ before: expect.stringContaining('Thank you a thousand times'), snippet: '', after: '' });
   });

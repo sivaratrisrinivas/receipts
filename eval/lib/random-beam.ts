@@ -2,10 +2,11 @@
 // random, with no network call. Running it through the real pipeline means a random
 // Poem is verified and Receipted exactly like a Beam Poem.
 
-import type { BeamPort } from '../../src';
+import { FULL_SIZE_LINES, type BeamPort } from '../../src';
 
-export const RANDOM_MIN_LINES = 8;
-export const RANDOM_MAX_LINES = 14;
+/** The Gallery is large, so a random Poem is as long as any Poem of a large Conversation (and passes the same size check). */
+export const RANDOM_MIN_LINES = FULL_SIZE_LINES.min;
+export const RANDOM_MAX_LINES = FULL_SIZE_LINES.max;
 
 /** Seeded, so a rerun draws the same Poems. mulberry32 over an FNV-1a hash of the seed. */
 function seededRandom(seed: string): () => number {
