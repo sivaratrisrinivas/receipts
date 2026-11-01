@@ -10,4 +10,4 @@ Receipts ships as a static Hugging Face Space with no backend. The Giver signs i
 
 ## Consequences
 
-Every Poem costs the Giver real credits (~$0.25 per Gallery Poem at ~590k input tokens), and we can't host share links, because there is nowhere to store a Card.
+Every Poem costs the Giver real credits (about $0.20, up to $0.25, per Gallery Poem at ~590k input tokens), and we can't host share links, because there is nowhere to store a Card.

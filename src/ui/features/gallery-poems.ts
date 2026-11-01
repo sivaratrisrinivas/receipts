@@ -62,7 +62,7 @@ function gallerySection(app: App): HTMLElement {
       h(
         'p',
         null,
-        'Beam reads every letter, live, and chooses the Lines for the Occasion you pick. It takes about a minute and costs roughly $0.20 of your Hugging Face credits.',
+        'Beam reads every letter, live, and chooses the Lines for the Occasion you pick. It takes about a minute and costs about $0.20 (up to $0.25) of your Hugging Face credits.',
       ),
     ),
   );
