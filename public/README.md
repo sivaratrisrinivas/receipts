@@ -25,13 +25,18 @@ A poem for someone you love, made only from things the two of you actually said 
 
 Built for Build with Beam, on [Beam 1.0](https://huggingface.co/reflection/Beam-1.0-501B-A23B) (501B parameters, 23B active, 1M-token context).
 
-## Try it
+## Getting started
 
-1. Open the Space and **sign in with Hugging Face**. There is no API key to paste. (Before you sign in, you can already see Poems made from the Gallery.)
-2. Choose what the Poem is made from: the **Gallery** (the 1845-1846 love letters of Robert Browning and Elizabeth Barrett), or **your own WhatsApp chat**, see below.
-3. Pick an **occasion** (birthday, anniversary, thank you, sorry, missing you, farewell) and, if you like, add a short note for Beam.
-4. Beam reads the whole Conversation, which usually takes under a minute (a call finishes in roughly 3 to 55 seconds). You watch its progress.
-5. The poem is revealed **line by line**, each with its sender and date. If every line checks out against the Conversation, it carries the **"every line is real"** badge.
+You need a free [Hugging Face](https://huggingface.co/join) account with a little credit on it (a Poem costs about $0.15 to $0.25).
+
+1. **Look first (no sign-in).** Before you sign in you can already see six finished Poems made from the Gallery, one per occasion. Tap a line to see the original letter around it.
+2. **Sign in.** Tap **Sign in with Hugging Face** and approve on the Hugging Face page. There is no API key to paste.
+3. **Make a Poem from the Gallery** (the 1845-1846 love letters of Robert Browning and Elizabeth Barrett). Pick an occasion (birthday, anniversary, thank you, sorry, missing you, farewell), add a short note for Beam if you like, and tap **Make my Gallery Poem**. Beam reads the whole Conversation, which usually takes under a minute (a call finishes in roughly 3 to 55 seconds), and you watch its progress.
+4. **Or use your own WhatsApp chat.** In WhatsApp, open a chat with one other person and export it **without media** (Android: menu, More, Export chat. iPhone: tap the person's name, Export Chat). Save it to Files, then tap **Use my own WhatsApp chat instead** and **Choose your chat file**. Choose which person is you and who the Poem is for. If asked "6 March or 3 June?", pick the right date. Check the message count and privacy note, tap **Continue**, pick an occasion and tap the make button. More in "Your own chat" below.
+5. **Read your Poem.** Lines are revealed one by one, each with its sender and date. If every line checks out against the Conversation, the **"every line is real"** badge appears.
+6. **Make it yours.** Read Beam's private notes, tap a line to see the real messages around it, **Remove** a line or **Replace** it with another from the same period, or **Regenerate the Poem**. You can't reword a line or reorder them, and a Poem keeps at least 6 lines.
+7. **Make the Card.** Under **Make it a Card**, add a title of your own if you like (Beam writes nothing), then **Share the image** or **Save the image**, **Print**, or **Download the Card (HTML)**. Beam's notes are never included.
+8. **Clean up.** Delete the exported chat file from your phone when you're done.
 
 If something goes wrong (out of credits, Beam unavailable, a dropped connection, Beam running out of room) you get a plain message that says which, and a retry.
 
