@@ -25,6 +25,14 @@ Extension points for later features:
 - **The Poem view** (`src/ui/components/poem-view.ts`) renders Lines with Receipts and the badge, takes its own `slots`, and has `setPoem()` and `reveal()`; reuse it wherever a Poem is shown.
 - **Failures**: `describeFailure()` in `src/app/failure.ts` turns any error into a message and a recovery; add a case there.
 
+## The Card
+
+`src/card/` turns a Poem into a Card; `src/ui/features/card-export.ts` is the panel under the Poem (a title the Giver writes, then three exports). Both exports are drawn from one `cardContent(poem, conversation, { title })` (`src/card/content.ts`), which has no field for a Note, so a Note cannot reach either of them.
+
+- **HTML Card**: `renderCardHtml(poem, conversation, { title })` is a pure function to one self-contained document: inline CSS, no script (each Line expands to its Message plus two either side with a native `<details>`), a Content-Security-Policy that forbids any request, all text escaped, and a print stylesheet that gives one clean Card without the context.
+- **PNG**: `drawCard(content, makeSurface)` draws 1080 px wide with Canvas 2D and system fonts; `src/card/deliver.ts` downloads it, or opens the share sheet on a phone. It is made ahead so the share sheet can open straight from the tap.
+- **Print** puts the HTML Card in a hidden frame and prints that, so the Space around it is never printed.
+
 ## Running locally
 
 OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Face token to the page (`scripts/vite-dev-token.ts`, serve-only: it is not in the build, and `npm run deploy:space` refuses to upload a build that contains it). It reads `HF_TOKEN` or `~/.cache/huggingface/token`. A real run costs credits, so for screen work use the scripted Beam (dev only, `src/dev/beam.ts`):
