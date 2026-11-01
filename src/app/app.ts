@@ -21,6 +21,7 @@ import {
 import type { AuthPort, Session } from './auth';
 import { describeFailure, describeNotEnough } from './failure';
 import { initialState, isReplacing, reduce, type Action, type AppState, type ComposeInput } from './state';
+import { readChat } from './chat-reading';
 import { createStore } from './store';
 
 export interface AppDeps {
@@ -216,7 +217,7 @@ export function createApp(deps: AppDeps): App {
           throw new ExportError('Only one person wrote in this chat, so there is nobody to make a Poem for. Pick a chat between two people.');
         }
         loaded = { text, exported };
-        const chat = { fileName: file.name, senders, giver: null, recipient: null, inferredOrder: inferDateOrder(exported), question: null, dateOrder: null };
+        const chat = { fileName: file.name, senders, giver: null, recipient: null, inferredOrder: inferDateOrder(exported), question: null, dateOrder: null, reading: null };
         store.dispatch({ type: 'upload-read', chat });
       } catch (error) {
         const message = error instanceof ExportError ? error.message : 'That file could not be read. Is it a chat exported from WhatsApp?';
@@ -227,7 +228,11 @@ export function createApp(deps: AppDeps): App {
     confirmPeople() {
       const { step, chat } = store.getState();
       if (step !== 'people' || !loaded || !chat?.giver || !chat.recipient) return;
-      store.dispatch({ type: 'people-confirmed', question: dateQuestion(loaded.exported, [chat.giver, chat.recipient]) });
+      store.dispatch({
+        type: 'people-confirmed',
+        question: dateQuestion(loaded.exported, [chat.giver, chat.recipient]),
+        reading: readChat(loaded.exported, chat.giver, chat.recipient),
+      });
     },
     chooseDateOrder: (order) => store.dispatch({ type: 'date-order-chosen', order }),
     confirmChat() {

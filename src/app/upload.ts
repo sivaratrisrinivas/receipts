@@ -6,6 +6,7 @@
 // the export cannot say) -> review (the count and the privacy statement) -> compose.
 
 import type { Sender } from '../domain';
+import type { ChatReading } from './chat-reading';
 import type { DateOrder, DateQuestion, SenderCount } from '../sources/whatsapp';
 import type { Action, AppState, StepId } from './state';
 
@@ -26,6 +27,8 @@ export interface ChatDraft {
   question: DateQuestion | null;
   /** The order the Poem will use: inferred, or the Giver's answer. Null until known. */
   dateOrder: DateOrder | null;
+  /** What will be sent, once the people are chosen; null until then. */
+  reading: ChatReading | null;
 }
 
 /** The upload step: reading the file, and why a file was refused. */
@@ -42,7 +45,7 @@ export type UploadAction =
   | { type: 'upload-failed'; message: string }
   | { type: 'upload-read'; chat: ChatDraft }
   | { type: 'person-chosen'; role: 'giver' | 'recipient'; name: Sender }
-  | { type: 'people-confirmed'; question: DateQuestion | null }
+  | { type: 'people-confirmed'; question: DateQuestion | null; reading: ChatReading }
   | { type: 'date-order-chosen'; order: DateOrder }
   | { type: 'chat-confirmed' }
   | { type: 'source-gallery' }
@@ -79,7 +82,7 @@ export function reduceUpload(state: AppState, action: UploadAction): AppState {
     case 'person-chosen': {
       if (!chat || !chat.senders.some((sender) => sender.name === action.name)) return state;
       // A new choice invalidates anything worked out from the old one.
-      const reset = { question: null, dateOrder: null };
+      const reset = { question: null, dateOrder: null, reading: null };
       if (action.role === 'recipient') {
         return action.name === chat.giver ? state : { ...state, chat: { ...chat, ...reset, recipient: action.name } };
       }
@@ -95,7 +98,7 @@ export function reduceUpload(state: AppState, action: UploadAction): AppState {
       return {
         ...state,
         step: action.question ? 'date-order' : 'review',
-        chat: { ...chat, question: action.question, dateOrder },
+        chat: { ...chat, question: action.question, dateOrder, reading: action.reading },
       };
     }
     case 'date-order-chosen':
@@ -128,17 +131,44 @@ export function previousStep({ step, chat }: AppState): StepId | null {
   }
 }
 
-/** What the Giver is told before sending: how many Messages, and where they go. */
-export function reviewOf(chat: ChatDraft): { count: number; headline: string; privacy: string; others: boolean } {
+/** Said on the review step of every chat: Beam's model card says it was developed predominantly for English. */
+export const LANGUAGE_NOTICE = 'Beam works best in English, so chats in other languages may give weaker results.';
+
+/** Said instead when most of the letters are outside the Latin script. */
+export const NON_LATIN_NOTICE =
+  'This chat is mostly written in a script other than Latin. Beam works best in English, so the Poem may come out noticeably weaker. You can still continue.';
+
+/** From this share of letters outside the Latin script, a chat counts as being mostly in another script. */
+const MOSTLY_NON_LATIN = 0.5;
+
+/** What the Giver is told before sending: how many Messages, where they go, and how well Beam is likely to read them. */
+export function reviewOf(chat: ChatDraft): {
+  count: number;
+  headline: string;
+  privacy: string;
+  others: boolean;
+  leftOut: number;
+  leftOutNote: string | null;
+  languageNotice: { text: string; strong: boolean };
+} {
   const chosen = [chat.giver, chat.recipient];
-  const count = chat.senders.filter((sender) => chosen.includes(sender.name)).reduce((total, sender) => total + sender.messages, 0);
+  // Until the people are chosen only the file's own count is known; the screens that show this come after.
+  const count = chat.reading?.sent ?? chat.senders.filter((sender) => chosen.includes(sender.name)).reduce((total, sender) => total + sender.messages, 0);
+  const leftOut = chat.reading?.leftOut ?? 0;
   const noun = count === 1 ? 'Message' : 'Messages';
+  const strong = (chat.reading?.nonLatinShare ?? 0) >= MOSTLY_NON_LATIN;
   return {
     count,
     headline: `${count.toLocaleString('en-US')} ${noun} from ${chat.recipient ?? 'them'} and you`,
     privacy: PRIVACY_STATEMENT,
     // Anyone else in the chat (a group) is left out entirely.
     others: chat.senders.some((sender) => !chosen.includes(sender.name)),
+    leftOut,
+    leftOutNote:
+      leftOut === 0
+        ? null
+        : `${leftOut.toLocaleString('en-US')} ${leftOut === 1 ? 'Message with no words' : 'Messages with no words'} to read (a link, emoji or one-word reply) ${leftOut === 1 ? 'is' : 'are'} left out.`,
+    languageNotice: { text: strong ? NON_LATIN_NOTICE : LANGUAGE_NOTICE, strong },
   };
 }
 

@@ -1,0 +1,42 @@
+{
+ "system": "You make a Poem for a Giver to give a Recipient, using ONLY real Snippets from their Conversation. You never write Poem text yourself: you choose Snippet IDs.\nThe Conversation is between Robert (R). The Giver is Robert; the Recipient is Elizabeth. Occasion: birthday. Context from the Giver: she just retired\nRead the whole Conversation. Choose 6 to 8 Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.\nSpread your picks across the whole timeline: choose at least one Line from each quarter of it. The Conversation is divided into four quarters of equal time by marker lines (=== QUARTER n of 4: first date to last date ===), each placed just before the first Message of that quarter; a Snippet belongs to the quarter whose marker most recently comes before it. A quarter with no Messages has no marker (skip it).\nInclude both Senders.\nAvoid private matters such as money, health details, addresses and passwords.\nCode will sort your picks by date, so choose Lines that read well in chronological order.\nWhile reasoning, refer to Snippets by ID only; never copy, quote or describe their text. Think in one short line per quarter, naming 2 to 4 candidate IDs and nothing else, for example \"Q1: s12 s40 s77\". Then pick your 6 to 8 Lines from those candidates and answer.\nFor each pick give a one-line private Note to the Giver explaining why. A Note may only mention things actually in the Conversation. In \"callbacks\", cite the IDs of any callbacks to other moments the Note mentions (an empty list if none).",
+ "user": "CONVERSATION (each Message starts with \"## sender date\"; then one Snippet per row: id text; a line starting \"===\" is a marker, not a Snippet)\n=== QUARTER 1 of 4: 1845-01-10 to 1845-04-11 ===\n## R 1845-01-10\ns0 This is thing number 0 that we said to each other.\n## R 1845-01-22\ns1 This is thing number 1 that we said to each other.\n## R 1845-02-04\ns2 This is thing number 2 that we said to each other.\n## R 1845-02-16\ns3 This is thing number 3 that we said to each other.\n## R 1845-03-01\ns4 This is thing number 4 that we said to each other.\n## R 1845-03-13\ns5 This is thing number 5 that we said to each other.\n## R 1845-03-26\ns6 This is thing number 6 that we said to each other.\n## R 1845-04-08\ns7 This is thing number 7 that we said to each other.\n=== QUARTER 2 of 4: 1845-04-11 to 1845-07-11 ===\n## R 1845-04-20\ns8 This is thing number 8 that we said to each other.\n## R 1845-05-03\ns9 This is thing number 9 that we said to each other.\n## R 1845-05-15\ns10 This is thing number 10 that we said to each other.\n## R 1845-05-28\ns11 This is thing number 11 that we said to each other.\n## R 1845-06-10\ns12 This is thing number 12 that we said to each other.\n## R 1845-06-22\ns13 This is thing number 13 that we said to each other.\n## R 1845-07-05\ns14 This is thing number 14 that we said to each other.\n=== QUARTER 3 of 4: 1845-07-11 to 1845-10-10 ===\n## R 1845-07-17\ns15 This is thing number 15 that we said to each other.\n## R 1845-07-30\ns16 This is thing number 16 that we said to each other.\n## R 1845-08-11\ns17 This is thing number 17 that we said to each other.\n## R 1845-08-24\ns18 This is thing number 18 that we said to each other.\n## R 1845-09-06\ns19 This is thing number 19 that we said to each other.\n## R 1845-09-18\ns20 This is thing number 20 that we said to each other.\n## R 1845-10-01\ns21 This is thing number 21 that we said to each other.\n=== QUARTER 4 of 4: 1845-10-10 to 1846-01-10 ===\n## R 1845-10-13\ns22 This is thing number 22 that we said to each other.\n## R 1845-10-26\ns23 This is thing number 23 that we said to each other.\n## R 1845-11-08\ns24 This is thing number 24 that we said to each other.\n## R 1845-11-20\ns25 This is thing number 25 that we said to each other.\n## R 1845-12-03\ns26 This is thing number 26 that we said to each other.\n## R 1845-12-15\ns27 This is thing number 27 that we said to each other.\n## R 1845-12-28\ns28 This is thing number 28 that we said to each other.\n## R 1846-01-10\ns29 This is thing number 29 that we said to each other.\n=== END OF CONVERSATION ===\nNow choose 6 to 8 Snippets by ID (never more than 8): at least one Line after each of the quarter markers above, and Lines from both Senders (Robert (R)). Do not go through the Snippets one by one: reason in one short line per quarter (\"Q1: s12 s40 s77\"), then answer with the JSON only.",
+ "responseFormat": {
+  "name": "poem",
+  "schema": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "lines"
+   ],
+   "properties": {
+    "lines": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "id",
+       "note",
+       "callbacks"
+      ],
+      "properties": {
+       "id": {
+        "type": "string"
+       },
+       "note": {
+        "type": "string"
+       },
+       "callbacks": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
