@@ -100,9 +100,18 @@ export function createApp(deps: AppDeps): App {
     };
   }
 
+  /**
+   * Each attempt to make a Poem takes the next number, and so does signing out. An attempt
+   * that is no longer the latest is stale (Beam cannot be interrupted mid-call): whatever it
+   * ends up with is dropped, so a Poem never appears for a Giver who has signed out.
+   */
+  let latestRun = 0;
+
   async function run(input: ComposeInput): Promise<void> {
     const session = store.getState().session;
     if (!session) return;
+    const mine = ++latestRun;
+    const isLatest = () => mine === latestRun;
     store.dispatch({ type: 'started', input, now: deps.now() });
     try {
       const { source, giver, recipient } = await conversationOf(store.getState());
@@ -110,11 +119,13 @@ export function createApp(deps: AppDeps): App {
       const result = await tryMakePoem(
         { source, occasion: input.occasion, giver, recipient, ...(note ? { note } : {}) },
         deps.makeBeam(session),
-        { onProgress: ({ reasoningTokens }) => store.dispatch({ type: 'reasoned', reasoningTokens }) },
+        { onProgress: ({ reasoningTokens }) => isLatest() && store.dispatch({ type: 'reasoned', reasoningTokens }) },
       );
+      if (!isLatest()) return;
       if ('refused' in result) store.dispatch({ type: 'failed', failure: describeNotEnough(result) });
       else store.dispatch({ type: 'succeeded', outcome: result });
     } catch (error) {
+      if (!isLatest()) return;
       const failure = describeFailure(error);
       if (failure.kind === 'signed-out') deps.auth.forget();
       store.dispatch({ type: 'failed', failure });
@@ -137,6 +148,7 @@ export function createApp(deps: AppDeps): App {
       }
     },
     signOut() {
+      latestRun++;
       deps.auth.signOut();
       loaded = null;
       store.dispatch({ type: 'signed-out' });

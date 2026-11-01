@@ -2,7 +2,7 @@
 // go wrong and they retry. Auth, the Gallery texts and Beam are all stand-ins; the UI is
 // not involved, only the state it renders.
 
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { BeamError, createFakeBeam, type BeamPort } from '../src';
 import { createApp, type AppDeps } from '../src/app/app';
 import type { AuthPort, Session } from '../src/app/auth';
@@ -86,6 +86,72 @@ describe('the Giver signs in', () => {
 
     expect(calls.signOut).toBe(1);
     expect(app.getState()).toMatchObject({ step: 'sign-in', session: null });
+  });
+});
+
+describe('signing out while Beam is reading', () => {
+  /** A Beam whose answer the test releases by hand, so a sign-out can land while it is still reading. */
+  function heldBeam(release: { finish?: () => void; fail?: (error: unknown) => void }): BeamPort {
+    const inner = pickingBeam();
+    return {
+      complete: (request, onProgress) =>
+        new Promise((resolve, reject) => {
+          release.finish = () => void inner.complete(request, onProgress).then(resolve, reject);
+          release.fail = reject;
+        }),
+    };
+  }
+
+  test('a Poem that arrives after sign-out is dropped: the Giver stays signed out', async () => {
+    const release: Parameters<typeof heldBeam>[0] = {};
+    const { app } = setup({ beam: heldBeam(release) });
+    await app.init();
+    const reading = app.start();
+    await vi.waitFor(() => expect(release.finish).toBeDefined());
+
+    app.signOut();
+    release.finish!();
+    await reading;
+
+    expect(app.getState()).toMatchObject({ step: 'sign-in', session: null, outcome: null, failure: null, attempt: null });
+  });
+
+  test('a failure that arrives after sign-out is dropped too, and does not forget a later session', async () => {
+    const release: Parameters<typeof heldBeam>[0] = {};
+    const { app, calls } = setup({ beam: heldBeam(release) });
+    await app.init();
+    const reading = app.start();
+    await vi.waitFor(() => expect(release.finish).toBeDefined());
+
+    app.signOut();
+    release.fail!(new BeamError('http', 'Beam request failed (HTTP 401)', false, 401));
+    await reading;
+
+    expect(app.getState()).toMatchObject({ step: 'sign-in', failure: null });
+    expect(calls.forgot).toBe(0);
+  });
+
+  test('a read that began before sign-out cannot overwrite the Poem of one made after signing in again', async () => {
+    const release: Parameters<typeof heldBeam>[0] = {};
+    let calls = 0;
+    const beam: BeamPort = {
+      complete: (request, onProgress) => (calls++ === 0 ? heldBeam(release).complete(request, onProgress) : pickingBeam().complete(request, onProgress)),
+    };
+    const { app } = setup({ beam });
+    await app.init();
+    const first = app.start();
+    await vi.waitFor(() => expect(release.finish).toBeDefined());
+    app.signOut();
+    await app.init();
+    app.edit({ occasion: 'birthday' });
+    await app.start();
+    expect(app.getState().outcome?.poem.occasion).toBe('birthday');
+
+    release.fail!(new BeamError('truncated', 'Beam ran out of room.', true));
+    await first;
+
+    expect(app.getState()).toMatchObject({ step: 'poem', failure: null });
+    expect(app.getState().outcome?.poem.occasion).toBe('birthday');
   });
 });
 
