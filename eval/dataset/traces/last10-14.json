@@ -1,0 +1,181 @@
+{
+  "condition": "last10",
+  "index": 14,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:31:34.274Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 7.583,
+  "costUsd": 0.019002400000000003,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 7.225,
+      "costUsd": 0.019002400000000003,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38977,
+        "completionTokens": 2843,
+        "reasoningTokens": 2360
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s43\",\n      \"note\": \"Flush's ecstatic welcome shows Elizabeth's tenderness and the life Robert is entering.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s92\",\n      \"note\": \"Robert asks whether he may come, showing early caution and devotion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s223\",\n      \"note\": \"Elizabeth gives her heart and life to him entirely.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s439\",\n      \"note\": \"Elizabeth succeeds at the vestry after earlier church panic.\",\n      \"callbacks\": [\"s38\", \"s40\"]\n    },\n    {\n      \"id\": \"s577\",\n      \"note\": \"Flush is stolen, turning a private worry into real peril.\",\n      \"callbacks\": [\"s43\"]\n    },\n    {\n      \"id\": \"s790\",\n      \"note\": \"Elizabeth reframes their Flush dispute as mutual protection.\",\n      \"callbacks\": [\"s577\"]\n    },\n    {\n      \"id\": \"s845\",\n      \"note\": \"Flush returns home, exhausted but safe.\",\n      \"callbacks\": [\"s577\"]\n    },\n    {\n      \"id\": \"s993\",\n      \"note\": \"Robert insists they must marry and leave at once.\",\n      \"callbacks\": [\"s966\"]\n    },\n    {\n      \"id\": \"s1037\",\n      \"note\": \"Robert looks back and calls every moment perfect.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1069\",\n      \"note\": \"Elizabeth says all she is she owes to him.\",\n      \"callbacks\": [\"s333\"]\n    },\n    {\n      \"id\": \"s1368\",\n      \"note\": \"Robert's bud becomes a keepsake Elizabeth will treasure.\",\n      \"callbacks\": [\"s1350\"]\n    },\n    {\n      \"id\": \"s1456\",\n      \"note\": \"Elizabeth anticipates having only him to love.\",\n      \"callbacks\": [\"s1069\"]\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic welcome shows Elizabeth's tenderness and the life Robert is entering.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s92",
+        "messageOrdinal": 517,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "You have heard all I can say ... say you, shall I come to-morrow?",
+        "note": "Robert asks whether he may come, showing early caution and devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s223",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "But if one heart and one life will do, ... they are yours ...",
+        "note": "Elizabeth gives her heart and life to him entirely.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s439",
+        "messageOrdinal": 529,
+        "sender": "Elizabeth",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I have just come from the vestry of Paddington chapel, and bore it very well, and saw nobody except one woman.",
+        "note": "Elizabeth succeeds at the vestry after earlier church panic.",
+        "callbacks": [
+          "s38",
+          "s40"
+        ]
+      },
+      {
+        "snippetId": "s577",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Here is a distress for me, dearest!",
+        "note": "Flush is stolen, turning a private worry into real peril.",
+        "callbacks": [
+          "s43"
+        ]
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth reframes their Flush dispute as mutual protection.",
+        "callbacks": [
+          "s577"
+        ]
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush returns home, exhausted but safe.",
+        "callbacks": [
+          "s577"
+        ]
+      },
+      {
+        "snippetId": "s993",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "We must be married directly and go to Italy.",
+        "note": "Robert insists they must marry and leave at once.",
+        "callbacks": [
+          "s966"
+        ]
+      },
+      {
+        "snippetId": "s1037",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "I look back, and in every one point, every word and gesture, every letter, every silence—you have been entirely perfect to me—I would not change one word, one look.",
+        "note": "Robert looks back and calls every moment perfect.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Elizabeth says all she is she owes to him.",
+        "callbacks": [
+          "s333"
+        ]
+      },
+      {
+        "snippetId": "s1368",
+        "messageOrdinal": 565,
+        "sender": "Elizabeth",
+        "date": "1846-09-17",
+        "approximate": false,
+        "dateLabel": "17 September 1846",
+        "text": "And the dear, dear little bud!—I shall keep it to the end of my life, if you love me so long, ... or not, sir!",
+        "note": "Robert's bud becomes a keepsake Elizabeth will treasure.",
+        "callbacks": [
+          "s1350"
+        ]
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth anticipates having only him to love.",
+        "callbacks": [
+          "s1069"
+        ]
+      }
+    ]
+  }
+}

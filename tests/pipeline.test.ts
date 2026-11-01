@@ -2,7 +2,7 @@
 // a Poem comes out. Nothing here reaches inside the pipeline.
 
 import { describe, expect, test } from 'vitest';
-import { BeamError, createFakeBeam, makePoem, type BeamRequest, type PoemRequest } from '../src';
+import { BeamError, createFakeBeam, makePoem, tryMakePoem, type BeamRequest, type PoemRequest } from '../src';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
 
 const galleryRequest: PoemRequest = {
@@ -281,6 +281,45 @@ describe('asking Beam', () => {
     expect(system).toContain('The Giver is Robert; the Recipient is Elizabeth.');
     expect(system).toContain('Occasion: anniversary.');
     expect(system).toContain('It is their first anniversary.');
+  });
+});
+
+describe('narrowing what Beam reads', () => {
+  test('Beam is shown only the Messages the narrowing step keeps, and the Poem comes from those alone', async () => {
+    const beam = createFakeBeam((request) => ({
+      picks: [{ id: idOf(request, 'Thank you a thousand times for the note'), note: 'The last letter.' }],
+    }));
+
+    const { poem, conversation } = await makePoem(galleryRequest, beam, {
+      narrow: (full) => ({ ...full, messages: full.messages.slice(1) }),
+    });
+
+    const rows = beam.requests[0]!.user.split('\n');
+    expect(rows.filter((row) => row.startsWith('## '))).toEqual([
+      '## E 1845-01-11',
+      '## R 1845-01-13',
+      '## E 1845-01-13',
+      '## R c.1845-01-13',
+      '## E 1845-05-20',
+      '## R 1845-05-22',
+      '## E 1845-09-12',
+      '## R 1846-03-24',
+      '## E 1846-09-11',
+      '## R 1846-09-14',
+    ]);
+    expect(rows.join('\n')).not.toContain('wet afternoon');
+    expect(conversation.messages).toHaveLength(10);
+    // Receipts still point at the Message's place in the full Conversation.
+    expect(poem.lines[0]?.receipt.messageOrdinal).toBe(10);
+  });
+
+  test('a Conversation narrowed below the size of a Poem is refused like any other small one', async () => {
+    const beam = createFakeBeam(() => ({ picks: [] }));
+
+    const attempt = tryMakePoem(galleryRequest, beam, { narrow: (full) => ({ ...full, messages: full.messages.slice(-2) }) });
+
+    await expect(attempt).resolves.toMatchObject({ refused: 'not-enough' });
+    expect(beam.requests).toHaveLength(0);
   });
 });
 

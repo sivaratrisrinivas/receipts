@@ -1,0 +1,174 @@
+{
+  "condition": "random",
+  "index": 12,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:30:24.826Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.709,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s548",
+        "messageOrdinal": 20,
+        "sender": "Elizabeth",
+        "date": "1845-05-06",
+        "approximate": false,
+        "dateLabel": "6 May 1845",
+        "text": "I think it is a true wonder of our humanity--and fit subject enough for a wild lyrical drama.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s824",
+        "messageOrdinal": 45,
+        "sender": "Robert",
+        "date": "1845-06-23",
+        "approximate": false,
+        "dateLabel": "23 June 1845",
+        "text": "So if I bring you 'nothing to signify' on Wednesday ... though I hope to do more than that ... you will know exactly why it happens.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s864",
+        "messageOrdinal": 52,
+        "sender": "Elizabeth",
+        "date": "1845-06-28",
+        "approximate": false,
+        "dateLabel": "28 June 1845",
+        "text": "And pray speak bona verba about the awful things which are possible between this now and Wednesday.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1161",
+        "messageOrdinal": 76,
+        "sender": "Elizabeth",
+        "date": "1845-08-11",
+        "approximate": false,
+        "dateLabel": "11 August 1845",
+        "text": "And it's wise to leave off listening: though I have met with excessive kindness among them, ... and do not refer to Dr. Chambers in any of this, of course.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s5054",
+        "messageOrdinal": 265,
+        "sender": "Elizabeth",
+        "date": "1846-03-12",
+        "approximate": false,
+        "dateLabel": "12 March 1846",
+        "text": "'My own beloved'--you should have my soul to stand on if it could make you stand higher.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6471",
+        "messageOrdinal": 325,
+        "sender": "Elizabeth",
+        "date": "1846-04-23",
+        "approximate": false,
+        "dateLabel": "23 April 1846",
+        "text": "And it does you so much good to keep talking about this misgiving and that misgiving!—the ‘trente-six oies’ are nothing at all to me, really.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7148",
+        "messageOrdinal": 354,
+        "sender": "Elizabeth",
+        "date": "1846-05-13",
+        "approximate": false,
+        "dateLabel": "13 May 1846",
+        "text": "Only ... the dramatists of England ... where in the world are they just now?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7500",
+        "messageOrdinal": 374,
+        "sender": "Robert",
+        "date": "1846-05-25",
+        "approximate": false,
+        "dateLabel": "25 May 1846",
+        "text": "When I have anything to occupy my mind, I all but run—but the pen can’t run, for this letter must go, and nothing said.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9038",
+        "messageOrdinal": 440,
+        "sender": "Robert",
+        "date": "1846-07-06",
+        "approximate": false,
+        "dateLabel": "6 July 1846",
+        "text": "Even this, all this ungracefulness, is proper, appropriate in its way—I am penetrated with shame thinking on what you say, and what my utmost devotion will deserve ... so infinitely less will it deserve!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9973",
+        "messageOrdinal": 478,
+        "sender": "Elizabeth",
+        "date": "1846-07-30",
+        "approximate": false,
+        "dateLabel": "30 July 1846",
+        "text": "You, blind!—Which is wrong of me again.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9977",
+        "messageOrdinal": 478,
+        "sender": "Elizabeth",
+        "date": "1846-07-30",
+        "approximate": false,
+        "dateLabel": "30 July 1846",
+        "text": "All I thought of answering to you, was, that there was no need yet of specifying the exact time.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10625",
+        "messageOrdinal": 498,
+        "sender": "Elizabeth",
+        "date": "1846-08-13",
+        "approximate": false,
+        "dateLabel": "13 August 1846",
+        "text": "Perhaps you will go home through it—but I shall not see—I cannot watch, being afraid of the over-watchers.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11087",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "And even if he escaped that fate, consider how he would break his heart about me.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11999",
+        "messageOrdinal": 550,
+        "sender": "Elizabeth",
+        "date": "1846-09-09",
+        "approximate": false,
+        "dateLabel": "9 September 1846",
+        "text": "Ah well, I shall see with my eyes to-morrow—perhaps I shall: and I shall see in a dream to-night more certainly.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

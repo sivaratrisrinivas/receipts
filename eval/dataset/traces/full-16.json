@@ -1,0 +1,175 @@
+{
+  "condition": "full",
+  "index": 16,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:31:25.917Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 62.688,
+  "costUsd": 0.1772996,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 50.617,
+      "costUsd": 0.1772996,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352298,
+        "completionTokens": 30317,
+        "reasoningTokens": 29802
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s222\",\n      \"note\": \"Robert's early promise of spring and seeing Elizabeth anchors the poem's longing.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s337\",\n      \"note\": \"Elizabeth's delight in being thought of as a friend gives the missing-you feeling warmth.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s797\",\n      \"note\": \"Robert's yellow rose sent in a letter is a concrete token of care.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s842\",\n      \"note\": \"Robert calls Elizabeth his light through the dark week.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s998\",\n      \"note\": \"Elizabeth's vivid Shrove-Tuesday image captures their playful, intimate bond.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1202\",\n      \"note\": \"Robert's caution about shutting up all feeling suits the ache of absence.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1319\",\n      \"note\": \"Elizabeth's praise of Robert's poem shows how closely she follows his work.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2127\",\n      \"note\": \"Robert wishes he were by Elizabeth when sending his book.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2131\",\n      \"note\": \"Elizabeth's comfort that the book will not come 'sine te' mirrors the same longing.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2605\",\n      \"note\": \"Robert's happiness in Elizabeth's gift conveys how much her presence means.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s12068\",\n      \"note\": \"Robert's full heart and the wish to do better for Elizabeth close the story with devotion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s12103\",\n      \"note\": \"Elizabeth's gratitude for being lifted into life and sunshine answers his longing.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s12141\",\n      \"note\": \"Robert's waking well and thanking Elizabeth's gift ends on hope and love.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's early promise of spring and seeing Elizabeth anchors the poem's longing.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s337",
+        "messageOrdinal": 11,
+        "sender": "Elizabeth",
+        "date": "1845-03-05",
+        "approximate": false,
+        "dateLabel": "5 March 1845",
+        "text": "Some things you say are very touching, and some, surprising; and although I am aware that you unconsciously exaggerate what I can be to you, yet it is delightful to be broad awake and think of you as my friend.",
+        "note": "Elizabeth's delight in being thought of as a friend gives the missing-you feeling warmth.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s797",
+        "messageOrdinal": 41,
+        "sender": "Robert",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "You let 'flowers be sent you in a letter,' every one knows, and this hot day draws out our very first yellow rose.",
+        "note": "Robert's yellow rose sent in a letter is a concrete token of care.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s842",
+        "messageOrdinal": 47,
+        "sender": "Robert",
+        "date": "1845-06-24",
+        "approximate": false,
+        "dateLabel": "24 June 1845",
+        "text": "So, till to-morrow,--my light through the dark week.",
+        "note": "Robert calls Elizabeth his light through the dark week.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s998",
+        "messageOrdinal": 62,
+        "sender": "Robert",
+        "date": "1845-07-18",
+        "approximate": true,
+        "dateLabel": "c. 18 July 1845",
+        "text": "You tie me like a Shrove-Tuesday fowl to a stake and then pick the thickest cudgel out of your lot, and at my head it goes--I wonder whether you remembered having predicted exactly the same horror once before.",
+        "note": "Elizabeth's vivid Shrove-Tuesday image captures their playful, intimate bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1202",
+        "messageOrdinal": 79,
+        "sender": "Robert",
+        "date": "1845-08-15",
+        "approximate": false,
+        "dateLabel": "15 August 1845",
+        "text": "Do you know, dear friend, it is no good policy to stop up all the vents of my feeling, nor leave one for safety's sake, as you will do, let me caution you never so repeatedly.",
+        "note": "Robert's caution about shutting up all feeling suits the ache of absence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1319",
+        "messageOrdinal": 88,
+        "sender": "Elizabeth",
+        "date": "1845-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1845",
+        "text": "But your 'Saul' is unobjectionable as far as I can see, my dear friend.",
+        "note": "Elizabeth's praise of Robert's poem shows how closely she follows his work.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2127",
+        "messageOrdinal": 143,
+        "sender": "Robert",
+        "date": "1845-11-04",
+        "approximate": false,
+        "dateLabel": "4 November 1845",
+        "text": "Only a word to tell you Moxon promises the books for to-morrow, Wednesday--so towards evening yours will reach you--'parve liber, sine me ibis' ... would I were by you, then and ever!",
+        "note": "Robert wishes he were by Elizabeth when sending his book.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2131",
+        "messageOrdinal": 144,
+        "sender": "Elizabeth",
+        "date": "1845-11-06",
+        "approximate": false,
+        "dateLabel": "6 November 1845",
+        "text": "I had your note last night, and am waiting for the book to-day; a true living breathing book, let the writer say of it what he will.",
+        "note": "Elizabeth's comfort that the book will not come 'sine te' mirrors the same longing.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2605",
+        "messageOrdinal": 163,
+        "sender": "Robert",
+        "date": "1845-12-02",
+        "approximate": false,
+        "dateLabel": "2 December 1845",
+        "text": "I was happy, so happy before!",
+        "note": "Robert's happiness in Elizabeth's gift conveys how much her presence means.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12068",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You will only expect a few words—what will those be?",
+        "note": "Robert's full heart and the wish to do better for Elizabeth close the story with devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12103",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "My own beloved, if ever you should have reason to complain of me in things voluntary and possible, all other women would have a right to tread me underfoot, I should be so vile and utterly unworthy.",
+        "note": "Elizabeth's gratitude for being lifted into life and sunshine answers his longing.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12141",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Robert's waking well and thanking Elizabeth's gift ends on hope and love.",
+        "callbacks": []
+      }
+    ]
+  }
+}

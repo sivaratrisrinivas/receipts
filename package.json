@@ -13,7 +13,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "gallery:fetch": "tsx scripts/fetch-gallery.ts",
     "smoke": "tsx scripts/smoke.ts",
-    "deploy:space": "npm run build && tsx scripts/deploy-space.ts"
+    "deploy:space": "npm run build && tsx scripts/deploy-space.ts",
+    "eval": "tsx eval/run.ts",
+    "eval:report": "tsx eval/report.ts",
+    "eval:publish": "tsx eval/publish.ts"
   },
   "engines": {
     "node": ">=20"

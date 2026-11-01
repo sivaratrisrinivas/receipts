@@ -1,0 +1,108 @@
+{
+  "condition": "random",
+  "index": 11,
+  "occasion": "farewell",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:26:25.436Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.85,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s6665",
+        "messageOrdinal": 334,
+        "sender": "Elizabeth",
+        "date": "1846-04-29",
+        "approximate": false,
+        "dateLabel": "29 April 1846",
+        "text": "Unless indeed she came out of that famous mist, which you fined me away into, ... the day you slew and idealized me, remember!—and, now I begin to consider, I think she did!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7454",
+        "messageOrdinal": 372,
+        "sender": "Elizabeth",
+        "date": "1846-05-25",
+        "approximate": false,
+        "dateLabel": "25 May 1846",
+        "text": "When you came yesterday I had scarcely done my grumbling over the Athenæum, which really seems to me to select its subjects from the things least likely to interest and elevate.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8122",
+        "messageOrdinal": 401,
+        "sender": "Robert",
+        "date": "1846-06-12",
+        "approximate": false,
+        "dateLabel": "12 June 1846",
+        "text": "So, dear, dear Ba, understand and advise me.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8167",
+        "messageOrdinal": 403,
+        "sender": "Robert",
+        "date": "1846-06-13",
+        "approximate": false,
+        "dateLabel": "13 June 1846",
+        "text": "I will only say, I agree in all you write—it will be clearly best, and I can obviate every untowardness here ... show that all is pure kindness and provident caution ... so easy all will be!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9186",
+        "messageOrdinal": 446,
+        "sender": "Elizabeth",
+        "date": "1846-07-08",
+        "approximate": false,
+        "dateLabel": "8 July 1846",
+        "text": "Somebody is wanted to cut and burn, and be silent afterwards.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10261",
+        "messageOrdinal": 487,
+        "sender": "Robert",
+        "date": "1846-08-05",
+        "approximate": false,
+        "dateLabel": "5 August 1846",
+        "text": "And you did understand also why I left, on that mere chance of danger to you,—for it was not, do you think it was only the irksomeness to myself I sought to escape—though that would have been considerable.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10462",
+        "messageOrdinal": 493,
+        "sender": "Elizabeth",
+        "date": "1846-08-10",
+        "approximate": false,
+        "dateLabel": "10 August 1846",
+        "text": "Thus it is.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10532",
+        "messageOrdinal": 495,
+        "sender": "Elizabeth",
+        "date": "1846-08-11",
+        "approximate": false,
+        "dateLabel": "11 August 1846",
+        "text": "And then came a note!",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

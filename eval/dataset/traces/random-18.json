@@ -1,0 +1,130 @@
+{
+  "condition": "random",
+  "index": 18,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T03:40:23.622Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 4.842,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s565",
+        "messageOrdinal": 20,
+        "sender": "Elizabeth",
+        "date": "1845-05-06",
+        "approximate": false,
+        "dateLabel": "6 May 1845",
+        "text": "In the meantime you do not know what it is to be ... a little afraid of Paracelsus.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2637",
+        "messageOrdinal": 165,
+        "sender": "Elizabeth",
+        "date": "1845-12-04",
+        "approximate": false,
+        "dateLabel": "4 December 1845",
+        "text": "You will avenge him with the sympathies of the world; that, I foresee....",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2848",
+        "messageOrdinal": 174,
+        "sender": "Elizabeth",
+        "date": "1845-12-16",
+        "approximate": false,
+        "dateLabel": "16 December 1845",
+        "text": "Now how do you read that omen?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4053",
+        "messageOrdinal": 221,
+        "sender": "Elizabeth",
+        "date": "1846-02-05",
+        "approximate": false,
+        "dateLabel": "5 February 1846",
+        "text": "Unless indeed I should grow painful to you ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6602",
+        "messageOrdinal": 331,
+        "sender": "Robert",
+        "date": "1846-04-27",
+        "approximate": false,
+        "dateLabel": "27 April 1846",
+        "text": "The wind is unremitting,—savage.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7112",
+        "messageOrdinal": 353,
+        "sender": "Robert",
+        "date": "1846-05-12",
+        "approximate": false,
+        "dateLabel": "12 May 1846",
+        "text": "But goodbye, dearest, till to-morrow—and next day, which is ours.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7293",
+        "messageOrdinal": 363,
+        "sender": "Robert",
+        "date": "1846-05-19",
+        "approximate": false,
+        "dateLabel": "19 May 1846",
+        "text": "But,—I don’t know why,—I got nervous of a sudden, it seemed late and I remembered the Drawing-room and its occupants.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9210",
+        "messageOrdinal": 446,
+        "sender": "Elizabeth",
+        "date": "1846-07-08",
+        "approximate": false,
+        "dateLabel": "8 July 1846",
+        "text": "It will do me good perhaps—but your coming will, certainly.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10170",
+        "messageOrdinal": 484,
+        "sender": "Robert",
+        "date": "1846-08-03",
+        "approximate": false,
+        "dateLabel": "3 August 1846",
+        "text": "How you have mistaken my words, whatever they may have been, about the ‘change’ to be expected in my life!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11300",
+        "messageOrdinal": 523,
+        "sender": "Elizabeth",
+        "date": "1846-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1846",
+        "text": "I am bound to them utterly.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

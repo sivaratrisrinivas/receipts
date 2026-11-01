@@ -1,0 +1,174 @@
+{
+  "condition": "random",
+  "index": 5,
+  "occasion": "farewell",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:04:14.368Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 1.506,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s2190",
+        "messageOrdinal": 147,
+        "sender": "Robert",
+        "date": "1845-11-10",
+        "approximate": false,
+        "dateLabel": "10 November 1845",
+        "text": "May God bless you, my own love.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4306",
+        "messageOrdinal": 234,
+        "sender": "Elizabeth",
+        "date": "1846-02-17",
+        "approximate": false,
+        "dateLabel": "17 February 1846",
+        "text": "If she had sent such to me, I should not have sent it to Mr. Kenyon, but then, she would not have sent it to me in any case.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4460",
+        "messageOrdinal": 241,
+        "sender": "Elizabeth",
+        "date": "1846-02-21",
+        "approximate": false,
+        "dateLabel": "21 February 1846",
+        "text": "Now let me tell you an apologue in exchange for your Wednesday's stories which I liked so, and mine perhaps may make you 'a little wiser'--who knows?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6308",
+        "messageOrdinal": 318,
+        "sender": "Elizabeth",
+        "date": "1846-04-18",
+        "approximate": false,
+        "dateLabel": "18 April 1846",
+        "text": "Presently, leaning up against the chimney-piece,—he said quietly ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6378",
+        "messageOrdinal": 321,
+        "sender": "Elizabeth",
+        "date": "1846-04-21",
+        "approximate": false,
+        "dateLabel": "21 April 1846",
+        "text": "I see the new light which Reichenbach shows pouring forth visibly from these chrystals tossed out.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7723",
+        "messageOrdinal": 384,
+        "sender": "Robert",
+        "date": "1846-06-01",
+        "approximate": false,
+        "dateLabel": "1 June 1846",
+        "text": "My face, thank God, I am let say to my unutterable joy and pride and love, above all other feelings.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8153",
+        "messageOrdinal": 402,
+        "sender": "Elizabeth",
+        "date": "1846-06-13",
+        "approximate": false,
+        "dateLabel": "13 June 1846",
+        "text": "And do you think that because this may be done, or not done ... and because that ought not to be borne ... we can make any change ... act any more openly ... face to face, perhaps—voice to voice?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8311",
+        "messageOrdinal": 409,
+        "sender": "Elizabeth",
+        "date": "1846-06-17",
+        "approximate": false,
+        "dateLabel": "17 June 1846",
+        "text": "I am very grateful to her.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8833",
+        "messageOrdinal": 432,
+        "sender": "Elizabeth",
+        "date": "1846-07-02",
+        "approximate": false,
+        "dateLabel": "2 July 1846",
+        "text": "The sense of it has sunk into my heart.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8983",
+        "messageOrdinal": 437,
+        "sender": "Elizabeth",
+        "date": "1846-07-04",
+        "approximate": false,
+        "dateLabel": "4 July 1846",
+        "text": "Give me all my thoughts (those that belong to me) to-morrow.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9159",
+        "messageOrdinal": 443,
+        "sender": "Elizabeth",
+        "date": "1846-07-07",
+        "approximate": false,
+        "dateLabel": "7 July 1846",
+        "text": "And you so good, so best—Ah—but it is that which frightens me! so far best!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10362",
+        "messageOrdinal": 490,
+        "sender": "Elizabeth",
+        "date": "1846-08-07",
+        "approximate": false,
+        "dateLabel": "7 August 1846",
+        "text": "‘And you will let me know, and when you can,—when everything is settled?’",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11021",
+        "messageOrdinal": 514,
+        "sender": "Elizabeth",
+        "date": "1846-08-22",
+        "approximate": false,
+        "dateLabel": "22 August 1846",
+        "text": "In his opinion, my case is desperate.’",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12124",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "To which I answered that I did not know.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "condition": "last10",
+  "index": 7,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:05:17.319Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.322,
+  "costUsd": 0.018730800000000002,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.869,
+      "costUsd": 0.018730800000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38976,
+        "completionTokens": 2617,
+        "reasoningTokens": 2154
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Early proof that Elizabeth already reads Robert’s words deeply.\", \"callbacks\": []},\n    {\"id\": \"s189\", \"note\": \"A tiny private scene: Flush at the window while she reads Robert’s letter.\", \"callbacks\": []},\n    {\"id\": \"s333\", \"note\": \"Elizabeth’s happiness is remade by him after long despair.\", \"callbacks\": []},\n    {\"id\": \"s431\", \"note\": \"Their shared word for the life-changing step they are taking.\", \"callbacks\": []},\n    {\"id\": \"s512\", \"note\": \"Robert’s homely apple parable about not delaying their happiness.\", \"callbacks\": []},\n    {\"id\": \"s790\", \"note\": \"Elizabeth turns the Flush argument into a tender mirror of their own bond.\", \"callbacks\": []},\n    {\"id\": \"s842\", \"note\": \"Her affectionate command that he come back safe, even without Flush.\", \"callbacks\": []},\n    {\"id\": \"s883\", \"note\": \"Elizabeth smiles at Robert’s grave ‘business’ talk while jesters are forbidden.\", \"callbacks\": []},\n    {\"id\": \"s923\", \"note\": \"Flush becomes a playful go-between for their kisses.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"The exhausted, breathless morning after the wedding.\", \"callbacks\": []},\n    {\"id\": \"s1069\", \"note\": \"Elizabeth names him as the source of her renewed life.\", \"callbacks\": []},\n    {\"id\": \"s1155\", \"note\": \"Robert exults in the irrevocable gift of herself.\", \"callbacks\": []},\n    {\"id\": \"s1243\", \"note\": \"Jesting through tears at the edge of their new life.\", \"callbacks\": []},\n    {\"id\": \"s1464\", \"note\": \"Her last letter before they leave England together.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Early proof that Elizabeth already reads Robert’s words deeply.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s189",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "So my reverie was broken in the middle—but being better tempered, rather, than Flush, or having larger resources, I did not growl, but took your latest letter out instead, which lasted for the whole remainder of the time.",
+        "note": "A tiny private scene: Flush at the window while she reads Robert’s letter.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s333",
+        "messageOrdinal": 526,
+        "sender": "Elizabeth",
+        "date": "1846-08-27",
+        "approximate": false,
+        "dateLabel": "27 August 1846",
+        "text": "I thought once that the capacity of happiness was destroyed in me, but you have made it over again,—God has permitted you!",
+        "note": "Elizabeth’s happiness is remade by him after long despair.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s431",
+        "messageOrdinal": 528,
+        "sender": "Elizabeth",
+        "date": "1846-08-29",
+        "approximate": false,
+        "dateLabel": "29 August 1846",
+        "text": "Our adventure, indeed!",
+        "note": "Their shared word for the life-changing step they are taking.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s512",
+        "messageOrdinal": 531,
+        "sender": "Robert",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "‘Comfort me with apples, for I am sick of love!’",
+        "note": "Robert’s homely apple parable about not delaying their happiness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth turns the Flush argument into a tender mirror of their own bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s842",
+        "messageOrdinal": 543,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Come back safe, but without Flush—I am to have him to-night though.",
+        "note": "Her affectionate command that he come back safe, even without Flush.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s883",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "And smiling to myself I was, both last night and this morning, at your phrase about the ‘business’ to be talked by the ‘grave man and woman’; understanding your precaution against all unlawful jesting!—jesters forbidden in the protocol!",
+        "note": "Elizabeth smiles at Robert’s grave ‘business’ talk while jesters are forbidden.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s923",
+        "messageOrdinal": 548,
+        "sender": "Elizabeth",
+        "date": "1846-09-08",
+        "approximate": false,
+        "dateLabel": "8 September 1846",
+        "text": "For Flush, I did your commission, kissing the top of his head: then I took the kiss back again because it seemed too good for him just now.",
+        "note": "Flush becomes a playful go-between for their kisses.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "The exhausted, breathless morning after the wedding.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Elizabeth names him as the source of her renewed life.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "Robert exults in the irrevocable gift of herself.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1243",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "And forgive the inveterate jesting, which jests with eyes full of tears.",
+        "note": "Jesting through tears at the edge of their new life.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Her last letter before they leave England together.",
+        "callbacks": []
+      }
+    ]
+  }
+}

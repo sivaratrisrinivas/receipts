@@ -47,6 +47,11 @@ export type PoemResult = PoemOutcome | NotEnough;
 export interface MakePoemOptions {
   /** Called as Beam reasons, so the UI can show it has not hung. */
   onProgress?: (progress: BeamProgress) => void;
+  /**
+   * Chooses which part of the Conversation Beam gets to read, before Snippets are
+   * formed. The eval uses it to show Beam only the most recent Messages.
+   */
+  narrow?: (conversation: Conversation) => Conversation;
 }
 
 /** Make a Poem, or say why the Conversation is too small for one. */
@@ -57,8 +62,9 @@ export async function tryMakePoem(
 ): Promise<PoemResult> {
   // Only the Giver's and the Recipient's Messages get as far as a Snippet (and so as far as
   // the token budget and the size table), and only once phone numbers and email addresses
-  // are out of them.
-  const conversation = redactConversation(between(readConversation(request.source), request.giver, request.recipient));
+  // are out of them. Narrowing (an eval-only choice) then picks which part of that Beam reads.
+  const restricted = redactConversation(between(readConversation(request.source), request.giver, request.recipient));
+  const conversation = (options.narrow ?? ((whole) => whole))(restricted);
   const snippets = snippetsOf(conversation);
 
   const selection = selectSnippets(snippets);
