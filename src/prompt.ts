@@ -95,7 +95,7 @@ function instructions({ conversation, occasion, giver, recipient, note, lineRang
   const people = conversation.senders.map((sender) => `${redactText(sender)} (${label(sender)})`).join(' and ');
   return [
     `You make a Poem for a Giver to give a Recipient, using ONLY real Snippets from their Conversation. You never write Poem text yourself: you choose Snippet IDs.`,
-    `The Conversation is between ${people}. The Giver is ${redactText(giver)}; the Recipient is ${redactText(recipient)}. Occasion: ${occasion}.${note ? ` Context from the Giver: ${note}` : ''}`,
+    `The Conversation is between ${people}. The Giver is ${redactText(giver)}; the Recipient is ${redactText(recipient)}. Occasion: ${occasion}.${note ? ` Context from the Giver: ${redactText(note)}` : ''}`,
     `Read the whole Conversation, start to end. Choose ${lineRange.min} to ${lineRange.max} Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.`,
     `Spread your picks across the whole timeline: choose at least one Line from each quarter of it (skip any quarter with no Messages). The quarters, by date: ${timelineQuarters(conversation).join('; ')}.`,
     `Include both Senders.`,
