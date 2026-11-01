@@ -54,6 +54,16 @@ export function noteParts(note: string, callbacks: readonly string[]): NotePart[
   return parts;
 }
 
+/**
+ * The callbacks of a Line that its Note's own text does not link, each once, in order. Beam
+ * seldom writes the ID in the Note (in the eval, 3 of 143 Lines with callbacks), so these are
+ * shown as links beside the Note instead.
+ */
+export function unlinkedCallbacks(note: string, callbacks: readonly string[]): string[] {
+  const linked = new Set(noteParts(note, callbacks).flatMap((part) => ('callback' in part ? [part.callback] : [])));
+  return [...new Set(callbacks)].filter((id) => !linked.has(id));
+}
+
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }

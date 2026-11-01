@@ -33,8 +33,16 @@
 }
 
 .giver-details > .note-text,
-.giver-details > .callback-quote {
+.giver-details > .callback-snippet {
   align-self: stretch;
+}
+
+/* The callbacks Beam names that the Note's text does not spell out */
+.callback-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.6rem;
 }
 
 /* A Snippet ID in a Note, shown as who said it and when */
@@ -54,7 +62,7 @@
   background: var(--accent-wash);
 }
 
-.callback-quote {
+.callback-snippet {
   margin: 0;
   padding: 0.55rem 0.75rem;
   border-left: 3px solid var(--accent);
@@ -63,7 +71,7 @@
   overflow-wrap: anywhere;
 }
 
-.callback-quote .receipt {
+.callback-snippet .receipt {
   margin-top: 0.3rem;
 }
 

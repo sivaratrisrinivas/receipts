@@ -11,7 +11,7 @@
 
 import type { App } from '../../app/app';
 import { isReplacing, type AppState } from '../../app/state';
-import { contextOf, noteParts } from '../../context';
+import { contextOf, noteParts, unlinkedCallbacks } from '../../context';
 import { formatDateLabel } from '../../dates';
 import type { Snippet } from '../../domain';
 import { h } from '../dom';
@@ -49,14 +49,15 @@ function lineDetails({ app, line }: LineSlotContext): Node | null {
   const root = h('div', { class: 'giver-only giver-details' });
 
   if (line.note !== null) {
-    const quote = h('blockquote', { class: 'callback-quote', hidden: true });
+    const pointedAt = h('blockquote', { class: 'callback-snippet', hidden: true });
     const chips: { button: HTMLButtonElement; snippet: Snippet }[] = [];
+    const { snippets } = outcome;
     let showing: string | null = null;
 
-    function toggleQuote(snippet: Snippet): void {
+    function toggleSnippet(snippet: Snippet): void {
       showing = showing === snippet.id ? null : snippet.id;
-      quote.hidden = showing === null;
-      quote.replaceChildren(
+      pointedAt.hidden = showing === null;
+      pointedAt.replaceChildren(
         h('p', { class: 'callback-text' }, snippet.text),
         h(
           'p',
@@ -69,20 +70,29 @@ function lineDetails({ app, line }: LineSlotContext): Node | null {
       for (const chip of chips) chip.button.setAttribute('aria-expanded', String(chip.snippet.id === showing));
     }
 
+    /** A link to the Snippet a callback points to, or null for an ID that is not in this Conversation. */
+    function chipFor(id: string): HTMLButtonElement | null {
+      const snippet = snippets.find((candidate) => candidate.id === id);
+      if (!snippet) return null;
+      const button = h('button', { class: 'callback', type: 'button', 'aria-expanded': 'false' }, snippetLabel(snippet));
+      button.addEventListener('click', () => toggleSnippet(snippet));
+      chips.push({ button, snippet });
+      return button;
+    }
+
     const note = h(
       'p',
       { class: 'note-text' },
-      ...noteParts(line.note, line.callbacks).map((part) => {
-        if ('text' in part) return part.text;
-        const snippet = outcome.snippets.find((candidate) => candidate.id === part.callback);
-        if (!snippet) return part.callback;
-        const button = h('button', { class: 'callback', type: 'button', 'aria-expanded': 'false' }, snippetLabel(snippet));
-        button.addEventListener('click', () => toggleQuote(snippet));
-        chips.push({ button, snippet });
-        return button;
-      }),
+      ...noteParts(line.note, line.callbacks).map((part) => ('text' in part ? part.text : (chipFor(part.callback) ?? part.callback))),
     );
-    root.append(h('p', { class: 'giver-label' }, 'Note from Beam · only you see this'), note, quote);
+    root.append(h('p', { class: 'giver-label' }, 'Note from Beam · only you see this'), note);
+
+    // Beam names the callbacks it means in `line.callbacks`, but rarely writes the IDs in the Note.
+    const elsewhere = unlinkedCallbacks(line.note, line.callbacks).flatMap((id) => chipFor(id) ?? []);
+    if (elsewhere.length > 0) {
+      root.append(h('p', { class: 'callback-links' }, h('span', { class: 'giver-label' }, 'Points back to'), ...elsewhere));
+    }
+    root.append(pointedAt);
   }
 
   const context = contextOf(outcome.conversation, line);
