@@ -25,6 +25,14 @@ Extension points for later features:
 - **The Poem view** (`src/ui/components/poem-view.ts`) renders Lines with Receipts and the badge, takes its own `slots`, and has `setPoem()` and `reveal()`; reuse it wherever a Poem is shown.
 - **Failures**: `describeFailure()` in `src/app/failure.ts` turns any error into a message and a recovery; add a case there.
 
+## The Card
+
+`src/card/` turns a Poem into a Card; `src/ui/features/card-export.ts` is the panel under the Poem (a title the Giver writes, then three exports). Both exports are drawn from one `cardContent(poem, conversation, { title })` (`src/card/content.ts`), which has no field for a Note, so a Note cannot reach either of them.
+
+- **HTML Card**: `renderCardHtml(poem, conversation, { title })` is a pure function to one self-contained document: inline CSS, no script (each Line expands to its Message plus two either side with a native `<details>`), a Content-Security-Policy that forbids any request, all text escaped, and a print stylesheet that gives one clean Card without the context.
+- **PNG**: `drawCard(content, makeSurface)` draws 1080 px wide with Canvas 2D and system fonts; `src/card/deliver.ts` downloads it, or opens the share sheet on a phone. It is made ahead so the share sheet can open straight from the tap.
+- **Print** puts the HTML Card in a hidden frame and prints that, so the Space around it is never printed.
+
 ## Running locally
 
 OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Face token to the page (`scripts/vite-dev-token.ts`, serve-only: it is not in the build, and `npm run deploy:space` refuses to upload a build that contains it). It reads `HF_TOKEN` or `~/.cache/huggingface/token`. A real run costs credits, so for screen work use the scripted Beam (dev only, `src/dev/beam.ts`):
@@ -50,6 +58,14 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 - The Beam port is the only seam to the outside world. `createHfBeam` (`src/beam/hf.ts`) is the real adapter (HF router, streaming, `reasoning_effort: "low"`, `max_completion_tokens: 60000`, strict `json_schema`); `createFakeBeam` (`src/beam/fake.ts`) is a scriptable stand-in for tests and local work.
 - Truncation, malformed answers, HTTP and network failures reject with a `BeamError` carrying `reason` and `retryable`.
 - Beam only ever returns Snippet IDs and Notes ([ADR-0002](docs/adr/0002-beam-picks-snippet-ids-code-owns-order-and-text.md)); the Poem's text, Receipts and order come from the Conversation.
+
+## Long and small Conversations
+
+`src/selection.ts` decides what Beam reads and how many Lines it is asked for, between the Snippets and the prompt:
+
+- **Budget**: the prompt is held to about 800k estimated input tokens (`INPUT_TOKEN_BUDGET`). A longer Conversation is read every 2nd (or 3rd, ...) *day*, whole days only, with the smallest stride that fits and the leftover at both ends split evenly, so the early years count as much as the late ones. `PoemOutcome.readFraction` carries the stride, the days read and the stretch covered; `readFractionMessage()` (`src/app/read-fraction.ts`) turns it into "Beam read every 2nd day across the 9 years." under the Poem (`src/ui/features/budget-messages.ts`).
+- **Token estimate**: ASCII at 3 characters per token, anything else at one token per UTF-16 code unit. The Gallery's 1,245,565-character prompt was billed at 352,297 tokens (3.54 characters per token), so the estimate over-counts it by about 19% on purpose: a wrong guess should cost a few days, not a failed call.
+- **Size table**: 40 or more usable Snippets ask Beam for 8 to 14 Lines, 15 to 39 for 6 to 8, and below 15 `tryMakePoem()` returns `{ refused: 'not-enough' }` without calling Beam. The app shows it as "Not enough here yet for a Poem" (`describeNotEnough()` in `src/app/failure.ts`). `makePoem()` is the same pipeline for callers that know the Conversation is big enough: it throws `NotEnoughError` instead.
 
 ## The Gallery texts
 

@@ -1,6 +1,7 @@
 // What the Giver sees when making a Poem fails: a plain message, and what they can do next.
 
 import { BeamError } from '../beam/port';
+import type { NotEnough } from '../pipeline';
 
 export type FailureKind =
   | 'credits'
@@ -9,6 +10,7 @@ export type FailureKind =
   | 'bad-answer'
   | 'signed-out'
   | 'rate-limit'
+  | 'not-enough'
   | 'unknown';
 
 export interface Failure {
@@ -17,8 +19,8 @@ export interface Failure {
   message: string;
   /** An optional link that helps the Giver fix the cause. */
   help?: { label: string; href: string };
-  /** What the one main button does: run the same request again, or sign in first. */
-  recovery: { action: 'retry' | 'sign-in'; label: string };
+  /** What the one main button does: run the same request again, sign in first, or go back to the choices. */
+  recovery: { action: 'retry' | 'sign-in' | 'change'; label: string };
 }
 
 export const BILLING_URL = 'https://huggingface.co/settings/billing';
@@ -79,6 +81,22 @@ export function describeFailure(error: unknown): Failure {
     title: 'Something went wrong',
     message: 'Something unexpected happened while making your Poem. Trying again may help.',
     recovery: RETRY,
+  };
+}
+
+/**
+ * The Conversation is too small for a Poem. Not an error and not worth retrying: the
+ * Giver is told so, and can go back to their choices.
+ */
+export function describeNotEnough({ usableSnippets, needed }: NotEnough): Failure {
+  return {
+    kind: 'not-enough',
+    title: 'Not enough here yet for a Poem',
+    message:
+      usableSnippets === 0
+        ? `Nothing in this Conversation can go in a Poem yet. It takes at least ${needed} things the two of you have said to each other.`
+        : `Only ${usableSnippets} of the things the two of you have said can go in a Poem, and it takes at least ${needed}. Come back when there is more to draw on.`,
+    recovery: { action: 'change', label: 'Change my choices' },
   };
 }
 

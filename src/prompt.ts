@@ -6,6 +6,7 @@
 
 import type { Conversation, Occasion, Sender, Snippet } from './domain';
 import type { BeamRequest, ResponseFormat } from './beam/port';
+import { FULL_SIZE_LINES, type LineRange } from './selection';
 
 export interface PromptInput {
   conversation: Conversation;
@@ -15,6 +16,8 @@ export interface PromptInput {
   recipient: Sender;
   /** The Giver's optional context, e.g. "she just retired". */
   note?: string | undefined;
+  /** How many Lines to ask for (from the size table in src/selection.ts); defaults to the full size. */
+  lineRange?: LineRange | undefined;
 }
 
 /** What Beam must return: Snippet IDs with a private Note each, never any Poem text. */
@@ -72,12 +75,12 @@ export function renderSnippets(snippets: readonly Snippet[]): string {
   return rows.join('\n');
 }
 
-function instructions({ conversation, occasion, giver, recipient, note }: PromptInput): string {
+function instructions({ conversation, occasion, giver, recipient, note, lineRange = FULL_SIZE_LINES }: PromptInput): string {
   const people = conversation.senders.map((sender) => `${sender} (${initial(sender)})`).join(' and ');
   return [
     `You make a Poem for a Giver to give a Recipient, using ONLY real Snippets from their Conversation. You never write Poem text yourself: you choose Snippet IDs.`,
     `The Conversation is between ${people}. The Giver is ${giver}; the Recipient is ${recipient}. Occasion: ${occasion}.${note ? ` Context from the Giver: ${note}` : ''}`,
-    `Read the whole Conversation, start to end. Choose 8 to 14 Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.`,
+    `Read the whole Conversation, start to end. Choose ${lineRange.min} to ${lineRange.max} Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.`,
     `Spread your picks across the whole timeline: choose at least one Line from each quarter of it (skip any quarter with no Messages). The quarters, by date: ${timelineQuarters(conversation).join('; ')}.`,
     `Include both Senders.`,
     `Avoid private matters such as money, health details, addresses and passwords.`,

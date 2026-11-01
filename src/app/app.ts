@@ -4,10 +4,10 @@
 import type { BeamPort } from '../beam/port';
 import type { Sender } from '../domain';
 import { EditError, removeLine, replaceLine } from '../editing';
-import { makePoem } from '../pipeline';
+import { tryMakePoem } from '../pipeline';
 import type { RawSource } from '../sources';
 import type { AuthPort, Session } from './auth';
-import { describeFailure } from './failure';
+import { describeFailure, describeNotEnough } from './failure';
 import { initialState, isReplacing, reduce, type Action, type AppState, type ComposeInput } from './state';
 import { createStore } from './store';
 
@@ -34,7 +34,7 @@ export interface App {
   start(): Promise<void>;
   /** Repeat the attempt that failed, with the same choices. */
   retry(): Promise<void>;
-  /** Do what the failure's main button says: retry, or sign in again. */
+  /** Do what the failure's main button says: retry, sign in again, or go back to the choices. */
   recover(): Promise<void>;
   /** Back to choosing an Occasion, keeping the choices made so far. */
   again(): void;
@@ -56,12 +56,13 @@ export function createApp(deps: AppDeps): App {
     try {
       const source = await deps.loadSource();
       const note = input.note.trim();
-      const outcome = await makePoem(
+      const result = await tryMakePoem(
         { source, occasion: input.occasion, ...GALLERY_PEOPLE, ...(note ? { note } : {}) },
         deps.makeBeam(session),
         { onProgress: ({ reasoningTokens }) => store.dispatch({ type: 'reasoned', reasoningTokens }) },
       );
-      store.dispatch({ type: 'succeeded', outcome });
+      if ('refused' in result) store.dispatch({ type: 'failed', failure: describeNotEnough(result) });
+      else store.dispatch({ type: 'succeeded', outcome: result });
     } catch (error) {
       const failure = describeFailure(error);
       if (failure.kind === 'signed-out') deps.auth.forget();
@@ -100,6 +101,7 @@ export function createApp(deps: AppDeps): App {
     async recover() {
       const { failure } = store.getState();
       if (failure?.recovery.action === 'sign-in') await app.signIn();
+      else if (failure?.recovery.action === 'change') app.again();
       else await app.retry();
     },
     again: () => store.dispatch({ type: 'composing-again' }),
