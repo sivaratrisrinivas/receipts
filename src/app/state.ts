@@ -2,7 +2,8 @@
 // changes lives in app.ts; the screens that show them live in src/ui/.
 //
 // Extending (tickets that add a step): add its id to StepId, any state it needs to
-// AppState, and the actions it dispatches to Action and `reduce`.
+// AppState, and the actions it dispatches to Action and `reduce`. (Bringing a WhatsApp
+// chat keeps its own state and actions in upload.ts, and `reduce` hands them over.)
 
 import type { Occasion } from '../domain';
 import type { Draft } from '../editing';
@@ -10,8 +11,19 @@ import type { PoemOutcome } from '../pipeline';
 import type { Session } from './auth';
 import type { Failure } from './failure';
 import { noteReasoning, startProgress, type ProgressState } from './progress';
+import { idleUpload, isUploadAction, reduceUpload, type ChatDraft, type UploadAction, type UploadStatus } from './upload';
 
-export type StepId = 'sign-in' | 'compose' | 'reading' | 'poem' | 'failed';
+export type StepId =
+  | 'sign-in'
+  | 'compose'
+  | 'reading'
+  | 'poem'
+  | 'failed'
+  // Bringing a WhatsApp chat (see upload.ts):
+  | 'upload'
+  | 'people'
+  | 'date-order'
+  | 'review';
 
 /** What the Giver chooses before Beam reads. */
 export interface ComposeInput {
@@ -53,6 +65,11 @@ export interface AppState {
   /** Something to tell the Giver on the sign-in step, e.g. why sign-in did not complete. */
   notice: string | null;
   compose: ComposeInput;
+  /** Which Conversation the Poem is made from: the Gallery, or the Giver's own WhatsApp chat. */
+  source: 'gallery' | 'chat';
+  /** The chat being brought (or brought); null while the Gallery is the source. */
+  chat: ChatDraft | null;
+  upload: UploadStatus;
   attempt: Attempt | null;
   outcome: PoemOutcome | null;
   editing: EditingState;
@@ -71,13 +88,17 @@ export type Action =
   | { type: 'composing-again' }
   | { type: 'poem-edited'; draft: Draft }
   | { type: 'replacing'; snippetId: string }
-  | { type: 'replace-failed'; snippetId: string; problem: EditProblem };
+  | { type: 'replace-failed'; snippetId: string; problem: EditProblem }
+  | UploadAction;
 
 export const initialState: AppState = {
   step: 'sign-in',
   session: null,
   notice: null,
   compose: { occasion: 'anniversary', note: '' },
+  source: 'gallery',
+  chat: null,
+  upload: idleUpload,
   attempt: null,
   outcome: null,
   editing: noEditing,
@@ -85,6 +106,7 @@ export const initialState: AppState = {
 };
 
 export function reduce(state: AppState, action: Action): AppState {
+  if (isUploadAction(action)) return reduceUpload(state, action);
   switch (action.type) {
     case 'restored':
       return { ...state, session: action.session, notice: action.notice, step: action.session ? 'compose' : 'sign-in' };

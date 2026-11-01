@@ -7,7 +7,8 @@
 
 import { BeamError, requireContent, type BeamPort, type BeamProgress, type BeamRequest, type ResponseFormat } from './beam/port';
 import type { Line, Poem, Snippet } from './domain';
-import { initial, renderSnippets } from './prompt';
+import { renderSnippets, senderLabels } from './prompt';
+import { redactText } from './redaction';
 import { lineOf } from './verification';
 
 /** A Poem being worked on, with the Snippets the Giver has taken out of it. */
@@ -130,17 +131,19 @@ function parseReplacementId(content: string): string | null {
 }
 
 function replacementPrompt(poem: Poem, current: Line, candidates: readonly Snippet[]): BeamRequest {
+  const label = senderLabels([poem.giver, poem.recipient]);
+  // A Sender's name can itself be a phone number or email address; that must not reach Beam.
   return {
     system: [
       `You help a Giver improve a Poem made only of real Snippets from their Conversation. One Line has to be swapped for a different Snippet. You never write text yourself: you choose a Snippet ID.`,
-      `The Giver is ${poem.giver} (${initial(poem.giver)}); the Recipient is ${poem.recipient} (${initial(poem.recipient)}). Occasion: ${poem.occasion}.`,
+      `The Giver is ${redactText(poem.giver)} (${label(poem.giver)}); the Recipient is ${redactText(poem.recipient)} (${label(poem.recipient)}). Occasion: ${poem.occasion}.`,
       `Choose exactly ONE Snippet, from the list in the user message only: those are all the Snippets from the same period of the Conversation, between the Poem's neighbouring Lines. Do not choose the Line being replaced.`,
       `Prefer a specific, vivid Snippet that stands on its own as a Line and fits the Occasion, from either Sender. Avoid private matters such as money, health details, addresses and passwords.`,
       `Refer to Snippets by ID only. Answer with the ID alone.`,
     ].join('\n'),
     user: [
-      `THE LINE BEING REPLACED (${current.receipt.sender}, ${current.receipt.dateLabel}): ${current.text}`,
-      `SNIPPETS TO CHOOSE FROM (each Message starts with "## sender date"; then one Snippet per row: id text)\n${renderSnippets(candidates)}`,
+      `THE LINE BEING REPLACED (${redactText(current.receipt.sender)}, ${current.receipt.dateLabel}): ${current.text}`,
+      `SNIPPETS TO CHOOSE FROM (each Message starts with "## sender date"; then one Snippet per row: id text)\n${renderSnippets(candidates, label)}`,
     ].join('\n\n'),
     responseFormat: REPLACEMENT_RESPONSE_FORMAT,
   };

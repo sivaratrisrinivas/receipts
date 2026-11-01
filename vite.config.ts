@@ -8,5 +8,7 @@ export default defineConfig({
   plugins: [devHfToken()],
   test: {
     include: ['tests/**/*.test.ts'],
+    // The long-Conversation tests build and redact megabytes of text; 5s is too tight when the files run in parallel.
+    testTimeout: 20_000,
   },
 });
