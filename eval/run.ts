@@ -5,6 +5,7 @@
 //   npm run eval                      # all 60 Poems, about $6; finished Poems are skipped
 //   npm run eval -- --redo-failed     # make Poems again that failed on an earlier run
 //   npm run eval -- --cap 6.5         # stricter spend cap in USD (the default is $8)
+//   npm run eval -- --groups random,last10   # only these groups (full, last10, random), in this order
 //
 // The token is read from HF_TOKEN or ~/.cache/huggingface/token. It goes only into the
 // Authorization header of Beam requests; this script never prints or writes it, and
@@ -17,6 +18,7 @@ import { DATASET_DIR, loadGalleryTexts } from './lib/paths';
 import { runEval } from './lib/runner';
 import { DEFAULT_SPEND_CAP_USD, MAX_COMPLETION_TOKENS, SpendCapExceeded } from './lib/spend';
 import { readHfToken } from './lib/token';
+import { CONDITIONS, type Condition } from './lib/trace';
 
 function option(name: string): string | undefined {
   const at = process.argv.indexOf(`--${name}`);
@@ -25,8 +27,9 @@ function option(name: string): string | undefined {
 
 const perGroup = Number(option('per-group') ?? 20);
 const spendCapUsd = Number(option('cap') ?? DEFAULT_SPEND_CAP_USD);
-if (!Number.isInteger(perGroup) || perGroup < 1 || !(spendCapUsd > 0)) {
-  console.error('Usage: npm run eval -- [--per-group N] [--cap USD] [--redo-failed]');
+const conditions = (option('groups') ?? CONDITIONS.join(',')).split(',') as Condition[];
+if (!Number.isInteger(perGroup) || perGroup < 1 || !(spendCapUsd > 0) || !conditions.every((condition) => CONDITIONS.includes(condition))) {
+  console.error('Usage: npm run eval -- [--per-group N] [--cap USD] [--groups full,last10,random] [--redo-failed]');
   process.exit(2);
 }
 
@@ -38,6 +41,7 @@ try {
     texts,
     traceDir: join(DATASET_DIR, 'traces'),
     perGroup,
+    conditions,
     beam: createHfBeam({ token, maxCompletionTokens: MAX_COMPLETION_TOKENS }),
     maxCompletionTokens: MAX_COMPLETION_TOKENS,
     spendCapUsd,

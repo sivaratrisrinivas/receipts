@@ -4,176 +4,160 @@
   "occasion": "sorry",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T22:58:47.613Z",
+  "startedAt": "2026-11-01T10:12:10.925Z",
   "messagesRead": 573,
   "snippetsRead": 12513,
-  "seconds": 17.633,
-  "costUsd": 0.14447800000000002,
+  "seconds": 8.408,
+  "costUsd": 0.1437776,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 16.368,
-      "costUsd": 0.14447800000000002,
+      "seconds": 6.443,
+      "costUsd": 0.1437776,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 352297,
-        "completionTokens": 2966,
-        "reasoningTokens": 2519
+        "promptTokens": 352571,
+        "completionTokens": 2291,
+        "reasoningTokens": 1795
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\"lines\":[\n{\"id\":\"s2\",\"note\":\"Early Robert remembers almost seeing Elizabeth, the first near-meeting behind their whole story.\",\"callbacks\":[]},\n{\"id\":\"s16\",\"note\":\"Elizabeth answers Robert's near-miss with wonder at the almost-acquaintance, echoing his first letter.\",\"callbacks\":[\"s2\"]},\n{\"id\":\"s28\",\"note\":\"Robert turns the near-miss into a promise of spring friendship and the hoped-for Chapel sight.\",\"callbacks\":[\"s2\"]},\n{\"id\":\"s704\",\"note\":\"Robert takes the last word because he is in the wrong, acknowledging the hurt he caused Elizabeth.\",\"callbacks\":[\"s666\"]},\n{\"id\":\"s705\",\"note\":\"Robert asks only that he stop giving Elizabeth pain, a direct apology for his wild words.\",\"callbacks\":[\"s666\"]},\n{\"id\":\"s709\",\"note\":\"Elizabeth, changeable only by circumstance, postpones their meeting while still hoping to see him.\",\"callbacks\":[\"s705\"]},\n{\"id\":\"s1945\",\"note\":\"Elizabeth asks for the meaning of Robert's 'Bells and Pomegranates' title, their private literary shorthand.\",\"callbacks\":[]},\n{\"id\":\"s1969\",\"note\":\"Robert says the whole work was meant to prove itself at last, answering Elizabeth's question.\",\"callbacks\":[\"s1945\"]},\n{\"id\":\"s2006\",\"note\":\"Elizabeth praises 'The Duchess' as a new-minted golden coin, showing her close reading of his rhythm.\",\"callbacks\":[]},\n{\"id\":\"s5346\",\"note\":\"Elizabeth recalls Robert's early letter about 'Luria', a callback to their first months.\",\"callbacks\":[]},\n{\"id\":\"s5349\",\"note\":\"Elizabeth remembers Robert's phrase 'golden-hearted Luria' and applies it to him, not only the hero.\",\"callbacks\":[\"s5346\"]},\n{\"id\":\"s5355\",\"note\":\"Robert accepts Elizabeth's reproof about wishing his flowers were diamonds, turning back to her gift.\",\"callbacks\":[\"s797\"]}\n]}",
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s1\",\n      \"note\": \"Robert's first open declaration of love, the seed of everything that follows.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3\",\n      \"note\": \"Elizabeth's first grateful answer, showing her warmth and wit from the start.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"He looks ahead to meeting her in spring, a promise that runs through their letters.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1053\",\n      \"note\": \"She recalls their private revelations after hearing of her brother's loss.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1099\",\n      \"note\": \"He turns his thought to duty and what she means to his work.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1294\",\n      \"note\": \"She remembers her brother's promise, a deeply private grief she shared with Robert.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2249\",\n      \"note\": \"He writes of being entirely wrapped around her, a turning point in their intimacy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2289\",\n      \"note\": \"She says she cannot guess what he is to her, showing the depth of her feeling.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2321\",\n      \"note\": \"He gives heart and life, not merely poetry, defining their bond.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3647\",\n      \"note\": \"He declares himself wedded to her, moving from friendship to commitment.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3704\",\n      \"note\": \"She walks down-stairs for the first time in months, a small victory shared with him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s3811\",\n      \"note\": \"He returns to the old dear ending, anchoring their love.\",\n      \"callbacks\": []\n    }\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
       {
-        "snippetId": "s2",
+        "snippetId": "s1",
         "messageOrdinal": 0,
         "sender": "Robert",
         "date": "1845-01-10",
         "approximate": false,
         "dateLabel": "10 January 1845",
-        "text": "Do you know I was once not very far from seeing--really seeing you?",
-        "note": "Early Robert remembers almost seeing Elizabeth, the first near-meeting behind their whole story.",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first open declaration of love, the seed of everything that follows.",
         "callbacks": []
       },
       {
-        "snippetId": "s16",
+        "snippetId": "s3",
         "messageOrdinal": 1,
         "sender": "Elizabeth",
         "date": "1845-01-11",
         "approximate": false,
         "dateLabel": "11 January 1845",
-        "text": "Is it indeed true that I was so near to the pleasure and honour of making your acquaintance? and can it be true that you look back upon the lost opportunity with any regret?",
-        "note": "Elizabeth answers Robert's near-miss with wonder at the almost-acquaintance, echoing his first letter.",
-        "callbacks": [
-          "s2"
-        ]
-      },
-      {
-        "snippetId": "s28",
-        "messageOrdinal": 2,
-        "sender": "Robert",
-        "date": "1845-01-13",
-        "approximate": false,
-        "dateLabel": "13 January 1845",
-        "text": "You will never more, I hope, talk of 'the honour of my acquaintance,' but I will joyfully wait for the delight of your friendship, and the spring, and my Chapel-sight after all!",
-        "note": "Robert turns the near-miss into a promise of spring friendship and the hoped-for Chapel sight.",
-        "callbacks": [
-          "s2"
-        ]
-      },
-      {
-        "snippetId": "s704",
-        "messageOrdinal": 32,
-        "sender": "Robert",
-        "date": "1845-05-26",
-        "approximate": false,
-        "dateLabel": "26 May 1845",
-        "text": "Nay--I must have last word--as all people in the wrong desire to have--and then, no more of the subject.",
-        "note": "Robert takes the last word because he is in the wrong, acknowledging the hurt he caused Elizabeth.",
-        "callbacks": [
-          "s666"
-        ]
-      },
-      {
-        "snippetId": "s705",
-        "messageOrdinal": 32,
-        "sender": "Robert",
-        "date": "1845-05-26",
-        "approximate": false,
-        "dateLabel": "26 May 1845",
-        "text": "You said I had given you great pain--so long as I stop that, think anything of me you choose or can!",
-        "note": "Robert asks only that he stop giving Elizabeth pain, a direct apology for his wild words.",
-        "callbacks": [
-          "s666"
-        ]
-      },
-      {
-        "snippetId": "s709",
-        "messageOrdinal": 33,
-        "sender": "Elizabeth",
-        "date": "1845-05-27",
-        "approximate": false,
-        "dateLabel": "27 May 1845",
-        "text": "You will think me the most changeable of all the changeable; but indeed it is not my fault that I cannot, as I wished, receive you on Wednesday.",
-        "note": "Elizabeth, changeable only by circumstance, postpones their meeting while still hoping to see him.",
-        "callbacks": [
-          "s705"
-        ]
-      },
-      {
-        "snippetId": "s1945",
-        "messageOrdinal": 131,
-        "sender": "Elizabeth",
-        "date": "1845-10-17",
-        "approximate": false,
-        "dateLabel": "17 October 1845",
-        "text": "Do tell me what you mean precisely by your 'Bells and Pomegranates' title.",
-        "note": "Elizabeth asks for the meaning of Robert's 'Bells and Pomegranates' title, their private literary shorthand.",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's first grateful answer, showing her warmth and wit from the start.",
         "callbacks": []
       },
       {
-        "snippetId": "s1969",
-        "messageOrdinal": 132,
+        "snippetId": "s222",
+        "messageOrdinal": 8,
         "sender": "Robert",
-        "date": "1845-10-18",
+        "date": "1845-02-26",
         "approximate": false,
-        "dateLabel": "18 October 1845",
-        "text": "I meant the whole should prove at last.",
-        "note": "Robert says the whole work was meant to prove itself at last, answering Elizabeth's question.",
-        "callbacks": [
-          "s1945"
-        ]
-      },
-      {
-        "snippetId": "s2006",
-        "messageOrdinal": 134,
-        "sender": "Elizabeth",
-        "date": "1845-10-22",
-        "approximate": false,
-        "dateLabel": "22 October 1845",
-        "text": "'The Duchess' appears to me more than ever a new-minted golden coin--the rhythm of it answering to your own description, 'Speech half asleep, or song half awake?'",
-        "note": "Elizabeth praises 'The Duchess' as a new-minted golden coin, showing her close reading of his rhythm.",
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "He looks ahead to meeting her in spring, a promise that runs through their letters.",
         "callbacks": []
       },
       {
-        "snippetId": "s5346",
-        "messageOrdinal": 280,
+        "snippetId": "s1053",
+        "messageOrdinal": 67,
         "sender": "Elizabeth",
-        "date": "1846-03-25",
+        "date": "1845-07-28",
         "approximate": false,
-        "dateLabel": "25 March 1846",
-        "text": "Do you remember how you told me of 'Luria' last year, in one of your early letters?",
-        "note": "Elizabeth recalls Robert's early letter about 'Luria', a callback to their first months.",
+        "dateLabel": "28 July 1845",
+        "text": "I never shall forget these things, my dearest friend; nor remember them more coldly.",
+        "note": "She recalls their private revelations after hearing of her brother's loss.",
         "callbacks": []
       },
       {
-        "snippetId": "s5349",
-        "messageOrdinal": 280,
-        "sender": "Elizabeth",
-        "date": "1846-03-25",
+        "snippetId": "s1099",
+        "messageOrdinal": 71,
+        "sender": "Robert",
+        "date": "1845-08-04",
         "approximate": false,
-        "dateLabel": "25 March 1846",
-        "text": "Can it be the same 'Luria,' I think, that 'golden-hearted Luria,' whom you talked of to me, when you complained of keeping 'wild company,' in the old dear letter?",
-        "note": "Elizabeth remembers Robert's phrase 'golden-hearted Luria' and applies it to him, not only the hero.",
-        "callbacks": [
-          "s5346"
-        ]
+        "dateLabel": "4 August 1845",
+        "text": "For, observe, you have not done ... yes, the 'Prometheus,' no doubt ... but with that exception have you written much lately, as much as last year when 'you wrote all your best things' you said, I think?",
+        "note": "He turns his thought to duty and what she means to his work.",
+        "callbacks": []
       },
       {
-        "snippetId": "s5355",
-        "messageOrdinal": 281,
-        "sender": "Robert",
-        "date": "1846-03-25",
+        "snippetId": "s1294",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
         "approximate": false,
-        "dateLabel": "25 March 1846",
-        "text": "You were right to bid me never again wish my poor flowers were ‘diamonds’—you could not, I think, speak so to my heart of any diamonds.",
-        "note": "Robert accepts Elizabeth's reproof about wishing his flowers were diamonds, turning back to her gift.",
-        "callbacks": [
-          "s797"
-        ]
+        "dateLabel": "25 August 1845",
+        "text": "And once he held my hand, ... how I remember! and said that he 'loved me better than them all and that he would not leave me ... till I was well,' he said! how I remember that!",
+        "note": "She remembers her brother's promise, a deeply private grief she shared with Robert.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "He writes of being entirely wrapped around her, a turning point in their intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2289",
+        "messageOrdinal": 151,
+        "sender": "Elizabeth",
+        "date": "1845-11-18",
+        "approximate": false,
+        "dateLabel": "18 November 1845",
+        "text": "You cannot guess what you are to me--you cannot--it is not possible:--and though I have said that before, I must say it again ... for it comes again to be said.",
+        "note": "She says she cannot guess what he is to her, showing the depth of her feeling.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2321",
+        "messageOrdinal": 152,
+        "sender": "Robert",
+        "date": "1845-11-18",
+        "approximate": true,
+        "dateLabel": "c. 18 November 1845",
+        "text": "That you glorify and change and, in returning then, give me!",
+        "note": "He gives heart and life, not merely poetry, defining their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3647",
+        "messageOrdinal": 203,
+        "sender": "Robert",
+        "date": "1846-01-17",
+        "approximate": false,
+        "dateLabel": "17 January 1846",
+        "text": "I will care for it no more, dearest--I am wedded to you now.",
+        "note": "He declares himself wedded to her, moving from friendship to commitment.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3704",
+        "messageOrdinal": 205,
+        "sender": "Elizabeth",
+        "date": "1846-01-19",
+        "approximate": false,
+        "dateLabel": "19 January 1846",
+        "text": "It was so warm, so warm, the thermometer at 68 in this room, that I took it into my head to call it April instead of January, and put on a cloak and walked down-stairs into the drawing-room--walked, mind!",
+        "note": "She walks down-stairs for the first time in months, a small victory shared with him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3811",
+        "messageOrdinal": 210,
+        "sender": "Robert",
+        "date": "1846-01-23",
+        "approximate": false,
+        "dateLabel": "23 January 1846",
+        "text": "All but--(that is, all was wrong but)--to be just ... the old, dear, so dear ending which makes my heart beat now as at first ... and so, pays for all!",
+        "note": "He returns to the old dear ending, anchoring their love.",
+        "callbacks": []
       }
     ]
   }

@@ -4,26 +4,26 @@
   "occasion": "anniversary",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-11-01T03:45:06.231Z",
+  "startedAt": "2026-11-01T10:07:17.458Z",
   "messagesRead": 58,
   "snippetsRead": 1475,
-  "seconds": 20.527,
-  "costUsd": 0.01893,
+  "seconds": 5.83,
+  "costUsd": 0.0187632,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 8.054,
-      "costUsd": 0.01893,
+      "seconds": 5.478,
+      "costUsd": 0.0187632,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 38976,
-        "completionTokens": 2783,
-        "reasoningTokens": 2329
+        "promptTokens": 39249,
+        "completionTokens": 2553,
+        "reasoningTokens": 1980
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\"lines\": [\n{\"id\": \"s0\", \"note\": \"Early, private shorthand: Elizabeth says she understood his words better than he thought.\", \"callbacks\": []},\n{\"id\": \"s43\", \"note\": \"A vivid domestic moment: Flush’s ecstatic reunion with Elizabeth.\", \"callbacks\": []},\n{\"id\": \"s178\", \"note\": \"Mrs Jameson arrives asking ‘Anything settled?’, showing how close their secret is to exposure.\", \"callbacks\": []},\n{\"id\": \"s209\", \"note\": \"A tiny, odd exclamation that feels like a private joke between them.\", \"callbacks\": []},\n{\"id\": \"s329\", \"note\": \"Elizabeth reverses the expected meeting with abrupt bad news.\", \"callbacks\": []},\n{\"id\": \"s359\", \"note\": \"Robert caught dressing hours early, then undone by her changed letter.\", \"callbacks\": []},\n{\"id\": \"s577\", \"note\": \"Flush is stolen, a major turn in the story.\", \"callbacks\": []},\n{\"id\": \"s617\", \"note\": \"Robert calls Flush ‘our friend and follower, that was to be.’\", \"callbacks\": []},\n{\"id\": \"s635\", \"note\": \"Elizabeth quotes Robert’s ‘friend and follower’ phrase back to him.\", \"callbacks\": [\"s617\"]},\n{\"id\": \"s760\", \"note\": \"Elizabeth’s sweeping, specific praise of Robert’s goodness.\", \"callbacks\": []},\n{\"id\": \"s1030\", \"note\": \"Robert’s full-heart note after the wedding day.\", \"callbacks\": []},\n{\"id\": \"s1045\", \"note\": \"Elizabeth’s exhausted, immediate wedding-day note that all is safe.\", \"callbacks\": []},\n{\"id\": \"s1103\", \"note\": \"Robert’s gratitude for her proof of love.\", \"callbacks\": []},\n{\"id\": \"s1456\", \"note\": \"Final anticipation that by the next day they will have only each other.\", \"callbacks\": []}\n]}",
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s0\",\n      \"note\": \"Elizabeth opens by showing she has already understood his hidden meaning.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s60\",\n      \"note\": \"Robert's early declaration that every day reveals more in her to love.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"Elizabeth wishes for two hearts and two lives to give him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s228\",\n      \"note\": \"Robert reassures her that he is entirely hers whether together or apart.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"The sudden loss of Flush becomes one of their shared ordeals.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s790\",\n      \"note\": \"Elizabeth compares herself to Flush to explain why she cannot be left to the banditti.\",\n      \"callbacks\": [\n        \"s578\"\n      ]\n    },\n    {\n      \"id\": \"s986\",\n      \"note\": \"Robert recalls their glorious dream of nearly two years without blankness.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1037\",\n      \"note\": \"Robert says he would not change one word or look from their past.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1101\",\n      \"note\": \"Elizabeth hates having to take off the wedding ring after the secret marriage.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1155\",\n      \"note\": \"Robert exults in the irrevocable bestowal of herself on him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1350\",\n      \"note\": \"Robert sends a bud with all affectionate devotion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1461\",\n      \"note\": \"Elizabeth insists on taking his letters with her despite the luggage ounces.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1464\",\n      \"note\": \"Elizabeth asks if this is her last letter before they leave together.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1474\",\n      \"note\": \"Elizabeth's final reflection on Wilson's courage recalls her earlier fear of Wilson's timidity.\",\n      \"callbacks\": [\n        \"s1472\"\n      ]\n    }\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,153 +35,155 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "But dearest—Did you not understand that I understood?",
-        "note": "Early, private shorthand: Elizabeth says she understood his words better than he thought.",
+        "note": "Elizabeth opens by showing she has already understood his hidden meaning.",
         "callbacks": []
       },
       {
-        "snippetId": "s43",
-        "messageOrdinal": 515,
-        "sender": "Elizabeth",
+        "snippetId": "s60",
+        "messageOrdinal": 516,
+        "sender": "Robert",
         "date": "1846-08-24",
         "approximate": false,
         "dateLabel": "24 August 1846",
-        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
-        "note": "A vivid domestic moment: Flush’s ecstatic reunion with Elizabeth.",
+        "text": "Every day shows me more to love in you, dearest, and I open my arms as wide as I can ...",
+        "note": "Robert's early declaration that every day reveals more in her to love.",
         "callbacks": []
       },
       {
-        "snippetId": "s178",
+        "snippetId": "s222",
         "messageOrdinal": 521,
         "sender": "Elizabeth",
         "date": "1846-08-26",
         "approximate": false,
         "dateLabel": "26 August 1846",
-        "text": "Friday will come however,—and I may as well go on to tell you that Mrs. Jameson came yesterday.",
-        "note": "Mrs Jameson arrives asking ‘Anything settled?’, showing how close their secret is to exposure.",
+        "text": "How I wish for two hearts to love you with, and two lives to give to you, and two souls to bear the weight worthily of all you have given to me.",
+        "note": "Elizabeth wishes for two hearts and two lives to give him.",
         "callbacks": []
       },
       {
-        "snippetId": "s209",
-        "messageOrdinal": 521,
-        "sender": "Elizabeth",
-        "date": "1846-08-26",
-        "approximate": false,
-        "dateLabel": "26 August 1846",
-        "text": "The cushion of the armchair!",
-        "note": "A tiny, odd exclamation that feels like a private joke between them.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s329",
-        "messageOrdinal": 526,
-        "sender": "Elizabeth",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "Here is the bad news going to you as fast as bad news will go! for you ‘do really (NOT) see me to-morrow,’ Robert,—there is no chance of it for such ‘too, two’ wise people as we are!",
-        "note": "Elizabeth reverses the expected meeting with abrupt bad news.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s359",
-        "messageOrdinal": 527,
+        "snippetId": "s228",
+        "messageOrdinal": 522,
         "sender": "Robert",
-        "date": "1846-08-28",
+        "date": "1846-08-26",
         "approximate": false,
-        "dateLabel": "28 August 1846",
-        "text": "I was beginning to dress, hours before the proper time, through the confidence of seeing you now,—after the letter which came early in the morning,—when this new letter changes everything.",
-        "note": "Robert caught dressing hours early, then undone by her changed letter.",
+        "dateLabel": "26 August 1846",
+        "text": "I am your very own, dearest dearest, with you or away from you.",
+        "note": "Robert reassures her that he is entirely hers whether together or apart.",
         "callbacks": []
       },
       {
-        "snippetId": "s577",
+        "snippetId": "s578",
         "messageOrdinal": 534,
         "sender": "Elizabeth",
         "date": "1846-09-02",
         "approximate": false,
         "dateLabel": "2 September 1846",
-        "text": "Here is a distress for me, dearest!",
-        "note": "Flush is stolen, a major turn in the story.",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The sudden loss of Flush becomes one of their shared ordeals.",
         "callbacks": []
       },
       {
-        "snippetId": "s617",
-        "messageOrdinal": 535,
-        "sender": "Robert",
-        "date": "1846-09-02",
-        "approximate": false,
-        "dateLabel": "2 September 1846",
-        "text": "I am sure you are grieved and frightened for our friend and follower, that was to be, at Pisa—will you not write a special note to tell me when you get him again?",
-        "note": "Robert calls Flush ‘our friend and follower, that was to be.’",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s635",
-        "messageOrdinal": 536,
-        "sender": "Elizabeth",
-        "date": "1846-09-03",
-        "approximate": false,
-        "dateLabel": "3 September 1846",
-        "text": "‘Our friend and follower, that was to be’—is that, then, your opinion of my poor darling Flush’s destiny— Ah,—I should not have been so quiet if I had not known differently and better.",
-        "note": "Elizabeth quotes Robert’s ‘friend and follower’ phrase back to him.",
-        "callbacks": [
-          "s617"
-        ]
-      },
-      {
-        "snippetId": "s760",
+        "snippetId": "s790",
         "messageOrdinal": 541,
         "sender": "Elizabeth",
         "date": "1846-09-05",
         "approximate": false,
         "dateLabel": "5 September 1846",
-        "text": "Was ever any in the world, in any possible world, so perfectly good and dear to another as you are to me!",
-        "note": "Elizabeth’s sweeping, specific praise of Robert’s goodness.",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth compares herself to Flush to explain why she cannot be left to the banditti.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s986",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "What a glorious dream; through nearly two years—without a single interval of blankness,—much less, bitter waking!",
+        "note": "Robert recalls their glorious dream of nearly two years without blankness.",
         "callbacks": []
       },
       {
-        "snippetId": "s1030",
+        "snippetId": "s1037",
         "messageOrdinal": 555,
         "sender": "Robert",
         "date": "1846-09-12",
         "approximate": false,
         "dateLabel": "12 September 1846",
-        "text": "You will only expect a few words—what will those be?",
-        "note": "Robert’s full-heart note after the wedding day.",
+        "text": "I look back, and in every one point, every word and gesture, every letter, every silence—you have been entirely perfect to me—I would not change one word, one look.",
+        "note": "Robert says he would not change one word or look from their past.",
         "callbacks": []
       },
       {
-        "snippetId": "s1045",
-        "messageOrdinal": 556,
+        "snippetId": "s1101",
+        "messageOrdinal": 557,
         "sender": "Elizabeth",
-        "date": "1846-09-12",
+        "date": "1846-09-14",
         "approximate": false,
-        "dateLabel": "12 September 1846",
-        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
-        "note": "Elizabeth’s exhausted, immediate wedding-day note that all is safe.",
+        "dateLabel": "14 September 1846",
+        "text": "I did hate so, to have to take off the ring!",
+        "note": "Elizabeth hates having to take off the wedding ring after the secret marriage.",
         "callbacks": []
       },
       {
-        "snippetId": "s1103",
-        "messageOrdinal": 558,
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
         "sender": "Robert",
         "date": "1846-09-14",
         "approximate": false,
         "dateLabel": "14 September 1846",
-        "text": "Thank you a thousand times for the note, my own Ba.",
-        "note": "Robert’s gratitude for her proof of love.",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "Robert exults in the irrevocable bestowal of herself on him.",
         "callbacks": []
       },
       {
-        "snippetId": "s1456",
+        "snippetId": "s1350",
+        "messageOrdinal": 564,
+        "sender": "Robert",
+        "date": "1846-09-16",
+        "approximate": false,
+        "dateLabel": "16 September 1846",
+        "text": "I can bring you no flowers but I pluck this bud and send it with all affectionate devotion.",
+        "note": "Robert sends a bud with all affectionate devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1461",
         "messageOrdinal": 572,
         "sender": "Elizabeth",
         "date": "1846-09-19",
         "approximate": false,
         "dateLabel": "19 September 1846",
-        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
-        "note": "Final anticipation that by the next day they will have only each other.",
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "Elizabeth insists on taking his letters with her despite the luggage ounces.",
         "callbacks": []
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Elizabeth asks if this is her last letter before they leave together.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1474",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "I begin to think that none are so bold as the timid, when they are fairly roused.",
+        "note": "Elizabeth's final reflection on Wilson's courage recalls her earlier fear of Wilson's timidity.",
+        "callbacks": [
+          "s1472"
+        ]
       }
     ]
   }

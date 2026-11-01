@@ -4,40 +4,29 @@
   "occasion": "birthday",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T22:55:58.924Z",
+  "startedAt": "2026-11-01T10:04:42.316Z",
   "messagesRead": 58,
   "snippetsRead": 1475,
-  "seconds": 6.762,
-  "costUsd": 0.018945600000000003,
+  "seconds": 9.191,
+  "costUsd": 0.0174084,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 6.27,
-      "costUsd": 0.018945600000000003,
+      "seconds": 8.528,
+      "costUsd": 0.0174084,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 38976,
-        "completionTokens": 2796,
-        "reasoningTokens": 2362
+        "promptTokens": 39249,
+        "completionTokens": 1424,
+        "reasoningTokens": 923
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"An early sign of their secret understanding and engagement.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert's affectionate close to one of the earliest letters.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"Elizabeth's beloved Flush welcomes her home, a private domestic image.\", \"callbacks\": []},\n    {\"id\": \"s577\", \"note\": \"The crisis of Flush being stolen, an ordeal they share.\", \"callbacks\": [\"s43\"]},\n    {\"id\": \"s616\", \"note\": \"Robert's sympathy for Elizabeth after Flush's theft.\", \"callbacks\": [\"s577\"]},\n    {\"id\": \"s965\", \"note\": \"Elizabeth's family is suddenly ordered away, forcing their plans.\", \"callbacks\": []},\n    {\"id\": \"s1030\", \"note\": \"Robert's reflection on their wedding day.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"Elizabeth's account of the strain and relief of the wedding day.\", \"callbacks\": [\"s1030\"]},\n    {\"id\": \"s1097\", \"note\": \"Elizabeth's dizzy sense of having slipped into a new life.\", \"callbacks\": [\"s1045\"]},\n    {\"id\": \"s1155\", \"note\": \"Robert's exultation at their marriage.\", \"callbacks\": [\"s1045\"]},\n    {\"id\": \"s1202\", \"note\": \"Elizabeth's gratitude and anxiety about her father after the marriage.\", \"callbacks\": [\"s1045\", \"s1155\"]},\n    {\"id\": \"s1464\", \"note\": \"Her last letter before they leave together for Italy.\", \"callbacks\": [\"s1045\", \"s1155\"]}\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s43\", \"note\": \"Flush’s ecstatic reunion shows how much the dog’s love mirrors Elizabeth’s own.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert admits he sometimes shortened visits just to reach the moment of taking Elizabeth’s hand.\", \"callbacks\": []},\n    {\"id\": \"s105\", \"note\": \"A tender sign-off that closes one of their early, anxious letters.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"Elizabeth’s cry over losing Flush captures the sudden panic of that day.\", \"callbacks\": []},\n    {\"id\": \"s605\", \"note\": \"She promises to endure whatever comes because her love for Robert is certain.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Robert’s sympathy for Flush’s plight shows his care for Elizabeth’s whole world.\", \"callbacks\": []},\n    {\"id\": \"s634\", \"note\": \"A small, caring reminder that keeps Flush’s rescue thread alive.\", \"callbacks\": []},\n    {\"id\": \"s845\", \"note\": \"Flush’s return, sprawled on the sofa, gives Elizabeth a rare moment of relief.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s872\", \"note\": \"Robert has to cancel a longed-for visit because his health will not allow it.\", \"callbacks\": []},\n    {\"id\": \"s888\", \"note\": \"Elizabeth asks Robert to prove his love by resting and taking care of himself.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"After the secret wedding, Elizabeth is relieved that the dangerous day is over.\", \"callbacks\": []},\n    {\"id\": \"s1069\", \"note\": \"Elizabeth credits Robert with lifting her from despair into life and sunshine.\", \"callbacks\": []},\n    {\"id\": \"s1103\", \"note\": \"Robert’s gratitude for her secret note seals the depth of his devotion.\", \"callbacks\": []},\n    {\"id\": \"s1461\", \"note\": \"Elizabeth insists on carrying Robert’s letters with her despite the ounces.\", \"callbacks\": []}\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
-      {
-        "snippetId": "s0",
-        "messageOrdinal": 515,
-        "sender": "Elizabeth",
-        "date": "1846-08-24",
-        "approximate": false,
-        "dateLabel": "24 August 1846",
-        "text": "But dearest—Did you not understand that I understood?",
-        "note": "An early sign of their secret understanding and engagement.",
-        "callbacks": []
-      },
       {
         "snippetId": "s43",
         "messageOrdinal": 515,
@@ -46,7 +35,7 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
-        "note": "Elizabeth's beloved Flush welcomes her home, a private domestic image.",
+        "note": "Flush’s ecstatic reunion shows how much the dog’s love mirrors Elizabeth’s own.",
         "callbacks": []
       },
       {
@@ -57,21 +46,41 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
-        "note": "Robert's affectionate close to one of the earliest letters.",
+        "note": "Robert admits he sometimes shortened visits just to reach the moment of taking Elizabeth’s hand.",
         "callbacks": []
       },
       {
-        "snippetId": "s577",
+        "snippetId": "s105",
+        "messageOrdinal": 517,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Bless you, Ba.",
+        "note": "A tender sign-off that closes one of their early, anxious letters.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
         "messageOrdinal": 534,
         "sender": "Elizabeth",
         "date": "1846-09-02",
         "approximate": false,
         "dateLabel": "2 September 1846",
-        "text": "Here is a distress for me, dearest!",
-        "note": "The crisis of Flush being stolen, an ordeal they share.",
-        "callbacks": [
-          "s43"
-        ]
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Elizabeth’s cry over losing Flush captures the sudden panic of that day.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s605",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I shall go through it, as certainly as that I love you.",
+        "note": "She promises to endure whatever comes because her love for Robert is certain.",
+        "callbacks": []
       },
       {
         "snippetId": "s616",
@@ -81,31 +90,53 @@
         "approximate": false,
         "dateLabel": "2 September 1846",
         "text": "Poor Flush—how sorry I am for you, my Ba!",
-        "note": "Robert's sympathy for Elizabeth after Flush's theft.",
-        "callbacks": [
-          "s577"
-        ]
-      },
-      {
-        "snippetId": "s965",
-        "messageOrdinal": 551,
-        "sender": "Elizabeth",
-        "date": "1846-09-10",
-        "approximate": false,
-        "dateLabel": "10 September 1846",
-        "text": "Dearest, you are a prophet, I suppose—there can be no denying it.",
-        "note": "Elizabeth's family is suddenly ordered away, forcing their plans.",
+        "note": "Robert’s sympathy for Flush’s plight shows his care for Elizabeth’s whole world.",
         "callbacks": []
       },
       {
-        "snippetId": "s1030",
-        "messageOrdinal": 555,
+        "snippetId": "s634",
+        "messageOrdinal": 535,
         "sender": "Robert",
-        "date": "1846-09-12",
+        "date": "1846-09-02",
         "approximate": false,
-        "dateLabel": "12 September 1846",
-        "text": "You will only expect a few words—what will those be?",
-        "note": "Robert's reflection on their wedding day.",
+        "dateLabel": "2 September 1846",
+        "text": "Remember Flush—to write.",
+        "note": "A small, caring reminder that keeps Flush’s rescue thread alive.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush’s return, sprawled on the sofa, gives Elizabeth a rare moment of relief.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s872",
+        "messageOrdinal": 545,
+        "sender": "Robert",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "No, dearest, I am not to see you to-morrow for all the happiness of the permission!",
+        "note": "Robert has to cancel a longed-for visit because his health will not allow it.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s888",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Take care of yourself, dearest dearest, and if you think of me and love me, show it in that best way.",
+        "note": "Elizabeth asks Robert to prove his love by resting and taking care of himself.",
         "callbacks": []
       },
       {
@@ -116,64 +147,41 @@
         "approximate": false,
         "dateLabel": "12 September 1846",
         "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
-        "note": "Elizabeth's account of the strain and relief of the wedding day.",
-        "callbacks": [
-          "s1030"
-        ]
+        "note": "After the secret wedding, Elizabeth is relieved that the dangerous day is over.",
+        "callbacks": []
       },
       {
-        "snippetId": "s1097",
+        "snippetId": "s1069",
         "messageOrdinal": 557,
         "sender": "Elizabeth",
         "date": "1846-09-14",
         "approximate": false,
         "dateLabel": "14 September 1846",
-        "text": "I feel so as if I had slipped down over the wall into somebody’s garden—I feel ashamed.",
-        "note": "Elizabeth's dizzy sense of having slipped into a new life.",
-        "callbacks": [
-          "s1045"
-        ]
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "Elizabeth credits Robert with lifting her from despair into life and sunshine.",
+        "callbacks": []
       },
       {
-        "snippetId": "s1155",
-        "messageOrdinal": 559,
+        "snippetId": "s1103",
+        "messageOrdinal": 558,
         "sender": "Robert",
         "date": "1846-09-14",
         "approximate": false,
         "dateLabel": "14 September 1846",
-        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
-        "note": "Robert's exultation at their marriage.",
-        "callbacks": [
-          "s1045"
-        ]
+        "text": "Thank you a thousand times for the note, my own Ba.",
+        "note": "Robert’s gratitude for her secret note seals the depth of his devotion.",
+        "callbacks": []
       },
       {
-        "snippetId": "s1202",
-        "messageOrdinal": 561,
-        "sender": "Elizabeth",
-        "date": "1846-09-15",
-        "approximate": false,
-        "dateLabel": "15 September 1846",
-        "text": "First, God is to be thanked for this great joy of hearing that you are better, my ever dearest—it is a joy that floats over all the other emotions.",
-        "note": "Elizabeth's gratitude and anxiety about her father after the marriage.",
-        "callbacks": [
-          "s1045",
-          "s1155"
-        ]
-      },
-      {
-        "snippetId": "s1464",
+        "snippetId": "s1461",
         "messageOrdinal": 572,
         "sender": "Elizabeth",
         "date": "1846-09-19",
         "approximate": false,
         "dateLabel": "19 September 1846",
-        "text": "Is this my last letter to you, ever dearest?",
-        "note": "Her last letter before they leave together for Italy.",
-        "callbacks": [
-          "s1045",
-          "s1155"
-        ]
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "Elizabeth insists on carrying Robert’s letters with her despite the ounces.",
+        "callbacks": []
       }
     ]
   }

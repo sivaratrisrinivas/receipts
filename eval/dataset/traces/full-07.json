@@ -4,26 +4,41 @@
   "occasion": "anniversary",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T23:05:06.847Z",
+  "startedAt": "2026-11-01T10:19:00.544Z",
   "messagesRead": 573,
   "snippetsRead": 12513,
-  "seconds": 10.471,
-  "costUsd": 0.14560840000000003,
+  "seconds": 19.708,
+  "costUsd": 0.28650159999999997,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 9.36,
-      "costUsd": 0.14560840000000003,
+      "seconds": 4.021,
+      "costUsd": 0.14210479999999998,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 352297,
-        "completionTokens": 3908,
-        "reasoningTokens": 3412
+        "promptTokens": 352571,
+        "completionTokens": 897,
+        "reasoningTokens": 108
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 19 Lines; a Poem needs 8 to 14. Try again."
+      }
+    },
+    {
+      "seconds": 7.191,
+      "costUsd": 0.1443968,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 2807,
+        "reasoningTokens": 2203
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first direct declaration of love after praising Elizabeth's books.\", \"callbacks\": []},\n    {\"id\": \"s7\", \"note\": \"Elizabeth answers that a poet's sympathy is the quintessence of sympathy to her.\", \"callbacks\": []},\n    {\"id\": \"s28\", \"note\": \"Robert looks ahead to spring, friendship, and seeing her at the chapel.\", \"callbacks\": []},\n    {\"id\": \"s808\", \"note\": \"Robert asks Elizabeth to know him better over a long day at the end.\", \"callbacks\": []},\n    {\"id\": \"s831\", \"note\": \"Elizabeth tells Robert not to bring the Duchess, showing their growing ease over his work.\", \"callbacks\": [\"s825\"]},\n    {\"id\": \"s849\", \"note\": \"Robert's pomegranate image answers Elizabeth's wish to see into things.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert's sweeping declaration that his whole life is wound around Elizabeth.\", \"callbacks\": []},\n    {\"id\": \"s2289\", \"note\": \"Elizabeth says Robert is between her and even the closest graves.\", \"callbacks\": []},\n    {\"id\": \"s2620\", \"note\": \"Robert rests his life and death on Elizabeth as God's gift.\", \"callbacks\": []},\n    {\"id\": \"s2825\", \"note\": \"Robert says every word Elizabeth writes goes to his heart and lives there.\", \"callbacks\": []},\n    {\"id\": \"s6228\", \"note\": \"Elizabeth recalls Robert's chestnut tree from his earlier letter.\", \"callbacks\": [\"s512\"]},\n    {\"id\": \"s6266\", \"note\": \"Robert says he would walk barefoot until he dropped to see Elizabeth.\", \"callbacks\": []},\n    {\"id\": \"s6331\", \"note\": \"Robert marvels that Ba has good sense, best sense.\", \"callbacks\": []},\n    {\"id\": \"s6369\", \"note\": \"Elizabeth says she would not say yesterday's foolishness and knew it well.\", \"callbacks\": []}\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s1\",\n      \"note\": \"Robert's first direct declaration of love to Elizabeth.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s797\",\n      \"note\": \"Robert sends roses in a letter, beginning their private language of flowers.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1053\",\n      \"note\": \"Elizabeth says she will never forget what Robert has given her.\",\n      \"callbacks\": [\n        \"s2427\"\n      ]\n    },\n    {\n      \"id\": \"s2290\",\n      \"note\": \"Elizabeth describes Robert's love as a dream returned in double light.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2427\",\n      \"note\": \"Elizabeth counts their letters rather than the days they have known each other.\",\n      \"callbacks\": [\n        \"s1053\"\n      ]\n    },\n    {\n      \"id\": \"s3373\",\n      \"note\": \"Robert asks what Elizabeth is doing to him in the heart's heart.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s4508\",\n      \"note\": \"Robert wonders whether this happiness can last and whether he can deserve it.\",\n      \"callbacks\": [\n        \"s7679\"\n      ]\n    },\n    {\n      \"id\": \"s5152\",\n      \"note\": \"Elizabeth asks Robert to stop wishing his flowers were diamonds.\",\n      \"callbacks\": [\n        \"s797\"\n      ]\n    },\n    {\n      \"id\": \"s6108\",\n      \"note\": \"Robert writes a private dedication to Elizabeth inside a parcel.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s7679\",\n      \"note\": \"Robert promises to live and die with Elizabeth.\",\n      \"callbacks\": [\n        \"s4508\"\n      ]\n    },\n    {\n      \"id\": \"s8260\",\n      \"note\": \"Robert recalls that his first word to Elizabeth was 'I love you.'\",\n      \"callbacks\": [\n        \"s1\"\n      ]\n    },\n    {\n      \"id\": \"s8795\",\n      \"note\": \"Robert remembers Elizabeth calling him by his name.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s9509\",\n      \"note\": \"Elizabeth says she feels Robert's letter more deeply than she thought.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s10020\",\n      \"note\": \"Robert calls their two years a glorious dream without blankness.\",\n      \"callbacks\": [\n        \"s2290\"\n      ]\n    }\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,155 +50,165 @@
         "approximate": false,
         "dateLabel": "10 January 1845",
         "text": "I do, as I say, love these books with all my heart--and I love you too.",
-        "note": "Robert's first direct declaration of love after praising Elizabeth's books.",
+        "note": "Robert's first direct declaration of love to Elizabeth.",
         "callbacks": []
       },
       {
-        "snippetId": "s7",
-        "messageOrdinal": 1,
-        "sender": "Elizabeth",
-        "date": "1845-01-11",
-        "approximate": false,
-        "dateLabel": "11 January 1845",
-        "text": "Sympathy is dear--very dear to me: but the sympathy of a poet, and of such a poet, is the quintessence of sympathy to me!",
-        "note": "Elizabeth answers that a poet's sympathy is the quintessence of sympathy to her.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s28",
-        "messageOrdinal": 2,
+        "snippetId": "s797",
+        "messageOrdinal": 41,
         "sender": "Robert",
-        "date": "1845-01-13",
+        "date": "1845-06-14",
         "approximate": false,
-        "dateLabel": "13 January 1845",
-        "text": "You will never more, I hope, talk of 'the honour of my acquaintance,' but I will joyfully wait for the delight of your friendship, and the spring, and my Chapel-sight after all!",
-        "note": "Robert looks ahead to spring, friendship, and seeing her at the chapel.",
+        "dateLabel": "14 June 1845",
+        "text": "You let 'flowers be sent you in a letter,' every one knows, and this hot day draws out our very first yellow rose.",
+        "note": "Robert sends roses in a letter, beginning their private language of flowers.",
         "callbacks": []
       },
       {
-        "snippetId": "s808",
-        "messageOrdinal": 43,
-        "sender": "Robert",
-        "date": "1845-06-19",
-        "approximate": false,
-        "dateLabel": "19 June 1845",
-        "text": "This I will say, then--wait and know me better, as you will one long day at the end.",
-        "note": "Robert asks Elizabeth to know him better over a long day at the end.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s831",
-        "messageOrdinal": 46,
+        "snippetId": "s1053",
+        "messageOrdinal": 67,
         "sender": "Elizabeth",
-        "date": "1845-06-24",
+        "date": "1845-07-28",
         "approximate": false,
-        "dateLabel": "24 June 1845",
-        "text": "Well, but, I wanted particularly to say this--Don't bring the 'Duchess' with you on Wednesday.",
-        "note": "Elizabeth tells Robert not to bring the Duchess, showing their growing ease over his work.",
+        "dateLabel": "28 July 1845",
+        "text": "I never shall forget these things, my dearest friend; nor remember them more coldly.",
+        "note": "Elizabeth says she will never forget what Robert has given her.",
         "callbacks": [
-          "s825"
+          "s2427"
         ]
       },
       {
-        "snippetId": "s849",
-        "messageOrdinal": 49,
-        "sender": "Robert",
-        "date": "1845-06-25",
-        "approximate": false,
-        "dateLabel": "25 June 1845",
-        "text": "Pomegranates you may cut deep down the middle and see into, but not hearts,--so why should I try and speak?",
-        "note": "Robert's pomegranate image answers Elizabeth's wish to see into things.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s2249",
-        "messageOrdinal": 150,
-        "sender": "Robert",
-        "date": "1845-11-17",
-        "approximate": false,
-        "dateLabel": "17 November 1845",
-        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
-        "note": "Robert's sweeping declaration that his whole life is wound around Elizabeth.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s2289",
+        "snippetId": "s2290",
         "messageOrdinal": 151,
         "sender": "Elizabeth",
         "date": "1845-11-18",
         "approximate": false,
         "dateLabel": "18 November 1845",
-        "text": "You cannot guess what you are to me--you cannot--it is not possible:--and though I have said that before, I must say it again ... for it comes again to be said.",
-        "note": "Elizabeth says Robert is between her and even the closest graves.",
+        "text": "It is something to me between dream and miracle, all of it--as if some dream of my earliest brightest dreaming-time had been lying through these dark years to steep in the sunshine, returning to me in a double light.",
+        "note": "Elizabeth describes Robert's love as a dream returned in double light.",
         "callbacks": []
       },
       {
-        "snippetId": "s2620",
-        "messageOrdinal": 164,
-        "sender": "Robert",
-        "date": "1845-12-03",
-        "approximate": false,
-        "dateLabel": "3 December 1845",
-        "text": "So I rest on you, for life, for death, beloved--beside you do stand, in my solemn belief, the direct miraculous gift of God to me--that is my solemn belief; may I be thankful!",
-        "note": "Robert rests his life and death on Elizabeth as God's gift.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s2825",
-        "messageOrdinal": 173,
-        "sender": "Robert",
-        "date": "1845-12-15",
-        "approximate": false,
-        "dateLabel": "15 December 1845",
-        "text": "Every word you write goes to my heart and lives there: let us live so, and die so, if God will.",
-        "note": "Robert says every word Elizabeth writes goes to his heart and lives there.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s6228",
-        "messageOrdinal": 316,
+        "snippetId": "s2427",
+        "messageOrdinal": 155,
         "sender": "Elizabeth",
-        "date": "1846-04-17",
+        "date": "1845-11-22",
         "approximate": false,
-        "dateLabel": "17 April 1846",
-        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
-        "note": "Elizabeth recalls Robert's chestnut tree from his earlier letter.",
+        "dateLabel": "22 November 1845",
+        "text": "I would rather look at my seventy-five letters--there is room to breathe in them.",
+        "note": "Elizabeth counts their letters rather than the days they have known each other.",
         "callbacks": [
-          "s512"
+          "s1053"
         ]
       },
       {
-        "snippetId": "s6266",
-        "messageOrdinal": 317,
+        "snippetId": "s3373",
+        "messageOrdinal": 194,
         "sender": "Robert",
-        "date": "1846-04-17",
-        "approximate": false,
-        "dateLabel": "17 April 1846",
-        "text": "And you pretend not to know I would walk barefoot till I dropped, if so I might attain to the sight of you, and it.",
-        "note": "Robert says he would walk barefoot until he dropped to see Elizabeth.",
+        "date": "1846-01-09",
+        "approximate": true,
+        "dateLabel": "c. 9 January 1846",
+        "text": "What are you doing to me?--in the heart's heart.",
+        "note": "Robert asks what Elizabeth is doing to him in the heart's heart.",
         "callbacks": []
       },
       {
-        "snippetId": "s6331",
-        "messageOrdinal": 319,
+        "snippetId": "s4508",
+        "messageOrdinal": 242,
         "sender": "Robert",
-        "date": "1846-04-18",
+        "date": "1846-02-23",
         "approximate": false,
-        "dateLabel": "18 April 1846",
-        "text": "So my dear, own Ba has good sense, best sense—whatever Flush’s may be!",
-        "note": "Robert marvels that Ba has good sense, best sense.",
-        "callbacks": []
+        "dateLabel": "23 February 1846",
+        "text": "Dear, dear heart of my heart, life of my life, will this last, let me begin to ask?",
+        "note": "Robert wonders whether this happiness can last and whether he can deserve it.",
+        "callbacks": [
+          "s7679"
+        ]
       },
       {
-        "snippetId": "s6369",
-        "messageOrdinal": 321,
+        "snippetId": "s5152",
+        "messageOrdinal": 270,
         "sender": "Elizabeth",
-        "date": "1846-04-21",
+        "date": "1846-03-17",
         "approximate": false,
-        "dateLabel": "21 April 1846",
-        "text": "I would not say to you yesterday, perhaps could not, that you wrote ever so much foolishness to me in the morning, dearest, and that I knew it ever so well.",
-        "note": "Elizabeth says she would not say yesterday's foolishness and knew it well.",
+        "dateLabel": "17 March 1846",
+        "text": "It was simply to your thoughts, that I replied ... and that you need not say to yourself any more, as you did once to me when you brought me flowers, that you wished they were diamonds.",
+        "note": "Elizabeth asks Robert to stop wishing his flowers were diamonds.",
+        "callbacks": [
+          "s797"
+        ]
+      },
+      {
+        "snippetId": "s6108",
+        "messageOrdinal": 311,
+        "sender": "Robert",
+        "date": "1846-04-13",
+        "approximate": false,
+        "dateLabel": "13 April 1846",
+        "text": "But where no eye can see; save your dear eye ... there is written a dedication.",
+        "note": "Robert writes a private dedication to Elizabeth inside a parcel.",
         "callbacks": []
+      },
+      {
+        "snippetId": "s7679",
+        "messageOrdinal": 382,
+        "sender": "Robert",
+        "date": "1846-05-30",
+        "approximate": false,
+        "dateLabel": "30 May 1846",
+        "text": "But I will believe in the end now and henceforth—I will believe you are my very own Ba,—my best dream’s realization, my life’s fulfilment and consummation—and having discovered you, I shall live and die with you.",
+        "note": "Robert promises to live and die with Elizabeth.",
+        "callbacks": [
+          "s4508"
+        ]
+      },
+      {
+        "snippetId": "s8260",
+        "messageOrdinal": 407,
+        "sender": "Robert",
+        "date": "1846-06-16",
+        "approximate": false,
+        "dateLabel": "16 June 1846",
+        "text": "It was so,—could not but be so—and I always loved you, as I shall always.",
+        "note": "Robert recalls that his first word to Elizabeth was 'I love you.'",
+        "callbacks": [
+          "s1"
+        ]
+      },
+      {
+        "snippetId": "s8795",
+        "messageOrdinal": 431,
+        "sender": "Robert",
+        "date": "1846-07-01",
+        "approximate": false,
+        "dateLabel": "1 July 1846",
+        "text": "Dearest—dearest, you did once, one time only, call me by my name—Robert; and though it was to bid ‘R. not talk extravagances’ (your very words) still the name so spoken became what it never had been before to me.",
+        "note": "Robert remembers Elizabeth calling him by his name.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9509",
+        "messageOrdinal": 460,
+        "sender": "Elizabeth",
+        "date": "1846-07-17",
+        "approximate": false,
+        "dateLabel": "17 July 1846",
+        "text": "Dearest, if you feel that, must I not feel it more deeply?",
+        "note": "Elizabeth says she feels Robert's letter more deeply than she thought.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10020",
+        "messageOrdinal": 479,
+        "sender": "Robert",
+        "date": "1846-07-30",
+        "approximate": false,
+        "dateLabel": "30 July 1846",
+        "text": "Dearest Ba, my very own, I love you with a love—not to die before any sorrow! perhaps that is the one remaining circumstance of power to heighten it!",
+        "note": "Robert calls their two years a glorious dream without blankness.",
+        "callbacks": [
+          "s2290"
+        ]
       }
     ]
   }

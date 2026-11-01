@@ -4,26 +4,26 @@
   "occasion": "sorry",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T23:18:14.636Z",
+  "startedAt": "2026-11-01T10:05:59.409Z",
   "messagesRead": 58,
   "snippetsRead": 1475,
-  "seconds": 7.891,
-  "costUsd": 0.018454800000000004,
+  "seconds": 5.163,
+  "costUsd": 0.0181632,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 6.692,
-      "costUsd": 0.018454800000000004,
+      "seconds": 4.775,
+      "costUsd": 0.0181632,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 38976,
-        "completionTokens": 2387,
-        "reasoningTokens": 1781
+        "promptTokens": 39249,
+        "completionTokens": 2053,
+        "reasoningTokens": 1559
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Robert's note: Elizabeth opens with the private understanding that defines their bond.\", \"callbacks\": []},\n    {\"id\": \"s21\", \"note\": \"Robert's note: Elizabeth's playful Ossian question is a private literary tease.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert's note: my early kiss sign-off shows how quickly our intimacy became ritual.\", \"callbacks\": []},\n    {\"id\": \"s103\", \"note\": \"Robert's note: my first apology frames the anxious tenderness of these letters.\", \"callbacks\": []},\n    {\"id\": \"s148\", \"note\": \"Robert's note: my childhood Ossian confession answers Elizabeth's earlier question.\", \"callbacks\": [\"s21\"]},\n    {\"id\": \"s304\", \"note\": \"Robert's note: Elizabeth asks forgiveness for a thought she regrets.\", \"callbacks\": []},\n    {\"id\": \"s489\", \"note\": \"Robert's note: my apology asks her to forgive whatever needs forgiving.\", \"callbacks\": [\"s304\"]},\n    {\"id\": \"s577\", \"note\": \"Robert's note: Flush's disappearance becomes a shared crisis between us.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Robert's note: my sympathy for Flush shows I entered Elizabeth's private world.\", \"callbacks\": [\"s577\"]},\n    {\"id\": \"s845\", \"note\": \"Robert's note: Flush's sofa return resolves the dog-stealer episode.\", \"callbacks\": [\"s577\", \"s616\"]},\n    {\"id\": \"s906\", \"note\": \"Robert's note: I am glad Flush is with Elizabeth, even when I cannot be.\", \"callbacks\": [\"s845\"]},\n    {\"id\": \"s1014\", \"note\": \"Robert's note: Elizabeth's single-willed assent carries our marriage forward.\", \"callbacks\": []},\n    {\"id\": \"s1030\", \"note\": \"Robert's note: my few words on the eve of marriage hold back fuller feeling.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"Robert's note: Elizabeth's wedding-day letter keeps me close through danger.\", \"callbacks\": []},\n    {\"id\": \"s1155\", \"note\": \"Robert's note: my exultation at the irrevocability of our marriage.\", \"callbacks\": []},\n    {\"id\": \"s1464\", \"note\": \"Robert's note: Elizabeth's last letter before our departure closes the story.\", \"callbacks\": []}\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Opens with Elizabeth's early voice of mutual understanding.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"A vivid, private image of Flush's joy at her return.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert's intimate admission about shortening visits to take her hand.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"The sudden crisis of Flush being stolen.\", \"callbacks\": [\"s43\"]},\n    {\"id\": \"s619\", \"note\": \"Robert's warning not to let their happiness be caught up like Flush.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s790\", \"note\": \"Elizabeth's private joke that she is Robert's Flush and Flush is hers.\", \"callbacks\": [\"s43\", \"s578\"]},\n    {\"id\": \"s845\", \"note\": \"Flush returns and lies on the sofa after the ordeal.\", \"callbacks\": [\"s578\", \"s790\"]},\n    {\"id\": \"s883\", \"note\": \"Elizabeth smiles at Robert's phrase about the 'grave man and woman' to be.\", \"callbacks\": []},\n    {\"id\": \"s993\", \"note\": \"Robert's decisive turn: they must be married directly and go to Italy.\", \"callbacks\": []},\n    {\"id\": \"s1036\", \"note\": \"Robert's full-hearted declaration after their wedding day.\", \"callbacks\": []},\n    {\"id\": \"s1045\", \"note\": \"Elizabeth's breathless report that she survived such a day.\", \"callbacks\": []},\n    {\"id\": \"s1067\", \"note\": \"Elizabeth credits Robert with lifting her into life and sunshine.\", \"callbacks\": []},\n    {\"id\": \"s1102\", \"note\": \"A small, tender callback to the ring they must put on again.\", \"callbacks\": []},\n    {\"id\": \"s1456\", \"note\": \"Elizabeth's final anticipation that soon she will have only him to love her.\", \"callbacks\": []}\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,18 +35,18 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "But dearest—Did you not understand that I understood?",
-        "note": "Robert's note: Elizabeth opens with the private understanding that defines their bond.",
+        "note": "Opens with Elizabeth's early voice of mutual understanding.",
         "callbacks": []
       },
       {
-        "snippetId": "s21",
+        "snippetId": "s43",
         "messageOrdinal": 515,
         "sender": "Elizabeth",
         "date": "1846-08-24",
         "approximate": false,
         "dateLabel": "24 August 1846",
-        "text": "By the way, do you believe in Ossian?",
-        "note": "Robert's note: Elizabeth's playful Ossian question is a private literary tease.",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "A vivid, private image of Flush's joy at her return.",
         "callbacks": []
       },
       {
@@ -57,79 +57,47 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
-        "note": "Robert's note: my early kiss sign-off shows how quickly our intimacy became ritual.",
+        "note": "Robert's intimate admission about shortening visits to take her hand.",
         "callbacks": []
       },
       {
-        "snippetId": "s103",
-        "messageOrdinal": 517,
-        "sender": "Robert",
-        "date": "1846-08-24",
-        "approximate": false,
-        "dateLabel": "24 August 1846",
-        "text": "I shall give this letter to be put in the post—I have all to say, but the very essential is said—understand me, my best, only love, and forgive my undue alarm, for the sake of the love that prompts it.",
-        "note": "Robert's note: my first apology frames the anxious tenderness of these letters.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s148",
-        "messageOrdinal": 519,
-        "sender": "Robert",
-        "date": "1846-08-25",
-        "approximate": false,
-        "dateLabel": "25 August 1846",
-        "text": "You asked me about Ossian—now here is truth—the first book I ever bought in my life was Ossian ... it is now in the next room.",
-        "note": "Robert's note: my childhood Ossian confession answers Elizabeth's earlier question.",
-        "callbacks": [
-          "s21"
-        ]
-      },
-      {
-        "snippetId": "s304",
-        "messageOrdinal": 524,
-        "sender": "Elizabeth",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "And something I said in my letter, which was wrong to say and I am sorry to think of—forgive me that, ever beloved—but you have forgiven, I know.",
-        "note": "Robert's note: Elizabeth asks forgiveness for a thought she regrets.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s489",
-        "messageOrdinal": 530,
-        "sender": "Robert",
-        "date": "1846-08-31",
-        "approximate": false,
-        "dateLabel": "31 August 1846",
-        "text": "I will say no more, praying you to forgive whatever you shall judge to need forgiveness here,—dearest Ba!",
-        "note": "Robert's note: my apology asks her to forgive whatever needs forgiving.",
-        "callbacks": [
-          "s304"
-        ]
-      },
-      {
-        "snippetId": "s577",
+        "snippetId": "s578",
         "messageOrdinal": 534,
         "sender": "Elizabeth",
         "date": "1846-09-02",
         "approximate": false,
         "dateLabel": "2 September 1846",
-        "text": "Here is a distress for me, dearest!",
-        "note": "Robert's note: Flush's disappearance becomes a shared crisis between us.",
-        "callbacks": []
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The sudden crisis of Flush being stolen.",
+        "callbacks": [
+          "s43"
+        ]
       },
       {
-        "snippetId": "s616",
+        "snippetId": "s619",
         "messageOrdinal": 535,
         "sender": "Robert",
         "date": "1846-09-02",
         "approximate": false,
         "dateLabel": "2 September 1846",
-        "text": "Poor Flush—how sorry I am for you, my Ba!",
-        "note": "Robert's note: my sympathy for Flush shows I entered Elizabeth's private world.",
+        "text": "Do not let our happiness be caught up from us, after poor Flush’s fashion—there may be no redemption from that peril.",
+        "note": "Robert's warning not to let their happiness be caught up like Flush.",
         "callbacks": [
-          "s577"
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth's private joke that she is Robert's Flush and Flush is hers.",
+        "callbacks": [
+          "s43",
+          "s578"
         ]
       },
       {
@@ -140,45 +108,43 @@
         "approximate": false,
         "dateLabel": "7 September 1846",
         "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
-        "note": "Robert's note: Flush's sofa return resolves the dog-stealer episode.",
+        "note": "Flush returns and lies on the sofa after the ordeal.",
         "callbacks": [
-          "s577",
-          "s616"
+          "s578",
+          "s790"
         ]
       },
       {
-        "snippetId": "s906",
-        "messageOrdinal": 547,
-        "sender": "Robert",
+        "snippetId": "s883",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
         "date": "1846-09-07",
         "approximate": false,
         "dateLabel": "7 September 1846",
-        "text": "I am delighted to know Flush is with you, if I am not.",
-        "note": "Robert's note: I am glad Flush is with Elizabeth, even when I cannot be.",
-        "callbacks": [
-          "s845"
-        ]
-      },
-      {
-        "snippetId": "s1014",
-        "messageOrdinal": 554,
-        "sender": "Elizabeth",
-        "date": "1846-09-11",
-        "approximate": false,
-        "dateLabel": "11 September 1846",
-        "text": "Dearest, I write one word, and have one will which is yours.",
-        "note": "Robert's note: Elizabeth's single-willed assent carries our marriage forward.",
+        "text": "And smiling to myself I was, both last night and this morning, at your phrase about the ‘business’ to be talked by the ‘grave man and woman’; understanding your precaution against all unlawful jesting!—jesters forbidden in the protocol!",
+        "note": "Elizabeth smiles at Robert's phrase about the 'grave man and woman' to be.",
         "callbacks": []
       },
       {
-        "snippetId": "s1030",
+        "snippetId": "s993",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "We must be married directly and go to Italy.",
+        "note": "Robert's decisive turn: they must be married directly and go to Italy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1036",
         "messageOrdinal": 555,
         "sender": "Robert",
         "date": "1846-09-12",
         "approximate": false,
         "dateLabel": "12 September 1846",
-        "text": "You will only expect a few words—what will those be?",
-        "note": "Robert's note: my few words on the eve of marriage hold back fuller feeling.",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert's full-hearted declaration after their wedding day.",
         "callbacks": []
       },
       {
@@ -189,29 +155,40 @@
         "approximate": false,
         "dateLabel": "12 September 1846",
         "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
-        "note": "Robert's note: Elizabeth's wedding-day letter keeps me close through danger.",
+        "note": "Elizabeth's breathless report that she survived such a day.",
         "callbacks": []
       },
       {
-        "snippetId": "s1155",
-        "messageOrdinal": 559,
-        "sender": "Robert",
+        "snippetId": "s1067",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
         "date": "1846-09-14",
         "approximate": false,
         "dateLabel": "14 September 1846",
-        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
-        "note": "Robert's note: my exultation at the irrevocability of our marriage.",
+        "text": "What could be better than lifting me from the ground and carrying me into life and the sunshine?",
+        "note": "Elizabeth credits Robert with lifting her into life and sunshine.",
         "callbacks": []
       },
       {
-        "snippetId": "s1464",
+        "snippetId": "s1102",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You will have to take the trouble of putting it on again, some day.",
+        "note": "A small, tender callback to the ring they must put on again.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
         "messageOrdinal": 572,
         "sender": "Elizabeth",
         "date": "1846-09-19",
         "approximate": false,
         "dateLabel": "19 September 1846",
-        "text": "Is this my last letter to you, ever dearest?",
-        "note": "Robert's note: Elizabeth's last letter before our departure closes the story.",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth's final anticipation that soon she will have only him to love her.",
         "callbacks": []
       }
     ]

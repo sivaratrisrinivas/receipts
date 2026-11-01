@@ -4,26 +4,41 @@
   "occasion": "farewell",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-11-01T03:32:37.875Z",
+  "startedAt": "2026-11-01T10:23:34.384Z",
   "messagesRead": 573,
   "snippetsRead": 12513,
-  "seconds": 31.452,
-  "costUsd": 0.1604308,
+  "seconds": 29.531,
+  "costUsd": 0.292834,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 29.93,
-      "costUsd": 0.1604308,
+      "seconds": 3.998,
+      "costUsd": 0.1424588,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 352297,
-        "completionTokens": 16260,
-        "reasoningTokens": 15701
+        "promptTokens": 352571,
+        "completionTokens": 1192,
+        "reasoningTokens": 605
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 20 Lines; a Poem needs 8 to 14. Try again."
+      }
+    },
+    {
+      "seconds": 18.732,
+      "costUsd": 0.1503752,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 7789,
+        "reasoningTokens": 7245
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Opening declaration that your verses and you are loved; sets the whole correspondence in motion.\", \"callbacks\": []},\n    {\"id\": \"s28\", \"note\": \"Early promise to wait for friendship and spring, before the first meeting.\", \"callbacks\": [\"s0\"]},\n    {\"id\": \"s37\", \"note\": \"Elizabeth's reply that love can overcome nature, echoing the growing bond.\", \"callbacks\": [\"s0\", \"s28\"]},\n    {\"id\": \"s246\", \"note\": \"Playful disagreement about spring, showing her own voice and wit.\", \"callbacks\": [\"s28\"]},\n    {\"id\": \"s998\", \"note\": \"Playful, vivid image of being tied and cudgelled; their banter at its sharpest.\", \"callbacks\": []},\n    {\"id\": \"s1004\", \"note\": \"Her answer that she never struck you, turning the same playful quarrel back.\", \"callbacks\": [\"s998\"]},\n    {\"id\": \"s2245\", \"note\": \"Love declared as total and unwavering, in the autumn of 1845.\", \"callbacks\": [\"s0\"]},\n    {\"id\": \"s2272\", \"note\": \"Her response that your love overcomes her and leaves no answer.\", \"callbacks\": [\"s2245\"]},\n    {\"id\": \"s2527\", \"note\": \"The ring moment: asking her to take what you mean and be yours.\", \"callbacks\": [\"s2245\", \"s2272\"]},\n    {\"id\": \"s2548\", \"note\": \"Her answer about the ring arriving, with its purple lock and hair.\", \"callbacks\": [\"s2527\"]},\n    {\"id\": \"s6228\", \"note\": \"Callback to your chestnut-tree line from the first year, now turned back to you.\", \"callbacks\": []},\n    {\"id\": \"s6263\", \"note\": \"After the secret marriage, reassuring that you did not see her in the chair.\", \"callbacks\": [\"s6228\"]},\n    {\"id\": \"s8351\", \"note\": \"Late letter of gratitude and hope, near the end of the preserved correspondence.\", \"callbacks\": [\"s2245\"]},\n    {\"id\": \"s8384\", \"note\": \"Her final question whether you really kissed her, closing with tenderness.\", \"callbacks\": [\"s8351\"]}\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"R's opening declaration that he loves her verses with all his heart and loves her too — the first spark of their correspondence.\", \"callbacks\": []},\n    {\"id\": \"s1\", \"note\": \"R's early avowal that he loves her books and her — the seeds of their bond.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"E's first reply, thanking R from the bottom of her heart — showing she was deeply moved.\", \"callbacks\": []},\n    {\"id\": \"s761\", \"note\": \"E thanking R for kindness and consideration, showing how much she felt it — their growing closeness.\", \"callbacks\": []},\n    {\"id\": \"s762\", \"note\": \"E noting Kenyon knows R has been here and will not mention it — the discretion of their secret meetings.\", \"callbacks\": []},\n    {\"id\": \"s767\", \"note\": \"E praising R's poem as too good for college prizes — their shared literary world.\", \"callbacks\": []},\n    {\"id\": \"s780\", \"note\": \"R admitting he talks with his thoughts away — his self-deprecating charm.\", \"callbacks\": []},\n    {\"id\": \"s2219\", \"note\": \"E comparing reading Luria's first act to a bullet suspended in air — their creative collaboration.\", \"callbacks\": []},\n    {\"id\": \"s2220\", \"note\": \"E saying Luria is all life — praise of his work.\", \"callbacks\": []},\n    {\"id\": \"s2225\", \"note\": \"E asking R to say exactly how he is — tender concern for his health.\", \"callbacks\": []},\n    {\"id\": \"s2245\", \"note\": \"R saying he loves her more if she never writes again — devotion beyond words.\", \"callbacks\": []},\n    {\"id\": \"s6263\", \"note\": \"R denying he saw her sit in her chair but recalling their walk by the garden wall — their secret visits.\", \"callbacks\": []},\n    {\"id\": \"s12499\", \"note\": \"E saying his letters are with her — keeping his words close.\", \"callbacks\": []},\n    {\"id\": \"s12500\", \"note\": \"E saying she tried to leave but could not — her inability to part from him.\", \"callbacks\": []}\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,72 +50,107 @@
         "approximate": false,
         "dateLabel": "10 January 1845",
         "text": "I love your verses with all my heart, dear Miss Barrett,--and this is no off-hand complimentary letter that I shall write,--whatever else, no prompt matter-of-course recognition of your genius, and there a graceful and natural end of the thing.",
-        "note": "Opening declaration that your verses and you are loved; sets the whole correspondence in motion.",
+        "note": "R's opening declaration that he loves her verses with all his heart and loves her too — the first spark of their correspondence.",
         "callbacks": []
       },
       {
-        "snippetId": "s28",
-        "messageOrdinal": 2,
+        "snippetId": "s1",
+        "messageOrdinal": 0,
         "sender": "Robert",
-        "date": "1845-01-13",
+        "date": "1845-01-10",
         "approximate": false,
-        "dateLabel": "13 January 1845",
-        "text": "You will never more, I hope, talk of 'the honour of my acquaintance,' but I will joyfully wait for the delight of your friendship, and the spring, and my Chapel-sight after all!",
-        "note": "Early promise to wait for friendship and spring, before the first meeting.",
-        "callbacks": [
-          "s0"
-        ]
-      },
-      {
-        "snippetId": "s37",
-        "messageOrdinal": 3,
-        "sender": "Elizabeth",
-        "date": "1845-01-15",
-        "approximate": false,
-        "dateLabel": "15 January 1845",
-        "text": "In art, however, I understand that it does not do to be headlong, but patient and laborious--and there is a love strong enough, even in me, to overcome nature.",
-        "note": "Elizabeth's reply that love can overcome nature, echoing the growing bond.",
-        "callbacks": [
-          "s0",
-          "s28"
-        ]
-      },
-      {
-        "snippetId": "s246",
-        "messageOrdinal": 9,
-        "sender": "Elizabeth",
-        "date": "1845-02-27",
-        "approximate": false,
-        "dateLabel": "27 February 1845",
-        "text": "Yes, but, dear Mr. Browning, I want the spring according to the new 'style' (mine), and not the old one of you and the rest of the poets.",
-        "note": "Playful disagreement about spring, showing her own voice and wit.",
-        "callbacks": [
-          "s28"
-        ]
-      },
-      {
-        "snippetId": "s998",
-        "messageOrdinal": 62,
-        "sender": "Robert",
-        "date": "1845-07-18",
-        "approximate": true,
-        "dateLabel": "c. 18 July 1845",
-        "text": "You tie me like a Shrove-Tuesday fowl to a stake and then pick the thickest cudgel out of your lot, and at my head it goes--I wonder whether you remembered having predicted exactly the same horror once before.",
-        "note": "Playful, vivid image of being tied and cudgelled; their banter at its sharpest.",
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "R's early avowal that he loves her books and her — the seeds of their bond.",
         "callbacks": []
       },
       {
-        "snippetId": "s1004",
-        "messageOrdinal": 63,
+        "snippetId": "s3",
+        "messageOrdinal": 1,
         "sender": "Elizabeth",
-        "date": "1845-07-21",
+        "date": "1845-01-11",
         "approximate": false,
-        "dateLabel": "21 July 1845",
-        "text": "But I never did strike you or touch you--and you are not in earnest in the complaint you make--and this is really all I am going to say to-day.",
-        "note": "Her answer that she never struck you, turning the same playful quarrel back.",
-        "callbacks": [
-          "s998"
-        ]
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "E's first reply, thanking R from the bottom of her heart — showing she was deeply moved.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s761",
+        "messageOrdinal": 39,
+        "sender": "Elizabeth",
+        "date": "1845-06-10",
+        "approximate": false,
+        "dateLabel": "10 June 1845",
+        "text": "I must thank you by one word for all your kindness and consideration--which could not be greater; nor more felt by me.",
+        "note": "E thanking R for kindness and consideration, showing how much she felt it — their growing closeness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s762",
+        "messageOrdinal": 39,
+        "sender": "Elizabeth",
+        "date": "1845-06-10",
+        "approximate": false,
+        "dateLabel": "10 June 1845",
+        "text": "Which reminds me that he knows of your having been here, of course! and will not mention it; as he understood from me that you would not.--Thank you!",
+        "note": "E noting Kenyon knows R has been here and will not mention it — the discretion of their secret meetings.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s767",
+        "messageOrdinal": 39,
+        "sender": "Elizabeth",
+        "date": "1845-06-10",
+        "approximate": false,
+        "dateLabel": "10 June 1845",
+        "text": "Instead of writing this note to you yesterday, as should have been, I went down-stairs--or rather was carried--and am not the worse.",
+        "note": "E praising R's poem as too good for college prizes — their shared literary world.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s780",
+        "messageOrdinal": 41,
+        "sender": "Robert",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "But have you not discovered by this time that I go on talking with my thoughts away?",
+        "note": "R admitting he talks with his thoughts away — his self-deprecating charm.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2219",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I read Luria's first act twice through before I slept last night, and feel just as a bullet might feel, not because of the lead of it but because shot into the air and suddenly arrested and suspended.",
+        "note": "E comparing reading Luria's first act to a bullet suspended in air — their creative collaboration.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2220",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "It ('Luria') is all life, and we know (that is, the reader knows) that there must be results here and here.",
+        "note": "E saying Luria is all life — praise of his work.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2225",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "When you write will you say exactly how you are? and will you write?",
+        "note": "E asking R to say exactly how he is — tender concern for his health.",
+        "callbacks": []
       },
       {
         "snippetId": "s2245",
@@ -110,60 +160,7 @@
         "approximate": false,
         "dateLabel": "17 November 1845",
         "text": "And now--here I refuse to fancy--you KNOW whether, if you never write another line, speak another intelligible word, recognize me by a look again--whether I shall love you less or more ...",
-        "note": "Love declared as total and unwavering, in the autumn of 1845.",
-        "callbacks": [
-          "s0"
-        ]
-      },
-      {
-        "snippetId": "s2272",
-        "messageOrdinal": 151,
-        "sender": "Elizabeth",
-        "date": "1845-11-18",
-        "approximate": false,
-        "dateLabel": "18 November 1845",
-        "text": "How you overcome me as always you do--and where is the answer to anything except too deep down in the heart for even the pearl-divers?",
-        "note": "Her response that your love overcomes her and leaves no answer.",
-        "callbacks": [
-          "s2245"
-        ]
-      },
-      {
-        "snippetId": "s2527",
-        "messageOrdinal": 160,
-        "sender": "Robert",
-        "date": "1845-11-28",
-        "approximate": false,
-        "dateLabel": "28 November 1845",
-        "text": "Take it, dearest; what I am forced to think you mean--and take no more with it--for I gave all to give long ago--I am all yours--and now, mine; give me mine to be happy with!",
-        "note": "The ring moment: asking her to take what you mean and be yours.",
-        "callbacks": [
-          "s2245",
-          "s2272"
-        ]
-      },
-      {
-        "snippetId": "s2548",
-        "messageOrdinal": 161,
-        "sender": "Elizabeth",
-        "date": "1845-12-01",
-        "approximate": false,
-        "dateLabel": "1 December 1845",
-        "text": "It comes at eight o'clock--the post says eight ...",
-        "note": "Her answer about the ring arriving, with its purple lock and hair.",
-        "callbacks": [
-          "s2527"
-        ]
-      },
-      {
-        "snippetId": "s6228",
-        "messageOrdinal": 316,
-        "sender": "Elizabeth",
-        "date": "1846-04-17",
-        "approximate": false,
-        "dateLabel": "17 April 1846",
-        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
-        "note": "Callback to your chestnut-tree line from the first year, now turned back to you.",
+        "note": "R saying he loves her more if she never writes again — devotion beyond words.",
         "callbacks": []
       },
       {
@@ -174,36 +171,30 @@
         "approximate": false,
         "dateLabel": "17 April 1846",
         "text": "No, my own dearest, I did not see you sit in your chair, nor in mine, yesterday—did I write nothing about your walking with me by the garden wall, and on the hill, and looking down on London?",
-        "note": "After the secret marriage, reassuring that you did not see her in the chair.",
-        "callbacks": [
-          "s6228"
-        ]
+        "note": "R denying he saw her sit in her chair but recalling their walk by the garden wall — their secret visits.",
+        "callbacks": []
       },
       {
-        "snippetId": "s8351",
-        "messageOrdinal": 411,
+        "snippetId": "s12499",
+        "messageOrdinal": 572,
         "sender": "Elizabeth",
-        "date": "1846-06-18",
+        "date": "1846-09-19",
         "approximate": false,
-        "dateLabel": "18 June 1846",
-        "text": "Dearest and ever dearest, try to forgive me when I fall so manifestly short of you in all things!",
-        "note": "Late letter of gratitude and hope, near the end of the preserved correspondence.",
-        "callbacks": [
-          "s2245"
-        ]
+        "dateLabel": "19 September 1846",
+        "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
+        "note": "E saying his letters are with her — keeping his words close.",
+        "callbacks": []
       },
       {
-        "snippetId": "s8384",
-        "messageOrdinal": 412,
-        "sender": "Robert",
-        "date": "1846-06-18",
+        "snippetId": "s12500",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
         "approximate": false,
-        "dateLabel": "18 June 1846",
-        "text": "Did you really kiss me on the two eyes, my Ba?",
-        "note": "Her final question whether you really kissed her, closing with tenderness.",
-        "callbacks": [
-          "s8351"
-        ]
+        "dateLabel": "19 September 1846",
+        "text": "I tried to leave them, and I could not.",
+        "note": "E saying she tried to leave but could not — her inability to part from him.",
+        "callbacks": []
       }
     ]
   }

@@ -4,26 +4,26 @@
   "occasion": "sorry",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T22:59:05.247Z",
+  "startedAt": "2026-11-01T10:05:13.960Z",
   "messagesRead": 58,
   "snippetsRead": 1475,
-  "seconds": 6.907,
-  "costUsd": 0.018808800000000004,
+  "seconds": 5.973,
+  "costUsd": 0.0181488,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 6.5,
-      "costUsd": 0.018808800000000004,
+      "seconds": 5.613,
+      "costUsd": 0.0181488,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 38976,
-        "completionTokens": 2682,
-        "reasoningTokens": 2077
+        "promptTokens": 39249,
+        "completionTokens": 2041,
+        "reasoningTokens": 1522
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s0\",\n      \"note\": \"Early moment where Elizabeth says she already understood him, establishing their private shorthand.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s59\",\n      \"note\": \"Robert declares that love for Elizabeth would make him begin loving now, a vivid early turning point.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s304\",\n      \"note\": \"Elizabeth admits she said something wrong and asks Robert to forgive her, matching the sorry occasion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s384\",\n      \"note\": \"Elizabeth asks whether Robert will come after all, capturing the anxious middle of their separation.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s489\",\n      \"note\": \"Robert prays that Elizabeth forgive whatever needs forgiveness, a direct apology in the correspondence.\",\n      \"callbacks\": [\n        \"s304\"\n      ]\n    },\n    {\n      \"id\": \"s538\",\n      \"note\": \"Elizabeth asks Robert to forgive a lightly spoken word, continuing their apology-and-forgiveness thread.\",\n      \"callbacks\": [\n        \"s304\",\n        \"s489\"\n      ]\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"Elizabeth writes that she has lost Flush, a sharp emotional turn that only they would recognise.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s704\",\n      \"note\": \"Robert asks Elizabeth to be tolerant and forgive him until he is better, another direct apology.\",\n      \"callbacks\": [\n        \"s304\",\n        \"s489\",\n        \"s538\"\n      ]\n    },\n    {\n      \"id\": \"s845\",\n      \"note\": \"Elizabeth reports that Flush is found and lying on the sofa, resolving the earlier loss.\",\n      \"callbacks\": [\n        \"s578\"\n      ]\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"Elizabeth writes after the secret wedding day, saying she is not slain outright by it.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1103\",\n      \"note\": \"Robert thanks Elizabeth a thousand times for her note and acknowledges the pain she bore for his sake.\",\n      \"callbacks\": [\n        \"s1045\"\n      ]\n    },\n    {\n      \"id\": \"s1202\",\n      \"note\": \"Elizabeth thanks God for hearing that Robert is better, ending on joy after the anxious weeks.\",\n      \"callbacks\": [\n        \"s1045\",\n        \"s1103\"\n      ]\n    }\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s0\",\n      \"note\": \"Opens with her insistence that she already understood your words, setting the early intimacy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s43\",\n      \"note\": \"Flush's ecstatic reunion shows how fiercely she feared losing him before Italy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s71\",\n      \"note\": \"Your joke reframes their elopement as adventure rather than scandal.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s512\",\n      \"note\": \"The apple counsel playfully warns against waiting too long.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"Flush's sudden loss becomes a shared crisis and test of her resolve.\",\n      \"callbacks\": [\"s43\"]\n    },\n    {\n      \"id\": \"s619\",\n      \"note\": \"You warn against letting their happiness be caught up like Flush.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s845\",\n      \"note\": \"Flush is found and lying on the sofa after the ransom drama.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s872\",\n      \"note\": \"You are kept from seeing her by illness just when permission seemed granted.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s946\",\n      \"note\": \"Your question about wishes falling to ground answers her anxious letters.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"After the wedding, she reports all is safe so far.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1103\",\n      \"note\": \"Your gratitude acknowledges the proof of love she risked.\",\n      \"callbacks\": [\"s1045\"]\n    },\n    {\n      \"id\": \"s1202\",\n      \"note\": \"She thanks God for your recovery amid the work ahead.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1456\",\n      \"note\": \"Her final letter looks toward having only each other by the next day.\",\n      \"callbacks\": []\n    }\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,68 +35,41 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "But dearest—Did you not understand that I understood?",
-        "note": "Early moment where Elizabeth says she already understood him, establishing their private shorthand.",
+        "note": "Opens with her insistence that she already understood your words, setting the early intimacy.",
         "callbacks": []
       },
       {
-        "snippetId": "s59",
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic reunion shows how fiercely she feared losing him before Italy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s71",
         "messageOrdinal": 516,
         "sender": "Robert",
         "date": "1846-08-24",
         "approximate": false,
         "dateLabel": "24 August 1846",
-        "text": "If I did not love you, how I would begin now!",
-        "note": "Robert declares that love for Elizabeth would make him begin loving now, a vivid early turning point.",
+        "text": "Let them call it ‘felony’ or ‘burglary’—so long as they don’t go to church with us, and propose my health after breakfast!",
+        "note": "Your joke reframes their elopement as adventure rather than scandal.",
         "callbacks": []
       },
       {
-        "snippetId": "s304",
-        "messageOrdinal": 524,
-        "sender": "Elizabeth",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "And something I said in my letter, which was wrong to say and I am sorry to think of—forgive me that, ever beloved—but you have forgiven, I know.",
-        "note": "Elizabeth admits she said something wrong and asks Robert to forgive her, matching the sorry occasion.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s384",
-        "messageOrdinal": 528,
-        "sender": "Elizabeth",
-        "date": "1846-08-29",
-        "approximate": false,
-        "dateLabel": "29 August 1846",
-        "text": "Will you come, dearest, after all?",
-        "note": "Elizabeth asks whether Robert will come after all, capturing the anxious middle of their separation.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s489",
-        "messageOrdinal": 530,
+        "snippetId": "s512",
+        "messageOrdinal": 531,
         "sender": "Robert",
         "date": "1846-08-31",
         "approximate": false,
         "dateLabel": "31 August 1846",
-        "text": "I will say no more, praying you to forgive whatever you shall judge to need forgiveness here,—dearest Ba!",
-        "note": "Robert prays that Elizabeth forgive whatever needs forgiveness, a direct apology in the correspondence.",
-        "callbacks": [
-          "s304"
-        ]
-      },
-      {
-        "snippetId": "s538",
-        "messageOrdinal": 532,
-        "sender": "Elizabeth",
-        "date": "1846-09-01",
-        "approximate": false,
-        "dateLabel": "1 September 1846",
-        "text": "Will you not forgive me a word so spoken, Robert? will you rather set it against me as if habitually I threw to you levities in change for earnest devotion?—you imply that of me.",
-        "note": "Elizabeth asks Robert to forgive a lightly spoken word, continuing their apology-and-forgiveness thread.",
-        "callbacks": [
-          "s304",
-          "s489"
-        ]
+        "text": "‘Comfort me with apples, for I am sick of love!’",
+        "note": "The apple counsel playfully warns against waiting too long.",
+        "callbacks": []
       },
       {
         "snippetId": "s578",
@@ -106,22 +79,22 @@
         "approximate": false,
         "dateLabel": "2 September 1846",
         "text": "I have lost my poor Flush—lost him!",
-        "note": "Elizabeth writes that she has lost Flush, a sharp emotional turn that only they would recognise.",
-        "callbacks": []
+        "note": "Flush's sudden loss becomes a shared crisis and test of her resolve.",
+        "callbacks": [
+          "s43"
+        ]
       },
       {
-        "snippetId": "s704",
-        "messageOrdinal": 537,
+        "snippetId": "s619",
+        "messageOrdinal": 535,
         "sender": "Robert",
-        "date": "1846-09-03",
+        "date": "1846-09-02",
         "approximate": false,
-        "dateLabel": "3 September 1846",
-        "text": "Will you be tolerant, my Ba, and forgive me—till to-morrow at least—when, what with physic, what with impatience, I shall be better one way or another?",
-        "note": "Robert asks Elizabeth to be tolerant and forgive him until he is better, another direct apology.",
+        "dateLabel": "2 September 1846",
+        "text": "Do not let our happiness be caught up from us, after poor Flush’s fashion—there may be no redemption from that peril.",
+        "note": "You warn against letting their happiness be caught up like Flush.",
         "callbacks": [
-          "s304",
-          "s489",
-          "s538"
+          "s578"
         ]
       },
       {
@@ -132,10 +105,32 @@
         "approximate": false,
         "dateLabel": "7 September 1846",
         "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
-        "note": "Elizabeth reports that Flush is found and lying on the sofa, resolving the earlier loss.",
+        "note": "Flush is found and lying on the sofa after the ransom drama.",
         "callbacks": [
           "s578"
         ]
+      },
+      {
+        "snippetId": "s872",
+        "messageOrdinal": 545,
+        "sender": "Robert",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "No, dearest, I am not to see you to-morrow for all the happiness of the permission!",
+        "note": "You are kept from seeing her by illness just when permission seemed granted.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s946",
+        "messageOrdinal": 549,
+        "sender": "Robert",
+        "date": "1846-09-08",
+        "approximate": false,
+        "dateLabel": "8 September 1846",
+        "text": "Do you think your wishes, much less your blessings, fall to the ground, my own Ba?",
+        "note": "Your question about wishes falling to ground answers her anxious letters.",
+        "callbacks": []
       },
       {
         "snippetId": "s1045",
@@ -145,7 +140,7 @@
         "approximate": false,
         "dateLabel": "12 September 1846",
         "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
-        "note": "Elizabeth writes after the secret wedding day, saying she is not slain outright by it.",
+        "note": "After the wedding, she reports all is safe so far.",
         "callbacks": []
       },
       {
@@ -156,7 +151,7 @@
         "approximate": false,
         "dateLabel": "14 September 1846",
         "text": "Thank you a thousand times for the note, my own Ba.",
-        "note": "Robert thanks Elizabeth a thousand times for her note and acknowledges the pain she bore for his sake.",
+        "note": "Your gratitude acknowledges the proof of love she risked.",
         "callbacks": [
           "s1045"
         ]
@@ -169,11 +164,19 @@
         "approximate": false,
         "dateLabel": "15 September 1846",
         "text": "First, God is to be thanked for this great joy of hearing that you are better, my ever dearest—it is a joy that floats over all the other emotions.",
-        "note": "Elizabeth thanks God for hearing that Robert is better, ending on joy after the anxious weeks.",
-        "callbacks": [
-          "s1045",
-          "s1103"
-        ]
+        "note": "She thanks God for your recovery amid the work ahead.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Her final letter looks toward having only each other by the next day.",
+        "callbacks": []
       }
     ]
   }

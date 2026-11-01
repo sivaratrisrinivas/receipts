@@ -12,13 +12,16 @@ import { join, relative } from 'node:path';
 import type { Conversation } from '../../src';
 import { poemMetrics, summarize, type GroupMetrics, type MetricMeans } from './metrics';
 import { MAX_COMPLETION_TOKENS, costOf } from './spend';
-import { readAllTraces, type Condition, type Trace } from './trace';
+import { readAllTraces, type Attempt, type Condition, type Trace } from './trace';
 
 const GROUP_LABELS: Record<Condition, string> = {
   full: 'Beam on the full Conversation',
   last10: 'Beam on the last 10%',
   random: 'Random Snippets',
 };
+
+/** Every group is planned at this many Poems; a group with fewer was stopped early (the spend cap) and says so. */
+export const PLANNED_POEMS_PER_GROUP = 20;
 
 const README_TEMPLATE = new URL('../README.template.md', import.meta.url);
 
@@ -149,8 +152,18 @@ function runSummary(groups: GroupMetrics[], traces: Trace[]): string {
   const total = traces.reduce((sum, trace) => sum + trace.costUsd, 0);
   const estimated = attempts.filter((attempt) => attempt.costKind === 'estimate').reduce((sum, attempt) => sum + attempt.costUsd, 0);
 
+  // A Poem the run stopped on (spend cap) is attempted but not failed: its retries never ran out.
+  const stopped = traces.filter((trace) => trace.status === 'pending').length;
+  const short = groups.filter((group) => group.attempted < PLANNED_POEMS_PER_GROUP);
   const lines = [
-    `- Poems: ${attempted} attempted, ${attempted - failed} completed, ${failed} failed after all retries.`,
+    `- Poems: ${attempted} attempted, ${attempted - failed} completed, ${failed - stopped} failed after all retries` +
+      (stopped > 0 ? `, ${stopped} stopped by the spend cap before its retries ran out (its failed calls are counted below).` : '.'),
+    ...(short.length > 0
+      ? [
+          `- Fewer than planned: ${short.map((group) => `${GROUP_LABELS[group.condition]} ${group.attempted} of ${PLANNED_POEMS_PER_GROUP} attempted`).join('; ')}. ` +
+            `The rest were never started, and this dataset does not count them.`,
+        ]
+      : []),
     `- Beam calls: ${attempts.length}, of which ${attempts.filter((attempt) => attempt.error).length} failed (each Poem is retried at most twice).`,
     `- Estimated spend: $${total.toFixed(2)} (reported tokens x the router's prices of $0.40/M input and $1.20/M output${estimated > 0 ? `; $${estimated.toFixed(2)} of it is an upper-bound estimate for failed calls whose token counts never came back` : ''}).`,
   ];
@@ -168,7 +181,7 @@ function runSummary(groups: GroupMetrics[], traces: Trace[]): string {
     const final = (trace: Trace) => trace.attempts[trace.attempts.length - 1];
     const calls = traces.filter((trace) => trace.condition === condition).flatMap((trace) => trace.attempts);
     lines.push(
-      `- ${GROUP_LABELS[condition]}: ${calls.length} calls, ${calls.filter((call) => call.error?.reason === 'truncated').length} of them truncated (out of completion budget). ` +
+      `- ${GROUP_LABELS[condition]}: ${calls.length} calls; ${callOutcomes(calls)}. ` +
         `A Poem that completed used about ${Math.round(mean((trace) => final(trace)?.usage?.promptTokens ?? 0) / 1000)}k prompt tokens and ` +
         `${Math.round(mean((trace) => final(trace)?.usage?.completionTokens ?? 0) / 1000)}k completion tokens ` +
         `(${Math.round(mean((trace) => final(trace)?.usage?.reasoningTokens ?? 0) / 1000)}k of them reasoning) on average, in ` +
@@ -176,6 +189,41 @@ function runSummary(groups: GroupMetrics[], traces: Trace[]): string {
     );
   }
   return lines.join('\n');
+}
+
+const FAILURE_LABELS: Record<string, string> = {
+  truncated: 'truncated (out of completion budget)',
+  'wrong-size': 'returned the wrong number of Lines',
+  'invalid-response': 'gave a malformed or empty answer',
+  stopped: 'stopped mid-answer',
+  http: 'failed with a gateway or HTTP error',
+  network: 'lost the connection',
+};
+
+/** "Beam returned 17 Lines; a Poem needs 8 to 14. Try again." -> the count and the range it missed. */
+function sizeMiss(attempt: Attempt): { returned: number; min: number; max: number } | null {
+  const match = /returned (\d+) Lines?; a Poem needs (\d+) to (\d+)/.exec(attempt.error?.message ?? '');
+  return match ? { returned: Number(match[1]), min: Number(match[2]), max: Number(match[3]) } : null;
+}
+
+/** How a group's calls ended: how many gave a usable Poem, and every kind of failure, counted. */
+function callOutcomes(calls: Attempt[]): string {
+  const usable = calls.filter((call) => !call.error).length;
+  const parts = [`${usable} came back as a usable Poem (${percent(usable / calls.length)})`];
+  for (const [reason, label] of Object.entries(FAILURE_LABELS)) {
+    const failed = calls.filter((call) => call.error?.reason === reason);
+    if (failed.length === 0) continue;
+    let detail = '';
+    if (reason === 'wrong-size') {
+      const misses = failed.flatMap((call) => sizeMiss(call) ?? []);
+      const over = misses.filter((miss) => miss.returned > miss.max).map((miss) => miss.returned);
+      const under = misses.filter((miss) => miss.returned < miss.min).length;
+      const range = over.length === 0 ? '' : Math.min(...over) === Math.max(...over) ? `: ${over[0]} Lines` : `: ${Math.min(...over)} to ${Math.max(...over)} Lines`;
+      detail = ` (${over.length} too many${range}, ${under} too few)`;
+    }
+    parts.push(`${failed.length} ${label}${detail}`);
+  }
+  return parts.join(', ');
 }
 
 /**

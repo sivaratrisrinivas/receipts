@@ -4,40 +4,29 @@
   "occasion": "sorry",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-11-01T03:30:47.923Z",
+  "startedAt": "2026-11-01T10:06:50.259Z",
   "messagesRead": 58,
   "snippetsRead": 1475,
-  "seconds": 10.833,
-  "costUsd": 0.019234800000000003,
+  "seconds": 4.17,
+  "costUsd": 0.0174552,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 7.596,
-      "costUsd": 0.019234800000000003,
+      "seconds": 3.801,
+      "costUsd": 0.0174552,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 38976,
-        "completionTokens": 3037,
-        "reasoningTokens": 2546
+        "promptTokens": 39249,
+        "completionTokens": 1463,
+        "reasoningTokens": 1177
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s6\", \"note\": \"Opens with the moment your secret engagement was nearly exposed at home.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"Flush’s frantic welcome shows the home life you two shared.\", \"callbacks\": []},\n    {\"id\": \"s71\", \"note\": \"A comic defiance of scandal that frames the elopement as yours alone.\", \"callbacks\": [\"s70\"]},\n    {\"id\": \"s79\", \"note\": \"A private tenderness about shortening visits to reach her hand.\", \"callbacks\": []},\n    {\"id\": \"s189\", \"note\": \"Shows her turning to your latest letter when the world interrupts her reverie.\", \"callbacks\": [\"s188\"]},\n    {\"id\": \"s268\", \"note\": \"A private image of sitting together on earthquake chasms in sulphurous vapour.\", \"callbacks\": []},\n    {\"id\": \"s304\", \"note\": \"Her direct apology for something said, fitting an occasion of asking forgiveness.\", \"callbacks\": []},\n    {\"id\": \"s309\", \"note\": \"A shared joke about the post’s old fault in delaying letters.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"The sudden loss of Flush, a vivid turning point in their story.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Your immediate sympathy when Flush is taken.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s845\", \"note\": \"Flush’s return, concrete and comic, after the dog-stealer ordeal.\", \"callbacks\": [\"s578\", \"s616\"]},\n    {\"id\": \"s1045\", \"note\": \"The wedding day itself, with its shock and survival.\", \"callbacks\": []},\n    {\"id\": \"s1036\", \"note\": \"Your declaration that no words can measure how dear she is.\", \"callbacks\": []},\n    {\"id\": \"s1461\", \"note\": \"Her refusal to leave your letters behind, even by weight.\", \"callbacks\": []}\n  ]\n}",
+  "answer": "{\"lines\":[{\"id\":\"s43\",\"note\":\"Elizabeth’s dog Flush greets her with overwhelming affection after she returns home.\",\"callbacks\":[]},{\"id\":\"s55\",\"note\":\"Robert is startled by receiving Elizabeth’s letter at six o’clock.\",\"callbacks\":[]},{\"id\":\"s577\",\"note\":\"Elizabeth is distressed to discover Flush has been stolen.\",\"callbacks\":[]},{\"id\":\"s709\",\"note\":\"Robert asks whether Elizabeth forgives him, speaking as her own R.\",\"callbacks\":[]},{\"id\":\"s845\",\"note\":\"Elizabeth reports that Flush has been found and is lying on the sofa.\",\"callbacks\":[]},{\"id\":\"s872\",\"note\":\"Robert tells Elizabeth he cannot see her the next day despite the permission.\",\"callbacks\":[]},{\"id\":\"s1045\",\"note\":\"Elizabeth writes after an overwhelming day, relieved that all is safe so far.\",\"callbacks\":[]},{\"id\":\"s1065\",\"note\":\"Elizabeth answers Robert’s wish to be better to her with gratitude for his love.\",\"callbacks\":[]},{\"id\":\"s1142\",\"note\":\"Robert tells Elizabeth he woke quite well and free from the sensation in his head.\",\"callbacks\":[]},{\"id\":\"s1461\",\"note\":\"Elizabeth refuses to leave Robert’s letters behind, whatever the luggage weight.\",\"callbacks\":[]}]}",
   "poem": {
     "verified": true,
     "lines": [
-      {
-        "snippetId": "s6",
-        "messageOrdinal": 515,
-        "sender": "Elizabeth",
-        "date": "1846-08-24",
-        "approximate": false,
-        "dateLabel": "24 August 1846",
-        "text": "Stormie suddenly touched her and said—‘Is it true that there is an engagement between Mr. Browning and Ba—?’",
-        "note": "Opens with the moment your secret engagement was nearly exposed at home.",
-        "callbacks": []
-      },
       {
         "snippetId": "s43",
         "messageOrdinal": 515,
@@ -46,102 +35,41 @@
         "approximate": false,
         "dateLabel": "24 August 1846",
         "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
-        "note": "Flush’s frantic welcome shows the home life you two shared.",
+        "note": "Elizabeth’s dog Flush greets her with overwhelming affection after she returns home.",
         "callbacks": []
       },
       {
-        "snippetId": "s71",
+        "snippetId": "s55",
         "messageOrdinal": 516,
         "sender": "Robert",
         "date": "1846-08-24",
         "approximate": false,
         "dateLabel": "24 August 1846",
-        "text": "Let them call it ‘felony’ or ‘burglary’—so long as they don’t go to church with us, and propose my health after breakfast!",
-        "note": "A comic defiance of scandal that frames the elopement as yours alone.",
-        "callbacks": [
-          "s70"
-        ]
-      },
-      {
-        "snippetId": "s79",
-        "messageOrdinal": 516,
-        "sender": "Robert",
-        "date": "1846-08-24",
-        "approximate": false,
-        "dateLabel": "24 August 1846",
-        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
-        "note": "A private tenderness about shortening visits to reach her hand.",
+        "text": "This time, they brought me your letter at six o’clock yesterday evening: was I startled, or no, do you think, as I received it?",
+        "note": "Robert is startled by receiving Elizabeth’s letter at six o’clock.",
         "callbacks": []
       },
       {
-        "snippetId": "s189",
-        "messageOrdinal": 521,
-        "sender": "Elizabeth",
-        "date": "1846-08-26",
-        "approximate": false,
-        "dateLabel": "26 August 1846",
-        "text": "So my reverie was broken in the middle—but being better tempered, rather, than Flush, or having larger resources, I did not growl, but took your latest letter out instead, which lasted for the whole remainder of the time.",
-        "note": "Shows her turning to your latest letter when the world interrupts her reverie.",
-        "callbacks": [
-          "s188"
-        ]
-      },
-      {
-        "snippetId": "s268",
-        "messageOrdinal": 523,
-        "sender": "Elizabeth",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "Shall we do that, when we sit together on the ragged edge of earthquake chasms, in the midst of the ‘sulphurous vapour.’",
-        "note": "A private image of sitting together on earthquake chasms in sulphurous vapour.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s304",
-        "messageOrdinal": 524,
-        "sender": "Elizabeth",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "And something I said in my letter, which was wrong to say and I am sorry to think of—forgive me that, ever beloved—but you have forgiven, I know.",
-        "note": "Her direct apology for something said, fitting an occasion of asking forgiveness.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s309",
-        "messageOrdinal": 525,
-        "sender": "Robert",
-        "date": "1846-08-27",
-        "approximate": false,
-        "dateLabel": "27 August 1846",
-        "text": "The post’s old fault, is it not, this letter that does not come?",
-        "note": "A shared joke about the post’s old fault in delaying letters.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s578",
+        "snippetId": "s577",
         "messageOrdinal": 534,
         "sender": "Elizabeth",
         "date": "1846-09-02",
         "approximate": false,
         "dateLabel": "2 September 1846",
-        "text": "I have lost my poor Flush—lost him!",
-        "note": "The sudden loss of Flush, a vivid turning point in their story.",
+        "text": "Here is a distress for me, dearest!",
+        "note": "Elizabeth is distressed to discover Flush has been stolen.",
         "callbacks": []
       },
       {
-        "snippetId": "s616",
-        "messageOrdinal": 535,
+        "snippetId": "s709",
+        "messageOrdinal": 538,
         "sender": "Robert",
-        "date": "1846-09-02",
+        "date": "1846-09-04",
         "approximate": false,
-        "dateLabel": "2 September 1846",
-        "text": "Poor Flush—how sorry I am for you, my Ba!",
-        "note": "Your immediate sympathy when Flush is taken.",
-        "callbacks": [
-          "s578"
-        ]
+        "dateLabel": "4 September 1846",
+        "text": "Are you not mine, too?",
+        "note": "Robert asks whether Elizabeth forgives him, speaking as her own R.",
+        "callbacks": []
       },
       {
         "snippetId": "s845",
@@ -151,21 +79,18 @@
         "approximate": false,
         "dateLabel": "7 September 1846",
         "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
-        "note": "Flush’s return, concrete and comic, after the dog-stealer ordeal.",
-        "callbacks": [
-          "s578",
-          "s616"
-        ]
+        "note": "Elizabeth reports that Flush has been found and is lying on the sofa.",
+        "callbacks": []
       },
       {
-        "snippetId": "s1036",
-        "messageOrdinal": 555,
+        "snippetId": "s872",
+        "messageOrdinal": 545,
         "sender": "Robert",
-        "date": "1846-09-12",
+        "date": "1846-09-07",
         "approximate": false,
-        "dateLabel": "12 September 1846",
-        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
-        "note": "Your declaration that no words can measure how dear she is.",
+        "dateLabel": "7 September 1846",
+        "text": "No, dearest, I am not to see you to-morrow for all the happiness of the permission!",
+        "note": "Robert tells Elizabeth he cannot see her the next day despite the permission.",
         "callbacks": []
       },
       {
@@ -176,7 +101,29 @@
         "approximate": false,
         "dateLabel": "12 September 1846",
         "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
-        "note": "The wedding day itself, with its shock and survival.",
+        "note": "Elizabeth writes after an overwhelming day, relieved that all is safe so far.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1065",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "My own beloved, if ever you should have reason to complain of me in things voluntary and possible, all other women would have a right to tread me underfoot, I should be so vile and utterly unworthy.",
+        "note": "Elizabeth answers Robert’s wish to be better to her with gratitude for his love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1142",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Dearest, I woke this morning quite well—quite free from the sensation in the head.",
+        "note": "Robert tells Elizabeth he woke quite well and free from the sensation in his head.",
         "callbacks": []
       },
       {
@@ -187,7 +134,7 @@
         "approximate": false,
         "dateLabel": "19 September 1846",
         "text": "Your letters to me I take with me, let the ‘ounces’ cry out aloud, ever so.",
-        "note": "Her refusal to leave your letters behind, even by weight.",
+        "note": "Elizabeth refuses to leave Robert’s letters behind, whatever the luggage weight.",
         "callbacks": []
       }
     ]

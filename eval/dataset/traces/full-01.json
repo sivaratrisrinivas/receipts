@@ -4,26 +4,26 @@
   "occasion": "anniversary",
   "giver": "Robert",
   "recipient": "Elizabeth",
-  "startedAt": "2026-10-31T22:57:02.707Z",
+  "startedAt": "2026-11-01T10:07:48.956Z",
   "messagesRead": 573,
   "snippetsRead": 12513,
-  "seconds": 48.141,
-  "costUsd": 0.16673200000000002,
+  "seconds": 5.921,
+  "costUsd": 0.142586,
   "status": "ok",
   "attempts": [
     {
-      "seconds": 46.822,
-      "costUsd": 0.16673200000000002,
+      "seconds": 4.716,
+      "costUsd": 0.142586,
       "costKind": "usage",
       "usage": {
-        "promptTokens": 352297,
-        "completionTokens": 21511,
-        "reasoningTokens": 21030
+        "promptTokens": 352571,
+        "completionTokens": 1298,
+        "reasoningTokens": 717
       },
       "finishReason": "stop"
     }
   ],
-  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first unguarded declaration of love sets the whole correspondence in motion.\", \"callbacks\": []},\n    {\"id\": \"s16\", \"note\": \"Elizabeth answers Robert's hint that he had almost seen her.\", \"callbacks\": [\"s2\"]},\n    {\"id\": \"s235\", \"note\": \"Robert's skulls and spider webs become a running private joke.\", \"callbacks\": []},\n    {\"id\": \"s279\", \"note\": \"Elizabeth claims she knew Robert's skulls without being told.\", \"callbacks\": [\"s235\"]},\n    {\"id\": \"s792\", \"note\": \"Robert counts down to another visit and the joy it brings.\", \"callbacks\": []},\n    {\"id\": \"s842\", \"note\": \"Robert calls Elizabeth his light through the dark week.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert wraps his whole life around Elizabeth in a love letter.\", \"callbacks\": []},\n    {\"id\": \"s2548\", \"note\": \"Elizabeth greets the postman's knock as the arrival of Robert's letter.\", \"callbacks\": []},\n    {\"id\": \"s2607\", \"note\": \"Robert pledges to live and die with Elizabeth's ring and hair.\", \"callbacks\": []},\n    {\"id\": \"s2824\", \"note\": \"Elizabeth keeps Robert's hair in a locket and completes a prophecy.\", \"callbacks\": []},\n    {\"id\": \"s6228\", \"note\": \"Elizabeth recalls Robert's chestnut tree and west wind from an early letter.\", \"callbacks\": [\"s512\"]},\n    {\"id\": \"s6320\", \"note\": \"Elizabeth remembers Robert's first blessing before they met.\", \"callbacks\": []},\n    {\"id\": \"s6397\", \"note\": \"Robert returns from Carlyle with news and affection.\", \"callbacks\": [\"s1123\"]},\n    {\"id\": \"s6547\", \"note\": \"Robert kisses Elizabeth in anticipation of seeing her next day.\", \"callbacks\": []}\n  ]\n}",
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first open declaration of love, written in the earliest days of their correspondence.\", \"callbacks\": []},\n    {\"id\": \"s16\", \"note\": \"Elizabeth's wonder that Robert could regret missing the chance to meet her, showing how quickly their bond formed.\", \"callbacks\": []},\n    {\"id\": \"s1044\", \"note\": \"Robert declares he would rather lose her letters entirely than allow them to cost her strength, a measure of his devotion.\", \"callbacks\": []},\n    {\"id\": \"s1467\", \"note\": \"Robert asks for a sketch of Elizabeth, a private request tied to her sonnets and a moment of growing intimacy.\", \"callbacks\": []},\n    {\"id\": \"s1670\", \"note\": \"Elizabeth begins her reply after Robert's words have touched her more profoundly than she thought possible.\", \"callbacks\": []},\n    {\"id\": \"s2212\", \"note\": \"Elizabeth writes on the eve of a visit, unable to stop thinking of him even when they are about to meet.\", \"callbacks\": []},\n    {\"id\": \"s2255\", \"note\": \"Robert's tender reply, kissing her back to his heart, from the height of their declared love.\", \"callbacks\": []},\n    {\"id\": \"s2318\", \"note\": \"Robert quotes Landor's invitation to sit and eat together, a shared literary touchstone between them.\", \"callbacks\": []},\n    {\"id\": \"s2550\", \"note\": \"Elizabeth's gift of a lock of hair, comparing it to a king's lock on which hung a city's fate.\", \"callbacks\": []},\n    {\"id\": \"s5656\", \"note\": \"Robert kisses Elizabeth through the distance on the morning after their secret marriage is set in motion.\", \"callbacks\": []},\n    {\"id\": \"s6369\", \"note\": \"Elizabeth reflects that she would not tell Robert he wrote foolishness, a mark of their deepening trust.\", \"callbacks\": []},\n    {\"id\": \"s8162\", \"note\": \"Robert begs forgiveness for a foolish letter, showing how even their quarrels end in renewed devotion.\", \"callbacks\": []},\n    {\"id\": \"s11437\", \"note\": \"Elizabeth insists that no one around her must hear of Robert, guarding their secret to the last.\", \"callbacks\": []},\n    {\"id\": \"s12494\", \"note\": \"Elizabeth's final letter before their elopement, looking forward to having him alone at last.\", \"callbacks\": []}\n  ]\n}",
   "poem": {
     "verified": true,
     "lines": [
@@ -35,7 +35,7 @@
         "approximate": false,
         "dateLabel": "10 January 1845",
         "text": "I do, as I say, love these books with all my heart--and I love you too.",
-        "note": "Robert's first unguarded declaration of love sets the whole correspondence in motion.",
+        "note": "Robert's first open declaration of love, written in the earliest days of their correspondence.",
         "callbacks": []
       },
       {
@@ -46,147 +46,139 @@
         "approximate": false,
         "dateLabel": "11 January 1845",
         "text": "Is it indeed true that I was so near to the pleasure and honour of making your acquaintance? and can it be true that you look back upon the lost opportunity with any regret?",
-        "note": "Elizabeth answers Robert's hint that he had almost seen her.",
-        "callbacks": [
-          "s2"
-        ]
-      },
-      {
-        "snippetId": "s235",
-        "messageOrdinal": 8,
-        "sender": "Robert",
-        "date": "1845-02-26",
-        "approximate": false,
-        "dateLabel": "26 February 1845",
-        "text": "Who told you of my sculls and spider webs--Horne?",
-        "note": "Robert's skulls and spider webs become a running private joke.",
+        "note": "Elizabeth's wonder that Robert could regret missing the chance to meet her, showing how quickly their bond formed.",
         "callbacks": []
       },
       {
-        "snippetId": "s279",
-        "messageOrdinal": 9,
+        "snippetId": "s1044",
+        "messageOrdinal": 66,
+        "sender": "Robert",
+        "date": "1845-07-25",
+        "approximate": false,
+        "dateLabel": "25 July 1845",
+        "text": "I think before writing--or just after writing--such a sentence--but reflection only justifies my first feeling; I would rather go without your letters, without seeing you at all, if that advantaged you--my dear, first and last friend; my friend!",
+        "note": "Robert declares he would rather lose her letters entirely than allow them to cost her strength, a measure of his devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1467",
+        "messageOrdinal": 99,
+        "sender": "Robert",
+        "date": "1845-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1845",
+        "text": "And who paints, and dares exhibit, E.B.B.'s self?",
+        "note": "Robert asks for a sketch of Elizabeth, a private request tied to her sonnets and a moment of growing intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1670",
+        "messageOrdinal": 114,
         "sender": "Elizabeth",
-        "date": "1845-02-27",
+        "date": "1845-09-27",
         "approximate": false,
-        "dateLabel": "27 February 1845",
-        "text": "Who told me of your skulls and spiders?",
-        "note": "Elizabeth claims she knew Robert's skulls without being told.",
-        "callbacks": [
-          "s235"
-        ]
-      },
-      {
-        "snippetId": "s792",
-        "messageOrdinal": 41,
-        "sender": "Robert",
-        "date": "1845-06-14",
-        "approximate": false,
-        "dateLabel": "14 June 1845",
-        "text": "Next Wednesday--if you know how happy you make me! may I not say that, my dear friend, when I feel it from my soul?",
-        "note": "Robert counts down to another visit and the joy it brings.",
+        "dateLabel": "27 September 1845",
+        "text": "And now listen to me in turn.",
+        "note": "Elizabeth begins her reply after Robert's words have touched her more profoundly than she thought possible.",
         "callbacks": []
       },
       {
-        "snippetId": "s842",
-        "messageOrdinal": 47,
-        "sender": "Robert",
-        "date": "1845-06-24",
+        "snippetId": "s2212",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
         "approximate": false,
-        "dateLabel": "24 June 1845",
-        "text": "So, till to-morrow,--my light through the dark week.",
-        "note": "Robert calls Elizabeth his light through the dark week.",
+        "dateLabel": "15 November 1845",
+        "text": "I shall see you to-morrow and yet am writing what you will have to read perhaps.",
+        "note": "Elizabeth writes on the eve of a visit, unable to stop thinking of him even when they are about to meet.",
         "callbacks": []
       },
       {
-        "snippetId": "s2249",
+        "snippetId": "s2255",
         "messageOrdinal": 150,
         "sender": "Robert",
         "date": "1845-11-17",
         "approximate": false,
         "dateLabel": "17 November 1845",
-        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
-        "note": "Robert wraps his whole life around Elizabeth in a love letter.",
+        "text": "And now I will dare ... yes, dearest, kiss you back to my heart again; my own.",
+        "note": "Robert's tender reply, kissing her back to his heart, from the height of their declared love.",
         "callbacks": []
       },
       {
-        "snippetId": "s2548",
+        "snippetId": "s2318",
+        "messageOrdinal": 152,
+        "sender": "Robert",
+        "date": "1845-11-18",
+        "approximate": true,
+        "dateLabel": "c. 18 November 1845",
+        "text": "Landor says 'come up higher and let us sit and eat together.'",
+        "note": "Robert quotes Landor's invitation to sit and eat together, a shared literary touchstone between them.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2550",
         "messageOrdinal": 161,
         "sender": "Elizabeth",
         "date": "1845-12-01",
         "approximate": false,
         "dateLabel": "1 December 1845",
-        "text": "It comes at eight o'clock--the post says eight ...",
-        "note": "Elizabeth greets the postman's knock as the arrival of Robert's letter.",
+        "text": "Do you remember the purple lock of a king on which hung the fate of a city?",
+        "note": "Elizabeth's gift of a lock of hair, comparing it to a king's lock on which hung a city's fate.",
         "callbacks": []
       },
       {
-        "snippetId": "s2607",
-        "messageOrdinal": 163,
+        "snippetId": "s5656",
+        "messageOrdinal": 293,
         "sender": "Robert",
-        "date": "1845-12-02",
+        "date": "1846-04-01",
         "approximate": false,
-        "dateLabel": "2 December 1845",
-        "text": "My love--no words could serve here, but there is life before us, and to the end of it the vibration now struck will extend--I will live and die with your beautiful ring, your beloved hair--comforting me, blessing me.",
-        "note": "Robert pledges to live and die with Elizabeth's ring and hair.",
+        "dateLabel": "1 April 1846",
+        "text": "Now—dear, dearest Ba—let me begin the only way!—And so you are kissed whether you feel it or not—through the distance, what matter?",
+        "note": "Robert kisses Elizabeth through the distance on the morning after their secret marriage is set in motion.",
         "callbacks": []
       },
       {
-        "snippetId": "s2824",
-        "messageOrdinal": 172,
+        "snippetId": "s6369",
+        "messageOrdinal": 321,
         "sender": "Elizabeth",
-        "date": "1845-12-13",
-        "approximate": false,
-        "dateLabel": "13 December 1845",
-        "text": "So I put the hair into his locket, which I wear habitually, and which never had hair before--the natural use of it being for perfume:--and this is the best perfume for all hours, besides the completing of a prophecy.",
-        "note": "Elizabeth keeps Robert's hair in a locket and completes a prophecy.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s6228",
-        "messageOrdinal": 316,
-        "sender": "Elizabeth",
-        "date": "1846-04-17",
-        "approximate": false,
-        "dateLabel": "17 April 1846",
-        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
-        "note": "Elizabeth recalls Robert's chestnut tree and west wind from an early letter.",
-        "callbacks": [
-          "s512"
-        ]
-      },
-      {
-        "snippetId": "s6320",
-        "messageOrdinal": 318,
-        "sender": "Elizabeth",
-        "date": "1846-04-18",
-        "approximate": false,
-        "dateLabel": "18 April 1846",
-        "text": "Do you remember when you wrote first to me ‘May God bless you and me in that!’",
-        "note": "Elizabeth remembers Robert's first blessing before they met.",
-        "callbacks": []
-      },
-      {
-        "snippetId": "s6397",
-        "messageOrdinal": 322,
-        "sender": "Robert",
         "date": "1846-04-21",
         "approximate": false,
         "dateLabel": "21 April 1846",
-        "text": "Beside I got tired with the long walk from Carlyle’s last night—for I went and saw him to heart’s content—and he talked characteristically and well, and constringingly, bracingly.",
-        "note": "Robert returns from Carlyle with news and affection.",
-        "callbacks": [
-          "s1123"
-        ]
+        "text": "I would not say to you yesterday, perhaps could not, that you wrote ever so much foolishness to me in the morning, dearest, and that I knew it ever so well.",
+        "note": "Elizabeth reflects that she would not tell Robert he wrote foolishness, a mark of their deepening trust.",
+        "callbacks": []
       },
       {
-        "snippetId": "s6547",
-        "messageOrdinal": 328,
+        "snippetId": "s8162",
+        "messageOrdinal": 403,
         "sender": "Robert",
-        "date": "1846-04-24",
+        "date": "1846-06-13",
         "approximate": false,
-        "dateLabel": "24 April 1846",
-        "text": "Now let me kiss you—which kiss, as I am to really kiss you to-morrow, my sweetest, I shall dare tell the truth of to myself, and say ‘The real will be better.’",
-        "note": "Robert kisses Elizabeth in anticipation of seeing her next day.",
+        "dateLabel": "13 June 1846",
+        "text": "Dearest, all dearest beyond my heart’s uttering, will you forgive me for that foolish letter, and the warmth, and—FOR ALL,—more than ever I thought to have needed to ask forgiveness for!",
+        "note": "Robert begs forgiveness for a foolish letter, showing how even their quarrels end in renewed devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11437",
+        "messageOrdinal": 528,
+        "sender": "Elizabeth",
+        "date": "1846-08-29",
+        "approximate": false,
+        "dateLabel": "29 August 1846",
+        "text": "Both of them approved of the French route, and urged me to go to them in Paris—‘And,’ said my uncle kindly, ‘when once we have you, we shall not bear to part with you, I think.’",
+        "note": "Elizabeth insists that no one around her must hear of Robert, guarding their secret to the last.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12494",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth's final letter before their elopement, looking forward to having him alone at last.",
         "callbacks": []
       }
     ]
