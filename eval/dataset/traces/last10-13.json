@@ -1,0 +1,170 @@
+{
+  "condition": "last10",
+  "index": 13,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:31:05.607Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 12.592,
+  "costUsd": 0.0223308,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 12.204,
+      "costUsd": 0.0223308,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 38976,
+        "completionTokens": 5617,
+        "reasoningTokens": 5137
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s0\",\n      \"note\": \"Opens with Elizabeth's early, intimate reassurance that she already understands him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s43\",\n      \"note\": \"Flush's ecstatic welcome shows the domestic world Robert is entering.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s60\",\n      \"note\": \"Robert's early declaration that every day reveals more to love in her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s439\",\n      \"note\": \"Elizabeth's small, concrete victory over fear at the chapel.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"The sudden loss of Flush becomes a shared trial between them.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s790\",\n      \"note\": \"Elizabeth's private callback turns Flush into a metaphor for their mutual care.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s845\",\n      \"note\": \"Flush's recovery brings back one of their recurring figures.\",\n      \"callbacks\": [\"s578\"]\n    },\n    {\n      \"id\": \"s1037\",\n      \"note\": \"Robert looks back and finds every word and gesture of hers perfect.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"Elizabeth's breathless report that the wedding day is safely past.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1067\",\n      \"note\": \"Elizabeth credits Robert with lifting her into life and sunshine.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1101\",\n      \"note\": \"The ring she hated to remove marks the new bond they now share openly.\",\n      \"callbacks\": [\"s1045\"]\n    },\n    {\n      \"id\": \"s1465\",\n      \"note\": \"Her final, compressed confession that loving him less would make leaving harder.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Opens with Elizabeth's early, intimate reassurance that she already understands him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic welcome shows the domestic world Robert is entering.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s60",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Every day shows me more to love in you, dearest, and I open my arms as wide as I can ...",
+        "note": "Robert's early declaration that every day reveals more to love in her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s439",
+        "messageOrdinal": 529,
+        "sender": "Elizabeth",
+        "date": "1846-08-31",
+        "approximate": false,
+        "dateLabel": "31 August 1846",
+        "text": "I have just come from the vestry of Paddington chapel, and bore it very well, and saw nobody except one woman.",
+        "note": "Elizabeth's small, concrete victory over fear at the chapel.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The sudden loss of Flush becomes a shared trial between them.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth's private callback turns Flush into a metaphor for their mutual care.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush's recovery brings back one of their recurring figures.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s1037",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "I look back, and in every one point, every word and gesture, every letter, every silence—you have been entirely perfect to me—I would not change one word, one look.",
+        "note": "Robert looks back and finds every word and gesture of hers perfect.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Elizabeth's breathless report that the wedding day is safely past.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1067",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "What could be better than lifting me from the ground and carrying me into life and the sunshine?",
+        "note": "Elizabeth credits Robert with lifting her into life and sunshine.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1101",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I did hate so, to have to take off the ring!",
+        "note": "The ring she hated to remove marks the new bond they now share openly.",
+        "callbacks": [
+          "s1045"
+        ]
+      },
+      {
+        "snippetId": "s1465",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Oh—if I loved you less ... a little, little less.",
+        "note": "Her final, compressed confession that loving him less would make leaving harder.",
+        "callbacks": []
+      }
+    ]
+  }
+}

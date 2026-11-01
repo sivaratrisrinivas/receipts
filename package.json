@@ -14,7 +14,10 @@
     "gallery:fetch": "tsx scripts/fetch-gallery.ts",
     "smoke": "tsx scripts/smoke.ts",
     "gallery:poems": "tsx scripts/make-gallery-poems.ts",
-    "deploy:space": "npm run build && tsx scripts/deploy-space.ts"
+    "deploy:space": "npm run build && tsx scripts/deploy-space.ts",
+    "eval": "tsx eval/run.ts",
+    "eval:report": "tsx eval/report.ts",
+    "eval:publish": "tsx eval/publish.ts"
   },
   "engines": {
     "node": ">=20"
@@ -27,6 +30,7 @@
     "vitest": "^5.0.5"
   },
   "dependencies": {
-    "@huggingface/hub": "2.17.10"
+    "@huggingface/hub": "2.17.10",
+    "fflate": "0.8.3"
   }
 }

@@ -6,6 +6,16 @@ export type { MakePoemOptions, NotEnough, PoemOutcome, PoemRequest, PoemResult }
 export { readConversation } from './sources';
 export type { RawSource } from './sources';
 export { GALLERY_TEXT_PATHS } from './sources/gallery';
+export { exportText } from './sources/export-file';
+export {
+  AmbiguousDatesError,
+  ExportError,
+  dateQuestion,
+  inferDateOrder,
+  parseWhatsApp,
+  senderCounts,
+} from './sources/whatsapp';
+export type { DateOrder, DateQuestion, SenderCount, WhatsAppExport } from './sources/whatsapp';
 export { snippetsOf } from './snippets';
 export { FULL_SIZE_LINES, INPUT_TOKEN_BUDGET, MIN_USABLE_SNIPPETS, estimateTokens, lineRangeFor, selectSnippets } from './selection';
 export type { LineRange, ReadFraction, Selection } from './selection';

@@ -3,11 +3,13 @@
 //
 //   import './upload';          // #4: choose or upload a Conversation (composeSections)
 //   import './budget-messages'; // #5: how much of a long Conversation Beam read (poemActions)
-//   import './notes-and-edit';  // #6: Notes, Replace, Remove (lineDetails, lineActions)
+//   import './notes-and-edit';  // #6: Notes, context, Replace, Remove, Regenerate (lineDetails, lineActions, poemActions)
 //   import './card-export';     // #7: Save as a Card (poemActions)
 //   import './gallery-poems';   // #8: ready-made Gallery Poems before sign-in (signInSections)
 //
 import './budget-messages';
+import './upload';
 import './card-export';
 import './gallery-poems';
+import './notes-and-edit';
 export {};

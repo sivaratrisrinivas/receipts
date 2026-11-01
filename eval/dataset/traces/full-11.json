@@ -1,0 +1,47 @@
+{
+  "condition": "full",
+  "index": 11,
+  "occasion": "farewell",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T23:20:52.602Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 325.165,
+  "costUsd": 0.7142256,
+  "status": "failed",
+  "attempts": [
+    {
+      "seconds": 120.032,
+      "costUsd": 0.23807520000000001,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 111.362,
+      "costUsd": 0.23807520000000001,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 70.774,
+      "costUsd": 0.23807520000000001,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    }
+  ],
+  "answer": null,
+  "error": {
+    "reason": "truncated",
+    "message": "Beam ran out of room before finishing its answer. Trying again may work."
+  }
+}

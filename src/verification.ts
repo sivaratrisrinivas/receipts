@@ -38,21 +38,26 @@ export function verifyAnswer(content: string, snippets: Snippet[]): { lines: Lin
 
   const lines = inTimelineOrder.map(({ snippet, pick }): Line => {
     const noteIsSound = pick.callbacks.every((id) => byId.has(id));
-    return {
-      snippetId: snippet.id,
-      text: snippet.text,
-      receipt: {
-        sender: snippet.sender,
-        date: snippet.date,
-        approximate: snippet.approximate,
-        dateLabel: formatDateLabel(snippet.date, snippet.approximate),
-        messageOrdinal: snippet.messageOrdinal,
-      },
-      note: noteIsSound ? pick.note : null,
-      callbacks: noteIsSound ? pick.callbacks : [],
-    };
+    return lineOf(snippet, noteIsSound ? pick.note : null, noteIsSound ? pick.callbacks : []);
   });
   return { lines, verified: rejected === 0 };
+}
+
+/** A Line is always a Snippet's own text and Receipt, looked up from the Conversation. */
+export function lineOf(snippet: Snippet, note: string | null, callbacks: string[]): Line {
+  return {
+    snippetId: snippet.id,
+    text: snippet.text,
+    receipt: {
+      sender: snippet.sender,
+      date: snippet.date,
+      approximate: snippet.approximate,
+      dateLabel: formatDateLabel(snippet.date, snippet.approximate),
+      messageOrdinal: snippet.messageOrdinal,
+    },
+    note,
+    callbacks,
+  };
 }
 
 function parsePicks(content: string): Pick[] {

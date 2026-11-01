@@ -1,0 +1,189 @@
+/* The Giver's view of the Poem: Notes, the Line in its Message, Replace, Remove, Regenerate.
+   Uses the tokens from src/ui/styles.css. Everything here is Giver-only (`.giver-only`). */
+
+/* Left out of anything printed. */
+@media print {
+  .giver-only {
+    display: none !important;
+  }
+}
+
+.giver-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.giver-label {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.note-text {
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--rule);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.giver-details > .note-text,
+.giver-details > .callback-quote {
+  align-self: stretch;
+}
+
+/* A Snippet ID in a Note, shown as who said it and when */
+.callback {
+  display: inline;
+  padding: 0.15rem 0.2rem;
+  border: 0;
+  border-bottom: 2px dotted var(--accent);
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.callback[aria-expanded='true'] {
+  background: var(--accent-wash);
+}
+
+.callback-quote {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+.callback-quote .receipt {
+  margin-top: 0.3rem;
+}
+
+/* The Line in its original Message */
+.context-toggle {
+  min-height: 2.75rem;
+  padding: 0.25rem 0;
+  font-size: 0.9375rem;
+}
+
+.context-toggle::after {
+  content: ' \25BE';
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 120ms ease;
+}
+
+.context-toggle[aria-expanded='true']::after {
+  transform: rotate(180deg);
+}
+
+.line-context {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--desk);
+}
+
+.context-text {
+  font-size: 0.9375rem;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.context-text mark {
+  background: var(--accent-wash);
+  color: inherit;
+  box-shadow: 0 0 0 0.12rem var(--accent-wash);
+}
+
+.line-text.is-tappable {
+  cursor: pointer;
+}
+
+/* Replace and Remove */
+.action {
+  min-height: 2.75rem;
+  padding: 0.4rem 1rem;
+  border: 2px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 600 0.9375rem/1.2 var(--serif);
+  cursor: pointer;
+}
+
+.action.danger {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.action.danger.solid {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.action[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.edit-status {
+  flex-basis: 100%;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.edit-status.is-problem {
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+
+.edit-status a {
+  margin-left: 0.4rem;
+}
+
+/* Regenerate */
+.regenerate {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.confirm-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--desk);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 40rem) {
+  .confirm-box .button {
+    align-self: flex-start;
+  }
+}

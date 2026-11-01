@@ -4,5 +4,5 @@
     "types": ["node"],
     "allowImportingTsExtensions": true
   },
-  "include": ["scripts", "vite.config.ts"]
+  "include": ["scripts", "eval", "vite.config.ts"]
 }

@@ -45,6 +45,7 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 ?beam=truncated    # Beam ran out of room, then a retry works
 ?beam=expired      # sign-in refused (HTTP 401)
 ?beam=slow         # never finishes: the "taking longer" state
+?beam=replace-fails  # the Poem works; the first Replace fails, then works
 ```
 
 ## Deploying the Space
@@ -59,6 +60,10 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 - Truncation, malformed answers, HTTP and network failures reject with a `BeamError` carrying `reason` and `retryable`.
 - Beam only ever returns Snippet IDs and Notes ([ADR-0002](docs/adr/0002-beam-picks-snippet-ids-code-owns-order-and-text.md)); the Poem's text, Receipts and order come from the Conversation.
 
+## Working with the Poem
+
+After the reveal the Giver can remove a Line, replace one, or regenerate the Poem; there is deliberately no way to edit a Line's text or move a Line. The logic is pure and lives in `src/editing.ts`: `removeLine`, and `replaceLine`, which makes **one** Beam call, shows Beam only the Snippets between the Line's neighbours (minus the current and removed ones, and only the Giver's and Recipient's), asks for a strict `{ "id": ... }`, and verifies the answer like any pick (it exists, lies in that period, is neither current nor removed). `src/context.ts` finds a Line inside its original Message and turns the verified callback IDs in a Note into links. `app.removeLine`, `app.replaceLine` and `app.regenerate` (which reruns the pipeline with the same choices) drive them. The screen is one feature module, `src/ui/features/notes-and-edit.ts`; everything in it is Giver-only (class `giver-only`, hidden when printing) and nothing the Card is built from reads it.
+
 ## Long and small Conversations
 
 `src/selection.ts` decides what Beam reads and how many Lines it is asked for, between the Snippets and the prompt:
@@ -67,6 +72,19 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 - **Token estimate**: ASCII at 3 characters per token, anything else at one token per UTF-16 code unit. The Gallery's 1,245,565-character prompt was billed at 352,297 tokens (3.54 characters per token), so the estimate over-counts it by about 19% on purpose: a wrong guess should cost a few days, not a failed call.
 - **Size table**: 40 or more usable Snippets ask Beam for 8 to 14 Lines, 15 to 39 for 6 to 8, and below 15 `tryMakePoem()` returns `{ refused: 'not-enough' }` without calling Beam. The app shows it as "Not enough here yet for a Poem" (`describeNotEnough()` in `src/app/failure.ts`). `makePoem()` is the same pipeline for callers that know the Conversation is big enough: it throws `NotEnoughError` instead.
 
+## Bringing a WhatsApp chat
+
+`{ kind: 'whatsapp', file, dateOrder? }` is a `RawSource` like the Gallery's. `file` is the export's text, or the bytes of its `.txt` or `.zip` (`src/sources/export-file.ts` opens the zip with `fflate`, unpacking only its `.txt`). `src/sources/whatsapp.ts` reads Android (`31/12/2023, 21:41 - Mom: ...`) and iOS (`[31/12/2023, 21:41:05] Mom: ...`) lines, in 12h or 24h, with U+200E and U+202F tolerated, and a line that does not start with a timestamp continues the Message before it.
+
+- **Never Snippets**: media placeholders, system messages, deleted messages and the "edited" marker (stripped from the text it trails) are dropped by the parser, so nothing after it can see them.
+- **Day or month first**: any date component over 12 settles it. When none does, `inferDateOrder()` returns `null`, `dateQuestion()` picks one Message to show ("3 June 2024 or 6 March 2024?"), and the Giver's answer comes back as `dateOrder`. With no answer the pipeline throws `AmbiguousDatesError` instead of guessing.
+- **Two voices only**: `between()` (`src/sources/between.ts`) keeps just the Giver's and the Recipient's Messages, before the token budget and the size table (`src/selection.ts`) look at anything, so a group's other members are never counted or sent.
+- **Redaction** (`src/redaction.ts`) replaces phone numbers and email addresses with `[phone number]` and `[email address]` in every Message, before any Snippet is formed. Phone numbers are matched by shape (a `+` and 7 to 15 digits, two or three digit groups, or nine or more digits in a row) and err towards removal; dates, years, times and plain figures are left alone. A Sender whose name is a number is redacted in the prompt too, and prompt labels are unique even when two names start with the same letter (`S1`, `S2`). The Poem's Receipts and Card keep the Sender's real name.
+- **The steps** (`src/app/upload.ts` holds their state, `src/ui/steps/{upload,people,date-order,review}.ts` their screens): choose a file, which one is you and who it is for, the date question (only when it is real), then the count ("4,812 Messages from Mom and you") and the privacy statement, then the usual Occasion step. The parsed chat lives in `createApp`'s closure, not in the state, and is forgotten on sign-out. The Occasion step shows the source through the `composeSections` slot (`src/ui/features/upload.ts`).
+- The Poem carries its Recipient (`poem.recipient`), and the Poem view says "For <Recipient>".
+
+For manual tests with a real export, put it in the gitignored `.scratch/`. Fixtures in `tests/fixtures/whatsapp.ts` are synthetic.
+
 ## The Gallery texts
 
 The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](https://www.gutenberg.org/ebooks/16182) and [73891](https://www.gutenberg.org/ebooks/73891) (public domain). Both are **committed** as-is in `public/gallery/` (about 2.3 MB, under 1 MB compressed), so the static build serves them at `gallery/pg16182.txt` and `gallery/pg73891.txt` (`GALLERY_TEXT_PATHS`) and nothing has to be fetched at build time. `npm run gallery:fetch` re-downloads them if you ever need to refresh them. `public/gallery/*.txt` is marked `-text` in `.gitattributes` so git leaves their CRLF line endings alone.
@@ -74,3 +92,20 @@ The Gallery is the Browning-Barrett letters, Project Gutenberg ebooks [16182](ht
 ## Live smoke test
 
 `npm run smoke` makes one real Gallery Poem through Beam (about $0.17 to $0.25 of Hugging Face credits), reading the token from `~/.cache/huggingface/token`. The token only goes into the request's `Authorization` header and is never printed. `npm run smoke -- --dry` sizes the prompt without a token or any network. Real chats for manual testing go in the gitignored `.scratch/`.
+
+## The eval: does reading everything help?
+
+`eval/` measures it on the Gallery: 20 Poems each from Beam on the **full** Conversation, Beam on only the **last 10%** of Messages, and **random** Snippets (no Beam call), scored by verification rate, timeline coverage, Sender balance and Note callback count. Every Beam Poem goes through the same `makePoem` as the app (the last-10% group uses its `narrow` option). The metrics are defined in `eval/lib/metrics.ts`; the results, method and the finding that only `low` reasoning effort completes on 500k-token inputs are in the dataset card, `eval/dataset/README.md`.
+
+```
+npm run eval -- --per-group 1    # dry run: 1 Poem per group (about $0.30)
+npm run eval                     # all 60 Poems (about $6); finished Poems are skipped, so it resumes
+npm run eval:report              # rebuild eval/dataset from the traces (no Beam, no token)
+HF_WRITE_TOKEN=<token> npm run eval:publish   # upload eval/dataset as Srini410/receipts-eval
+```
+
+- Beam Poems cost real Hugging Face credits. Spend is counted from the usage Beam reports (router prices: $0.40/M in, $1.20/M out) and the run stops before any call that could pass a hard cap of $8 (`--cap` lowers it).
+- Retryable Beam errors are retried at most twice per Poem; a Poem that still fails is kept as a failed trace and counted against its group. `--redo-failed` makes those Poems again.
+- The inference token is read from `HF_TOKEN` or `~/.cache/huggingface/token`, goes only into the request's `Authorization` header, and is never printed or written; the run refuses to finish if it finds the token in `eval/dataset/`.
+- `eval:publish` needs a separate token with write access to the dataset repo (the inference token cannot write repos), passed as `HF_WRITE_TOKEN`.
+- Eval tests are in `eval/tests/` and use the fake Beam port, so `npm test` costs nothing.

@@ -1,0 +1,197 @@
+{
+  "condition": "full",
+  "index": 4,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-10-31T22:59:13.671Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 189.876,
+  "costUsd": 0.39336000000000004,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 160.807,
+      "costUsd": 0.2380756,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 21.825,
+      "costUsd": 0.15528440000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352298,
+        "completionTokens": 11971,
+        "reasoningTokens": 11351
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s1\",\n      \"note\": \"Robert's first letter already says he loves her books and her, setting the whole correspondence in motion.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s7\",\n      \"note\": \"Elizabeth's reply values a poet's sympathy as the quintessence of sympathy, showing the bond forming.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s222\",\n      \"note\": \"Robert's spring promise to see her turns the letters toward a real meeting.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s636\",\n      \"note\": \"Elizabeth's protest against his 'horrible entomology' is a private joke about how he pins her words down.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s998\",\n      \"note\": \"Robert compares her criticism to tying him up like a Shrove-Tuesday fowl, a vivid private joke between them.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1126\",\n      \"note\": \"Elizabeth notices his flowers sent without a word, a concrete moment of his wordless care.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1499\",\n      \"note\": \"Her overwhelmed letter before the Pisa journey shows the relationship becoming serious and painful.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2256\",\n      \"note\": \"Robert's reaction to her 'Past and Future' sonnet shows her work deeply affecting him.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2543\",\n      \"note\": \"Robert recalls first seeing her eyes, a private memory of their earliest meetings.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s2885\",\n      \"note\": \"Elizabeth says he knows how to say what makes her happiest, a clear statement of his effect on her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s6228\",\n      \"note\": \"Elizabeth's memory of the chestnut tree and west wind recalls Robert's earlier letter.\",\n      \"callbacks\": [\"s512\"]\n    },\n    {\n      \"id\": \"s8812\",\n      \"note\": \"Elizabeth says she never called anyone by such a name, making his name intimate and new.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s10598\",\n      \"note\": \"Elizabeth says she never received such a letter except from him, showing his unique place with her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s12492\",\n      \"note\": \"Their final arrangements for leaving together end the long correspondence in action rather than words.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first letter already says he loves her books and her, setting the whole correspondence in motion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "Sympathy is dear--very dear to me: but the sympathy of a poet, and of such a poet, is the quintessence of sympathy to me!",
+        "note": "Elizabeth's reply values a poet's sympathy as the quintessence of sympathy, showing the bond forming.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's spring promise to see her turns the letters toward a real meeting.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s636",
+        "messageOrdinal": 26,
+        "sender": "Elizabeth",
+        "date": "1845-05-17",
+        "approximate": false,
+        "dateLabel": "17 May 1845",
+        "text": "I shall be ready on Tuesday I hope, but I hate and protest against your horrible 'entomology.'",
+        "note": "Elizabeth's protest against his 'horrible entomology' is a private joke about how he pins her words down.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s998",
+        "messageOrdinal": 62,
+        "sender": "Robert",
+        "date": "1845-07-18",
+        "approximate": true,
+        "dateLabel": "c. 18 July 1845",
+        "text": "You tie me like a Shrove-Tuesday fowl to a stake and then pick the thickest cudgel out of your lot, and at my head it goes--I wonder whether you remembered having predicted exactly the same horror once before.",
+        "note": "Robert compares her criticism to tying him up like a Shrove-Tuesday fowl, a vivid private joke between them.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1126",
+        "messageOrdinal": 74,
+        "sender": "Elizabeth",
+        "date": "1845-08-08",
+        "approximate": false,
+        "dateLabel": "8 August 1845",
+        "text": "It is very kind to send these flowers--too kind--why are they sent? and without one single word ... which is not too kind certainly.",
+        "note": "Elizabeth notices his flowers sent without a word, a concrete moment of his wordless care.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1499",
+        "messageOrdinal": 102,
+        "sender": "Elizabeth",
+        "date": "1845-09-16",
+        "approximate": false,
+        "dateLabel": "16 September 1845",
+        "text": "I scarcely know how to write what is to be written nor indeed why it is to be written and to what end.",
+        "note": "Her overwhelmed letter before the Pisa journey shows the relationship becoming serious and painful.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2256",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And since I wrote what is above, I have been reading among other poems that sonnet--'Past and Future'--which affects me more than any poem I ever read.",
+        "note": "Robert's reaction to her 'Past and Future' sonnet shows her work deeply affecting him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2543",
+        "messageOrdinal": 160,
+        "sender": "Robert",
+        "date": "1845-11-28",
+        "approximate": false,
+        "dateLabel": "28 November 1845",
+        "text": "When I first saw you--I saw your eyes--since then, you, it should appear, see mine--but I only know yours are there, and have to use that memory as if one carried dried flowers about when fairly inside the garden-enclosure.",
+        "note": "Robert recalls first seeing her eyes, a private memory of their earliest meetings.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2885",
+        "messageOrdinal": 177,
+        "sender": "Elizabeth",
+        "date": "1845-12-20",
+        "approximate": false,
+        "dateLabel": "20 December 1845",
+        "text": "Dearest, you know how to say what makes me happiest, you who never think, you say, of making me happy!",
+        "note": "Elizabeth says he knows how to say what makes her happiest, a clear statement of his effect on her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6228",
+        "messageOrdinal": 316,
+        "sender": "Elizabeth",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
+        "note": "Elizabeth's memory of the chestnut tree and west wind recalls Robert's earlier letter.",
+        "callbacks": [
+          "s512"
+        ]
+      },
+      {
+        "snippetId": "s8812",
+        "messageOrdinal": 432,
+        "sender": "Elizabeth",
+        "date": "1846-07-02",
+        "approximate": false,
+        "dateLabel": "2 July 1846",
+        "text": "No, No! indeed I never did.",
+        "note": "Elizabeth says she never called anyone by such a name, making his name intimate and new.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s10598",
+        "messageOrdinal": 498,
+        "sender": "Elizabeth",
+        "date": "1846-08-13",
+        "approximate": false,
+        "dateLabel": "13 August 1846",
+        "text": "‘Did I ever receive such a letter?’",
+        "note": "Elizabeth says she never received such a letter except from him, showing his unique place with her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12492",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "At from half-past three to four, then—four will not, I suppose, be too late.",
+        "note": "Their final arrangements for leaving together end the long correspondence in action rather than words.",
+        "callbacks": []
+      }
+    ]
+  }
+}
