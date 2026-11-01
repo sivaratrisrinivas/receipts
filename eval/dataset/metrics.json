@@ -1,0 +1,58 @@
+{
+  "groups": [
+    {
+      "condition": "full",
+      "attempted": 20,
+      "completed": 17,
+      "failed": 3,
+      "verificationRate": 0.85,
+      "timelineCoverage": 0.54,
+      "senderBalance": 0.6557692307692308,
+      "noteCallbacks": 1.6,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.6352941176470589,
+        "senderBalance": 0.7714932126696832,
+        "noteCallbacks": 1.8823529411764706
+      },
+      "meanLines": 13.588235294117647,
+      "costUsd": 5.411743599999999
+    },
+    {
+      "condition": "last10",
+      "attempted": 20,
+      "completed": 20,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.10000000000000002,
+      "senderBalance": 0.6901831501831502,
+      "noteCallbacks": 3.15,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.10000000000000002,
+        "senderBalance": 0.6901831501831502,
+        "noteCallbacks": 3.15
+      },
+      "meanLines": 13.35,
+      "costUsd": 0.3809856
+    },
+    {
+      "condition": "random",
+      "attempted": 20,
+      "completed": 20,
+      "failed": 0,
+      "verificationRate": 1,
+      "timelineCoverage": 0.5599999999999999,
+      "senderBalance": 0.45564574314574313,
+      "noteCallbacks": 0,
+      "completedOnly": {
+        "verificationRate": 1,
+        "timelineCoverage": 0.5599999999999999,
+        "senderBalance": 0.45564574314574313,
+        "noteCallbacks": 0
+      },
+      "meanLines": 11.05,
+      "costUsd": 0
+    }
+  ]
+}

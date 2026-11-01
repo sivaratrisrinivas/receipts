@@ -1,0 +1,130 @@
+{
+  "condition": "random",
+  "index": 1,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:04:51.508Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 2.869,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s162",
+        "messageOrdinal": 7,
+        "sender": "Elizabeth",
+        "date": "1845-02-17",
+        "approximate": false,
+        "dateLabel": "17 February 1845",
+        "text": "I see you only in your moon.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s411",
+        "messageOrdinal": 13,
+        "sender": "Elizabeth",
+        "date": "1845-03-20",
+        "approximate": false,
+        "dateLabel": "20 March 1845",
+        "text": "The old gods are dethroned.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s686",
+        "messageOrdinal": 30,
+        "sender": "Robert",
+        "date": "1845-05-24",
+        "approximate": false,
+        "dateLabel": "24 May 1845",
+        "text": "But I never mind what I am told!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2010",
+        "messageOrdinal": 135,
+        "sender": "Robert",
+        "date": "1845-10-23",
+        "approximate": false,
+        "dateLabel": "23 October 1845",
+        "text": "But I must answer you, and be forgiven, too, dearest.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4061",
+        "messageOrdinal": 221,
+        "sender": "Elizabeth",
+        "date": "1846-02-05",
+        "approximate": false,
+        "dateLabel": "5 February 1846",
+        "text": "Dear Miss Mitford comes to-morrow, and I am not glad enough.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4410",
+        "messageOrdinal": 239,
+        "sender": "Elizabeth",
+        "date": "1846-02-20",
+        "approximate": false,
+        "dateLabel": "20 February 1846",
+        "text": "What makes you take them to be so bad, I suppose, is just feeling in them how near we are.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6246",
+        "messageOrdinal": 316,
+        "sender": "Elizabeth",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "So you ‘felt’ that I was down-stairs to-day!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7791",
+        "messageOrdinal": 387,
+        "sender": "Elizabeth",
+        "date": "1846-06-03",
+        "approximate": false,
+        "dateLabel": "3 June 1846",
+        "text": "And this is the earnest thing of all ... that I love you as I can love—and am for ever ... living and dying....",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8626",
+        "messageOrdinal": 422,
+        "sender": "Robert",
+        "date": "1846-06-26",
+        "approximate": false,
+        "dateLabel": "26 June 1846",
+        "text": "I will tell you something I meant to speak of yesterday.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9387",
+        "messageOrdinal": 455,
+        "sender": "Elizabeth",
+        "date": "1846-07-14",
+        "approximate": false,
+        "dateLabel": "14 July 1846",
+        "text": "I think I will let you beg my pardon; you unjust, dearest....",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

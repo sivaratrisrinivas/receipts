@@ -1,0 +1,53 @@
+{
+  "condition": "full",
+  "index": 8,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:19:20.254Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 139.521,
+  "costUsd": 0.6187696,
+  "status": "failed",
+  "attempts": [
+    {
+      "seconds": 57.26,
+      "costUsd": 0.23820560000000002,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 55.694,
+      "costUsd": 0.23820560000000002,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 3.947,
+      "costUsd": 0.14235840000000002,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352572,
+        "completionTokens": 1108,
+        "reasoningTokens": 131
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 25 Lines; a Poem needs 8 to 14. Try again."
+      }
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    { \"id\": \"s0\", \"note\": \"Robert opens the whole correspondence with a letter declaring love for her verses and for her.\" , \"callbacks\": [] },\n    { \"id\": \"s3\", \"note\": \"Elizabeth's first response: gratitude from the bottom of her heart.\" , \"callbacks\": [\"s0\"] },\n    { \"id\": \"s62\", \"note\": \"Robert answers her 'Friendship' with Juliet's word, sealing the bond.\" , \"callbacks\": [\"s8\"] },\n    { \"id\": \"s222\", \"note\": \"Robert promises to see her in the spring, the first meeting foreshadowed.\" , \"callbacks\": [] },\n    { \"id\": \"s761\", \"note\": \"Elizabeth thanks him for kindness and consideration after he has finally been to her room.\" , \"callbacks\": [\"s756\"] },\n    { \"id\": \"s779\", \"note\": \"Robert reads her poem and recalls their shared literary life.\" , \"callbacks\": [] },\n    { \"id\": \"s1004\", \"note\": \"Elizabeth denies ever striking him, a private joke from their first meeting.\" , \"callbacks\": [\"s999\"] },\n    { \"id\": \"s1314\", \"note\": \"Robert responds to her confession of grief with gratitude and love.\" , \"callbacks\": [\"s1284\"] },\n    { \"id\": \"s1895\", \"note\": \"Robert reassures her that staying in England is for the best.\" , \"callbacks\": [\"s1870\"] },\n    { \"id\": \"s2174\", \"note\": \"Robert declares she possesses him entirely.\" , \"callbacks\": [] },\n    { \"id\": \"s2212\", \"note\": \"Elizabeth writes that she will see him tomorrow, yet writes still.\" , \"callbacks\": [] },\n    { \"id\": \"s2249\", \"note\": \"Robert says his whole life is wound round her.\" , \"callbacks\": [] },\n    { \"id\": \"s2479\", \"note\": \"Robert thanks Mr. Kenyon for kindness and looks to Thursday.\" , \"callbacks\": [\"s2473\"] },\n    { \"id\": \"s3007\", \"note\": \"Robert says Tuesday is to be their day, one day more, and then.\" , \"callbacks\": [] },\n    { \"id\": \"s3110\", \"note\": \"Robert calls her 'my own Ba' and says he has her in his thoughts.\" , \"callbacks\": [] },\n    { \"id\": \"s3643\", \"note\": \"Robert writes that if marriage did not exist he would invent it.\" , \"callbacks\": [] },\n    { \"id\": \"s3938\", \"note\": \"Robert says his only good in the world is to spend his life with her.\" , \"callbacks\": [] },\n    { \"id\": \"s4282\", \"note\": \"Robert argues for burning real letters, not clever writing.\" , \"callbacks\": [] },\n    { \"id\": \"s5092\", \"note\": \"Elizabeth tells him not to wish for things for her, speaking of Mr. Chorley.\" , \"callbacks\": [\"s5090\"] },\n    { \"id\": \"s6228\", \"note\": \"Elizabeth recalls his first letter about the chestnut tree and west wind.\" , \"callbacks\": [\"s512\"] },\n    { \"id\": \"s7705\", \"note\": \"Robert asks if she wants to turn his head with two letters in one day.\" , \"callbacks\": [] },\n    { \"id\": \"s8181\", \"note\": \"Elizabeth writes that her head whirled and she hopes she did not seem unworthy.\" , \"callbacks\": [\"s8162\"] },\n    { \"id\": \"s9632\", \"note\": \"Robert asks whether any heavy price is to be paid for their three hours.\" , \"callbacks\": [] },\n    { \"id\": \"s11397\", \"note\": \"Robert begins to dress hours early, then learns they will not meet.\" , \"callbacks\": [\"s11367\"] },\n    { \"id\": \"s12492\", \"note\": \"Elizabeth writes that by tomorrow at this time she will have him only, to love her.\" , \"callbacks\": [] }\n  ]\n}",
+  "error": {
+    "reason": "wrong-size",
+    "message": "Beam returned 25 Lines; a Poem needs 8 to 14. Try again."
+  }
+}

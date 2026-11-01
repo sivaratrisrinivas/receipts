@@ -1,0 +1,36 @@
+{
+  "name": "receipts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "A poem made only of things two people really said to each other, each line with its receipt.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "gallery:fetch": "tsx scripts/fetch-gallery.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "gallery:poems": "tsx scripts/make-gallery-poems.ts",
+    "deploy:space": "npm run build && tsx scripts/deploy-space.ts",
+    "eval": "tsx eval/run.ts",
+    "eval:report": "tsx eval/report.ts",
+    "eval:publish": "tsx eval/publish.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "@huggingface/hub": "2.17.10",
+    "fflate": "0.8.3"
+  }
+}

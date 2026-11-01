@@ -1,0 +1,186 @@
+{
+  "condition": "full",
+  "index": 9,
+  "occasion": "sorry",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:21:39.777Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 28.848,
+  "costUsd": 0.1654328,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 27.304,
+      "costUsd": 0.1654328,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 20337,
+        "reasoningTokens": 19928
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s28\", \"note\": \"Early promise of friendship and spring meeting.\", \"callbacks\": []},\n    {\"id\": \"s62\", \"note\": \"Robert's certainty of their friendship.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's hope to see her in spring.\", \"callbacks\": []},\n    {\"id\": \"s438\", \"note\": \"Elizabeth recalls his clock-striking kindness.\", \"callbacks\": []},\n    {\"id\": \"s580\", \"note\": \"Robert's quiet devotion before their first meeting.\", \"callbacks\": []},\n    {\"id\": \"s779\", \"note\": \"Robert on her music and creative process.\", \"callbacks\": []},\n    {\"id\": \"s841\", \"note\": \"Robert's reluctance to go abroad (for her).\", \"callbacks\": []},\n    {\"id\": \"s999\", \"note\": \"Robert's tender appeal to be understood.\", \"callbacks\": []},\n    {\"id\": \"s1004\", \"note\": \"Elizabeth's reassurance after his complaint.\", \"callbacks\": []},\n    {\"id\": \"s2249\", \"note\": \"Robert's declaration of being wound around her.\", \"callbacks\": []},\n    {\"id\": \"s2543\", \"note\": \"Robert's memory of their first meeting.\", \"callbacks\": []},\n    {\"id\": \"s2607\", \"note\": \"Robert's joy in her ring and hair.\", \"callbacks\": []},\n    {\"id\": \"s7740\", \"note\": \"Robert on her affectionateness.\", \"callbacks\": []},\n    {\"id\": \"s12512\", \"note\": \"Elizabeth's final farewell and trust in Wilson.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s28",
+        "messageOrdinal": 2,
+        "sender": "Robert",
+        "date": "1845-01-13",
+        "approximate": false,
+        "dateLabel": "13 January 1845",
+        "text": "You will never more, I hope, talk of 'the honour of my acquaintance,' but I will joyfully wait for the delight of your friendship, and the spring, and my Chapel-sight after all!",
+        "note": "Early promise of friendship and spring meeting.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s62",
+        "messageOrdinal": 4,
+        "sender": "Robert",
+        "date": "1845-01-28",
+        "approximate": false,
+        "dateLabel": "28 January 1845",
+        "text": "See now, how, of that 'Friendship' you offer me (and here Juliet's word rises to my lips)--I feel sure once and for ever.",
+        "note": "Robert's certainty of their friendship.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's hope to see her in spring.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s438",
+        "messageOrdinal": 16,
+        "sender": "Elizabeth",
+        "date": "1845-04-18",
+        "approximate": false,
+        "dateLabel": "18 April 1845",
+        "text": "You wished all manner of good to me one day as the clock struck ten; yes, and I assure you I was better that day--and I must not forget to tell you so though it is so long since.",
+        "note": "Elizabeth recalls his clock-striking kindness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s580",
+        "messageOrdinal": 22,
+        "sender": "Robert",
+        "date": "1845-05-12",
+        "approximate": false,
+        "dateLabel": "12 May 1845",
+        "text": "Do you suppose that your power of giving and refusing ends when you have shut your room-door?",
+        "note": "Robert's quiet devotion before their first meeting.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s779",
+        "messageOrdinal": 41,
+        "sender": "Robert",
+        "date": "1845-06-14",
+        "approximate": false,
+        "dateLabel": "14 June 1845",
+        "text": "I read the poem many years ago, and never since, though I have an impression that the versification is good, yet from your commentary I see I must have said a good deal more in its praise than that.",
+        "note": "Robert on her music and creative process.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s841",
+        "messageOrdinal": 47,
+        "sender": "Robert",
+        "date": "1845-06-24",
+        "approximate": false,
+        "dateLabel": "24 June 1845",
+        "text": "As for going abroad, that is just the thing I most want to avoid (for a reason not so hard to guess, perhaps, as why my letter was slow in arriving).",
+        "note": "Robert's reluctance to go abroad (for her).",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s999",
+        "messageOrdinal": 62,
+        "sender": "Robert",
+        "date": "1845-07-18",
+        "approximate": true,
+        "dateLabel": "c. 18 July 1845",
+        "text": "'I was to see you--and you were to understand'--Do you? do you understand--my own friend--with that superiority in years, too!",
+        "note": "Robert's tender appeal to be understood.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1004",
+        "messageOrdinal": 63,
+        "sender": "Elizabeth",
+        "date": "1845-07-21",
+        "approximate": false,
+        "dateLabel": "21 July 1845",
+        "text": "But I never did strike you or touch you--and you are not in earnest in the complaint you make--and this is really all I am going to say to-day.",
+        "note": "Elizabeth's reassurance after his complaint.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2249",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now, my love--I am round you ... my whole life is wound up and down and over you....",
+        "note": "Robert's declaration of being wound around her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2543",
+        "messageOrdinal": 160,
+        "sender": "Robert",
+        "date": "1845-11-28",
+        "approximate": false,
+        "dateLabel": "28 November 1845",
+        "text": "When I first saw you--I saw your eyes--since then, you, it should appear, see mine--but I only know yours are there, and have to use that memory as if one carried dried flowers about when fairly inside the garden-enclosure.",
+        "note": "Robert's memory of their first meeting.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2607",
+        "messageOrdinal": 163,
+        "sender": "Robert",
+        "date": "1845-12-02",
+        "approximate": false,
+        "dateLabel": "2 December 1845",
+        "text": "My love--no words could serve here, but there is life before us, and to the end of it the vibration now struck will extend--I will live and die with your beautiful ring, your beloved hair--comforting me, blessing me.",
+        "note": "Robert's joy in her ring and hair.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s7740",
+        "messageOrdinal": 386,
+        "sender": "Robert",
+        "date": "1846-06-02",
+        "approximate": false,
+        "dateLabel": "2 June 1846",
+        "text": "You are the most entirely lovable creature I ever dreamed perhaps might be in a better world—altogether made up of affectionateness and generosity.",
+        "note": "Robert on her affectionateness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12512",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "I begin to think that none are so bold as the timid, when they are fairly roused.",
+        "note": "Elizabeth's final farewell and trust in Wilson.",
+        "callbacks": []
+      }
+    ]
+  }
+}

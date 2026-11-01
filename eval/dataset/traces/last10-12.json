@@ -1,0 +1,186 @@
+{
+  "condition": "last10",
+  "index": 12,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:06:19.496Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.097,
+  "costUsd": 0.018891599999999998,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.735,
+      "costUsd": 0.018891599999999998,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 2660,
+        "reasoningTokens": 2180
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Shows Elizabeth's early sense that Robert already understands her.\", \"callbacks\": []},\n    {\"id\": \"s43\", \"note\": \"Flush's ecstatic welcome captures a vivid, private moment of home.\", \"callbacks\": []},\n    {\"id\": \"s82\", \"note\": \"Robert's urgent opening shows his care about her brothers' suspicions.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"Elizabeth's sudden loss of Flush becomes a turning point in their week.\", \"callbacks\": []},\n    {\"id\": \"s616\", \"note\": \"Robert's sympathy for Flush shows his tenderness during the crisis.\", \"callbacks\": []},\n    {\"id\": \"s790\", \"note\": \"Elizabeth turns the dog-stealing argument into their private joke: 'I am your Flush, and he is mine.'\", \"callbacks\": []},\n    {\"id\": \"s845\", \"note\": \"Flush lying on the sofa gives relief after the ransom ordeal.\", \"callbacks\": []},\n    {\"id\": \"s882\", \"note\": \"Elizabeth's smile at Robert's 'grave man and woman' shows their playful shorthand.\", \"callbacks\": []},\n    {\"id\": \"s965\", \"note\": \"The sudden family removal forces the marriage question into the open.\", \"callbacks\": []},\n    {\"id\": \"s994\", \"note\": \"Robert's licence plan turns urgency into a concrete plan to marry.\", \"callbacks\": []},\n    {\"id\": \"s1040\", \"note\": \"Robert's praise crowns the day they married.\", \"callbacks\": []},\n    {\"id\": \"s1065\", \"note\": \"Elizabeth's answer to his wish to be better shows her gratitude after the wedding.\", \"callbacks\": []},\n    {\"id\": \"s1097\", \"note\": \"Her garden-wall image captures the strange new happiness of being married.\", \"callbacks\": []},\n    {\"id\": \"s1456\", \"note\": \"Elizabeth's last letter looks ahead to having only Robert to love her.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Shows Elizabeth's early sense that Robert already understands her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic welcome captures a vivid, private moment of home.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s82",
+        "messageOrdinal": 517,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "My own dearest, let me say the most urgent thing first.",
+        "note": "Robert's urgent opening shows his care about her brothers' suspicions.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Elizabeth's sudden loss of Flush becomes a turning point in their week.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert's sympathy for Flush shows his tenderness during the crisis.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth turns the dog-stealing argument into their private joke: 'I am your Flush, and he is mine.'",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush lying on the sofa gives relief after the ransom ordeal.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s882",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "The sight of your letter, even, did not provoke the cloud—that was only the lesser joy, I thought, preceding the greater!",
+        "note": "Elizabeth's smile at Robert's 'grave man and woman' shows their playful shorthand.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s965",
+        "messageOrdinal": 551,
+        "sender": "Elizabeth",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "Dearest, you are a prophet, I suppose—there can be no denying it.",
+        "note": "The sudden family removal forces the marriage question into the open.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s994",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "I will go for a licence to-day and we can be married on Saturday.",
+        "note": "Robert's licence plan turns urgency into a concrete plan to marry.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1040",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "You have given me the highest, completest proof of love that ever one human being gave another.",
+        "note": "Robert's praise crowns the day they married.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1065",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "My own beloved, if ever you should have reason to complain of me in things voluntary and possible, all other women would have a right to tread me underfoot, I should be so vile and utterly unworthy.",
+        "note": "Elizabeth's answer to his wish to be better shows her gratitude after the wedding.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1097",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "I feel so as if I had slipped down over the wall into somebody’s garden—I feel ashamed.",
+        "note": "Her garden-wall image captures the strange new happiness of being married.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth's last letter looks ahead to having only Robert to love her.",
+        "callbacks": []
+      }
+    ]
+  }
+}

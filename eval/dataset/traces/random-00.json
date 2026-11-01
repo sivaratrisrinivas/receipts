@@ -1,0 +1,108 @@
+{
+  "condition": "random",
+  "index": 0,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:04:40.093Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 2.221,
+  "costUsd": 0,
+  "status": "ok",
+  "attempts": [],
+  "answer": null,
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s2080",
+        "messageOrdinal": 140,
+        "sender": "Elizabeth",
+        "date": "1845-10-27",
+        "approximate": true,
+        "dateLabel": "c. 27 October 1845",
+        "text": "Because as a poem of yours it stands there and wants unity, and people can't be expected to understand the difference between incompleteness and defect, unless you make a sign.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2248",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "I shall only say I was scheming how to get done with England and go to my heart in Italy.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3533",
+        "messageOrdinal": 200,
+        "sender": "Robert",
+        "date": "1846-01-15",
+        "approximate": false,
+        "dateLabel": "15 January 1846",
+        "text": "Will you, and must you have 'Pauline'?",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3658",
+        "messageOrdinal": 203,
+        "sender": "Robert",
+        "date": "1846-01-17",
+        "approximate": false,
+        "dateLabel": "17 January 1846",
+        "text": "See the bottoms of the other pages!",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s4520",
+        "messageOrdinal": 242,
+        "sender": "Robert",
+        "date": "1846-02-23",
+        "approximate": false,
+        "dateLabel": "23 February 1846",
+        "text": "I know now, what I only suspected then, and will tell you all the matter on Monday if you care to hear.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6533",
+        "messageOrdinal": 327,
+        "sender": "Elizabeth",
+        "date": "1846-04-24",
+        "approximate": false,
+        "dateLabel": "24 April 1846",
+        "text": "When she comes, I shall not dare name you, but she will, I think ...",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s9197",
+        "messageOrdinal": 446,
+        "sender": "Elizabeth",
+        "date": "1846-07-08",
+        "approximate": false,
+        "dateLabel": "8 July 1846",
+        "text": "But I did not remember the former opinion.",
+        "note": "",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s11452",
+        "messageOrdinal": 528,
+        "sender": "Elizabeth",
+        "date": "1846-08-29",
+        "approximate": false,
+        "dateLabel": "29 August 1846",
+        "text": "Poor Papa!—Presently I shall be worse to him than ‘mumpish’ even.",
+        "note": "",
+        "callbacks": []
+      }
+    ]
+  }
+}

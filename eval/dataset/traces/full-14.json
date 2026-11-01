@@ -1,0 +1,188 @@
+{
+  "condition": "full",
+  "index": 14,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:22:50.911Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 30.155,
+  "costUsd": 0.1606788,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 28.222,
+      "costUsd": 0.1606788,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352572,
+        "completionTokens": 16375,
+        "reasoningTokens": 15778
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Robert's very first letter to Elizabeth, declaring love for her verses and for her — the beginning of everything.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"Elizabeth's first reply, thanking him from the bottom of her heart — the opening of the correspondence.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's spring letter anticipating their first meeting, asking 'when did I once fail to get whatever I had set my heart upon?'\", \"callbacks\": []},\n    {\"id\": \"s584\", \"note\": \"Robert's post-meeting letter expressing thanks, marking the transition from letters to visits.\", \"callbacks\": []},\n    {\"id\": \"s931\", \"note\": \"Elizabeth reporting she has been out walking — a milestone in her recovery and a sign of growing trust.\", \"callbacks\": []},\n    {\"id\": \"s938\", \"note\": \"Robert's warm response to Elizabeth's first outing, calling her 'all that is good and kind.'\", \"callbacks\": []},\n    {\"id\": \"s1293\", \"note\": \"Elizabeth's painful confession about her brother's death — the deepest personal revelation she made to Robert.\", \"callbacks\": []},\n    {\"id\": \"s2212\", \"note\": \"Elizabeth writing before their next meeting, showing how the visits have become the centre of her life.\", \"callbacks\": []},\n    {\"id\": \"s2245\", \"note\": \"Robert's refusal to imagine losing her — 'MORE; having a right to expect more strength with the strange emergency.'\", \"callbacks\": []},\n    {\"id\": \"s2290\", \"note\": \"Elizabeth's 'between dream and miracle' — the moment she acknowledged the transformation Robert had wrought in her life.\", \"callbacks\": []},\n    {\"id\": \"s6228\", \"note\": \"Elizabeth's callback to Robert's early letter about the chestnut tree — showing how their words have woven into their shared memory.\", \"callbacks\": [\"s222\"]},\n    {\"id\": \"s6503\", \"note\": \"Elizabeth's relief at Robert's recovery, marking the deepening of mutual care in the final months before their secret marriage.\", \"callbacks\": []},\n    {\"id\": \"s6718\", \"note\": \"Robert's declaration that he goes to her 'with heart full of love' — the sustained intensity of his devotion.\", \"callbacks\": []},\n    {\"id\": \"s8126\", \"note\": \"Elizabeth's defence of Robert against worldly suspicion — 'when did I try to dissuade you from telling all to your father and mother?'\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I love your verses with all my heart, dear Miss Barrett,--and this is no off-hand complimentary letter that I shall write,--whatever else, no prompt matter-of-course recognition of your genius, and there a graceful and natural end of the thing.",
+        "note": "Robert's very first letter to Elizabeth, declaring love for her verses and for her — the beginning of everything.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's first reply, thanking him from the bottom of her heart — the opening of the correspondence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's spring letter anticipating their first meeting, asking 'when did I once fail to get whatever I had set my heart upon?'",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s584",
+        "messageOrdinal": 23,
+        "sender": "Robert",
+        "date": "1845-05-13",
+        "approximate": false,
+        "dateLabel": "13 May 1845",
+        "text": "Did I thank you with any effect in the lines I sent yesterday, dear Miss Barrett?",
+        "note": "Robert's post-meeting letter expressing thanks, marking the transition from letters to visits.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s931",
+        "messageOrdinal": 57,
+        "sender": "Elizabeth",
+        "date": "1845-07-08",
+        "approximate": false,
+        "dateLabel": "8 July 1845",
+        "text": "Well--I have really been out; and am really alive after it--which is more surprising still--alive enough I mean, to write even so, to-night.",
+        "note": "Elizabeth reporting she has been out walking — a milestone in her recovery and a sign of growing trust.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s938",
+        "messageOrdinal": 58,
+        "sender": "Robert",
+        "date": "1845-07-09",
+        "approximate": false,
+        "dateLabel": "9 July 1845",
+        "text": "You are all that is good and kind: I am happy and thankful the beginning (and worst of it) is over and so well.",
+        "note": "Robert's warm response to Elizabeth's first outing, calling her 'all that is good and kind.'",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1293",
+        "messageOrdinal": 86,
+        "sender": "Elizabeth",
+        "date": "1845-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1845",
+        "text": "And Papa's answer was--burnt into me, as with fire, it is--that 'under such circumstances he did not refuse to suspend his purpose, but that he considered it to be very wrong in me to exact such a thing.'",
+        "note": "Elizabeth's painful confession about her brother's death — the deepest personal revelation she made to Robert.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2212",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I shall see you to-morrow and yet am writing what you will have to read perhaps.",
+        "note": "Elizabeth writing before their next meeting, showing how the visits have become the centre of her life.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2245",
+        "messageOrdinal": 150,
+        "sender": "Robert",
+        "date": "1845-11-17",
+        "approximate": false,
+        "dateLabel": "17 November 1845",
+        "text": "And now--here I refuse to fancy--you KNOW whether, if you never write another line, speak another intelligible word, recognize me by a look again--whether I shall love you less or more ...",
+        "note": "Robert's refusal to imagine losing her — 'MORE; having a right to expect more strength with the strange emergency.'",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2290",
+        "messageOrdinal": 151,
+        "sender": "Elizabeth",
+        "date": "1845-11-18",
+        "approximate": false,
+        "dateLabel": "18 November 1845",
+        "text": "It is something to me between dream and miracle, all of it--as if some dream of my earliest brightest dreaming-time had been lying through these dark years to steep in the sunshine, returning to me in a double light.",
+        "note": "Elizabeth's 'between dream and miracle' — the moment she acknowledged the transformation Robert had wrought in her life.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6228",
+        "messageOrdinal": 316,
+        "sender": "Elizabeth",
+        "date": "1846-04-17",
+        "approximate": false,
+        "dateLabel": "17 April 1846",
+        "text": "Ah, the chestnut tree: do you think that I never saw the chestnut tree before?",
+        "note": "Elizabeth's callback to Robert's early letter about the chestnut tree — showing how their words have woven into their shared memory.",
+        "callbacks": [
+          "s222"
+        ]
+      },
+      {
+        "snippetId": "s6503",
+        "messageOrdinal": 327,
+        "sender": "Elizabeth",
+        "date": "1846-04-24",
+        "approximate": false,
+        "dateLabel": "24 April 1846",
+        "text": "Yes, you are better, I think.",
+        "note": "Elizabeth's relief at Robert's recovery, marking the deepening of mutual care in the final months before their secret marriage.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s6718",
+        "messageOrdinal": 337,
+        "sender": "Robert",
+        "date": "1846-05-01",
+        "approximate": false,
+        "dateLabel": "1 May 1846",
+        "text": "I go to you, my Ba, with heart full of love, so it seems,—yet I come away always with a greater capacity of holding love,—for there is more and still more,—that seems too!",
+        "note": "Robert's declaration that he goes to her 'with heart full of love' — the sustained intensity of his devotion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8126",
+        "messageOrdinal": 402,
+        "sender": "Elizabeth",
+        "date": "1846-06-13",
+        "approximate": false,
+        "dateLabel": "13 June 1846",
+        "text": "But dearest, dearest, ... when did I try to dissuade you from telling all to your father and mother?",
+        "note": "Elizabeth's defence of Robert against worldly suspicion — 'when did I try to dissuade you from telling all to your father and mother?'",
+        "callbacks": []
+      }
+    ]
+  }
+}

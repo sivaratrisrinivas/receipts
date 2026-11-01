@@ -1,0 +1,194 @@
+{
+  "condition": "last10",
+  "index": 7,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:45.543Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 4.665,
+  "costUsd": 0.01764,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 4.315,
+      "costUsd": 0.01764,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 1617,
+        "reasoningTokens": 1060
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s43\", \"note\": \"Flush's ecstatic welcome when Elizabeth returned — the dog who would follow them to Pisa.\", \"callbacks\": []},\n    {\"id\": \"s79\", \"note\": \"Robert admits he sometimes shortened visits just to reach the moment of taking her hand.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Elizabeth wishes for two hearts and two lives to give him — the depth of her devotion early on.\", \"callbacks\": []},\n    {\"id\": \"s578\", \"note\": \"The shock of losing Flush in the street — a crisis that drew them together.\", \"callbacks\": [\"s43\"]},\n    {\"id\": \"s790\", \"note\": \"Elizabeth's witty resolution of the Flush debate: 'I am your Flush, and he is mine.'\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s823\", \"note\": \"Robert feels he grows under her — his faculties extending toward hers.\", \"callbacks\": []},\n    {\"id\": \"s845\", \"note\": \"Flush found again, lying on the sofa with paw and ears hanging over — the ransom paid.\", \"callbacks\": [\"s578\"]},\n    {\"id\": \"s899\", \"note\": \"Elizabeth blesses him 'and me in you' — love so complete it names itself inside him.\", \"callbacks\": []},\n    {\"id\": \"s988\", \"note\": \"Robert calls her his 'perfect angel' across nearly two years without a blank.\", \"callbacks\": []},\n    {\"id\": \"s1023\", \"note\": \"She was his long ago — even if he gave back her promise at the eleventh hour.\", \"callbacks\": []},\n    {\"id\": \"s1069\", \"note\": \"After the wedding she writes that all she is, she owes him.\", \"callbacks\": [\"s1023\"]},\n    {\"id\": \"s1155\", \"note\": \"Robert exults that his life has borne flower and fruit — a glorious, felicitous life.\", \"callbacks\": []},\n    {\"id\": \"s1456\", \"note\": \"On the eve of departure: by to-morrow at this time she shall have him only.\", \"callbacks\": []},\n    {\"id\": \"s1474\", \"note\": \"Her final reflection — none are so bold as the timid, when fairly roused.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's ecstatic welcome when Elizabeth returned — the dog who would follow them to Pisa.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert admits he sometimes shortened visits just to reach the moment of taking her hand.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "How I wish for two hearts to love you with, and two lives to give to you, and two souls to bear the weight worthily of all you have given to me.",
+        "note": "Elizabeth wishes for two hearts and two lives to give him — the depth of her devotion early on.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The shock of losing Flush in the street — a crisis that drew them together.",
+        "callbacks": [
+          "s43"
+        ]
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth's witty resolution of the Flush debate: 'I am your Flush, and he is mine.'",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s823",
+        "messageOrdinal": 542,
+        "sender": "Robert",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "But I seem really to grow under you,—my faculties extend toward yours.",
+        "note": "Robert feels he grows under her — his faculties extending toward hers.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush found again, lying on the sofa with paw and ears hanging over — the ransom paid.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s899",
+        "messageOrdinal": 546,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "May God bless you—‘and me in you.’",
+        "note": "Elizabeth blesses him 'and me in you' — love so complete it names itself inside him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s988",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "Also I will ever say, God bless you, my dearest dearest,—my perfect angel you have been!",
+        "note": "Robert calls her his 'perfect angel' across nearly two years without a blank.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1023",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "I was yours long ago, and though you give me back my promise at this eleventh hour, ... you generous, dear unkind! ... you know very well that you can do as well without it.",
+        "note": "She was his long ago — even if he gave back her promise at the eleventh hour.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1069",
+        "messageOrdinal": 557,
+        "sender": "Elizabeth",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "All that I am, I owe you—if I enjoy anything now and henceforth, it is through you.",
+        "note": "After the wedding she writes that all she is, she owes him.",
+        "callbacks": [
+          "s1023"
+        ]
+      },
+      {
+        "snippetId": "s1155",
+        "messageOrdinal": 559,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "You take my words from me—I ‘exult’ in the irrevocability of this precious bestowal of yourself on me—come what will my life has borne flower and fruit—it is a glorious, successful, felicitous life, I thank God and you.",
+        "note": "Robert exults that his life has borne flower and fruit — a glorious, felicitous life.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "On the eve of departure: by to-morrow at this time she shall have him only.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1474",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "I begin to think that none are so bold as the timid, when they are fairly roused.",
+        "note": "Her final reflection — none are so bold as the timid, when fairly roused.",
+        "callbacks": []
+      }
+    ]
+  }
+}

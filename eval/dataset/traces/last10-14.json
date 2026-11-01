@@ -1,0 +1,166 @@
+{
+  "condition": "last10",
+  "index": 14,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:06:42.080Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.66,
+  "costUsd": 0.0182536,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.19,
+      "costUsd": 0.0182536,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39250,
+        "completionTokens": 2128,
+        "reasoningTokens": 1827
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\"lines\":[{\"id\":\"s0\",\"note\":\"Elizabeth opens with the intimate assurance that she already understands him.\",\"callbacks\":[]},{\"id\":\"s222\",\"note\":\"Elizabeth wishes for two hearts and lives to give to Robert.\",\"callbacks\":[]},{\"id\":\"s381\",\"note\":\"Robert answers that they belong wholly to each other.\",\"callbacks\":[]},{\"id\":\"s578\",\"note\":\"Elizabeth's anguished report that Flush has been stolen.\",\"callbacks\":[]},{\"id\":\"s760\",\"note\":\"Elizabeth marvels at Robert's goodness and dearness.\",\"callbacks\":[]},{\"id\":\"s806\",\"note\":\"Elizabeth says separation teaches the necessity of his presence.\",\"callbacks\":[]},{\"id\":\"s845\",\"note\":\"Elizabeth announces Flush is found after the theft.\",\"callbacks\":[\"s578\"]},{\"id\":\"s988\",\"note\":\"Robert calls Elizabeth his perfect angel.\",\"callbacks\":[]},{\"id\":\"s1014\",\"note\":\"Elizabeth gives one will that is entirely his.\",\"callbacks\":[]},{\"id\":\"s1036\",\"note\":\"Robert says words cannot tell how perfectly dear she is.\",\"callbacks\":[]},{\"id\":\"s1243\",\"note\":\"Elizabeth's jesting is made with eyes full of tears.\",\"callbacks\":[]},{\"id\":\"s1456\",\"note\":\"Elizabeth looks forward to having only Robert to love her.\",\"callbacks\":[]}]}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "But dearest—Did you not understand that I understood?",
+        "note": "Elizabeth opens with the intimate assurance that she already understands him.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "How I wish for two hearts to love you with, and two lives to give to you, and two souls to bear the weight worthily of all you have given to me.",
+        "note": "Elizabeth wishes for two hearts and lives to give to Robert.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s381",
+        "messageOrdinal": 527,
+        "sender": "Robert",
+        "date": "1846-08-28",
+        "approximate": false,
+        "dateLabel": "28 August 1846",
+        "text": "Well,—I am yours, you are mine, dearest Ba!",
+        "note": "Robert answers that they belong wholly to each other.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Elizabeth's anguished report that Flush has been stolen.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s760",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Was ever any in the world, in any possible world, so perfectly good and dear to another as you are to me!",
+        "note": "Elizabeth marvels at Robert's goodness and dearness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s806",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "To be parted from you so long, teaches me the necessity of your presence—I am your very, very own.",
+        "note": "Elizabeth says separation teaches the necessity of his presence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Elizabeth announces Flush is found after the theft.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s988",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "Also I will ever say, God bless you, my dearest dearest,—my perfect angel you have been!",
+        "note": "Robert calls Elizabeth his perfect angel.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth gives one will that is entirely his.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert says words cannot tell how perfectly dear she is.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1243",
+        "messageOrdinal": 561,
+        "sender": "Elizabeth",
+        "date": "1846-09-15",
+        "approximate": false,
+        "dateLabel": "15 September 1846",
+        "text": "And forgive the inveterate jesting, which jests with eyes full of tears.",
+        "note": "Elizabeth's jesting is made with eyes full of tears.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1456",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth looks forward to having only Robert to love her.",
+        "callbacks": []
+      }
+    ]
+  }
+}

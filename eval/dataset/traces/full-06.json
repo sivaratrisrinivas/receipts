@@ -1,0 +1,190 @@
+{
+  "condition": "full",
+  "index": 6,
+  "occasion": "birthday",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:18:54.558Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 5.985,
+  "costUsd": 0.14233279999999998,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 4.181,
+      "costUsd": 0.14233279999999998,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 1087,
+        "reasoningTokens": 546
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s0\", \"note\": \"Robert's opening declaration of love for her verses and for her, the very first word of the correspondence.\", \"callbacks\": []},\n    {\"id\": \"s1\", \"note\": \"The companion line that crowns the opening letter with its plain confession of love.\", \"callbacks\": [\"s0\"]},\n    {\"id\": \"s297\", \"note\": \"Robert's tender wish that she will outlast the east wind, an early promise of care.\", \"callbacks\": []},\n    {\"id\": \"s303\", \"note\": \"Elizabeth's reply turning their growing bond into friendship, the first mutual naming.\", \"callbacks\": []},\n    {\"id\": \"s2149\", \"note\": \"Elizabeth's grateful reading of his new book, where love of the giver exceeds the gift.\", \"callbacks\": []},\n    {\"id\": \"s2174\", \"note\": \"Robert's answer that she possesses him, the mirror of his earlier devotion.\", \"callbacks\": [\"s1\"]},\n    {\"id\": \"s2219\", \"note\": \"Elizabeth reading Luria's first act, the bullet arrested in air, their creative partnership begun.\", \"callbacks\": []},\n    {\"id\": \"s3373\", \"note\": \"Elizabeth's midnight joy at his late-arriving letter, the lovers' vigil.\", \"callbacks\": []},\n    {\"id\": \"s3403\", \"note\": \"Robert's discovery of her, more of her, day by day, the deepening of love.\", \"callbacks\": []},\n    {\"id\": \"s3443\", \"note\": \"Elizabeth's walk down-stairs, the feat of recovery that closes the winter of illness.\", \"callbacks\": []},\n    {\"id\": \"s12492\", \"note\": \"Elizabeth's last letters in the carriage, the final journey begun.\", \"callbacks\": []},\n    {\"id\": \"s12494\", \"note\": \"Elizabeth's farewell of the letters she cannot leave behind, the love made portable.\", \"callbacks\": []},\n    {\"id\": \"s12508\", \"note\": \"Elizabeth's prayer for him on the last night, the voice of the final letter.\", \"callbacks\": []},\n    {\"id\": \"s12512\", \"note\": \"Elizabeth's closing word on Wilson's fidelity, the last line of the conversation.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s0",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I love your verses with all my heart, dear Miss Barrett,--and this is no off-hand complimentary letter that I shall write,--whatever else, no prompt matter-of-course recognition of your genius, and there a graceful and natural end of the thing.",
+        "note": "Robert's opening declaration of love for her verses and for her, the very first word of the correspondence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "The companion line that crowns the opening letter with its plain confession of love.",
+        "callbacks": [
+          "s0"
+        ]
+      },
+      {
+        "snippetId": "s297",
+        "messageOrdinal": 9,
+        "sender": "Elizabeth",
+        "date": "1845-02-27",
+        "approximate": false,
+        "dateLabel": "27 February 1845",
+        "text": "And was the little book written with Mr. Mill, pure metaphysics, or what?",
+        "note": "Robert's tender wish that she will outlast the east wind, an early promise of care.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s303",
+        "messageOrdinal": 10,
+        "sender": "Robert",
+        "date": "1845-02-27",
+        "approximate": true,
+        "dateLabel": "c. 27 February 1845",
+        "text": "Are you not my dear friend already, and shall I not use you?",
+        "note": "Elizabeth's reply turning their growing bond into friendship, the first mutual naming.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2149",
+        "messageOrdinal": 146,
+        "sender": "Elizabeth",
+        "date": "1845-11-07",
+        "approximate": false,
+        "dateLabel": "7 November 1845",
+        "text": "And now, what will people say to this and this and this--or 'O seclum insipiens et inficetum!' or rather, O ungrateful right hand which does not thank you first!",
+        "note": "Elizabeth's grateful reading of his new book, where love of the giver exceeds the gift.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2174",
+        "messageOrdinal": 147,
+        "sender": "Robert",
+        "date": "1845-11-10",
+        "approximate": false,
+        "dateLabel": "10 November 1845",
+        "text": "There is nothing in you that does not draw out all of me.",
+        "note": "Robert's answer that she possesses him, the mirror of his earlier devotion.",
+        "callbacks": [
+          "s1"
+        ]
+      },
+      {
+        "snippetId": "s2219",
+        "messageOrdinal": 149,
+        "sender": "Elizabeth",
+        "date": "1845-11-15",
+        "approximate": false,
+        "dateLabel": "15 November 1845",
+        "text": "I read Luria's first act twice through before I slept last night, and feel just as a bullet might feel, not because of the lead of it but because shot into the air and suddenly arrested and suspended.",
+        "note": "Elizabeth reading Luria's first act, the bullet arrested in air, their creative partnership begun.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3373",
+        "messageOrdinal": 194,
+        "sender": "Robert",
+        "date": "1846-01-09",
+        "approximate": true,
+        "dateLabel": "c. 9 January 1846",
+        "text": "What are you doing to me?--in the heart's heart.",
+        "note": "Elizabeth's midnight joy at his late-arriving letter, the lovers' vigil.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3403",
+        "messageOrdinal": 196,
+        "sender": "Robert",
+        "date": "1846-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1846",
+        "text": "Ah, love,--you are my unutterable blessing,--I discover you, more of you, day by day,--hour by hour, I do think!--I am entirely yours,--one gratitude, all my soul becomes when I see you over me as now--God bless my dear, dearest.",
+        "note": "Robert's discovery of her, more of her, day by day, the deepening of love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3443",
+        "messageOrdinal": 197,
+        "sender": "Robert",
+        "date": "1846-01-12",
+        "approximate": false,
+        "dateLabel": "12 January 1846",
+        "text": "And now, my Audience, my crown-bearer, my path-preparer--I am with you again and out of them all--there, here, in my arms, is my proved palpable success!",
+        "note": "Elizabeth's walk down-stairs, the feat of recovery that closes the winter of illness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12492",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "At from half-past three to four, then—four will not, I suppose, be too late.",
+        "note": "Elizabeth's last letters in the carriage, the final journey begun.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12494",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "By to-morrow at this time, I shall have you only, to love me—my beloved!",
+        "note": "Elizabeth's farewell of the letters she cannot leave behind, the love made portable.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12508",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Do you pray for me to-night, Robert?",
+        "note": "Elizabeth's prayer for him on the last night, the voice of the final letter.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12512",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "I begin to think that none are so bold as the timid, when they are fairly roused.",
+        "note": "Elizabeth's closing word on Wilson's fidelity, the last line of the conversation.",
+        "callbacks": []
+      }
+    ]
+  }
+}

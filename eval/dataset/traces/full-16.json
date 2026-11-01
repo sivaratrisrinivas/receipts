@@ -1,0 +1,186 @@
+{
+  "condition": "full",
+  "index": 16,
+  "occasion": "missing you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:23:28.131Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 6.252,
+  "costUsd": 0.1428972,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.034,
+      "costUsd": 0.1428972,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352572,
+        "completionTokens": 1557,
+        "reasoningTokens": 1045
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first open declaration of love to Elizabeth, setting the correspondence in motion.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"Elizabeth's grateful, heartfelt reply, the beginning of their mutual regard.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's promise that spring will bring their first meeting, a recurring hope.\", \"callbacks\": []},\n    {\"id\": \"s841\", \"note\": \"Robert's refusal to go abroad, because it would mean leaving Elizabeth, a turning point in commitment.\", \"callbacks\": []},\n    {\"id\": \"s931\", \"note\": \"Elizabeth's joy at having been out and alive after it, a small triumph of health.\", \"callbacks\": []},\n    {\"id\": \"s1491\", \"note\": \"Robert's avowal that even her love bestowed elsewhere would be his pride and happiness.\", \"callbacks\": []},\n    {\"id\": \"s1665\", \"note\": \"Elizabeth deeply touched by Robert's words, a moment of surrender.\", \"callbacks\": []},\n    {\"id\": \"s2429\", \"note\": \"Robert's vow to live and die with Elizabeth's ring and hair, tokens of their bond.\", \"callbacks\": []},\n    {\"id\": \"s2825\", \"note\": \"Robert's prayer that they live and die so, sealing their lifelong union.\", \"callbacks\": []},\n    {\"id\": \"s2378\", \"note\": \"Elizabeth's delight in Robert's gifts and kindness, her warmth throughout.\", \"callbacks\": []},\n    {\"id\": \"s5656\", \"note\": \"Robert's playful kiss across the distance, their affection undimmed.\", \"callbacks\": []},\n    {\"id\": \"s8141\", \"note\": \"Elizabeth's refusal to let Robert sacrifice his money for her sake.\", \"callbacks\": []},\n    {\"id\": \"s12032\", \"note\": \"Robert's decisive plan to marry at once before Elizabeth's departure.\", \"callbacks\": []},\n    {\"id\": \"s12509\", \"note\": \"Elizabeth's final preparations, sending her letters and books ahead, ready to leave with Robert.\", \"callbacks\": []}\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s1",
+        "messageOrdinal": 0,
+        "sender": "Robert",
+        "date": "1845-01-10",
+        "approximate": false,
+        "dateLabel": "10 January 1845",
+        "text": "I do, as I say, love these books with all my heart--and I love you too.",
+        "note": "Robert's first open declaration of love to Elizabeth, setting the correspondence in motion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s3",
+        "messageOrdinal": 1,
+        "sender": "Elizabeth",
+        "date": "1845-01-11",
+        "approximate": false,
+        "dateLabel": "11 January 1845",
+        "text": "I thank you, dear Mr. Browning, from the bottom of my heart.",
+        "note": "Elizabeth's grateful, heartfelt reply, the beginning of their mutual regard.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s222",
+        "messageOrdinal": 8,
+        "sender": "Robert",
+        "date": "1845-02-26",
+        "approximate": false,
+        "dateLabel": "26 February 1845",
+        "text": "Real warm Spring, dear Miss Barrett, and the birds know it; and in Spring I shall see you, surely see you--for when did I once fail to get whatever I had set my heart upon?",
+        "note": "Robert's promise that spring will bring their first meeting, a recurring hope.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s841",
+        "messageOrdinal": 47,
+        "sender": "Robert",
+        "date": "1845-06-24",
+        "approximate": false,
+        "dateLabel": "24 June 1845",
+        "text": "As for going abroad, that is just the thing I most want to avoid (for a reason not so hard to guess, perhaps, as why my letter was slow in arriving).",
+        "note": "Robert's refusal to go abroad, because it would mean leaving Elizabeth, a turning point in commitment.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s931",
+        "messageOrdinal": 57,
+        "sender": "Elizabeth",
+        "date": "1845-07-08",
+        "approximate": false,
+        "dateLabel": "8 July 1845",
+        "text": "Well--I have really been out; and am really alive after it--which is more surprising still--alive enough I mean, to write even so, to-night.",
+        "note": "Elizabeth's joy at having been out and alive after it, a small triumph of health.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1491",
+        "messageOrdinal": 101,
+        "sender": "Robert",
+        "date": "1845-09-13",
+        "approximate": false,
+        "dateLabel": "13 September 1845",
+        "text": "If you told me your love was bestowed elsewhere, and that it was in my power to serve you there, to serve you there would still be my pride and happiness.",
+        "note": "Robert's avowal that even her love bestowed elsewhere would be his pride and happiness.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1665",
+        "messageOrdinal": 114,
+        "sender": "Elizabeth",
+        "date": "1845-09-27",
+        "approximate": false,
+        "dateLabel": "27 September 1845",
+        "text": "When I had read that letter last night I did think so.",
+        "note": "Elizabeth deeply touched by Robert's words, a moment of surrender.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2378",
+        "messageOrdinal": 154,
+        "sender": "Robert",
+        "date": "1845-11-22",
+        "approximate": false,
+        "dateLabel": "22 November 1845",
+        "text": "How good and kind to send me these books! (The letter I say nothing of, according to convention: if I wrote down 'best and kindest' ... oh, what poorest words!)",
+        "note": "Elizabeth's delight in Robert's gifts and kindness, her warmth throughout.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2429",
+        "messageOrdinal": 156,
+        "sender": "Robert",
+        "date": "1845-11-24",
+        "approximate": false,
+        "dateLabel": "24 November 1845",
+        "text": "But this shall do--I am not going to prove what may be, when here it is, to my everlasting happiness.",
+        "note": "Robert's vow to live and die with Elizabeth's ring and hair, tokens of their bond.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s2825",
+        "messageOrdinal": 173,
+        "sender": "Robert",
+        "date": "1845-12-15",
+        "approximate": false,
+        "dateLabel": "15 December 1845",
+        "text": "Every word you write goes to my heart and lives there: let us live so, and die so, if God will.",
+        "note": "Robert's prayer that they live and die so, sealing their lifelong union.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s5656",
+        "messageOrdinal": 293,
+        "sender": "Robert",
+        "date": "1846-04-01",
+        "approximate": false,
+        "dateLabel": "1 April 1846",
+        "text": "Now—dear, dearest Ba—let me begin the only way!—And so you are kissed whether you feel it or not—through the distance, what matter?",
+        "note": "Robert's playful kiss across the distance, their affection undimmed.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s8141",
+        "messageOrdinal": 402,
+        "sender": "Elizabeth",
+        "date": "1846-06-13",
+        "approximate": false,
+        "dateLabel": "13 June 1846",
+        "text": "No. I care as little for money as you do—but this thing I will not agree to, because I ought not.",
+        "note": "Elizabeth's refusal to let Robert sacrifice his money for her sake.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12032",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "I will go for a licence to-day and we can be married on Saturday.",
+        "note": "Robert's decisive plan to marry at once before Elizabeth's departure.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s12509",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "The boxes are safely sent.",
+        "note": "Elizabeth's final preparations, sending her letters and books ahead, ready to leave with Robert.",
+        "callbacks": []
+      }
+    ]
+  }
+}

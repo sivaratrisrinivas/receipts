@@ -1,0 +1,188 @@
+{
+  "condition": "last10",
+  "index": 8,
+  "occasion": "thank you",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:51.808Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 5.464,
+  "costUsd": 0.018316,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 5.087,
+      "costUsd": 0.018316,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39250,
+        "completionTokens": 2180,
+        "reasoningTokens": 1782
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\"lines\":[{\"id\":\"s43\",\"note\":\"Flush's joyful greeting captures Elizabeth's tenderness from the very start.\",\"callbacks\":[]},{\"id\":\"s79\",\"note\":\"Robert's kiss and shortened visits show his devotion before they can be together.\",\"callbacks\":[]},{\"id\":\"s136\",\"note\":\"Her declaration of love anchors the early exchange.\",\"callbacks\":[]},{\"id\":\"s223\",\"note\":\"Her promise of one heart and one life is the emotional core of the first quarter.\",\"callbacks\":[]},{\"id\":\"s578\",\"note\":\"Flush's sudden disappearance becomes a shared crisis and private joke.\",\"callbacks\":[]},{\"id\":\"s616\",\"note\":\"Robert's sympathy for poor Flush shows his care for Elizabeth's companion.\",\"callbacks\":[]},{\"id\":\"s790\",\"note\":\"Elizabeth's playful Flush parallel turns their danger into intimacy.\",\"callbacks\":[]},{\"id\":\"s845\",\"note\":\"Flush found and lying on the sofa gives the reunion its vivid, comic relief.\",\"callbacks\":[\"s578\"]},{\"id\":\"s906\",\"note\":\"Robert's delight that Flush is with Elizabeth, even if he is not, keeps their bond alive.\",\"callbacks\":[]},{\"id\":\"s933\",\"note\":\"Her practical boots for Italy show her readiness for their shared journey.\",\"callbacks\":[]},{\"id\":\"s1018\",\"note\":\"The ring promise marks the move from secret courtship to commitment.\",\"callbacks\":[]},{\"id\":\"s1045\",\"note\":\"Her brief word after the wedding carries the relief and wonder of the day.\",\"callbacks\":[]},{\"id\":\"s1149\",\"note\":\"Robert's pride and joy in Elizabeth crowns the final quarter.\",\"callbacks\":[]},{\"id\":\"s1350\",\"note\":\"The small bud he sends is a tender keepsake from their last letters.\",\"callbacks\":[]}]}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s43",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "When I opened my door on my return, Flush threw himself upon me with a most ecstatical agony, and for full ten minutes did not cease jumping and kissing my hands—he thought he had lost me for certain, this time.",
+        "note": "Flush's joyful greeting captures Elizabeth's tenderness from the very start.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert's kiss and shortened visits show his devotion before they can be together.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s136",
+        "messageOrdinal": 518,
+        "sender": "Elizabeth",
+        "date": "1846-08-25",
+        "approximate": false,
+        "dateLabel": "25 August 1846",
+        "text": "May God bless you, dearest beloved, I love, love you!",
+        "note": "Her declaration of love anchors the early exchange.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s223",
+        "messageOrdinal": 521,
+        "sender": "Elizabeth",
+        "date": "1846-08-26",
+        "approximate": false,
+        "dateLabel": "26 August 1846",
+        "text": "But if one heart and one life will do, ... they are yours ...",
+        "note": "Her promise of one heart and one life is the emotional core of the first quarter.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "Flush's sudden disappearance becomes a shared crisis and private joke.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert's sympathy for poor Flush shows his care for Elizabeth's companion.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s790",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "It seems to me that you and I are at one upon the whole question,—only that I am your Flush, and he is mine.",
+        "note": "Elizabeth's playful Flush parallel turns their danger into intimacy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s845",
+        "messageOrdinal": 544,
+        "sender": "Elizabeth",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "Only a few words to tell you that Flush is found, and lying on the sofa, with one paw and both ears hanging over the edge of it.",
+        "note": "Flush found and lying on the sofa gives the reunion its vivid, comic relief.",
+        "callbacks": [
+          "s578"
+        ]
+      },
+      {
+        "snippetId": "s906",
+        "messageOrdinal": 547,
+        "sender": "Robert",
+        "date": "1846-09-07",
+        "approximate": false,
+        "dateLabel": "7 September 1846",
+        "text": "I am delighted to know Flush is with you, if I am not.",
+        "note": "Robert's delight that Flush is with Elizabeth, even if he is not, keeps their bond alive.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s933",
+        "messageOrdinal": 548,
+        "sender": "Elizabeth",
+        "date": "1846-09-08",
+        "approximate": false,
+        "dateLabel": "8 September 1846",
+        "text": "I went out in the carriage and bought a pair of boots for Italy, besides the shoes—because, you see, we shall have such long walks in the forest after the camels, and it won’t do to go in one’s slippers.",
+        "note": "Her practical boots for Italy show her readiness for their shared journey.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1018",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "And then, you shall have the ring ... soon enough and safer.",
+        "note": "The ring promise marks the move from secret courtship to commitment.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Her brief word after the wedding carries the relief and wonder of the day.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1149",
+        "messageOrdinal": 558,
+        "sender": "Robert",
+        "date": "1846-09-14",
+        "approximate": false,
+        "dateLabel": "14 September 1846",
+        "text": "Bless you, my very own, only Ba—my pride, and joy, and utter comfort.",
+        "note": "Robert's pride and joy in Elizabeth crowns the final quarter.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1350",
+        "messageOrdinal": 564,
+        "sender": "Robert",
+        "date": "1846-09-16",
+        "approximate": false,
+        "dateLabel": "16 September 1846",
+        "text": "I can bring you no flowers but I pluck this bud and send it with all affectionate devotion.",
+        "note": "The small bud he sends is a tender keepsake from their last letters.",
+        "callbacks": []
+      }
+    ]
+  }
+}

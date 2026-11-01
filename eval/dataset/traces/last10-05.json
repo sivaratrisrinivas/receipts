@@ -1,0 +1,177 @@
+{
+  "condition": "last10",
+  "index": 5,
+  "occasion": "farewell",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:05:29.010Z",
+  "messagesRead": 58,
+  "snippetsRead": 1475,
+  "seconds": 6.532,
+  "costUsd": 0.0186,
+  "status": "ok",
+  "attempts": [
+    {
+      "seconds": 6.084,
+      "costUsd": 0.0186,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 39249,
+        "completionTokens": 2417,
+        "reasoningTokens": 1887
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\n      \"id\": \"s11\",\n      \"note\": \"Shows Elizabeth's brothers circling the secret engagement in the first days.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s50\",\n      \"note\": \"Her early plea for Flush to come to Italy, a thread through the whole correspondence.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s79\",\n      \"note\": \"Robert's first tender taking of her hand, setting the tone of their love.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s578\",\n      \"note\": \"The sudden loss of Flush becomes a shared crisis and private joke.\",\n      \"callbacks\": [\n        \"s50\"\n      ]\n    },\n    {\n      \"id\": \"s616\",\n      \"note\": \"Robert's sympathy for the lost dog mirrors his care for her.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s760\",\n      \"note\": \"Elizabeth's praise of his goodness at the height of the dog-stealer dispute.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s806\",\n      \"note\": \"Her admission that separation teaches her need of him, just before the wedding plan.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s965\",\n      \"note\": \"The sudden family removal forces the final decision to marry and leave.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s994\",\n      \"note\": \"Robert's decisive plan to marry on Saturday and go to Italy.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1014\",\n      \"note\": \"Elizabeth's surrender of her will to his as the elopement begins.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1036\",\n      \"note\": \"Robert's wedding-day avowal that words cannot tell how dear she is.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1045\",\n      \"note\": \"Elizabeth's breathless report that the secret wedding day is safely over.\",\n      \"callbacks\": []\n    },\n    {\n      \"id\": \"s1464\",\n      \"note\": \"Her final letter, asking if this is the last, closes the farewell.\",\n      \"callbacks\": []\n    }\n  ]\n}",
+  "poem": {
+    "verified": true,
+    "lines": [
+      {
+        "snippetId": "s11",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Think how frightened I was, Robert ... expecting them up-stairs every minute,—for all my brothers come here on Sunday, all together.",
+        "note": "Shows Elizabeth's brothers circling the secret engagement in the first days.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s50",
+        "messageOrdinal": 515,
+        "sender": "Elizabeth",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Dogs pine to death sometimes—and if ever a dog loved a man, or a woman, Flush loves me.",
+        "note": "Her early plea for Flush to come to Italy, a thread through the whole correspondence.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s79",
+        "messageOrdinal": 516,
+        "sender": "Robert",
+        "date": "1846-08-24",
+        "approximate": false,
+        "dateLabel": "24 August 1846",
+        "text": "Now I will kiss you, dearest: used you to divine that at the very beginning, I have sometimes shortened the visit in order to arrive at the time of taking your hand?",
+        "note": "Robert's first tender taking of her hand, setting the tone of their love.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s578",
+        "messageOrdinal": 534,
+        "sender": "Elizabeth",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "I have lost my poor Flush—lost him!",
+        "note": "The sudden loss of Flush becomes a shared crisis and private joke.",
+        "callbacks": [
+          "s50"
+        ]
+      },
+      {
+        "snippetId": "s616",
+        "messageOrdinal": 535,
+        "sender": "Robert",
+        "date": "1846-09-02",
+        "approximate": false,
+        "dateLabel": "2 September 1846",
+        "text": "Poor Flush—how sorry I am for you, my Ba!",
+        "note": "Robert's sympathy for the lost dog mirrors his care for her.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s760",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "Was ever any in the world, in any possible world, so perfectly good and dear to another as you are to me!",
+        "note": "Elizabeth's praise of his goodness at the height of the dog-stealer dispute.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s806",
+        "messageOrdinal": 541,
+        "sender": "Elizabeth",
+        "date": "1846-09-05",
+        "approximate": false,
+        "dateLabel": "5 September 1846",
+        "text": "To be parted from you so long, teaches me the necessity of your presence—I am your very, very own.",
+        "note": "Her admission that separation teaches her need of him, just before the wedding plan.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s965",
+        "messageOrdinal": 551,
+        "sender": "Elizabeth",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "Dearest, you are a prophet, I suppose—there can be no denying it.",
+        "note": "The sudden family removal forces the final decision to marry and leave.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s994",
+        "messageOrdinal": 552,
+        "sender": "Robert",
+        "date": "1846-09-10",
+        "approximate": false,
+        "dateLabel": "10 September 1846",
+        "text": "I will go for a licence to-day and we can be married on Saturday.",
+        "note": "Robert's decisive plan to marry on Saturday and go to Italy.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1014",
+        "messageOrdinal": 554,
+        "sender": "Elizabeth",
+        "date": "1846-09-11",
+        "approximate": false,
+        "dateLabel": "11 September 1846",
+        "text": "Dearest, I write one word, and have one will which is yours.",
+        "note": "Elizabeth's surrender of her will to his as the elopement begins.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1036",
+        "messageOrdinal": 555,
+        "sender": "Robert",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Words can never tell you, however,—form them, transform them anyway,—how perfectly dear you are to me—perfectly dear to my heart and soul.",
+        "note": "Robert's wedding-day avowal that words cannot tell how dear she is.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1045",
+        "messageOrdinal": 556,
+        "sender": "Elizabeth",
+        "date": "1846-09-12",
+        "approximate": false,
+        "dateLabel": "12 September 1846",
+        "text": "Ever dearest, I write a word that you may read it and know how all is safe so far, and that I am not slain downright with the day—oh, such a day!",
+        "note": "Elizabeth's breathless report that the secret wedding day is safely over.",
+        "callbacks": []
+      },
+      {
+        "snippetId": "s1464",
+        "messageOrdinal": 572,
+        "sender": "Elizabeth",
+        "date": "1846-09-19",
+        "approximate": false,
+        "dateLabel": "19 September 1846",
+        "text": "Is this my last letter to you, ever dearest?",
+        "note": "Her final letter, asking if this is the last, closes the farewell.",
+        "callbacks": []
+      }
+    ]
+  }
+}
