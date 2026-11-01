@@ -55,6 +55,31 @@ There is no Receipts server. Your chat goes from your browser to Beam through Hu
 
 Anyone can upload their own export. Making a poem needs a Hugging Face account with a little credit on it, because the AI work is billed to your account, not ours. A poem costs about $0.15, and up to about $0.25 for a very long chat. A new free account may have no credit until you add some.
 
+## Getting started
+
+You need a phone or laptop, a free [Hugging Face](https://huggingface.co/join) account, and a little credit on that account (a poem costs about $0.15 to $0.25).
+
+**1. Look first (no sign-in).** Open [huggingface.co/spaces/Srini410/receipts](https://huggingface.co/spaces/Srini410/receipts). You'll see six finished poems made from the demo letters, one for each occasion. Tap a line to see the original letter around it.
+
+**2. Sign in.** Tap **Sign in with Hugging Face** and approve the request on the Hugging Face page. You never type an API key.
+
+**3. Make a poem from the demo letters.** Choose an occasion, add a note for Beam if you like ("she just retired"), and tap **Make my Gallery Poem**. A progress bar shows while Beam reads. It usually takes under a minute. If you see an error, tap the retry button.
+
+**4. Or use your own WhatsApp chat.**
+1. In WhatsApp, open a chat with one other person, then export it **without media**. Android: ⋮ menu, **More**, **Export chat**. iPhone: tap the person's name, then **Export Chat**. Save it to your phone's Files. You get a `.txt` (Android) or `.zip` (iPhone). Use the `.zip` as it is.
+2. In Receipts, tap **Use my own WhatsApp chat instead**, then **Choose your chat file**.
+3. Under **Who is who?**, choose which person is you and who the poem is for.
+4. If asked "6 March or 3 June?", pick the right date. This only appears when the export can't tell.
+5. Check the message count and the privacy note, then tap **Continue**. Pick an occasion and tap the make button, which reads "Make the Poem for" and the name you chose.
+
+**5. Read your poem.** Lines appear one by one, each with who said it and when. When every line has been checked against the original chat, the "every line is real" badge appears.
+
+**6. Make it yours.** Beam's private notes explain why each line was chosen. Tap a line to see the real messages around it. **Remove** a line or **Replace** it with another from the same time, or **Regenerate the Poem** for a fresh take. You can't reword a line or change the order. A poem keeps at least 6 lines.
+
+**7. Make the card.** Under **Make it a Card**, add a title if you want one (it's your words, Beam writes nothing). Then tap **Share the image** or **Save the image** (on a laptop, **Save as an image (PNG)**), **Print**, or **Download the Card (HTML)** for the web page version where each line opens to its original message. Beam's notes are never included.
+
+**8. Clean up.** Delete the exported chat file from your phone when you're done. It holds your whole conversation.
+
 ## What to expect
 
 - **A minute or less.** A progress bar shows while Beam reads. A successful run usually finishes in under a minute.
