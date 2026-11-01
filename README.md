@@ -45,6 +45,7 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 ?beam=truncated    # Beam ran out of room, then a retry works
 ?beam=expired      # sign-in refused (HTTP 401)
 ?beam=slow         # never finishes: the "taking longer" state
+?beam=replace-fails  # the Poem works; the first Replace fails, then works
 ```
 
 ## Deploying the Space
@@ -58,6 +59,10 @@ OAuth cannot complete on localhost, so `npm run dev` serves your own Hugging Fac
 - The Beam port is the only seam to the outside world. `createHfBeam` (`src/beam/hf.ts`) is the real adapter (HF router, streaming, `reasoning_effort: "low"`, `max_completion_tokens: 60000`, strict `json_schema`); `createFakeBeam` (`src/beam/fake.ts`) is a scriptable stand-in for tests and local work.
 - Truncation, malformed answers, HTTP and network failures reject with a `BeamError` carrying `reason` and `retryable`.
 - Beam only ever returns Snippet IDs and Notes ([ADR-0002](docs/adr/0002-beam-picks-snippet-ids-code-owns-order-and-text.md)); the Poem's text, Receipts and order come from the Conversation.
+
+## Working with the Poem
+
+After the reveal the Giver can remove a Line, replace one, or regenerate the Poem; there is deliberately no way to edit a Line's text or move a Line. The logic is pure and lives in `src/editing.ts`: `removeLine`, and `replaceLine`, which makes **one** Beam call, shows Beam only the Snippets between the Line's neighbours (minus the current and removed ones, and only the Giver's and Recipient's), asks for a strict `{ "id": ... }`, and verifies the answer like any pick (it exists, lies in that period, is neither current nor removed). `src/context.ts` finds a Line inside its original Message and turns the verified callback IDs in a Note into links. `app.removeLine`, `app.replaceLine` and `app.regenerate` (which reruns the pipeline with the same choices) drive them. The screen is one feature module, `src/ui/features/notes-and-edit.ts`; everything in it is Giver-only (class `giver-only`, hidden when printing) and nothing the Card is built from reads it.
 
 ## Long and small Conversations
 

@@ -99,7 +99,11 @@ export async function replaceLine({ draft, snippetId, snippets, beam, onProgress
   const before = next === undefined ? Infinity : timelineIndex(next);
 
   const unavailable = new Set([...draft.removed, snippetId]);
-  const candidates = snippets.filter((snippet) => snippet.index > after && snippet.index < before && !unavailable.has(snippet.id));
+  // Only the Giver's and the Recipient's words are ever sent to Beam.
+  const heard = (snippet: Snippet) => snippet.sender === poem.giver || snippet.sender === poem.recipient;
+  const candidates = snippets.filter(
+    (snippet) => snippet.index > after && snippet.index < before && !unavailable.has(snippet.id) && heard(snippet),
+  );
   if (candidates.length === 0) {
     throw new EditError('no-alternatives', 'There is nothing else from that time to replace this Line with.');
   }

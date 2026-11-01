@@ -4,6 +4,7 @@
 
 import { describe, expect, test } from 'vitest';
 import { BeamError, createFakeBeam, makePoem, type PoemOutcome } from '../src';
+import { renderCardHtml } from '../src/card';
 import { EditError, draftOf, removeLine, replaceLine } from '../src/editing';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
 import { idOf, promptSnippets } from './support/prompt';
@@ -245,6 +246,20 @@ describe('what replacing leaves behind', () => {
   });
 });
 
+describe('only the Giver and the Recipient are heard', () => {
+  test('a Snippet from anyone else is never offered to Beam, and is rejected if Beam names it anyway', async () => {
+    const outcome = await galleryPoem();
+    const bystander = outcome.snippets.find((snippet) => snippet.text.startsWith('Thank you a thousand times'))!;
+    const snippets = outcome.snippets.map((snippet) => (snippet === bystander ? { ...snippet, sender: 'Papa' } : snippet));
+    const beam = createFakeBeam(() => ({ raw: JSON.stringify({ id: bystander.id }) }));
+
+    const failure = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[2]!.snippetId, snippets, beam }).catch((e: unknown) => e);
+
+    expect(promptSnippets(beam.requests[0]!).map((snippet) => snippet.id)).not.toContain(bystander.id);
+    expect(failure).toMatchObject({ reason: 'invalid-response' });
+  });
+});
+
 describe('what the Giver can never do', () => {
   test('whatever they remove or replace, every Line stays its Snippet\'s own text, in date order', async () => {
     const outcome = await galleryPoem();
@@ -267,5 +282,21 @@ describe('what the Giver can never do', () => {
 
     expect(() => removeLine(one, one.poem.lines[0]!.snippetId)).toThrowError(expect.objectContaining({ reason: 'last-line' }));
     expect(() => removeLine(one, poem.lines[0]!.snippetId)).toThrowError(expect.objectContaining({ reason: 'unknown-line' }));
+  });
+});
+
+describe('an edited Poem still leaves its Notes behind', () => {
+  test('after removing and replacing, the Card made from the Poem holds no Note and no callback', async () => {
+    const outcome = await galleryPoem();
+    let draft = removeLine(draftOf(outcome.poem), outcome.poem.lines[4]!.snippetId);
+    draft = await replaceLine({ draft, snippetId: draft.poem.lines[2]!.snippetId, snippets: outcome.snippets, beam: replacingWith('You were kind to come') });
+    // A Note from Beam, with a callback, on a Line that survived the edits.
+    const withNote = { ...draft.poem, lines: draft.poem.lines.map((line, i) => (i === 0 ? { ...line, note: 'PRIVATE-NOTE: it echoes s3', callbacks: ['s3'] } : line)) };
+
+    const html = renderCardHtml(withNote, outcome.conversation);
+
+    expect(html).toContain('You were kind to come');
+    expect(html).not.toContain('PRIVATE-NOTE');
+    expect(html).not.toContain('echoes');
   });
 });
