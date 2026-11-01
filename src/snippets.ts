@@ -7,6 +7,10 @@
 // or a quote and end with terminal punctuation: people write chats in lower case, with
 // no full stops, one thought to a line, so there a line break ends a thought and a
 // full stop ends a sentence whatever comes next.
+//
+// A chat Snippet must also have something to say (see {@link hasSomethingToSay}). The test is
+// structural, never a list of English words, so it reads Telugu script and Telugu in English
+// letters the same way it reads English: what counts is letters, not which language they spell.
 
 import type { Conversation, Message, Snippet } from './domain';
 
@@ -56,8 +60,9 @@ function snippetTexts(message: Message, kind: Conversation['kind']): string[] {
 
   return candidates.filter((candidate) => {
     const words = wordCount(candidate);
-    if (words < MIN_WORDS || words > MAX_WORDS) return false;
-    return !letters || (startsLikeASentence(candidate) && endsLikeASentence(candidate));
+    if (words > MAX_WORDS) return false;
+    if (!letters) return hasSomethingToSay(candidate);
+    return words >= MIN_WORDS && startsLikeASentence(candidate) && endsLikeASentence(candidate);
   });
 }
 
@@ -78,10 +83,44 @@ function splitSentences(paragraph: string, capitalsMatter: boolean): string[] {
   return sentences;
 }
 
+/** A link: it is part of the Snippet's text, but it is not something either person said. */
+const URL = /(?:https?:\/\/|www\.)\S+/giu;
+
+/** The fewest letters (with their vowel signs) a chat Snippet has besides its links: "I love you" has exactly eight. */
+const MIN_LETTERS = 8;
+
+/** The smallest share of a chat Snippet's characters that are letters or digits; the rest may be emoji, symbols and punctuation. */
+const MIN_LETTER_SHARE = 0.5;
+
+/**
+ * Whether a chat Snippet says something, judged on its letters alone: at least {@link MIN_WORDS} words that
+ * have a letter in them (a link, an emoji or a bare number is not a word), at least {@link MIN_LETTERS}
+ * letters, at least two different words once stretched-out spellings are squeezed ("nooo" is "no"), and
+ * letters and digits at least half of what is written. A letter is any `\p{L}` and its combining marks
+ * `\p{M}`, which is what makes a Telugu word one word and its vowel signs part of its letters.
+ */
+function hasSomethingToSay(text: string): boolean {
+  // Variation selectors and joiners are Unicode marks too, but they belong to emoji.
+  const spoken = text.replace(URL, ' ').replace(/[\uFE00-\uFE0F\u200C\u200D]/gu, '');
+  const words = spoken.split(/\s+/u).filter((token) => /\p{L}/u.test(token));
+  if (words.length < MIN_WORDS) return false;
+
+  const letters = [...spoken].filter((char) => /[\p{L}\p{M}]/u.test(char)).length;
+  if (letters < MIN_LETTERS) return false;
+
+  const characters = [...spoken.replace(/\s+/gu, '')];
+  const wordy = characters.filter((char) => /[\p{L}\p{M}\p{N}]/u.test(char)).length;
+  if (wordy / characters.length < MIN_LETTER_SHARE) return false;
+
+  const distinct = new Set(words.map((word) => word.toLowerCase().replace(/[^\p{L}\p{M}\p{N}]/gu, '').replace(/(.)\1+/gu, '$1')));
+  return distinct.size >= 2;
+}
+
 function startsNextSentence(token: string, next: string, capitalsMatter: boolean): boolean {
   if (capitalsMatter) return startsLikeASentence(next);
-  // "wait... what do you mean" is one thought; an ellipsis only ends one before a capital.
-  return !(/(?:\.\.\.|…)["'’”)\]]*$/.test(token) && /^\p{Ll}/u.test(next));
+  // "wait... what do you mean" is one thought; an ellipsis only ends one before a capital. A script with no
+  // capitals (Telugu, say) goes on in lower case in this sense too.
+  return !(/(?:\.\.\.|…)["'’”)\]]*$/.test(token) && /^[\p{Ll}\p{Lo}]/u.test(next));
 }
 
 function startsLikeASentence(text: string): boolean {

@@ -13,6 +13,8 @@ export const reviewStep: StepFactory = (app, state) => {
     { class: 'step step-review' },
     h('h2', { tabindex: '-1' }, 'Ready when you are'),
     h('p', { class: 'count' }, review.headline),
+    review.leftOutNote && h('p', { class: 'aside left-out' }, review.leftOutNote),
+    h('p', { class: `aside language-notice${review.languageNotice.strong ? ' strong' : ''}`, role: 'note' }, review.languageNotice.text),
     h(
       'div',
       { class: 'privacy' },

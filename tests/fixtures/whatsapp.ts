@@ -50,6 +50,9 @@ export const android24h = [
 /** How many Messages Mom and Sam sent in {@link android24h}: 4 + 3 of their own, and the filler. */
 export const ANDROID_24H_MESSAGES = 7 + 12;
 
+/** How many of those are sent to Beam: all but Sam's one-word "ok". */
+export const ANDROID_24H_SENT = ANDROID_24H_MESSAGES - 1;
+
 /** Android, 12h clock with U+202F before AM/PM, month first (13 in the second position). */
 export const android12h = [
   `3/12/24, 9:15${NNBSP}PM - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.`,

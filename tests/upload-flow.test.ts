@@ -11,7 +11,7 @@ import type { AuthPort, Session } from '../src/app/auth';
 import { PRIVACY_STATEMENT, reviewOf } from '../src/app/upload';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
 import { promptSnippets } from './support/prompt';
-import { ambiguousDates, ANDROID_24H_MESSAGES, android24h, FAMILY_GROUP_MESSAGES, familyGroup, ios24h } from './fixtures/whatsapp';
+import { ambiguousDates, ANDROID_24H_SENT, android24h, FAMILY_GROUP_MESSAGES, familyGroup, ios24h } from './fixtures/whatsapp';
 
 const session: Session = { accessToken: 'hf_test', expiresAt: Date.now() + 3_600_000, username: 'giver' };
 
@@ -179,8 +179,8 @@ describe('before sending', () => {
     const state = app.getState();
     expect(state.step).toBe('review');
     expect(reviewOf(state.chat!)).toMatchObject({
-      count: ANDROID_24H_MESSAGES,
-      headline: `${ANDROID_24H_MESSAGES} Messages from Mom and you`,
+      count: ANDROID_24H_SENT,
+      headline: `${ANDROID_24H_SENT} Messages from Mom and you`,
       privacy: PRIVACY_STATEMENT,
       others: false,
     });

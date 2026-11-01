@@ -138,6 +138,7 @@ function instructions({ conversation, snippets, occasion, giver, recipient, note
     `Read the whole Conversation. Choose ${lineRange.min} to ${lineRange.max} Snippets that together tell the story of these two people over time: the early moments, the turns, the private jokes and callbacks, the moments only they would recognise. Prefer concrete, specific, vivid Snippets over generic sentiment. Each Snippet must stand on its own as a Line.`,
     `Spread your picks across the whole timeline: choose at least one Line from each quarter of it. The Conversation is divided into four quarters of equal time by marker lines (${QUARTER_MARKER_PREFIX}n of 4: first date to last date ===), each placed just before the first Message of that quarter; a Snippet belongs to the quarter whose marker most recently comes before it. A quarter with no Messages has no marker (skip it).`,
     `Include both Senders.`,
+    ...(conversation.kind === 'chat' ? [CHAT_NOTE] : []),
     `Avoid private matters such as money, health details, addresses and passwords.`,
     `Code will sort your picks by date, so choose Lines that read well in chronological order.`,
     `While reasoning, refer to Snippets by ID only; never copy, quote or describe their text.${tooMany} Think in one short line per quarter, naming 2 to 4 candidate IDs and nothing else, for example "${REASONING_EXAMPLE}". Then pick your ${lineRange.min} to ${lineRange.max} Lines from those candidates and answer.`,
@@ -155,6 +156,14 @@ function people(conversation: Conversation): string {
   const label = senderLabels(conversation.senders);
   return conversation.senders.map((sender) => `${redactText(sender)} (${label(sender)})`).join(' and ');
 }
+
+/**
+ * Said only about a chat, never about the Gallery's letters (whose prompt must not change). Beam's model card says it
+ * was "developed predominantly for English" and says nothing of Telugu, and a small casual chat is mostly plans
+ * and one-word replies.
+ */
+const CHAT_NOTE =
+  'This Conversation is a chat. It may mix languages, or write one language in another\'s letters (for example Telugu in English letters, or in Telugu script). Judge each Snippet by its meaning and feeling, not by its language. Prefer Snippets with a specific detail, a real feeling or humour; skip plans, logistics and one-word replies. Write each private Note in English, whatever language the Snippet is in.';
 
 /** From this many Snippets, the prompt says outright that there are too many to go through one by one. */
 const LONG_CONVERSATION_SNIPPETS = 1_000;

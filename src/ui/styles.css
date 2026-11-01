@@ -171,6 +171,11 @@ a {
   color: var(--muted);
 }
 
+/* The review step's language line: plain advice, a little firmer for a chat mostly in another script. */
+.language-notice.strong {
+  font-weight: 600;
+}
+
 .optional {
   color: var(--muted);
   font-weight: 400;
