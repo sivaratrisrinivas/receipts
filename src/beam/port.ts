@@ -46,6 +46,8 @@ export type BeamErrorReason =
   | 'truncated'
   /** Beam answered, but not in the agreed shape, or with nothing usable. */
   | 'invalid-response'
+  /** Beam answered with real Snippets, but too few or too many of them to make a Poem of the right size. */
+  | 'wrong-size'
   /** The HTTP request failed (status carried in the message). */
   | 'http'
   /** Beam (or the router) reported an error part-way through its streamed answer. */

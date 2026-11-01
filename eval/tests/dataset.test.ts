@@ -16,15 +16,21 @@ const conversation = readConversation({ kind: 'gallery', texts });
 async function finishedRun(dir: string) {
   const beam = withUsage(
     createFakeBeam((request) => {
-      // Beam on the last 10% is not shown the first letters, so it picks from the end.
-      const [first, reply] = request.user.includes(fragment(0, 1))
-        ? [fragment(0, 1), fragment(1, 1)]
-        : [fragment(53, 1), fragment(54, 1)];
+      // A Poem is 8 to 14 Lines for the full Conversation and 6 to 8 for the last 10%, which Beam
+      // is shown without the first letters: so it picks the first six letters of what it is shown
+      // (and, for the full Conversation, a second sentence of the first two).
+      const full = request.user.includes(fragment(0, 1));
+      const letters = full ? [0, 1, 2, 3, 4, 5] : [49, 50, 51, 52, 53, 54];
+      const [first, reply] = full ? [fragment(0, 1), fragment(1, 1)] : [fragment(49, 1), fragment(50, 1)];
+      const fragments = [...letters.map((letter) => fragment(letter, 1)), ...(full ? [fragment(0, 2), fragment(1, 2)] : [])];
       return {
-        picks: [
-          { id: idOf(request, first), note: 'The first letter.' },
-          { id: idOf(request, reply), note: 'The reply.', callbacks: [idOf(request, first)] },
-        ],
+        picks: fragments.map((text) =>
+          text === first
+            ? { id: idOf(request, text), note: 'The first letter.' }
+            : text === reply
+              ? { id: idOf(request, text), note: 'The reply.', callbacks: [idOf(request, first)] }
+              : { id: idOf(request, text), note: 'And more.' },
+        ),
       };
     }),
     { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens: 29_000 },
@@ -110,7 +116,9 @@ describe('the cost of failed calls', () => {
   test('the README prices a call that reported no tokens at the group\'s reported prompt size, as a best estimate', async () => {
     const dir = tempDir();
     const good = withUsage(
-      createFakeBeam((request) => ({ picks: [{ id: idOf(request, fragment(0, 1)), note: 'The first letter.' }] })),
+      createFakeBeam((request) => ({
+        picks: [0, 1, 2, 3, 4, 5, 6, 7].map((letter) => ({ id: idOf(request, fragment(letter, 1)), note: 'A letter.' })),
+      })),
       { promptTokens: 500_000, completionTokens: 30_000, reasoningTokens: 29_000 },
     );
     let calls = 0;

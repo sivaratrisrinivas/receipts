@@ -3,6 +3,7 @@
 // one the Gallery reader understands (`_R.B. to E.B.B._` markers, a dated header, one
 // paragraph of prose); every word is invented for these tests.
 
+import type { PoemRequest } from '../../src';
 import type { IsoDate } from '../../src/domain';
 
 export interface SyntheticLetter {
@@ -64,3 +65,21 @@ export const tooShortBody = () => 'Thank you.';
 
 /** One long Snippet each: 36 long words, so a few thousand of them overflow the token budget. */
 export const heavyBody = (n: number) => `Remembering ${n}, ${Array(35).fill('extraordinarily').join(' ')}.`;
+
+/** A request for a Poem from a Gallery-shaped volume, Robert to Elizabeth. */
+export function requestFor(volume: string): PoemRequest {
+  return {
+    source: { kind: 'gallery', texts: [volume] },
+    occasion: 'anniversary',
+    giver: 'Robert',
+    recipient: 'Elizabeth',
+  };
+}
+
+/** A Conversation with exactly `usable` Snippets, plus `unusable` letters too short to count. */
+export function conversationWith(usable: number, unusable = 0): PoemRequest {
+  const days = spreadDays(usable + unusable, 1);
+  const usableLetters = lettersOnDays(days.slice(0, usable), 1, shortBody);
+  const unusableLetters = lettersOnDays(days.slice(usable), 1, tooShortBody);
+  return requestFor(volumeOfLetters([...usableLetters, ...unusableLetters]));
+}

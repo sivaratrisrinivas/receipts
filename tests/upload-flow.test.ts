@@ -10,15 +10,21 @@ import { createApp, type ChatFile } from '../src/app/app';
 import type { AuthPort, Session } from '../src/app/auth';
 import { PRIVACY_STATEMENT, reviewOf } from '../src/app/upload';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
+import { promptSnippets } from './support/prompt';
 import { ambiguousDates, ANDROID_24H_MESSAGES, android24h, FAMILY_GROUP_MESSAGES, familyGroup, ios24h } from './fixtures/whatsapp';
 
 const session: Session = { accessToken: 'hf_test', expiresAt: Date.now() + 3_600_000, username: 'giver' };
 
-/** A fake Beam that picks the first Snippet it is shown. */
+/**
+ * A fake Beam that picks 8 Snippets spread evenly over the ones it is shown (a whole Poem in
+ * either size tier, with a stretch of Conversation between its Lines), or the first as a replacement.
+ */
 function pickingBeam() {
   return createFakeBeam((request) => {
-    const id = /^(s\d+) /m.exec(request.user)![1]!;
-    return request.responseFormat.name === 'replacement' ? { raw: JSON.stringify({ id }) } : { picks: [{ id, note: 'The very first thing.' }] };
+    const shown = promptSnippets(request);
+    if (request.responseFormat.name === 'replacement') return { raw: JSON.stringify({ id: shown[0]!.id }) };
+    const spread = Array.from({ length: 8 }, (_, i) => shown[Math.round((i * (shown.length - 1)) / 7)]!);
+    return { picks: spread.map(({ id }) => ({ id, note: 'A spread-out thing.' })) };
   });
 }
 

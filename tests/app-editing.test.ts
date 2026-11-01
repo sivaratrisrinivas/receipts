@@ -15,6 +15,7 @@ const FIRST_POEM = [
   'I wrote this on a wet afternoon',
   'Come and see the sea',
   'The post comes at nine',
+  'Dr. Chambers says I may walk',
   'I have read your letter again',
   'I am unhappy enough',
   'I never write more gladly',
@@ -65,17 +66,21 @@ describe('removing a Line', () => {
 
     app.removeLine(third!.snippetId);
 
-    expect(linesOf(app)).toEqual(['I wrote this on a ', 'Come and see the s', 'I have read your l', 'I am unhappy enoug', 'My own dearest, if']);
+    expect(linesOf(app)).toEqual(['I wrote this on a ', 'Come and see the s', 'Dr. Chambers says ', 'I have read your l', 'I am unhappy enoug', 'My own dearest, if']);
     expect(app.getState().editing.removed).toEqual([third!.snippetId]);
   });
 
-  test('the last Line cannot be removed', async () => {
-    const { app } = await withPoem(createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this on a wet afternoon'), note: 'The only one.' }] })));
-    const only = app.getState().outcome!.poem.lines[0]!;
+  test('a Poem cannot go below 6 Lines: the seventh can be removed, the sixth cannot', async () => {
+    const { app } = await withPoem();
+    const [first, second] = app.getState().outcome!.poem.lines;
+    expect(app.getState().outcome!.poem.lines).toHaveLength(7);
 
-    app.removeLine(only.snippetId);
+    app.removeLine(first!.snippetId);
+    expect(app.getState().outcome!.poem.lines).toHaveLength(6);
+    app.removeLine(second!.snippetId);
 
-    expect(app.getState().outcome!.poem.lines).toHaveLength(1);
+    expect(app.getState().outcome!.poem.lines).toHaveLength(6);
+    expect(app.getState().editing.removed).toEqual([first!.snippetId]);
   });
 });
 
@@ -89,7 +94,7 @@ describe('replacing a Line', () => {
     await app.replaceLine(third.snippetId);
 
     expect(seen).toEqual([third.snippetId, null]);
-    expect(linesOf(app)).toEqual(['I wrote this on a ', 'Come and see the s', 'Thank you a thousa', 'I have read your l', 'I am unhappy enoug', 'My own dearest, if']);
+    expect(linesOf(app)).toEqual(['I wrote this on a ', 'Come and see the s', 'Thank you a thousa', 'Dr. Chambers says ', 'I have read your l', 'I am unhappy enoug', 'My own dearest, if']);
     expect(app.getState().editing).toEqual({ removed: [third.snippetId], replacement: null });
   });
 
@@ -152,7 +157,7 @@ describe('replacing a Line', () => {
   test('with nothing else to choose from the Giver is told, and Beam is not asked', async () => {
     const { app, beam } = await withPoem(
       createFakeBeam((request) => ({
-        picks: ['I wrote this on a wet afternoon', 'Mr. Kenyon says', 'I laughed aloud in the omnibus'].map((fragment) => ({ id: idOf(request, fragment), note: 'Close together.' })),
+        picks: ['I wrote this on a wet afternoon', 'Mr. Kenyon says', 'I laughed aloud in the omnibus', 'I have read your letter again', 'I am unhappy enough', 'I never write more gladly'].map((fragment) => ({ id: idOf(request, fragment), note: 'Close together.' })),
       })),
     );
 
