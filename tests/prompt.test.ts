@@ -10,7 +10,7 @@ import { POEM_RESPONSE_FORMAT, QUARTER_MARKER_PREFIX, buildPrompt, renderSnippet
 import { quarterBoundaries } from '../src/quarters';
 import type { Conversation } from '../src/domain';
 import { lettersOnDays, shortBody, volumeOfLetters } from './fixtures/letters';
-import { promptSnippets } from './support/prompt';
+import { padPicks, promptSnippets } from './support/prompt';
 
 /** Letters on these dates, like the Gallery: the Conversation is far denser late on than early. */
 function requestOn(days: string[], { perDay = 1 } = {}): PoemRequest {
@@ -36,7 +36,8 @@ const everyQuarter = [...daysFrom('1845-01-10', 3, 20), ...daysFrom('1845-11-01'
 const quietSecondQuarter = [...daysFrom('1845-01-10', 5, 10), ...daysFrom('1845-11-15', 15, 7), ...daysFrom('1846-03-20', 25, 5), '1846-08-02'];
 
 async function promptFor(request: PoemRequest): Promise<BeamRequest> {
-  const beam = createFakeBeam((sent) => ({ picks: [{ id: /^(s\d+) /m.exec(sent.user)![1]!, note: 'Any.' }] }));
+  // The first eight Snippets: a whole Poem in the full-size tier these Conversations are in.
+  const beam = createFakeBeam((sent) => ({ picks: padPicks(sent, [], 8) }));
   await makePoem(request, beam);
   return beam.requests[0]!;
 }
