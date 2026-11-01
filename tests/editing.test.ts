@@ -3,10 +3,11 @@
 // inside the editing module.
 
 import { describe, expect, test } from 'vitest';
-import { BeamError, createFakeBeam, makePoem, type PoemOutcome } from '../src';
+import { BeamError, createFakeBeam, estimateTokens, INPUT_TOKEN_BUDGET, makePoem, type PoemOutcome } from '../src';
 import { renderCardHtml } from '../src/card';
 import { EditError, draftOf, removeLine, replaceLine } from '../src/editing';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
+import { heavyBody, lettersOnDays, spreadDays, volumeOfLetters } from './fixtures/letters';
 import { idOf, promptSnippets } from './support/prompt';
 
 /** Six Lines spread over the Gallery, picked in a scrambled order. */
@@ -110,6 +111,67 @@ describe('replacing a Line', () => {
     const offered = promptSnippets(beam.requests[0]!).map((snippet) => snippet.text);
     expect(offered).not.toContain(chambers.text);
     expect(offered).toContain('My sisters teased me all evening about the visitor and the flowers.');
+  });
+});
+
+describe('replacing a Line in a very long stretch of the Conversation', () => {
+  /** A Poem of one Line (the first Snippet) made from `days` days of heavy letters, `perDay` a day. */
+  async function longPoem(days: number, perDay: number, years: number): Promise<PoemOutcome> {
+    const beam = createFakeBeam((request) => ({ picks: [{ id: promptSnippets(request)[0]!.id, note: 'Any.' }] }));
+    return makePoem(
+      {
+        source: { kind: 'gallery', texts: [volumeOfLetters(lettersOnDays(spreadDays(days, years), perDay, heavyBody))] },
+        occasion: 'anniversary',
+        giver: 'Robert',
+        recipient: 'Elizabeth',
+      },
+      beam,
+    );
+  }
+
+  test('the Snippets Beam is shown fit the input budget, as whole days dropped evenly', async () => {
+    const outcome = await longPoem(1800, 4, 9);
+    // Replacing the only Line offers everything after it: far more than one call can hold.
+    expect(estimateTokens(outcome.snippets.map((snippet) => snippet.text).join('\n'))).toBeGreaterThan(INPUT_TOKEN_BUDGET);
+    const beam = createFakeBeam((request) => ({ raw: JSON.stringify({ id: promptSnippets(request)[0]!.id }) }));
+
+    const { poem } = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[0]!.snippetId, snippets: outcome.snippets, beam });
+
+    const [request] = beam.requests;
+    expect(estimateTokens(request!.system + request!.user)).toBeLessThanOrEqual(INPUT_TOKEN_BUDGET);
+    const offered = promptSnippets(request!);
+    expect(offered.length).toBeGreaterThan(1000);
+    // 4 Snippets a day, so no day is cut in half; only the Line being replaced is missing from its day.
+    const perDay = new Map<string, number>();
+    for (const header of request!.user.split('\n').filter((row) => row.startsWith('## '))) {
+      const date = header.slice(5);
+      perDay.set(date, (perDay.get(date) ?? 0) + 1);
+    }
+    expect([...perDay.values()].filter((count) => count !== 4)).toEqual([3]);
+    expect(perDay.size).toBeLessThan(1800);
+    expect(poem.lines).toHaveLength(1);
+    expect(poem.lines[0]!.snippetId).not.toBe(outcome.poem.lines[0]!.snippetId);
+  });
+
+  test('a stretch short enough to fit is sent whole', async () => {
+    const outcome = await galleryPoem();
+    const beam = replacingWith('Thank you a thousand times for the flowers');
+
+    await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[2]!.snippetId, snippets: outcome.snippets, beam });
+
+    expect(promptSnippets(beam.requests[0]!)).toHaveLength(4);
+  });
+
+  test('a single day too long for one call is refused honestly, and Beam is not called', async () => {
+    const outcome = await longPoem(1800, 4, 9);
+    const oneDay = outcome.snippets.map((snippet) => ({ ...snippet, date: outcome.snippets[0]!.date }));
+    const beam = createFakeBeam(() => ({ raw: JSON.stringify({ id: 's1' }) }));
+
+    const failure = await replaceLine({ draft: draftOf(outcome.poem), snippetId: outcome.poem.lines[0]!.snippetId, snippets: oneDay, beam }).catch((e: unknown) => e);
+
+    expect(failure).toBeInstanceOf(EditError);
+    expect(failure).toMatchObject({ reason: 'no-alternatives', message: expect.stringMatching(/too long/i) });
+    expect(beam.requests).toHaveLength(0);
   });
 });
 

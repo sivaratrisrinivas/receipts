@@ -163,7 +163,7 @@ function lineActions({ app, poem, line, index }: LineSlotContext): Node | null {
     if (mine === null) return;
     const { problem } = mine;
     status.replaceChildren(
-      problem ? problem.message : 'Beam is choosing another Snippet from that time. This takes a few seconds.',
+      problem ? problem.message : 'Beam is choosing another Snippet from that time. This can take up to a minute when that stretch of the Conversation is long.',
       ...(problem?.help ? [h('a', { href: problem.help.href, target: '_blank', rel: 'noopener' }, problem.help.label)] : []),
     );
   });

@@ -9,6 +9,7 @@ import { BeamError, requireContent, type BeamPort, type BeamProgress, type BeamR
 import type { Line, Poem, Snippet } from './domain';
 import { renderSnippets, senderLabels } from './prompt';
 import { redactText } from './redaction';
+import { fitToBudget } from './selection';
 import { lineOf } from './verification';
 
 /** A Poem being worked on, with the Snippets the Giver has taken out of it. */
@@ -74,7 +75,8 @@ export const REPLACEMENT_RESPONSE_FORMAT: ResponseFormat = {
 /**
  * Replace a Line with a different Snippet from the same period: one Beam call, shown only
  * the Snippets between the Line's neighbours, so the new Line keeps the old one's place in
- * the timeline.
+ * the timeline. A period too long for one call is thinned to fit, by whole days, exactly as
+ * the whole Conversation is.
  *
  * Beam's answer is verified like any pick: the ID must exist, lie in that period, and be
  * neither the current Line nor one the Giver removed. Anything else is a retryable
@@ -109,8 +111,15 @@ export async function replaceLine({ draft, snippetId, snippets, beam, onProgress
     throw new EditError('no-alternatives', 'There is nothing else from that time to replace this Line with.');
   }
 
-  const completion = await beam.complete(replacementPrompt(poem, current, candidates), onProgress);
-  const replacement = candidates.find((snippet) => snippet.id === parseReplacementId(requireContent(completion)));
+  // The period can be most of a long Conversation (replacing the last Line of a Poem), so it
+  // is read the way the whole Conversation is: whole days dropped evenly to fit one call.
+  const offered = fitToBudget(candidates)?.snippets;
+  if (offered === undefined) {
+    throw new EditError('no-alternatives', 'That stretch of the Conversation is too long to search for a replacement. Remove this Line instead, or make the Poem again.');
+  }
+
+  const completion = await beam.complete(replacementPrompt(poem, current, offered), onProgress);
+  const replacement = offered.find((snippet) => snippet.id === parseReplacementId(requireContent(completion)));
   if (replacement === undefined) {
     throw new BeamError('invalid-response', 'Beam did not pick one of the Snippets it was offered. Trying again may work.', true);
   }
