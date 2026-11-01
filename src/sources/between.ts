@@ -5,12 +5,12 @@
 import type { Conversation, Sender } from '../domain';
 import { ExportError } from './whatsapp';
 
-/** The Messages sent by `giver` or `recipient`, renumbered so ordinals still run 0, 1, 2, ... */
+/**
+ * The Messages sent by `giver` or `recipient`, renumbered so ordinals still run 0, 1, 2, ...
+ * Someone who never wrote simply leaves less to read; with too little there is no Poem.
+ */
 export function between(conversation: Conversation, giver: Sender, recipient: Sender): Conversation {
   if (giver === recipient) throw new ExportError('A Poem needs two different people: the Giver and the Recipient.');
-  for (const person of [giver, recipient]) {
-    if (!conversation.senders.includes(person)) throw new ExportError(`${person} did not send any Messages in this Conversation.`);
-  }
   const messages = conversation.messages
     .filter((message) => message.sender === giver || message.sender === recipient)
     .map((message, ordinal) => ({ ...message, ordinal }));

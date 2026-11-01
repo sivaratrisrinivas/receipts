@@ -14,6 +14,7 @@ import {
   makePoem,
   parseWhatsApp,
   senderCounts,
+  tryMakePoem,
   type BeamRequest,
   type PoemRequest,
 } from '../src';
@@ -21,7 +22,9 @@ import {
   ambiguousDates,
   android12h,
   android24h,
+  FAMILY_GROUP_MESSAGES,
   familyGroup,
+  filler,
   ios12h,
   ios24h,
   sameInitials,
@@ -123,6 +126,7 @@ describe('other shapes of the same export', () => {
       '2.1.24, 9:41 a.m. - Sam: Happy new year to you too, Mom, I miss the lake already.',
       '2024-03-12, 09:16 - Mom: Remember the lemon cake from the lake house, with the burnt edges?',
       `[2024-03-13 18:02:10] ~ Sam: I still dream about that cake, honestly.`,
+      ...filler(12, (i, who, text) => `[2024-04-${String(i + 1).padStart(2, '0')} 12:00:00] ${who}: ${text}`),
     ].join('\n');
 
     const { poem } = await makePoem(
@@ -144,6 +148,7 @@ describe('other shapes of the same export', () => {
       '1. a long walk by the lake',
       '2. your lemon cake',
       '13/03/2024, 09:16 - Sam: You shall have both, I promise you that.',
+      ...filler(14, (i, who, text) => `${String(i + 1).padStart(2, '0')}/04/2024, 12:00 - ${who}: ${text}`),
     ].join('\n');
 
     const { poem } = await makePoem(request(chat), pickingBeam('Three things'));
@@ -200,9 +205,9 @@ describe('a group chat', () => {
 
   test('lists everyone who spoke, so the Giver can say who they are and who it is for', () => {
     expect(senderCounts(parseWhatsApp(familyGroup)).map((sender) => [sender.name, sender.messages])).toEqual([
-      ['Mom', 2],
-      ['Dad', 2],
-      ['Sam', 2],
+      ['Mom', 8],
+      ['Dad', 8],
+      ['Sam', 8],
       ['Aunt Priya', 2],
       ['+91 98765 43210', 1],
     ]);
@@ -218,7 +223,8 @@ describe('a group chat', () => {
     expect(sent).toContain('I still dream about that cake');
     expect(sent).toContain('whatever the hour');
     expect(conversation.senders).toEqual(['Mom', 'Sam']);
-    expect(conversation.messages.map((message) => message.ordinal)).toEqual([0, 1, 2, 3]);
+    expect(conversation.messages.map((message) => message.ordinal)).toEqual(conversation.messages.map((_, i) => i));
+    expect(conversation.messages).toHaveLength(FAMILY_GROUP_MESSAGES);
     expect(poem.recipient).toBe('Mom');
   });
 
@@ -234,10 +240,22 @@ describe('a group chat', () => {
     expect(poem.recipient).toBe('Dad');
   });
 
-  test('a Giver or Recipient who never spoke is refused before anything is sent', async () => {
+  test('the size table counts only the two people\'s Snippets, not the whole group\'s', async () => {
     const beam = pickingBeam('lemon cake');
 
-    await expect(makePoem(request(familyGroup, { recipient: 'Grandma' }), beam)).rejects.toThrow(/Grandma/);
+    const result = await tryMakePoem(request(familyGroup, { recipient: 'Aunt Priya' }), beam);
+
+    // Sam wrote 8 usable Snippets and Aunt Priya 2; the group as a whole wrote far more than 15.
+    expect(result).toMatchObject({ refused: 'not-enough', usableSnippets: 10 });
+    expect(beam.requests).toHaveLength(0);
+  });
+
+  test('a Recipient who never spoke leaves too little for a Poem, and nothing is sent', async () => {
+    const beam = pickingBeam('lemon cake');
+
+    const result = await tryMakePoem(request(familyGroup, { recipient: 'Grandma' }), beam);
+
+    expect(result).toMatchObject({ refused: 'not-enough' });
     expect(beam.requests).toHaveLength(0);
   });
 });
@@ -288,7 +306,8 @@ describe('telling the two Senders apart in the prompt', () => {
     await makePoem(request(sameInitials, { recipient: 'Sasha' }), beam);
 
     const headers = beam.requests[0]!.user.split('\n').filter((row) => row.startsWith('## '));
-    expect(headers).toEqual(['## S1 2024-03-12', '## S2 2024-03-12', '## S1 2024-03-13']);
+    expect(headers.slice(0, 3)).toEqual(['## S1 2024-03-12', '## S2 2024-03-12', '## S1 2024-03-13']);
+    expect(headers.every((header) => /^## S[12] /.test(header))).toBe(true);
     expect(beam.requests[0]!.system).toContain('Sam (S1) and Sasha (S2)');
   });
 });

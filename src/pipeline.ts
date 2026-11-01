@@ -7,6 +7,7 @@ import type { Conversation, Occasion, Poem, Sender, Snippet } from './domain';
 import { buildPrompt } from './prompt';
 import { redactConversation } from './redaction';
 import { readConversation, type RawSource } from './sources';
+import { selectSnippets, type ReadFraction } from './selection';
 import { between } from './sources/between';
 import { snippetsOf } from './snippets';
 import { verifyAnswer } from './verification';
@@ -22,34 +23,79 @@ export interface PoemRequest {
 
 export interface PoemOutcome {
   poem: Poem;
+  /** How much of the timeline Beam read; the Giver is told when days were dropped to fit. */
+  readFraction: ReadFraction;
   /** Kept so callers can show a Line in context and offer replacement Snippets. */
   conversation: Conversation;
   snippets: Snippet[];
 }
+
+/**
+ * The Conversation has too few usable Snippets for a Poem, so Beam was never called.
+ * A typed result rather than an error: the Giver is told "Not enough here yet for a Poem".
+ */
+export interface NotEnough {
+  refused: 'not-enough';
+  /** How many Snippets the Conversation could offer Beam. */
+  usableSnippets: number;
+  /** The fewest it takes. */
+  needed: number;
+}
+
+export type PoemResult = PoemOutcome | NotEnough;
 
 export interface MakePoemOptions {
   /** Called as Beam reasons, so the UI can show it has not hung. */
   onProgress?: (progress: BeamProgress) => void;
 }
 
+/** Make a Poem, or say why the Conversation is too small for one. */
+export async function tryMakePoem(
+  request: PoemRequest,
+  beam: BeamPort,
+  options: MakePoemOptions = {},
+): Promise<PoemResult> {
+  // Only the Giver's and the Recipient's Messages get as far as a Snippet (and so as far as
+  // the token budget and the size table), and only once phone numbers and email addresses
+  // are out of them.
+  const conversation = redactConversation(between(readConversation(request.source), request.giver, request.recipient));
+  const snippets = snippetsOf(conversation);
+
+  const selection = selectSnippets(snippets);
+  if (selection.kind === 'not-enough') {
+    return { refused: 'not-enough', usableSnippets: selection.usableSnippets, needed: selection.needed };
+  }
+
+  const completion = await beam.complete(
+    buildPrompt({ conversation, ...request, snippets: selection.snippets, lineRange: selection.lineRange }),
+    options.onProgress,
+  );
+  const { lines, verified } = verifyAnswer(requireContent(completion), selection.snippets);
+  return {
+    poem: { occasion: request.occasion, giver: request.giver, recipient: request.recipient, lines, verified },
+    readFraction: selection.readFraction,
+    conversation,
+    snippets,
+  };
+}
+
+/** Thrown by {@link makePoem} when {@link tryMakePoem} would have refused. */
+export class NotEnoughError extends Error {
+  readonly refusal: NotEnough;
+  constructor(refusal: NotEnough) {
+    super(`Not enough here yet for a Poem: ${refusal.usableSnippets} usable Snippets, ${refusal.needed} needed.`);
+    this.name = 'NotEnoughError';
+    this.refusal = refusal;
+  }
+}
+
+/** For callers that know the Conversation is big enough (the Gallery); the app uses {@link tryMakePoem}. */
 export async function makePoem(
   request: PoemRequest,
   beam: BeamPort,
   options: MakePoemOptions = {},
 ): Promise<PoemOutcome> {
-  // Only the Giver's and the Recipient's Messages get as far as a Snippet, and only once
-  // phone numbers and email addresses are out of them.
-  const conversation = redactConversation(between(readConversation(request.source), request.giver, request.recipient));
-  const snippets = snippetsOf(conversation);
-
-  const completion = await beam.complete(
-    buildPrompt({ conversation, snippets, ...request }),
-    options.onProgress,
-  );
-  const { lines, verified } = verifyAnswer(requireContent(completion), snippets);
-  return {
-    poem: { occasion: request.occasion, giver: request.giver, recipient: request.recipient, lines, verified },
-    conversation,
-    snippets,
-  };
+  const result = await tryMakePoem(request, beam, options);
+  if ('refused' in result) throw new NotEnoughError(result);
+  return result;
 }
