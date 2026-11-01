@@ -124,7 +124,7 @@ async function readStream(
     }
     if (event.error) {
       const message = typeof event.error === 'string' ? event.error : (event.error.message ?? 'unknown error');
-      throw new BeamError('http', `Beam stopped mid-answer: ${message}`, true);
+      throw new BeamError('stopped', `Beam stopped mid-answer: ${message}`, true);
     }
     if (event.usage) {
       seen.usage = {

@@ -18,7 +18,6 @@ describe('describing a failure to the Giver', () => {
   test.each([
     ['Beam could not be reached', new BeamError('network', 'Could not reach Beam.', true)],
     ['the connection dropped mid-answer', new BeamError('network', 'The connection dropped.', true)],
-    ['the gateway failed', new BeamError('http', 'Beam request failed (HTTP 502)', true, 502)],
     ['a request outside Beam, such as loading the Gallery, never got through', new TypeError('Failed to fetch')],
   ])('a network error (%s) asks the Giver to check their connection and offers a retry', (_case, error) => {
     const failure = describeFailure(error);
@@ -29,12 +28,50 @@ describe('describing a failure to the Giver', () => {
     expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
   });
 
-  test('a truncated answer says Beam ran out of room, and a retry may well work', () => {
+  test('a truncated answer says Beam ran out of room on a long Conversation, without promising a retry will work', () => {
     const failure = describeFailure(new BeamError('truncated', 'Beam ran out of room.', true));
 
     expect(failure.kind).toBe('truncated');
-    expect(failure.message).toMatch(/ran out of room/i);
+    expect(failure.message).toMatch(/runs out of room/i);
+    expect(failure.message).toMatch(/long/i);
+    expect(failure.message).not.toMatch(/usually/i);
     expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
+  });
+
+  test.each([400, 413, 422])('Beam refusing the request (HTTP %i) says the Conversation is probably too long, not that the connection failed', (status) => {
+    const failure = describeFailure(new BeamError('http', `Beam request failed (HTTP ${status})`, false, status));
+
+    expect(failure.kind).toBe('too-long');
+    expect(failure.message).toMatch(/too long|longer than/i);
+    expect(failure.message).not.toMatch(/connection/i);
+    expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
+  });
+
+  test.each([500, 502, 503, 504])('a server error (HTTP %i) says Beam or Hugging Face had a problem, not that the connection failed', (status) => {
+    const failure = describeFailure(new BeamError('http', `Beam request failed (HTTP ${status})`, true, status));
+
+    expect(failure.kind).toBe('unavailable');
+    expect(failure.message).toMatch(/problem|trouble/i);
+    expect(failure.message).toContain(String(status));
+    expect(failure.message).not.toMatch(/check your connection/i);
+    expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
+  });
+
+  test('Beam stopping part-way through its answer is not described as a lost connection', () => {
+    const failure = describeFailure(new BeamError('stopped', 'Beam stopped mid-answer: overloaded', true));
+
+    expect(failure.kind).toBe('unavailable');
+    expect(failure.message).toMatch(/stopped/i);
+    expect(failure.message).not.toMatch(/check your connection/i);
+    expect(failure.recovery).toEqual({ action: 'retry', label: 'Try again' });
+  });
+
+  test('an HTTP status nobody planned for is reported as unexpected, with the status', () => {
+    const failure = describeFailure(new BeamError('http', 'Beam request failed (HTTP 404)', false, 404));
+
+    expect(failure.kind).toBe('unknown');
+    expect(failure.message).toContain('404');
+    expect(failure.recovery.action).toBe('retry');
   });
 
   test('an answer that is not a usable Poem says Beam stumbled, and a retry may work', () => {

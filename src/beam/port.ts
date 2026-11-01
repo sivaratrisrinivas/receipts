@@ -48,7 +48,9 @@ export type BeamErrorReason =
   | 'invalid-response'
   /** The HTTP request failed (status carried in the message). */
   | 'http'
-  /** The request never reached Beam. */
+  /** Beam (or the router) reported an error part-way through its streamed answer. */
+  | 'stopped'
+  /** The request never reached Beam, or the connection broke while it answered. */
   | 'network';
 
 export class BeamError extends Error {

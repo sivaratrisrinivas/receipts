@@ -96,6 +96,26 @@ describe('the Hugging Face Beam adapter', () => {
     expect(statuses).toEqual([401, 402, 429, 503]);
   });
 
+  test('an error event in the middle of the stream is Beam stopping, not a lost connection', async () => {
+    const sse = reasoning(3) + event({ error: { message: 'upstream overloaded' } }) + 'data: [DONE]\n\n';
+    const beam = createHfBeam({ token: 'hf_test_token', fetch: streamingFetch(sse) });
+
+    await expect(beam.complete(request)).rejects.toMatchObject({ reason: 'stopped', retryable: true });
+  });
+
+  test('a stream that breaks off is a retryable network error', async () => {
+    const broken = (async () => {
+      const body = new ReadableStream<Uint8Array>({
+        start(controller) {
+          controller.error(new TypeError('terminated'));
+        },
+      });
+      return new Response(body, { status: 200 });
+    }) as typeof fetch;
+
+    await expect(createHfBeam({ token: 'hf_test_token', fetch: broken }).complete(request)).rejects.toMatchObject({ reason: 'network', retryable: true });
+  });
+
   test('a request that never reaches Beam is a retryable network error', async () => {
     const beam = createHfBeam({
       token: 'hf_test_token',
