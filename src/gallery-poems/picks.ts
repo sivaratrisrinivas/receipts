@@ -1,9 +1,6 @@
 // The shape of the Gallery Poems as stored: only each Poem's picks, never any text.
 
-import type { Occasion, Sender, Snippet } from '../domain';
-
-/** In the Gallery the Giver is Robert and the Recipient is Elizabeth (as in the live app). */
-export const GALLERY_PEOPLE: { giver: Sender; recipient: Sender } = { giver: 'Robert', recipient: 'Elizabeth' };
+import type { Occasion, Snippet } from '../domain';
 
 /** One pick, as Beam returned it: a Snippet ID, a private Note, and the IDs the Note cites. */
 export interface GalleryPick {

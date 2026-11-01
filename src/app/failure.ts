@@ -6,6 +6,8 @@ import type { NotEnough } from '../pipeline';
 export type FailureKind =
   | 'credits'
   | 'network'
+  | 'too-long'
+  | 'unavailable'
   | 'truncated'
   | 'bad-answer'
   | 'signed-out'
@@ -60,7 +62,7 @@ export function describeFailure(error: unknown): Failure {
         kind: 'truncated',
         title: 'Beam did not finish',
         message:
-          'Beam ran out of room before it finished choosing. This happens now and then with a long Conversation; trying again usually works.',
+          'Beam sometimes runs out of room on a very long Conversation before it finishes choosing. Try again; it can take a few attempts.',
         recovery: RETRY,
       };
     }
@@ -72,6 +74,15 @@ export function describeFailure(error: unknown): Failure {
         recovery: RETRY,
       };
     }
+    if (error.reason === 'stopped') {
+      return {
+        kind: 'unavailable',
+        title: 'Beam stopped early',
+        message: 'Beam stopped part-way through its answer. This can happen with a very long Conversation. Try again.',
+        recovery: RETRY,
+      };
+    }
+    if (error.reason === 'http') return describeStatus(error.status);
     return network();
   }
   // `fetch` rejects with a TypeError when a request never gets through (offline, blocked).
@@ -97,6 +108,33 @@ export function describeNotEnough({ usableSnippets, needed }: NotEnough): Failur
         ? `Nothing in this Conversation can go in a Poem yet. It takes at least ${needed} things the two of you have said to each other.`
         : `Only ${usableSnippets} of the things the two of you have said can go in a Poem, and it takes at least ${needed}. Come back when there is more to draw on.`,
     recovery: { action: 'change', label: 'Change my choices' },
+  };
+}
+
+/** An HTTP failure other than the ones with a meaning of their own (credits, sign-in, rate limit). */
+function describeStatus(status: number | undefined): Failure {
+  if (status === 400 || status === 413 || status === 422) {
+    return {
+      kind: 'too-long',
+      title: 'Too much to read at once',
+      message:
+        'Beam would not take this request, most likely because the Conversation is longer than it can read in one go. Trying again may fail the same way; a shorter chat is more likely to work.',
+      recovery: RETRY,
+    };
+  }
+  if (status === 408 || (status !== undefined && status >= 500)) {
+    return {
+      kind: 'unavailable',
+      title: 'Beam is not answering',
+      message: `Beam, or the Hugging Face service in front of it, had a problem on its side (error ${status}). Very long Conversations can time out there. Wait a moment, then try again.`,
+      recovery: RETRY,
+    };
+  }
+  return {
+    kind: 'unknown',
+    title: 'Something went wrong',
+    message: `Beam answered with an error we did not expect${status === undefined ? '' : ` (error ${status})`}. Trying again may help.`,
+    recovery: RETRY,
   };
 }
 

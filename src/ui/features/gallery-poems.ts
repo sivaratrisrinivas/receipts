@@ -13,7 +13,7 @@
 import type { App } from '../../app/app';
 import { renderCardHtml } from '../../card';
 import { formatDate } from '../../dates';
-import type { Occasion, Poem } from '../../domain';
+import { occasionLabel, type Occasion, type Poem } from '../../domain';
 import { buildGalleryPoems, type GalleryPoems } from '../../gallery-poems/build';
 import { SHIPPED_GALLERY_PICKS } from '../../gallery-poems/shipped';
 import { h } from '../dom';
@@ -43,8 +43,6 @@ function loadGalleryPoems(): Promise<GalleryPoems> {
 
 extensions.signInSections.push(({ app }) => gallerySection(app));
 
-const label = (occasion: Occasion) => occasion.charAt(0).toUpperCase() + occasion.slice(1);
-
 function gallerySection(app: App): HTMLElement {
   const intro = h('span');
   const body = h('div', { class: 'gallery-body' });
@@ -62,7 +60,7 @@ function gallerySection(app: App): HTMLElement {
       h(
         'p',
         null,
-        'Beam reads every letter, live, and chooses the Lines for the Occasion you pick. It takes about a minute and costs roughly $0.20 of your Hugging Face credits.',
+        'Beam reads every letter, live, and chooses the Lines for the Occasion you pick. It takes about a minute and costs about $0.20 (up to $0.25) of your Hugging Face credits.',
       ),
     ),
   );
@@ -116,7 +114,7 @@ function showcase({ poems, conversation }: GalleryPoems): HTMLElement[] {
         'label',
         { class: 'chip' },
         h('input', { type: 'radio', name: 'gallery-occasion', value: poem.occasion, checked: poem === first, onchange: () => show(poem) }),
-        h('span', null, label(poem.occasion)),
+        h('span', null, occasionLabel(poem.occasion)),
       ),
     ),
   );

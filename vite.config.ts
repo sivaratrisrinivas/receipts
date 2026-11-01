@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [devHfToken()],
   test: {
     include: ['tests/**/*.test.ts', 'eval/**/*.test.ts'],
-    // The long-Conversation tests build and redact megabytes of text; 5s is too tight when the files run in parallel.
+    // The long-Conversation tests build, read and split megabytes of text (4s of a 5s limit when the files run in
+    // parallel). Redaction is no longer the slow part: it skips the email pattern for text with no `@`.
     testTimeout: 20_000,
   },
 });

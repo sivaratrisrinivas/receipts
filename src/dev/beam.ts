@@ -11,8 +11,8 @@
 //   ?beam=slow          never finishes (for the "taking longer than usual" state)
 //   ?beam=replace-fails the Poem works; the first Replace fails with a dropped connection
 //
-// Notes in the scripted Poem cite the pick before them, so callback links can be tried; a
-// Replace answers with the first Snippet it is offered (after about a second).
+// Notes in the scripted Poem cite the pick before them (some in the Note text, some only as a
+// callback), so callback links can be tried; a Replace answers with the first Snippet it is offered (after about a second).
 
 import { BeamError, type BeamPort, type BeamRequest } from '../beam/port';
 import { REPLACEMENT_RESPONSE_FORMAT } from '../editing';
@@ -27,7 +27,8 @@ function spreadPicks(request: BeamRequest, ghost: boolean): string {
   return JSON.stringify({
     lines: picks.map((id, i) => ({
       id,
-      note: i === 0 ? 'A scripted pick.' : `A scripted pick that answers ${picks[i - 1]}.`,
+      // Every other Note spells the ID out; the rest only list it in `callbacks`, as Beam usually does.
+      note: i === 0 ? 'A scripted pick.' : i % 2 === 0 ? `A scripted pick that answers ${picks[i - 1]}.` : 'A scripted pick that echoes an earlier one.',
       callbacks: i === 0 ? [] : [picks[i - 1]],
     })),
   });

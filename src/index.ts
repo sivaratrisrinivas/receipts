@@ -32,6 +32,7 @@ export type {
 } from './beam/port';
 export { BEAM_MODEL, HF_ROUTER_URL, createHfBeam } from './beam/hf';
 export type { HfBeamOptions } from './beam/hf';
+export { USD_PER_MILLION_INPUT_TOKENS, USD_PER_MILLION_OUTPUT_TOKENS, tokensCostUsd } from './beam/pricing';
 export { createFakeBeam } from './beam/fake';
 export type { FakeBeam, FakeBeamOptions, FakePick, FakeReply } from './beam/fake';
 

@@ -1,12 +1,10 @@
 // Step: choose an Occasion and, if wanted, a note for Beam; then make the Poem.
 
 import { composeCopy } from '../../app/upload';
-import { OCCASIONS, type Occasion } from '../../domain';
+import { OCCASIONS, occasionLabel } from '../../domain';
 import { h } from '../dom';
 import { extensions } from '../extensions';
 import type { StepFactory } from '../step';
-
-const label = (occasion: Occasion) => occasion.charAt(0).toUpperCase() + occasion.slice(1);
 
 export const composeStep: StepFactory = (app, state) => {
   const copy = composeCopy(state);
@@ -25,7 +23,7 @@ export const composeStep: StepFactory = (app, state) => {
           checked: state.compose.occasion === occasion,
           onchange: () => app.edit({ occasion }),
         }),
-        h('span', null, label(occasion)),
+        h('span', null, occasionLabel(occasion)),
       ),
     ),
   );

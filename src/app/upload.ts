@@ -161,6 +161,6 @@ export function composeCopy({ source, chat }: Pick<AppState, 'source' | 'chat'>)
     heading: 'Make a Gallery Poem',
     lede: 'The Gallery is the 1845–1846 letters between Robert Browning and Elizabeth Barrett. You are Robert; the Poem is for Elizabeth.',
     make: 'Make my Gallery Poem',
-    cost: 'Beam reads every letter in one go, which takes about a minute and costs roughly $0.20 of your Hugging Face credits.',
+    cost: 'Beam reads every letter in one go, which takes about a minute and costs about $0.20 (up to $0.25) of your Hugging Face credits.',
   };
 }

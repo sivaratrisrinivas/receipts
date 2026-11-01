@@ -422,6 +422,9 @@ textarea:focus-visible {
 .seal {
   display: flex;
   justify-content: center;
+  /* The badge stamps in from scale(1.5). On a phone that swelling would otherwise widen the
+     layout viewport for good (360px became 398px) and the whole page would shrink to fit. */
+  overflow-x: clip;
 }
 
 .seal:not(:empty) {

@@ -282,6 +282,21 @@ describe('asking Beam', () => {
     expect(system).toContain('Occasion: anniversary.');
     expect(system).toContain('It is their first anniversary.');
   });
+
+  test('a phone number or email address in the Giver\'s note never reaches Beam', async () => {
+    const beam = createFakeBeam((request) => ({ picks: [{ id: idOf(request, 'I wrote this'), note: 'Any.' }] }));
+
+    await makePoem({ ...galleryRequest, note: 'She just retired. Call her on +44 7700 900123 or mail anne@example.com.' }, beam);
+
+    const { system, user } = beam.requests[0]!;
+    expect(system).toContain('She just retired.');
+    expect(system).toContain('[phone number]');
+    expect(system).toContain('[email address]');
+    for (const secret of ['7700 900123', 'anne@example.com']) {
+      expect(system).not.toContain(secret);
+      expect(user).not.toContain(secret);
+    }
+  });
 });
 
 describe('narrowing what Beam reads', () => {

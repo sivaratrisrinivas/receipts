@@ -4,10 +4,11 @@
 
 import { OCCASIONS, type Conversation, type Poem } from '../domain';
 import { readConversation } from '../sources';
+import { GALLERY_PEOPLE } from '../sources/gallery';
 import { snippetsOf } from '../snippets';
 import { BeamError } from '../beam/port';
 import { verifyAnswer } from '../verification';
-import { GALLERY_PEOPLE, fingerprintOf, type GalleryPicks } from './picks';
+import { fingerprintOf, type GalleryPicks } from './picks';
 
 export interface GalleryPoems {
   /** The Gallery's letters, so a Card can show the messages around each Line. */

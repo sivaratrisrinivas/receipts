@@ -117,22 +117,29 @@ export type Selection =
  * refusal when there is too little for a Poem.
  */
 export function selectSnippets(snippets: Snippet[]): Selection {
-  const days = groupByDay(snippets);
-  const budget = INPUT_TOKEN_BUDGET - PROMPT_OVERHEAD_TOKENS;
-
-  // A null stride means not even one day fits: nothing can be read.
-  const stride = smallestStrideThatFits(days.map((day) => day.weight), budget);
-  const read = stride === null ? [] : days.filter((_, i) => isRead(i, days.length, stride));
-  const readSnippets = read.flatMap((day) => day.snippets);
+  const fitted = fitToBudget(snippets);
+  const readSnippets = fitted?.snippets ?? [];
 
   const lineRange = lineRangeFor(readSnippets.length);
-  if (stride === null || lineRange === null) {
+  if (fitted === null || lineRange === null) {
     return { kind: 'not-enough', usableSnippets: readSnippets.length, needed: MIN_USABLE_SNIPPETS };
   }
+  return { kind: 'selected', snippets: readSnippets, lineRange, readFraction: fitted.readFraction };
+}
+
+/**
+ * The Snippets (in Conversation order) that fit one Beam call, with how much of the
+ * timeline they cover: all of them if they fit {@link INPUT_TOKEN_BUDGET}, else whole days
+ * dropped evenly. Null when nothing fits, which is when there are no Snippets or when even
+ * one day is too heavy for a call.
+ */
+export function fitToBudget(snippets: readonly Snippet[]): { snippets: Snippet[]; readFraction: ReadFraction } | null {
+  const days = groupByDay(snippets);
+  const stride = smallestStrideThatFits(days.map((day) => day.weight), INPUT_TOKEN_BUDGET - PROMPT_OVERHEAD_TOKENS);
+  if (stride === null) return null;
+  const read = days.filter((_, i) => isRead(i, days.length, stride));
   return {
-    kind: 'selected',
-    snippets: readSnippets,
-    lineRange,
+    snippets: read.flatMap((day) => day.snippets),
     readFraction: {
       totalDays: days.length,
       readDays: read.length,
@@ -151,7 +158,7 @@ interface Day {
 }
 
 /** Snippets arrive in Conversation order, where dates never decrease. */
-function groupByDay(snippets: Snippet[]): Day[] {
+function groupByDay(snippets: readonly Snippet[]): Day[] {
   const days: Day[] = [];
   let lastMessage = -1;
   for (const snippet of snippets) {

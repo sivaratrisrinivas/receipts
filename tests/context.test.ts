@@ -4,7 +4,7 @@
 
 import { describe, expect, test } from 'vitest';
 import { createFakeBeam, makePoem, type Conversation, type PoemOutcome } from '../src';
-import { contextOf, noteParts } from '../src/context';
+import { contextOf, noteParts, unlinkedCallbacks } from '../src/context';
 import { lineOf } from '../src/verification';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
 import { idOf } from './support/prompt';
@@ -65,6 +65,21 @@ describe('tapping a Line shows the original Message', () => {
     expect(contextOf(conversation, line)).toMatchObject({ before: 'Dear friend,\n\n', snippet: 'Come on Tuesday.\n\nBring the book.', after: '' });
   });
 
+  test('a Line is found as whole words, not inside a longer word that happens to end the same way', () => {
+    const conversation: Conversation = {
+      kind: 'chat',
+      senders: ['Sam'],
+      messages: [{ ordinal: 0, sender: 'Sam', date: '2024-03-02', approximate: false, text: 'Oh, also I did. so I did.' }],
+    };
+    const line = lineOf(
+      { id: 's0', index: 0, messageOrdinal: 0, sender: 'Sam', date: '2024-03-02', approximate: false, text: 'so I did.' },
+      null,
+      [],
+    );
+
+    expect(contextOf(conversation, line)).toMatchObject({ before: 'Oh, also I did. ', snippet: 'so I did.', after: '' });
+  });
+
   test('if the Line cannot be found inside its Message, the whole Message is shown unmarked', async () => {
     const { poem, conversation } = await galleryPoem(['Thank you a thousand times for the flowers']);
 
@@ -91,5 +106,19 @@ describe('a Note points back to Snippets', () => {
 
   test('a Note that opens or closes on an ID has no empty text around it', () => {
     expect(noteParts('s3 comes back as s4', ['s3', 's4'])).toEqual([{ callback: 's3' }, { text: ' comes back as ' }, { callback: 's4' }]);
+  });
+});
+
+describe('callbacks the Note does not spell out', () => {
+  test('Beam rarely writes the ID in the Note text, so every callback still gets a link of its own', () => {
+    expect(unlinkedCallbacks('The first thing he ever wrote to her, echoed later.', ['s12', 's7'])).toEqual(['s12', 's7']);
+  });
+
+  test('a callback the Note text already links is not repeated, and each ID is listed once', () => {
+    expect(unlinkedCallbacks('A callback to s12.', ['s12', 's7', 's7'])).toEqual(['s7']);
+  });
+
+  test('a Line with no callbacks has none to list', () => {
+    expect(unlinkedCallbacks('Just a note.', [])).toEqual([]);
   });
 });

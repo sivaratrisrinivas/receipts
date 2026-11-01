@@ -27,12 +27,22 @@ Built for Build with Beam, on [Beam 1.0](https://huggingface.co/reflection/Beam-
 
 ## Try it
 
-1. Open the Space and **sign in with Hugging Face**. There is no API key to paste.
-2. Pick an **occasion** (birthday, anniversary, thank you, sorry, missing you, farewell) and, if you like, add a short note for Beam.
-3. Beam reads the whole **Gallery**, the 1845-1846 love letters of Robert Browning and Elizabeth Barrett, which takes about a minute. You watch its progress.
-4. The poem is revealed **line by line**, each with its sender and date. If every line checks out against the letters, it carries the **"every line is real"** badge.
+1. Open the Space and **sign in with Hugging Face**. There is no API key to paste. (Before you sign in, you can already see Poems made from the Gallery.)
+2. Choose what the Poem is made from: the **Gallery** (the 1845-1846 love letters of Robert Browning and Elizabeth Barrett), or **your own WhatsApp chat**, see below.
+3. Pick an **occasion** (birthday, anniversary, thank you, sorry, missing you, farewell) and, if you like, add a short note for Beam.
+4. Beam reads the whole Conversation, which takes about a minute. You watch its progress.
+5. The poem is revealed **line by line**, each with its sender and date. If every line checks out against the Conversation, it carries the **"every line is real"** badge.
 
-If something goes wrong (out of credits, a dropped connection, Beam running out of room) you get a plain message and a retry.
+If something goes wrong (out of credits, Beam unavailable, a dropped connection, Beam running out of room) you get a plain message that says which, and a retry.
+
+## Your own chat
+
+Choose **Use my own WhatsApp chat instead** and upload an export: the `.txt` Android makes, or the `.zip` iOS makes, exported **without media** (a file over 200 MB is refused). Both 24-hour and 12-hour clocks, and day-first or month-first dates, are understood; when the dates could be read either way, you are asked one question with a real Message from your chat as the example.
+
+- **Group chats.** Say which person you are and who the Poem is for. **Only those two people's Messages are ever sent**; everyone else in the group is left out entirely, before anything leaves your browser.
+- **Redaction.** Phone numbers and email addresses are replaced with `[phone number]` and `[email address]` in every Message, in the names of the two people and in your optional note, before anything is sent to Beam. Redaction happens before any sentence is cut from a Message, so a number or address can never end up in a Line or on the Card either.
+- **What you see before it goes.** The count of Messages that will be sent, and where they go, are shown before you continue.
+- **What it is made of.** The same rules as the Gallery: every Line is a real Message (or one sentence of a long one), shown with who sent it and when.
 
 ## How Beam is used
 
@@ -47,11 +57,17 @@ The architecture and the reasoning behind these choices are in the project's dec
 
 ## Privacy
 
-Receipts is a static site with **no backend**. A Conversation goes from your browser to the Hugging Face router to Beam, billed to and authenticated as **you**; it never touches a server we run. We store nothing and have no analytics. Your access token lives in this browser tab's session storage and is sent only to Hugging Face. The sign-in is a public OAuth client with PKCE, asking for the `inference-api` permission so Beam can run under your account, and nothing else.
+Receipts is a static site with **no backend**. A Conversation goes from **your browser to the Hugging Face router to Beam**, billed to and authenticated as **you**; it never touches a server we run. We store nothing and have no analytics. Your access token lives in this browser tab's session storage and is sent only to Hugging Face. The sign-in is a public OAuth client with PKCE, asking for the `inference-api` permission so Beam can run under your account, and nothing else.
+
+For your own chat that means: the file is read in your browser; only the Messages of the two chosen people, with phone numbers and email addresses removed, are sent; and nothing about the chat is kept after you close or sign out of the tab. Hugging Face and its inference provider handle the request under their own terms.
 
 ## Credits
 
-Each poem costs the Giver's own Hugging Face Inference credits: roughly **$0.17 to $0.25** for a Gallery poem (input is billed at $0.40 per million tokens and output at $1.20 per million). Free Hugging Face accounts have no included Inference credits, so add credits at [Billing](https://huggingface.co/settings/billing); PRO accounts get $2 a month, enough for around eight Gallery poems. For this hackathon, Hugging Face is offering new claimants Hub credits through [this coupon](https://huggingface.co/coupons/claim/HuggingFacexReflection-MiniHack).
+Each poem costs the Giver's own Hugging Face Inference credits: about **$0.20, up to $0.25**, for a Gallery poem (input is billed at $0.40 per million tokens and output at $1.20 per million). A chat costs about the same when it is as long as the Gallery, and less when it is shorter. A try that fails part-way (Beam running out of room, see below) is billed too, so a poem can cost more than that when it takes several tries. Free Hugging Face accounts have no included Inference credits, so add credits at [Billing](https://huggingface.co/settings/billing); PRO accounts get $2 a month, enough for around eight Gallery poems. For this hackathon, Hugging Face is offering new claimants Hub credits through [this coupon](https://huggingface.co/coupons/claim/HuggingFacexReflection-MiniHack).
+
+## Very long conversations
+
+Beam reads the whole Conversation in one call, and a long one can fail. At the size of the Gallery, Beam often spends its whole completion budget reasoning and returns nothing (**truncation**); in the evaluation, 17 of 37 full-Gallery calls finished (about 46%), so you may need a few tries. A Conversation too big for one call (over about 800,000 tokens) is read as **every 2nd, 3rd, ... day** across its whole span instead, and the Poem says so. Beam sometimes also stops part-way or the service in front of it returns an error; each is reported as what it is, not as a lost connection.
 
 ## The Gallery
 

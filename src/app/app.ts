@@ -7,7 +7,8 @@ import type { Sender } from '../domain';
 import { EditError, removeLine, replaceLine } from '../editing';
 import { tryMakePoem } from '../pipeline';
 import type { RawSource } from '../sources';
-import { exportText } from '../sources/export-file';
+import { MAX_CHAT_BYTES, exportText } from '../sources/export-file';
+import { GALLERY_PEOPLE } from '../sources/gallery';
 import {
   dateQuestion,
   ExportError,
@@ -37,12 +38,6 @@ export interface ChatFile {
   size: number;
   read(): Promise<Uint8Array>;
 }
-
-/** Bigger than this is a chat exported with its photos and videos, not a chat. */
-export const MAX_CHAT_FILE_BYTES = 200 * 1024 * 1024;
-
-/** In the Gallery the Giver is Robert and the Recipient is Elizabeth. */
-const GALLERY_PEOPLE: { giver: Sender; recipient: Sender } = { giver: 'Robert', recipient: 'Elizabeth' };
 
 export interface App {
   getState(): AppState;
@@ -100,9 +95,18 @@ export function createApp(deps: AppDeps): App {
     };
   }
 
+  /**
+   * Each attempt to make a Poem takes the next number, and so does signing out. An attempt
+   * that is no longer the latest is stale (Beam cannot be interrupted mid-call): whatever it
+   * ends up with is dropped, so a Poem never appears for a Giver who has signed out.
+   */
+  let latestRun = 0;
+
   async function run(input: ComposeInput): Promise<void> {
     const session = store.getState().session;
     if (!session) return;
+    const mine = ++latestRun;
+    const isLatest = () => mine === latestRun;
     store.dispatch({ type: 'started', input, now: deps.now() });
     try {
       const { source, giver, recipient } = await conversationOf(store.getState());
@@ -110,11 +114,13 @@ export function createApp(deps: AppDeps): App {
       const result = await tryMakePoem(
         { source, occasion: input.occasion, giver, recipient, ...(note ? { note } : {}) },
         deps.makeBeam(session),
-        { onProgress: ({ reasoningTokens }) => store.dispatch({ type: 'reasoned', reasoningTokens }) },
+        { onProgress: ({ reasoningTokens }) => isLatest() && store.dispatch({ type: 'reasoned', reasoningTokens }) },
       );
+      if (!isLatest()) return;
       if ('refused' in result) store.dispatch({ type: 'failed', failure: describeNotEnough(result) });
       else store.dispatch({ type: 'succeeded', outcome: result });
     } catch (error) {
+      if (!isLatest()) return;
       const failure = describeFailure(error);
       if (failure.kind === 'signed-out') deps.auth.forget();
       store.dispatch({ type: 'failed', failure });
@@ -137,6 +143,7 @@ export function createApp(deps: AppDeps): App {
       }
     },
     signOut() {
+      latestRun++;
       deps.auth.signOut();
       loaded = null;
       store.dispatch({ type: 'signed-out' });
@@ -199,7 +206,7 @@ export function createApp(deps: AppDeps): App {
       if (store.getState().step !== 'upload') return;
       store.dispatch({ type: 'upload-reading' });
       try {
-        if (file.size > MAX_CHAT_FILE_BYTES) {
+        if (file.size > MAX_CHAT_BYTES) {
           throw new ExportError('That file is very large. Export the chat again from WhatsApp, choosing "Without media", and upload that.');
         }
         const text = exportText(await file.read());

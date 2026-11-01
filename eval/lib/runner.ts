@@ -20,6 +20,7 @@ import {
   type PoemOutcome,
   type PoemRequest,
 } from '../../src';
+import { GALLERY_PEOPLE } from '../../src/sources/gallery';
 import { createRandomPicker } from './random-beam';
 import { DEFAULT_SPEND_CAP_USD, MAX_COMPLETION_TOKENS, SpendLedger, costOfUsage, estimateCost } from './spend';
 import {
@@ -67,8 +68,6 @@ export interface RunReport {
   spentUsd: number;
 }
 
-const GIVER = 'Robert';
-const RECIPIENT = 'Elizabeth';
 /** The `last10` group shows Beam this share of the Messages, counted from the end. */
 const LAST_SHARE = 0.1;
 
@@ -110,8 +109,7 @@ async function makeTrace(
   const request: PoemRequest = {
     source: { kind: 'gallery', texts: config.texts },
     occasion,
-    giver: GIVER,
-    recipient: RECIPIENT,
+    ...GALLERY_PEOPLE,
   };
   const started = Date.now();
   const startedAt = new Date(started).toISOString();
@@ -122,8 +120,7 @@ async function makeTrace(
     condition,
     index,
     occasion,
-    giver: GIVER,
-    recipient: RECIPIENT,
+    ...GALLERY_PEOPLE,
     startedAt,
     messagesRead: shown.messages.length,
     snippetsRead: snippetsOf(shown).length,

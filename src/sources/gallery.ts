@@ -3,6 +3,9 @@
 
 import type { Conversation, IsoDate, Message, Sender } from '../domain';
 
+/** In the Gallery the Giver is Robert and the Recipient is Elizabeth. */
+export const GALLERY_PEOPLE: { giver: Sender; recipient: Sender } = { giver: 'Robert', recipient: 'Elizabeth' };
+
 /** Where the committed Gutenberg texts live, relative to the static site root. */
 export const GALLERY_TEXT_PATHS = ['gallery/pg16182.txt', 'gallery/pg73891.txt'] as const;
 
