@@ -1,0 +1,59 @@
+{
+  "condition": "full",
+  "index": 19,
+  "occasion": "anniversary",
+  "giver": "Robert",
+  "recipient": "Elizabeth",
+  "startedAt": "2026-11-01T10:34:39.660Z",
+  "messagesRead": 573,
+  "snippetsRead": 12513,
+  "seconds": 132.171,
+  "costUsd": 0.5243172,
+  "status": "failed",
+  "attempts": [
+    {
+      "seconds": 99.265,
+      "costUsd": 0.23820560000000002,
+      "costKind": "estimate",
+      "error": {
+        "reason": "truncated",
+        "message": "Beam ran out of room before finishing its answer. Trying again may work."
+      }
+    },
+    {
+      "seconds": 4.519,
+      "costUsd": 0.1422368,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 1007,
+        "reasoningTokens": 108
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 20 Lines; a Poem needs 8 to 14. Try again."
+      }
+    },
+    {
+      "seconds": 5.485,
+      "costUsd": 0.1438748,
+      "costKind": "usage",
+      "usage": {
+        "promptTokens": 352571,
+        "completionTokens": 2372,
+        "reasoningTokens": 487
+      },
+      "finishReason": "stop",
+      "error": {
+        "reason": "wrong-size",
+        "message": "Beam returned 48 Lines; a Poem needs 8 to 14. Try again."
+      }
+    }
+  ],
+  "answer": "{\n  \"lines\": [\n    {\"id\": \"s1\", \"note\": \"Robert's first declaration of love, the seed of everything.\", \"callbacks\": []},\n    {\"id\": \"s3\", \"note\": \"Elizabeth's first grateful reply, setting the tone of the whole exchange.\", \"callbacks\": []},\n    {\"id\": \"s222\", \"note\": \"Robert's promise that he would see her in spring, the first concrete hope.\", \"callbacks\": []},\n    {\"id\": \"s298\", \"note\": \"Robert's wish that she laugh at east winds, a private joke about her health and his optimism.\", \"callbacks\": []},\n    {\"id\": \"s397\", \"note\": \"Elizabeth's whisper of a childish love of stories, one of the first intimate confessions.\", \"callbacks\": []},\n    {\"id\": \"s424\", \"note\": \"Robert's promise that he has all to say yet, the forward momentum of the correspondence.\", \"callbacks\": []},\n    {\"id\": \"s654\", \"note\": \"Robert's declaration that he is proud and happy in her friendship, now and ever.\", \"callbacks\": []},\n    {\"id\": \"s747\", \"note\": \"Robert's belief that they are friends now and for ever, a turning point in trust.\", \"callbacks\": []},\n    {\"id\": \"s1004\", \"note\": \"Elizabeth's denial that she ever struck him, the first note of their lovers' tension.\", \"callbacks\": []},\n    {\"id\": \"s1299\", \"note\": \"Elizabeth's request that he not notice what she wrote, her habit of self-concealment.\", \"callbacks\": []},\n    {\"id\": \"s1365\", \"note\": \"Elizabeth's promise that his friendship will be dear to her to the last, a pledge she kept.\", \"callbacks\": []},\n    {\"id\": \"s1490\", \"note\": \"Robert's avowal that her friendship is his pride and happiness, the love declared.\", \"callbacks\": []},\n    {\"id\": \"s1522\", \"note\": \"Robert's response to her letter refusing him, accepting her conditions with faith.\", \"callbacks\": []},\n    {\"id\": \"s1669\", \"note\": \"Elizabeth's surrender, 'Henceforward I am yours for everything but to do you harm.'\", \"callbacks\": []},\n    {\"id\": \"s1895\", \"note\": \"Robert's reassurance that her brother's illness and the cancelled Pisa journey are for the best.\", \"callbacks\": []},\n    {\"id\": \"s2010\", \"note\": \"Robert's answer to her doubts about his motives, 'Let me have my way, live my life, love my love.'\", \"callbacks\": []},\n    {\"id\": \"s2127\", \"note\": \"Robert's note sending the first book, 'parve liber, sine me ibis,' the beginning of publication.\", \"callbacks\": []},\n    {\"id\": \"s2190\", \"note\": \"Robert's blessing and his hope for a lovers' quarrel, the playful intimacy of autumn.\", \"callbacks\": []},\n    {\"id\": \"s2212\", \"note\": \"Elizabeth's opening of the third quarter, 'I shall see you to-morrow and yet am writing.'\", \"callbacks\": []},\n    {\"id\": \"s2245\", \"note\": \"Robert's question whether she knows he would love her more if she never wrote another line.\", \"callbacks\": []},\n    {\"id\": \"s2255\", \"note\": \"Robert's 'I will dare... kiss you back to my heart again,' the deepening devotion.\", \"callbacks\": []},\n    {\"id\": \"s2378\", \"note\": \"Robert's thanks for the books she sent, 'best and kindest' left unsaid.\", \"callbacks\": []},\n    {\"id\": \"s2428\", \"note\": \"Robert's protest that she turns his two days against him, the playful quarrel of letters.\", \"callbacks\": []},\n    {\"id\": \"s2479\", \"note\": \"Robert's thanks to Mr. Kenyon and his hope for Thursday, the private signal of their meetings.\", \"callbacks\": []},\n    {\"id\": \"s2504\", \"note\": \"Elizabeth's confession that she has been obedient, the ring and its secret.\", \"callbacks\": []},\n    {\"id\": \"s2625\", \"note\": \"Elizabeth's trust that he will alter arrangements without a second thought, the practical intimacy.\", \"callbacks\": []},\n    {\"id\": \"s2776\", \"note\": \"Robert's 'my heart's love, I am waiting to hear from you,' the longing of December.\", \"callbacks\": []},\n    {\"id\": \"s2825\", \"note\": \"Robert's 'Every word you write goes to my heart and lives there,' the ring on his finger.\", \"callbacks\": []},\n    {\"id\": \"s2936\", \"note\": \"Robert's 'You it is, are my happiness,' the Christmas letter.\", \"callbacks\": []},\n    {\"id\": \"s3100\", \"note\": \"Robert's 'My dear Christmas gift of a letter,' the holiday exchange.\", \"callbacks\": []},\n    {\"id\": \"s3173\", \"note\": \"Robert's blessing on the last day of the year, laying her letters with the rest.\", \"callbacks\": []},\n    {\"id\": \"s3206\", \"note\": \"Elizabeth's 'I am yours in my life and soul, for this year and for other years,' the new year.\", \"callbacks\": []},\n    {\"id\": \"s3373\", \"note\": \"Robert's 'What are you doing to me? in the heart's heart,' the review and the ring.\", \"callbacks\": []},\n    {\"id\": \"s3403\", \"note\": \"Robert's 'you are my unutterable blessing,' the discovery of her day by day.\", \"callbacks\": []},\n    {\"id\": \"s3615\", \"note\": \"Elizabeth's confession of her father's control, 'I told you once that we held hands the faster in this house.'\", \"callbacks\": []},\n    {\"id\": \"s3741\", \"note\": \"Elizabeth's reading of 'Luria,' 'is he to die so? can you mean it?'\", \"callbacks\": []},\n    {\"id\": \"s3877\", \"note\": \"Elizabeth's 'You have had my letter and heard about the penholder,' the gift and its return.\", \"callbacks\": []},\n    {\"id\": \"s3938\", \"note\": \"Robert's 'My only good in this world... is to spend my life with you,' the plainest declaration.\", \"callbacks\": []},\n    {\"id\": \"s4102\", \"note\": \"Robert's 'there are no words, nor will be... but I do love you,' the speechless moment.\", \"callbacks\": []},\n    {\"id\": \"s4248\", \"note\": \"Robert's analysis of Luria's moral effect, the critical conversation between them.\", \"callbacks\": []},\n    {\"id\": \"s4336\", \"note\": \"Elizabeth's plea that he take medical advice, the tenderness of February.\", \"callbacks\": []},\n    {\"id\": \"s4435\", \"note\": \"Elizabeth's surprise that George was invited to meet Robert, the widening circle.\", \"callbacks\": []},\n    {\"id\": \"s4526\", \"note\": \"Elizabeth's 'only when you go away... do I get up and think properly... of your flowers,' the daily ritual.\", \"callbacks\": []},\n    {\"id\": \"s4683\", \"note\": \"Robert's 'my first person was nonsensical,' the correction and the hawthorn.\", \"callbacks\": []},\n    {\"id\": \"s4760\", \"note\": \"Robert's 'kept in town,' the brief note and the long letter to come.\", \"callbacks\": []},\n    {\"id\": \"s4833\", \"note\": \"Elizabeth's 'Yes, but, dearest, you mistake me,' the correction of his mistake.\", \"callbacks\": []},\n    {\"id\": \"s4917\", \"note\": \"Elizabeth's 'Always you, is it, who torments me?' the quarrel and the reconciliation.\", \"callbacks\": []},\n    {\"id\": \"s5003\", \"note\": \"Elizabeth's 'I knew how it would be yesterday,' the foresight and the worry.\", \"callbacks\": []}\n  ]\n}",
+  "error": {
+    "reason": "wrong-size",
+    "message": "Beam returned 48 Lines; a Poem needs 8 to 14. Try again."
+  }
+}

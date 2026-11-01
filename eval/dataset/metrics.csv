@@ -1,4 +1,4 @@
 group,poems,completed,verification_rate,timeline_coverage,sender_balance,note_callbacks,completed_only_verification_rate,completed_only_timeline_coverage,completed_only_sender_balance,completed_only_note_callbacks,mean_lines,cost_usd
-full,18,16,0.8889,0.55,0.6889,1.7778,1,0.6188,0.7751,2,13.56,4.5045
+full,20,17,0.85,0.54,0.6558,1.6,1,0.6353,0.7715,1.8824,13.59,5.4117
 last10,20,20,1,0.1,0.6902,3.15,1,0.1,0.6902,3.15,13.35,0.381
 random,20,20,1,0.56,0.4556,0,1,0.56,0.4556,0,11.05,0
