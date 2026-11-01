@@ -30,11 +30,15 @@ export interface AppDeps {
   now(): number;
 }
 
-/** A chat file as the browser read it. */
+/** A chat file the Giver chose; its bytes are only read once its size is known to be sane. */
 export interface ChatFile {
   name: string;
-  bytes: Uint8Array;
+  size: number;
+  read(): Promise<Uint8Array>;
 }
+
+/** Bigger than this is a chat exported with its photos and videos, not a chat. */
+export const MAX_CHAT_FILE_BYTES = 200 * 1024 * 1024;
 
 /** In the Gallery the Giver is Robert and the Recipient is Elizabeth. */
 const GALLERY_PEOPLE: { giver: Sender; recipient: Sender } = { giver: 'Robert', recipient: 'Elizabeth' };
@@ -151,7 +155,10 @@ export function createApp(deps: AppDeps): App {
       if (store.getState().step !== 'upload') return;
       store.dispatch({ type: 'upload-reading' });
       try {
-        const text = exportText(file.bytes);
+        if (file.size > MAX_CHAT_FILE_BYTES) {
+          throw new ExportError('That file is very large. Export the chat again from WhatsApp, choosing "Without media", and upload that.');
+        }
+        const text = exportText(await file.read());
         const exported = parseWhatsApp(text);
         const senders = senderCounts(exported);
         if (senders.length < 2) {

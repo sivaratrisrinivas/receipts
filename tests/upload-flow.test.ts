@@ -6,7 +6,7 @@
 import { strToU8, zipSync } from 'fflate';
 import { describe, expect, test } from 'vitest';
 import { createFakeBeam } from '../src';
-import { createApp } from '../src/app/app';
+import { createApp, type ChatFile } from '../src/app/app';
 import type { AuthPort, Session } from '../src/app/auth';
 import { PRIVACY_STATEMENT, reviewOf } from '../src/app/upload';
 import { volumeOne, volumeTwo } from './fixtures/gallery';
@@ -40,7 +40,8 @@ async function setup(options: { failFirst?: unknown } = {}) {
   return { app, beam };
 }
 
-const file = (text: string, name = 'WhatsApp Chat with Mom.txt') => ({ name, bytes: strToU8(text) });
+const chatFile = (name: string, bytes: Uint8Array): ChatFile => ({ name, size: bytes.length, read: async () => bytes });
+const file = (text: string, name = 'WhatsApp Chat with Mom.txt') => chatFile(name, strToU8(text));
 
 describe('bringing a chat', () => {
   test('from the compose step the Giver can choose to use their own chat, and go back to the Gallery', async () => {
@@ -54,7 +55,7 @@ describe('bringing a chat', () => {
   });
 
   test('an Android .txt and an iOS .zip both land on "which one is you"', async () => {
-    for (const upload of [file(android24h), { name: 'WhatsApp Chat - Mom.zip', bytes: zipSync({ '_chat.txt': strToU8(ios24h) }) }]) {
+    for (const upload of [file(android24h), chatFile('WhatsApp Chat - Mom.zip', zipSync({ '_chat.txt': strToU8(ios24h) }))]) {
       const { app } = await setup();
       app.chooseChat();
 
@@ -78,6 +79,27 @@ describe('bringing a chat', () => {
 
     await app.uploadFile(file(android24h));
     expect(app.getState()).toMatchObject({ step: 'people', upload: { error: null } });
+  });
+
+  test('a file too big to be a chat is refused without being read, with a hint to export without media', async () => {
+    const { app } = await setup();
+    app.chooseChat();
+    let read = false;
+
+    await app.uploadFile({ name: 'WhatsApp Chat with media.zip', size: 900 * 1024 * 1024, read: async () => ((read = true), new Uint8Array()) });
+
+    expect(read).toBe(false);
+    expect(app.getState().step).toBe('upload');
+    expect(app.getState().upload.error).toMatch(/without media/i);
+  });
+
+  test('a file the browser cannot read is explained too', async () => {
+    const { app } = await setup();
+    app.chooseChat();
+
+    await app.uploadFile({ name: 'chat.txt', size: 10, read: () => Promise.reject(new Error('NotReadableError')) });
+
+    expect(app.getState().upload).toMatchObject({ busy: false, error: expect.stringMatching(/could not be read/) });
   });
 
   test('a chat where only one person ever spoke has nobody to make a Poem for', async () => {

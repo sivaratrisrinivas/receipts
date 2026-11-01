@@ -1,5 +1,6 @@
 // Step: choose an Occasion and, if wanted, a note for Beam; then make the Poem.
 
+import { composeCopy } from '../../app/upload';
 import { OCCASIONS, type Occasion } from '../../domain';
 import { h } from '../dom';
 import { extensions } from '../extensions';
@@ -8,6 +9,7 @@ import type { StepFactory } from '../step';
 const label = (occasion: Occasion) => occasion.charAt(0).toUpperCase() + occasion.slice(1);
 
 export const composeStep: StepFactory = (app, state) => {
+  const copy = composeCopy(state);
   const choices = h(
     'fieldset',
     { class: 'field occasions' },
@@ -37,29 +39,21 @@ export const composeStep: StepFactory = (app, state) => {
   });
   note.value = state.compose.note;
 
-  const make = h('button', { class: 'button primary', type: 'button', onclick: () => void app.start() }, 'Make my Gallery Poem');
+  const make = h('button', { class: 'button primary', type: 'button', onclick: () => void app.start() }, copy.make);
 
   const sections = extensions.composeSections.map((slot) => slot({ app, state })).filter((node) => node !== null);
   const notices = extensions.composeNotices.map((slot) => slot({ app, state })).filter((node) => node !== null);
 
-  const heading = h('h2', { tabindex: '-1' }, 'Make a Gallery Poem');
+  const heading = h('h2', { tabindex: '-1' }, copy.heading);
   const el = h(
     'section',
     { class: 'step step-compose' },
     heading,
-    h(
-      'p',
-      { class: 'lede' },
-      'The Gallery is the 1845–1846 letters between Robert Browning and Elizabeth Barrett. You are Robert; the Poem is for Elizabeth.',
-    ),
+    h('p', { class: 'lede' }, copy.lede),
     ...sections,
     choices,
     h('div', { class: 'field' }, h('label', { for: 'note' }, 'Anything Beam should know? ', h('span', { class: 'optional' }, '(optional)')), note),
-    h(
-      'p',
-      { class: 'aside cost' },
-      'Beam reads every letter in one go, which takes about a minute and costs roughly $0.20 of your Hugging Face credits.',
-    ),
+    h('p', { class: 'aside cost' }, copy.cost),
     ...notices,
     make,
   );

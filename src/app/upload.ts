@@ -141,3 +141,26 @@ export function reviewOf(chat: ChatDraft): { count: number; headline: string; pr
     others: chat.senders.some((sender) => !chosen.includes(sender.name)),
   };
 }
+
+/** The words on the Occasion step: they depend on whether the Poem is from the Gallery or from the Giver's chat. */
+export function composeCopy({ source, chat }: Pick<AppState, 'source' | 'chat'>): {
+  heading: string;
+  lede: string;
+  make: string;
+  cost: string;
+} {
+  if (source === 'chat' && chat?.recipient) {
+    return {
+      heading: `Make a Poem for ${chat.recipient}`,
+      lede: `Made only from things you and ${chat.recipient} really said to each other. Every line is a real Message, with who sent it and when.`,
+      make: `Make the Poem for ${chat.recipient}`,
+      cost: 'Beam reads your whole chat in one go, which takes about a minute and uses your Hugging Face credits.',
+    };
+  }
+  return {
+    heading: 'Make a Gallery Poem',
+    lede: 'The Gallery is the 1845–1846 letters between Robert Browning and Elizabeth Barrett. You are Robert; the Poem is for Elizabeth.',
+    make: 'Make my Gallery Poem',
+    cost: 'Beam reads every letter in one go, which takes about a minute and costs roughly $0.20 of your Hugging Face credits.',
+  };
+}

@@ -482,6 +482,146 @@ textarea:focus-visible {
   margin-top: 0;
 }
 
+/* Bringing a chat: choose a file, say who is who, answer the date question, see the count */
+
+.source {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border: 2px dashed var(--rule);
+  border-radius: 10px;
+}
+
+.source .button {
+  margin-top: 0.4rem;
+}
+
+.source-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.source-what {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.file-pick {
+  position: relative;
+  display: block;
+}
+
+.file-pick input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.file-pick input:focus-visible + .button {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.file-pick.is-busy .button {
+  opacity: 0.6;
+}
+
+.howto {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.howto summary {
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.howto p {
+  margin-top: 0.5rem;
+}
+
+.people {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chip.person span {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  text-align: left;
+}
+
+.person-name {
+  overflow-wrap: anywhere;
+}
+
+.chip.person small {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.chip.person.is-disabled {
+  opacity: 0.45;
+}
+
+.chip.person.is-disabled input {
+  cursor: not-allowed;
+}
+
+.sample {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-wash);
+}
+
+.sample-text {
+  overflow-wrap: anywhere;
+}
+
+.sample footer {
+  margin-top: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.count {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.privacy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--rule);
+  border-radius: 10px;
+}
+
+.privacy h3 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* Wider screens just get a little more room */
 
 @media (min-width: 40rem) {

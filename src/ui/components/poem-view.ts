@@ -44,7 +44,7 @@ export function createPoemView(options: PoemViewOptions): PoemView {
 
   function render(): void {
     eyebrow.textContent = poem.occasion;
-    heading.textContent = `A poem for ${poem.recipient}`;
+    heading.textContent = `For ${poem.recipient}`;
     byline.textContent = `from ${poem.giver}`;
 
     list.replaceChildren(
