@@ -23,6 +23,8 @@ export interface GalleryPicks {
   gallery: GalleryFingerprint;
   /** Each Occasion's picks. An Occasion may be missing while the file is being generated. */
   poems: Partial<Record<Occasion, GalleryPick[]>>;
+  /** How each Occasion's picks were made, for the record. Not used when the Poems are rebuilt. */
+  madeWith?: Partial<Record<Occasion, string>>;
 }
 
 /**
