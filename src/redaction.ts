@@ -22,10 +22,12 @@ const PHONE = new RegExp(
   [
     // +91 98765 43210, +1 (555) 123-4567, +44 7700 900123: a plus, then 7 to 15 digits in any grouping.
     String.raw`(?<![\p{L}\p{N}])\+\s?\d{1,3}(?:[\s.()-]*\d){6,12}${AFTER}`,
-    // (555) 123-4567, 555-123-4567, 020 7946 0958: three groups. 07700 900123, 98765 43210, 555-1234: the common two.
-    String.raw`${BEFORE}\(?\d{2,5}\)?[\s.-]\d{3,4}[\s.-]\d{3,5}${AFTER}`,
+    // (555) 123-4567, (555)123-4567, 555-123-4567, 020 7946 0958: three groups. 07700 900123, 98765 43210: the common two.
+    String.raw`${BEFORE}(?:\(?\d{2,5}\)?[\s.-]|\(\d{2,5}\))\d{3,4}[\s.-]\d{3,5}${AFTER}`,
     String.raw`${BEFORE}\d{4,5}[\s.-]\d{5,6}${AFTER}`,
-    String.raw`${BEFORE}\d{3}-\d{4}${AFTER}`,
+    // 555-1234, 8123 4567, 123 4567: seven or eight digits in two groups. Not a span of years (1999-2024, 2023 2024),
+    // and not with a dot, which is a decimal (1234.5678).
+    String.raw`${BEFORE}(?!(?:1[5-9]|20)\d\d[\s-](?:1[5-9]|20)\d\d)(?:\d{3}[\s-]\d{4}|\d{4}[\s-]\d{3,4})${AFTER}`,
     // 9876543210: nine or more digits with nothing between them.
     String.raw`${BEFORE}\d{9,15}${AFTER}`,
   ].join('|'),
@@ -33,7 +35,10 @@ const PHONE = new RegExp(
 );
 
 export function redactText(text: string): string {
-  return text.replace(EMAIL, EMAIL_MARKER).replace(PHONE, PHONE_MARKER);
+  // The email pattern is the slow one (it reads every word before it finds there is no `@`),
+  // and nearly every Message has none: skip it unless there is an `@` to find.
+  const withoutEmail = text.includes('@') ? text.replace(EMAIL, EMAIL_MARKER) : text;
+  return withoutEmail.replace(PHONE, PHONE_MARKER);
 }
 
 /** The Conversation with every Message's text redacted. */
