@@ -1,0 +1,91 @@
+/* Gallery Poems: ready-made Cards on the sign-in screen. */
+
+.gallery-poems {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.gallery-poems h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.gallery-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* The Occasions are one row, swiped sideways on a phone, so the Card starts near the top. */
+.gallery-poems .occasions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-inline: -1.25rem;
+  padding: 0.25rem 1.25rem;
+  overflow-x: auto;
+  scroll-padding-inline: 1.25rem;
+}
+
+.gallery-poems .occasions .chip {
+  flex: none;
+}
+
+.gallery-poems .occasions .chip span {
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  white-space: nowrap;
+}
+
+.gallery-legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* On a phone the Card takes the whole width of the sheet, so its Lines are not squeezed. */
+.gallery-card-wrap {
+  margin-inline: -1.25rem;
+}
+
+.gallery-card {
+  display: block;
+  width: 100%;
+  height: 28rem;
+  border: 0;
+  background: transparent;
+}
+
+.gallery-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.gallery-lede .link:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+@media (min-width: 40rem) {
+  .gallery-card-wrap {
+    margin-inline: 0;
+  }
+  .gallery-poems .occasions {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: visible;
+  }
+}

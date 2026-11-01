@@ -5,6 +5,7 @@
 // element to show, or null to show nothing. Slots run when the screen is built; a slot that
 // must stay live subscribes to `app` itself.
 //
+//   signInSections   Sign-in step, under the sign-in button (e.g. the Gallery Poems, shown before sign-in).
 //   composeSections  Compose step, above the Occasion picker (e.g. choose or upload a Conversation).
 //   composeNotices   Compose step, just above the "Make" button (e.g. a credit budget message).
 //   lineActions      Each Line's action row (e.g. Replace, Remove).
@@ -38,6 +39,7 @@ export type LineSlot = (context: LineSlotContext) => Node | null;
 export type PoemSlot = (context: PoemSlotContext) => Node | null;
 
 export interface Extensions {
+  signInSections: StepSlot[];
   composeSections: StepSlot[];
   composeNotices: StepSlot[];
   lineActions: LineSlot[];
@@ -46,6 +48,7 @@ export interface Extensions {
 }
 
 export const extensions: Extensions = {
+  signInSections: [],
   composeSections: [],
   composeNotices: [],
   lineActions: [],

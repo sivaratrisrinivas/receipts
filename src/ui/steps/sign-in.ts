@@ -3,6 +3,7 @@
 
 import type { AppState } from '../../app/state';
 import { h } from '../dom';
+import { extensions } from '../extensions';
 import type { StepFactory } from '../step';
 
 export const signInStep: StepFactory = (app, state) => {
@@ -29,6 +30,8 @@ export const signInStep: StepFactory = (app, state) => {
       { class: 'lede' },
       'Receipts turns what two people really said to each other into a poem. Every line is a real message, and under it goes who said it and when.',
     ),
+    // Ready-made Poems come straight after the pitch, so they are the first thing a visitor reads.
+    ...extensions.signInSections.map((slot) => slot({ app, state })).filter((node) => node !== null),
     h('p', null, 'Sign in with your Hugging Face account to begin. Beam, the AI that reads the Conversation, runs under your account, so no key is needed.'),
     notice,
     button,
